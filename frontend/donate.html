@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate – Viswa Vignana Vaaradhi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Glassmorphism Effect for Payment Options */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Neumorphic Hover Effect */
+        .payment-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation for Payment Options */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .payment-option {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100 text-gray-800" style="font-family: 'Open Sans', sans-serif;">
+    <!-- Header -->
+    <header class="bg-green-700 text-white py-8 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl md:text-5xl font-bold" style="font-family: 'Montserrat', sans-serif;">Donate to Viswa Vignana Vaaradhi</h1>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-green-700" style="font-family: 'Montserrat', sans-serif;">Make a Difference with Your Contribution</h2>
+
+        <!-- Donation Plans -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 cursor-pointer text-center">
+                <h3 class="text-2xl font-semibold mb-2">₹500</h3>
+                <p>Support education for one child for a month.</p>
+            </div>
+            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 cursor-pointer text-center">
+                <h3 class="text-2xl font-semibold mb-2">₹1000</h3>
+                <p>Provide books and materials for 2 children.</p>
+            </div>
+            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 cursor-pointer text-center">
+                <h3 class="text-2xl font-semibold mb-2">₹2000</h3>
+                <p>Help educate 5 children for a month.</p>
+            </div>
+            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 cursor-pointer text-center">
+                <h3 class="text-2xl font-semibold mb-2">₹5000</h3>
+                <p>Support an entire community project.</p>
+            </div>
+        </div>
+
+        <!-- Form and Payment Options -->
+        <div class="flex flex-col lg:flex-row gap-8">
+            <!-- Donation Form -->
+            <div class="lg:w-3/5 bg-white p-8 rounded-lg shadow-lg">
+                <h3 class="text-2xl font-semibold mb-4 text-green-700">Donate Now</h3>
+                <p class="text-lg mb-6">Choose an amount or enter a custom donation value to help us create change.</p>
+                <div>
+                    <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                    <input type="email" placeholder="Your Email" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                    <select class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                        <option value="">Select Amount</option>
+                        <option value="500">₹500</option>
+                        <option value="1000">₹1000</option>
+                        <option value="2000">₹2000</option>
+                        <option value="5000">₹5000</option>
+                        <option value="custom">Other</option>
+                    </select>
+                    <textarea placeholder="Message or Reason for Donation (optional)" rows="4" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                    <button class="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition font-bold text-lg">Donate Now</button>
+                </div>
+            </div>
+
+            <!-- Payment Options -->
+            <div class="lg:w-2/5 glass-effect p-8 rounded-lg">
+                <h3 class="text-2xl font-semibold mb-6 text-green-700" style="font-family: 'Montserrat', sans-serif;">Choose Payment Method</h3>
+                <div class="space-y-4">
+                    <label class="payment-option flex items-center p-4 bg-white rounded-lg shadow-md transition cursor-pointer">
+                        <input type="radio" name="payment-method" value="credit-debit" class="mr-3 text-green-500 focus:ring-green-500">
+                        <span class="flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            Credit / Debit Card
+                        </span>
+                    </label>
+                    <label class="payment-option flex items-center p-4 bg-white rounded-lg shadow-md transition cursor-pointer">
+                        <input type="radio" name="payment-method" value="upi" class="mr-3 text-green-500 focus:ring-green-500">
+                        <span class="flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.1.9-2 2-2s2 .9 2 2-2 4-2 4m-4-4c0-1.1-.9-2-2-2s-2 .9-2 2 2 4 2 4m8-8h-4m0 0H8m4 0V3m0 8v10"></path></svg>
+                            UPI
+                        </span>
+                    </label>
+                    <label class="payment-option flex items-center p-4 bg-white rounded-lg shadow-md transition cursor-pointer">
+                        <input type="radio" name="payment-method" value="netbanking" class="mr-3 text-green-500 focus:ring-green-500">
+                        <span class="flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Net Banking
+                        </span>
+                    </label>
+                    <label class="payment-option flex items-center p-4 bg-white rounded-lg shadow-md transition cursor-pointer">
+                        <input type="radio" name="payment-method" value="wallet" class="mr-3 text-green-500 focus:ring-green-500">
+                        <span class="flex items-center">
+                            <svg class="w-6 h-6 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                            Wallets (Paytm, Google Pay, etc.)
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-green-700 text-white p-6 text-center">
+        <div class="container mx-auto">
+            <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

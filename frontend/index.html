@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viswa Vignana Vaaradhi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .carousel {
+            position: relative;
+            width: 100%;
+            min-height: 500px;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+        }
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .carousel-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 3;
+        }
+        .carousel-arrow.left {
+            left: 20px;
+        }
+        .carousel-arrow.right {
+            right: 20px;
+        }
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+        .carousel-dot.active {
+            opacity: 1;
+        }
+        .focus-areas-container img {
+            object-fit: cover;
+        }
+        .focus-areas-container img:first-child {
+            z-index: 2;
+        }
+        .focus-areas-container img:last-child {
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800" style="font-family: 'Poppins', sans-serif;">
+    <!-- Header -->
+    <header class="bg-green-700 text-white p-4 sticky top-0 z-20 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h2 class="text-xl font-bold">Viswa Vignana Vaaradhi</h2>
+            <nav class="flex items-center space-x-4">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="get-involved.html" class="hover:underline">Get Involved</a>
+                <a href="testimonials.html" class="hover:underline">Testimonials</a>
+                <a href="gallery.html" class="hover:underline">Gallery</a>
+                <a href="contact.html" class="hover:underline">Contact</a>
+                <a href="donate.html" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition">Donate Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Carousel -->
+    <section id="carousel" class="carousel"></section>
+
+    <!-- Stats Section -->
+    <section id="stats" class="bg-white py-12 text-center">
+        <div class="container mx-auto px-4">
+            <div id="stats-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- Our Work Section -->
+    <section id="focus-areas" class="bg-gray-50 py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-green-700">Our Focus Areas</h2>
+            <div id="focus-areas-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 focus-areas-container"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="bg-white py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-green-700">Stories of Impact</h2>
+            <div id="testimonials-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="bg-green-600 text-white py-16 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">Support Our Mission</h2>
+            <p class="text-lg mb-6 max-w-2xl mx-auto">Your support helps educate children, empower farmers, and spread awareness. Join us today!</p>
+            <div class="flex justify-center space-x-4">
+                <a href="donate.html" class="bg-white text-green-700 px-6 py-3 rounded-full hover:bg-gray-200 transition">Donate Now</a>
+                <a href="get-involved.html" class="bg-white text-green-700 px-6 py-3 rounded-full hover:bg-gray-200 transition">Volunteer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-green-700 text-white p-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
+                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:underline">Home</a></li>
+                        <li><a href="about.html" class="hover:underline">About</a></li>
+                        <li><a href="get-involved.html" class="hover:underline">Get Involved</a></li>
+                        <li><a href="donate.html" class="hover:underline">Donate</a></li>
+                        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p>Email: info@viswavignana.org</p>
+                    <p>Phone: +91-9876543210</p>
+                    <p>Address: 123, Social Cause Street, Hyderabad, India</p>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Dynamic Rendering -->
+    <script>
+        // Data source for dynamic content
+        const data = {
+            carouselSlides: [
+                {
+                    image: "images/education-slide.jpg",
+                    headline: "Empower Through Education",
+                    subheadline: "Providing quality education to underprivileged children.",
+                    ctaLink: "donate.html",
+                    ctaText: "Donate Now"
+                },
+                {
+                    image: "images/farming-slide.jpg",
+                    headline: "Support Sustainable Farming",
+                    subheadline: "Empowering farmers with modern techniques.",
+                    ctaLink: "donate.html",
+                    ctaText: "Donate Now"
+                },
+                {
+                    image: "images/literacy-slide.jpg",
+                    headline: "Promote Political Literacy",
+                    subheadline: "Educating communities about their rights and duties.",
+                    ctaLink: "donate.html",
+                    ctaText: "Donate Now"
+                }
+            ],
+            stats: [
+                { number: "500+", description: "Children Educated" },
+                { number: "100+", description: "Farmers Supported" },
+                { number: "50+", description: "Communities Empowered" }
+            ],
+            focusAreas: [
+                {
+                    image: "images/education-program.jpg",
+                    hoverImage: "images/education-program-hover.jpg",
+                    title: "Education for the Poor",
+                    description: "Helping children from underprivileged backgrounds access quality education."
+                },
+                {
+                    image: "images/agriculture-support.jpg",
+                    hoverImage: "images/agriculture-support-hover.jpg",
+                    title: "Agricultural Assistance",
+                    description: "Empowering farmers with resources and modern techniques to improve yields."
+                },
+                {
+                    image: "images/political-education.jpg",
+                    hoverImage: "images/political-education-hover.jpg",
+                    title: "Political Literacy",
+                    description: "Educating communities about their rights, duties, and democratic engagement."
+                }
+            ],
+            testimonials: [
+                {
+                    quote: "Viswa Vignana Vaaradhi is doing incredible work. Volunteering here has changed my life!",
+                    author: "Asha, Volunteer"
+                },
+                {
+                    quote: "Thanks to their education programs, my children now attend school regularly.",
+                    author: "Ravi, Beneficiary"
+                }
+            ]
+        };
+
+        // Render Carousel
+        function renderCarousel() {
+            const carousel = document.getElementById('carousel');
+            let currentSlide = 0;
+            const slideInterval = 5000;
+
+            // Create slides
+            data.carouselSlides.forEach((slide, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
+                slideDiv.style.backgroundImage = `url(${slide.image})`;
+                slideDiv.innerHTML = `
+                    <div class="carousel-content h-full flex flex-col justify-center items-center text-center">
+                        <div class="container mx-auto px-4">
+                            <h1 class="text-4xl md:text-5xl font-bold mb-4">${slide.headline}</h1>
+                            <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">${slide.subheadline}</p>
+                            <a href="${slide.ctaLink}" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition">${slide.ctaText}</a>
+                        </div>
+                    </div>
+                `;
+                carousel.appendChild(slideDiv);
+            });
+
+            // Create navigation arrows
+            const leftArrow = document.createElement('div');
+            leftArrow.className = 'carousel-arrow left';
+            leftArrow.innerHTML = '❮';
+            carousel.appendChild(leftArrow);
+
+            const rightArrow = document.createElement('div');
+            rightArrow.className = 'carousel-arrow right';
+            rightArrow.innerHTML = '❯';
+            carousel.appendChild(rightArrow);
+
+            // Create dots
+            const dotsContainer = document.createElement('div');
+            dotsContainer.className = 'carousel-dots';
+            data.carouselSlides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
+                dotsContainer.appendChild(dot);
+            });
+            carousel.appendChild(dotsContainer);
+
+            // Carousel logic
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.toggle('active', i === index);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                const next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+
+            function prevSlide() {
+                const prev = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(prev);
+            }
+
+            let autoSlide = setInterval(nextSlide, slideInterval);
+
+            leftArrow.addEventListener('click', () => {
+                clearInterval(autoSlide);
+                prevSlide();
+                autoSlide = setInterval(nextSlide, slideInterval);
+            });
+
+            rightArrow.addEventListener('click', () => {
+                clearInterval(autoSlide);
+                nextSlide();
+                autoSlide = setInterval(nextSlide, slideInterval);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(autoSlide);
+                    showSlide(index);
+                    autoSlide = setInterval(nextSlide, slideInterval);
+                });
+            });
+        }
+
+        // Render Stats with Count-Up Animation
+        function renderStats() {
+            const statsContainer = document.getElementById('stats-container');
+            
+            // Create stat elements with initial value of 0
+            data.stats.forEach(stat => {
+                const statDiv = document.createElement('div');
+                const hasPlus = stat.number.includes('+');
+                const targetNumber = parseInt(stat.number.replace('+', '')); // e.g., "500+" -> 500
+                statDiv.innerHTML = `
+                    <h3 class="text-4xl font-bold text-green-700" data-target="${targetNumber}" data-plus="${hasPlus}">0${hasPlus ? '+' : ''}</h3>
+                    <p class="text-lg">${stat.description}</p>
+                `;
+                statsContainer.appendChild(statDiv);
+            });
+
+            // Animate numbers when the stats section is in view
+            const statsSection = document.getElementById('stats');
+            const numberElements = statsContainer.querySelectorAll('h3');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        numberElements.forEach(element => {
+                            const target = parseInt(element.getAttribute('data-target'));
+                            const hasPlus = element.getAttribute('data-plus') === 'true';
+                            let current = 0;
+                            const duration = 2000; // 2 seconds
+                            const increment = target / (duration / 50); // Update every 50ms
+
+                            const updateNumber = () => {
+                                current += increment;
+                                if (current >= target) {
+                                    current = target;
+                                    element.textContent = current + (hasPlus ? '+' : '');
+                                    return;
+                                }
+                                element.textContent = Math.floor(current) + (hasPlus ? '+' : '');
+                                setTimeout(updateNumber, 50);
+                            };
+                            updateNumber();
+                        });
+                        observer.unobserve(statsSection); // Stop observing after animation
+                    }
+                });
+            }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
+
+            observer.observe(statsSection);
+        }
+
+        // Render Focus Areas
+        function renderFocusAreas() {
+            const focusAreasContainer = document.getElementById('focus-areas-container');
+            data.focusAreas.forEach(area => {
+                const areaDiv = document.createElement('div');
+                areaDiv.className = 'bg-white p-6 rounded-lg shadow-md';
+                areaDiv.innerHTML = `
+                    <div class="relative h-48 mb-4">
+                        <img src="${area.image}" alt="${area.title} Image" class="absolute inset-0 h-full w-full object-cover rounded-lg transition-opacity duration-300 opacity-100 hover:opacity-0">
+                        <img src="${area.hoverImage}" alt="${area.title} Hover Image" class="absolute inset-0 h-full w-full object-cover rounded-lg transition-opacity duration-300 opacity-0 hover:opacity-100">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-green-700">${area.title}</h3>
+                    <p>${area.description}</p>
+                `;
+                focusAreasContainer.appendChild(areaDiv);
+            });
+        }
+
+        // Render Testimonials
+        function renderTestimonials() {
+            const testimonialsContainer = document.getElementById('testimonials-container');
+            data.testimonials.forEach(testimonial => {
+                const testimonialDiv = document.createElement('div');
+                testimonialDiv.className = 'bg-gray-50 p-6 rounded-lg shadow-md';
+                testimonialDiv.innerHTML = `
+                    <p class="text-lg italic mb-4">“${testimonial.quote}”</p>
+                    <p class="font-semibold text-green-700">– ${testimonial.author}</p>
+                `;
+                testimonialsContainer.appendChild(testimonialDiv);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                renderCarousel();
+                renderStats();
+                renderFocusAreas();
+                renderTestimonials();
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
+            }
+        });
+    </script>
+</body>
+</html>
