@@ -5,112 +5,293 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Header Styles */
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: scale(1.1);
+            color: #F0F5FF;
+        }
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(to right, #1E3A8A, #3B82F6);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        /* Card Styles */
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .card.selected {
+            border: 2px solid #3B82F6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+        /* Tab Styles */
+        .tab {
+            transition: all 0.3s ease;
+        }
+        .tab.active {
+            background: #1E3A8A;
+            color: white;
+        }
+        /* Custom Amount Input */
+        .custom-amount-input {
+            transition: all 0.3s ease;
+        }
+        .custom-amount-input:focus {
+            width: 100%;
+            border-color: #3B82F6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+        /* Summary Card */
+        .summary-card {
+            position: sticky;
+            top: 20px;
+        }
+        /* Footer Links */
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        .footer-link:hover {
+            color: #F0F5FF;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] text-white p-4 sticky top-0 z-20 shadow-md">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10">
-                <h2 class="text-xl font-bold">Viswa Vignana Vaaradhi</h2>
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
+                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
-                <a href="index.html" class="hover:underline">Home</a>
-                <a href="about.html" class="hover:underline">About</a>
-                <a href="get-involved.html" class="hover:underline">Get Involved</a>
-                <a href="testimonials.html" class="hover:underline">Testimonials</a>
-                <a href="gallery.html" class="hover:underline">Gallery</a>
-                <a href="contact.html" class="hover:underline">Contact</a>
-                <a href="donate.html" class="bg-[#1E3A8A] text-white px-4 py-2 rounded-full hover:bg-[#3B82F6] transition">Donate Now</a>
+                <a href="index.html" class="nav-link hover:underline">Home</a>
+                <a href="about.html" class="nav-link hover:underline">About</a>
+                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+                <a href="testimonials.html" class="nav-link hover:underline">Testimonials</a>
+                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
+                <a href="contact.html" class="nav-link hover:underline">Contact</a>
+                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
             </nav>
         </div>
     </header>
 
-    <!-- Donation Form Section -->
-    <section class="bg-[#F0F5FF] py-20 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-[#1E3A8A]">Make a Donation</h2>
-            <p class="text-lg mb-8 max-w-2xl mx-auto">Your donation helps us educate children, empower farmers, and promote awareness. Every contribution counts!</p>
-            <form id="donation-form" class="bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
-                <div class="mb-4 text-left">
-                    <label for="name" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Name</label>
-                    <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
+        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Make a Difference Today</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Your contribution helps us educate children, empower farmers, and promote awareness. Every amount counts!</p>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 flex flex-col lg:flex-row gap-8">
+            <!-- Left: Donation Options and Payment Methods -->
+            <div class="lg:w-2/3 space-y-12">
+                <!-- Donation Amounts -->
+                <div class="fade-in">
+                    <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Choose Your Donation Amount</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="card bg-white p-6 rounded-xl shadow-md cursor-pointer" data-amount="500" onclick="selectAmount(500)">
+                            <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">₹500</h4>
+                            <p>Support education for one child for a month.</p>
+                        </div>
+                        <div class="card bg-white p-6 rounded-xl shadow-md cursor-pointer" data-amount="1000" onclick="selectAmount(1000)">
+                            <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">₹1000</h4>
+                            <p>Provide books and materials for 2 children.</p>
+                        </div>
+                        <div class="card bg-white p-6 rounded-xl shadow-md cursor-pointer" data-amount="2000" onclick="selectAmount(2000)">
+                            <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">₹2000</h4>
+                            <p>Help educate 5 children for a month.</p>
+                        </div>
+                        <div class="card bg-white p-6 rounded-xl shadow-md cursor-pointer" data-amount="5000" onclick="selectAmount(5000)">
+                            <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">₹5000</h4>
+                            <p>Support an entire community project.</p>
+                        </div>
+                        <div class="card bg-white p-6 rounded-xl shadow-md">
+                            <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Custom Amount</h4>
+                            <input type="number" id="custom-amount" placeholder="Enter amount" class="custom-amount-input w-3/4 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" oninput="selectCustomAmount()">
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-4 text-left">
-                    <label for="email" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
+
+                <!-- Payment Methods -->
+                <div class="fade-in">
+                    <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Choose Payment Method</h3>
+                    <div class="flex flex-wrap justify-center gap-4 mb-6">
+                        <button class="tab bg-gray-200 px-4 py-2 rounded-full" data-method="card" onclick="selectPaymentMethod('card')">Credit/Debit Card</button>
+                        <button class="tab bg-gray-200 px-4 py-2 rounded-full" data-method="upi" onclick="selectPaymentMethod('upi')">UPI</button>
+                        <button class="tab bg-gray-200 px-4 py-2 rounded-full" data-method="netbanking" onclick="selectPaymentMethod('netbanking')">Net Banking</button>
+                        <button class="tab bg-gray-200 px-4 py-2 rounded-full" data-method="wallet" onclick="selectPaymentMethod('wallet')">Wallets</button>
+                    </div>
+                    <div id="payment-details" class="bg-white p-6 rounded-xl shadow-md">
+                        <p class="text-center text-gray-500">Select a payment method to proceed.</p>
+                    </div>
                 </div>
-                <div class="mb-4 text-left">
-                    <label for="amount" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Donation Amount (INR)</label>
-                    <input type="number" id="amount" name="amount" min="1" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
+            </div>
+
+            <!-- Right: Summary Card -->
+            <div class="lg:w-1/3 fade-in">
+                <div class="summary-card bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-2xl font-semibold text-[#1E3A8A] mb-4">Donation Summary</h3>
+                    <div class="space-y-4">
+                        <p><span class="font-medium">Amount:</span> <span id="summary-amount">₹0</span></p>
+                        <p><span class="font-medium">Payment Method:</span> <span id="summary-method">Not selected</span></p>
+                    </div>
+                    <button id="donate-button" class="btn-primary text-white px-6 py-3 rounded-full w-full mt-6" disabled onclick="submitDonation()">Donate Now</button>
                 </div>
-                <button type="submit" class="bg-[#1E3A8A] text-white px-6 py-3 rounded-full hover:bg-[#3B82F6] transition w-full">Donate</button>
-            </form>
-            <p id="form-message" class="mt-4 text-lg"></p>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1E3A8A] text-white p-8">
+    <footer class="bg-[#1E3A8A] text-white p-10">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
+                    <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
                     <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:underline">Home</a></li>
-                        <li><a href="about.html" class="hover:underline">About</a></li>
-                        <li><a href="get-involved.html" class="hover:underline">Get Involved</a></li>
-                        <li><a href="donate.html" class="hover:underline">Donate</a></li>
-                        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
+                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
+                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
+                        <li><a href="donate.html" class="footer-link hover:underline">Donate</a></li>
+                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
                     <p>Email: info@viswavignana.org</p>
                     <p>Phone: +91-9876543210</p>
                     <p>Address: 123, Social Cause Street, Hyderabad, India</p>
                 </div>
             </div>
-            <div class="mt-6 text-center">
+            <div class="mt-8 text-center">
                 <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Form Submission -->
+    <!-- JavaScript for Interactivity -->
     <script>
-        document.getElementById('donation-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formMessage = document.getElementById('form-message');
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const amount = parseFloat(document.getElementById('amount').value);
+        let selectedAmount = 0;
+        let selectedMethod = '';
 
+        // Select donation amount
+        function selectAmount(amount) {
+            selectedAmount = amount;
+            updateSummary();
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('selected'));
+            document.querySelector(`.card[data-amount="${amount}"]`).classList.add('selected');
+            document.getElementById('custom-amount').value = '';
+        }
+
+        // Select custom amount
+        function selectCustomAmount() {
+            const customAmount = parseFloat(document.getElementById('custom-amount').value) || 0;
+            selectedAmount = customAmount;
+            updateSummary();
+            document.querySelectorAll('.card').forEach(card => card.classList.remove('selected'));
+            document.querySelector('.card:has(#custom-amount)').classList.add('selected');
+        }
+
+        // Select payment method
+        function selectPaymentMethod(method) {
+            selectedMethod = method;
+            updateSummary();
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`.tab[data-method="${method}"]`).classList.add('active');
+
+            const paymentDetails = document.getElementById('payment-details');
+            paymentDetails.innerHTML = `
+                <p class="text-[#1E3A8A] font-semibold">Selected: ${
+                    method === 'card' ? 'Credit/Debit Card' :
+                    method === 'upi' ? 'UPI' :
+                    method === 'netbanking' ? 'Net Banking' :
+                    'Wallets (Paytm, Google Pay, etc.)'
+                }</p>
+            `;
+        }
+
+        // Update summary card
+        function updateSummary() {
+            document.getElementById('summary-amount').textContent = `₹${selectedAmount}`;
+            document.getElementById('summary-method').textContent = selectedMethod ? 
+                (selectedMethod === 'card' ? 'Credit/Debit Card' :
+                selectedMethod === 'upi' ? 'UPI' :
+                selectedMethod === 'netbanking' ? 'Net Banking' :
+                'Wallets') : 'Not selected';
+
+            const donateButton = document.getElementById('donate-button');
+            donateButton.disabled = !(selectedAmount > 0 && selectedMethod);
+        }
+
+        // Submit donation
+        async function submitDonation() {
             try {
                 const response = await fetch('https://viswavignanavaaradhi.org/api/donate', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, amount })
+                    body: JSON.stringify({ amount: selectedAmount, paymentMethod: selectedMethod })
                 });
                 const data = await response.json();
                 if (response.ok) {
-                    formMessage.className = 'text-[#1E3A8A]';
-                    formMessage.textContent = 'Thank you for your donation! We appreciate your support.';
-                    document.getElementById('donation-form').reset();
+                    alert('Thank you for your donation! We appreciate your support.');
+                    window.location.reload();
                 } else {
-                    formMessage.className = 'text-red-500';
-                    formMessage.textContent = data.message || 'Error submitting donation. Please try again.';
+                    alert(data.message || 'Error submitting donation. Please try again.');
                 }
             } catch (error) {
                 console.error('Error submitting donation:', error);
-                formMessage.className = 'text-red-500';
-                formMessage.textContent = 'Error submitting donation. Please try again.';
+                alert('Error submitting donation. Please try again.');
             }
+        }
+
+        // Fade-In Animation for Sections
+        function animateSections() {
+            const sections = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            animateSections();
         });
     </script>
 </body>
