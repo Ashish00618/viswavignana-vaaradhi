@@ -3,22 +3,22 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
-const serverless = require('serverless-http'); // Add this dependency
+const serverless = require('serverless-http');
 
 const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cors());
-
-// Debug: Log the MongoDB URI being used
-console.log('MongoDB URI:', process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/viswavignana');
+app.use(cors({
+    origin: 'https://viswavignanavaaradhi.org'
+}));
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://viswavignanavaaradhi:vision%402047@vaaradi.gwmgxia.mongodb.net/', {
+console.log('MongoDB URI:', process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/viswavignana');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://viswavignanavaaradhi:vision%402047@vaaradi.gwmgxia.mongodb.net/viswavignana?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    family: 4 // Force IPv4
+    family: 4
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('MongoDB connection error:', err));
@@ -57,27 +57,17 @@ const Donation = mongoose.model('Donation', donationSchema);
 app.post('/register', async (req, res) => {
     try {
         const { name, email, password } = req.body;
-
         if (!name || !email || !password) {
             return res.status(400).json({ message: 'All fields are required' });
         }
-
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ message: 'Email already registered' });
         }
-
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-        const user = new User({
-            name,
-            email,
-            password: hashedPassword
-        });
-
+        const user = new User({ name, email, password: hashedPassword });
         await user.save();
-
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
         console.error('Error during registration:', error);
@@ -89,19 +79,11 @@ app.post('/register', async (req, res) => {
 app.post('/volunteer', async (req, res) => {
     try {
         const { name, email, role } = req.body;
-
         if (!name || !email || !role) {
             return res.status(400).json({ message: 'All fields are required' });
         }
-
-        const volunteer = new Volunteer({
-            name,
-            email,
-            role
-        });
-
+        const volunteer = new Volunteer({ name, email, role });
         await volunteer.save();
-
         res.status(201).json({ message: 'Volunteer registered successfully' });
     } catch (error) {
         console.error('Error during volunteer registration:', error);
@@ -113,23 +95,14 @@ app.post('/volunteer', async (req, res) => {
 app.post('/donate', async (req, res) => {
     try {
         const { name, email, amount } = req.body;
-
         if (!name || !email || !amount) {
             return res.status(400).json({ message: 'All fields are required' });
         }
-
         if (amount <= 0) {
             return res.status(400).json({ message: 'Amount must be greater than 0' });
         }
-
-        const donation = new Donation({
-            name,
-            email,
-            amount
-        });
-
+        const donation = new Donation({ name, email, amount });
         await donation.save();
-
         res.status(201).json({ message: 'Donation recorded successfully' });
     } catch (error) {
         console.error('Error during donation:', error);
