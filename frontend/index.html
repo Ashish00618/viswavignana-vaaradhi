@@ -89,12 +89,12 @@
         }
     </style>
 </head>
-<body class="font-sans bg-gray-50 text-gray-800" style="font-family: 'Poppins', sans-serif;">
+<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-green-700 text-white p-4 sticky top-0 z-20 shadow-md">
+    <header class="bg-[#1E3A8A] text-white p-4 sticky top-0 z-20 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10">
                 <h2 class="text-xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
@@ -104,7 +104,7 @@
                 <a href="testimonials.html" class="hover:underline">Testimonials</a>
                 <a href="gallery.html" class="hover:underline">Gallery</a>
                 <a href="contact.html" class="hover:underline">Contact</a>
-                <a href="donate.html" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition">Donate Now</a>
+                <a href="donate.html" class="bg-[#1E3A8A] text-white px-4 py-2 rounded-full hover:bg-[#3B82F6] transition">Donate Now</a>
             </nav>
         </div>
     </header>
@@ -120,9 +120,9 @@
     </section>
 
     <!-- Our Work Section -->
-    <section id="focus-areas" class="bg-gray-50 py-20 text-center">
+    <section id="focus-areas" class="bg-[#F0F5FF] py-20 text-center">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-green-700">Our Focus Areas</h2>
+            <h2 class="text-3xl font-bold mb-6 text-[#1E3A8A]">Our Focus Areas</h2>
             <div id="focus-areas-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 focus-areas-container"></div>
         </div>
     </section>
@@ -130,25 +130,25 @@
     <!-- Testimonials Section -->
     <section id="testimonials" class="bg-white py-20 text-center">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-green-700">Stories of Impact</h2>
+            <h2 class="text-3xl font-bold mb-6 text-[#1E3A8A]">Stories of Impact</h2>
             <div id="testimonials-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
         </div>
     </section>
 
     <!-- Call-to-Action Section -->
-    <section class="bg-green-600 text-white py-16 text-center">
+    <section class="bg-[#1E3A8A] text-white py-16 text-center">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-4">Support Our Mission</h2>
             <p class="text-lg mb-6 max-w-2xl mx-auto">Your support helps educate children, empower farmers, and spread awareness. Join us today!</p>
             <div class="flex justify-center space-x-4">
-                <a href="donate.html" class="bg-white text-green-700 px-6 py-3 rounded-full hover:bg-gray-200 transition">Donate Now</a>
-                <a href="get-involved.html" class="bg-white text-green-700 px-6 py-3 rounded-full hover:bg-gray-200 transition">Volunteer</a>
+                <a href="donate.html" class="bg-white text-[#1E3A8A] px-6 py-3 rounded-full hover:bg-[#F0F5FF] transition">Donate Now</a>
+                <a href="get-involved.html" class="bg-white text-[#1E3A8A] px-6 py-3 rounded-full hover:bg-[#F0F5FF] transition">Volunteer</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-green-700 text-white p-8">
+    <footer class="bg-[#1E3A8A] text-white p-8">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div>
@@ -258,7 +258,7 @@
                         <div class="container mx-auto px-4">
                             <h1 class="text-4xl md:text-5xl font-bold mb-4">${slide.headline}</h1>
                             <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">${slide.subheadline}</p>
-                            <a href="${slide.ctaLink}" class="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition">${slide.ctaText}</a>
+                            <a href="${slide.ctaLink}" class="bg-[#1E3A8A] text-white px-6 py-3 rounded-full hover:bg-[#3B82F6] transition">${slide.ctaText}</a>
                         </div>
                     </div>
                 `;
@@ -343,7 +343,7 @@
                 const hasPlus = stat.number.includes('+');
                 const targetNumber = parseInt(stat.number.replace('+', '')); // e.g., "500+" -> 500
                 statDiv.innerHTML = `
-                    <h3 class="text-4xl font-bold text-green-700" data-target="${targetNumber}" data-plus="${hasPlus}">0${hasPlus ? '+' : ''}</h3>
+                    <h3 class="text-4xl font-bold text-[#1E3A8A]" data-target="${targetNumber}" data-plus="${hasPlus}">0${hasPlus ? '+' : ''}</h3>
                     <p class="text-lg">${stat.description}</p>
                 `;
                 statsContainer.appendChild(statDiv);
@@ -394,7 +394,7 @@
                         <img src="${area.image}" alt="${area.title} Image" class="absolute inset-0 h-full w-full object-cover rounded-lg transition-opacity duration-300 opacity-100 hover:opacity-0">
                         <img src="${area.hoverImage}" alt="${area.title} Hover Image" class="absolute inset-0 h-full w-full object-cover rounded-lg transition-opacity duration-300 opacity-0 hover:opacity-100">
                     </div>
-                    <h3 class="text-xl font-semibold mb-2 text-green-700">${area.title}</h3>
+                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">${area.title}</h3>
                     <p>${area.description}</p>
                 `;
                 focusAreasContainer.appendChild(areaDiv);
@@ -406,10 +406,10 @@
             const testimonialsContainer = document.getElementById('testimonials-container');
             data.testimonials.forEach(testimonial => {
                 const testimonialDiv = document.createElement('div');
-                testimonialDiv.className = 'bg-gray-50 p-6 rounded-lg shadow-md';
+                testimonialDiv.className = 'bg-[#F0F5FF] p-6 rounded-lg shadow-md';
                 testimonialDiv.innerHTML = `
                     <p class="text-lg italic mb-4">“${testimonial.quote}”</p>
-                    <p class="font-semibold text-green-700">– ${testimonial.author}</p>
+                    <p class="font-semibold text-[#1E3A8A]">– ${testimonial.author}</p>
                 `;
                 testimonialsContainer.appendChild(testimonialDiv);
             });

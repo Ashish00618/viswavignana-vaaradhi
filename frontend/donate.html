@@ -3,137 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate – Viswa Vignana Vaaradhi</title>
+    <title>Donate - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <style>
-        /* Custom Glassmorphism Effect for Payment Options */
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Neumorphic Hover Effect */
-        .payment-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), inset 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Animation for Payment Options */
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .payment-option {
-            animation: slideIn 0.5s ease-out forwards;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="font-sans bg-gray-100 text-gray-800" style="font-family: 'Open Sans', sans-serif;">
+<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-green-700 text-white py-8 text-center">
-        <div class="container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-bold" style="font-family: 'Montserrat', sans-serif;">Donate to Viswa Vignana Vaaradhi</h1>
+    <header class="bg-[#1E3A8A] text-white p-4 sticky top-0 z-20 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10">
+                <h2 class="text-xl font-bold">Viswa Vignana Vaaradhi</h2>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <a href="index.html" class="hover:underline">Home</a>
+                <a href="about.html" class="hover:underline">About</a>
+                <a href="get-involved.html" class="hover:underline">Get Involved</a>
+                <a href="testimonials.html" class="hover:underline">Testimonials</a>
+                <a href="gallery.html" class="hover:underline">Gallery</a>
+                <a href="contact.html" class="hover:underline">Contact</a>
+                <a href="donate.html" class="bg-[#1E3A8A] text-white px-4 py-2 rounded-full hover:bg-[#3B82F6] transition">Donate Now</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container mx-auto px-4 py-12 max-w-5xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 text-green-700" style="font-family: 'Montserrat', sans-serif;">Make a Difference with Your Contribution</h2>
-
-        <!-- Donation Plans -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 cursor-pointer text-center">
-                <h3 class="text-2xl font-semibold mb-2">₹500</h3>
-                <p>Support education for one child for a month.</p>
-            </div>
-            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 cursor-pointer text-center">
-                <h3 class="text-2xl font-semibold mb-2">₹1000</h3>
-                <p>Provide books and materials for 2 children.</p>
-            </div>
-            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 cursor-pointer text-center">
-                <h3 class="text-2xl font-semibold mb-2">₹2000</h3>
-                <p>Help educate 5 children for a month.</p>
-            </div>
-            <div class="bg-green-500 text-white p-6 rounded-lg shadow-lg hover:bg-green-600 transition transform hover:scale-105 cursor-pointer text-center">
-                <h3 class="text-2xl font-semibold mb-2">₹5000</h3>
-                <p>Support an entire community project.</p>
-            </div>
-        </div>
-
-        <!-- Form and Payment Options -->
-        <div class="flex flex-col lg:flex-row gap-8">
-            <!-- Donation Form -->
-            <div class="lg:w-3/5 bg-white p-8 rounded-lg shadow-lg">
-                <h3 class="text-2xl font-semibold mb-4 text-green-700">Donate Now</h3>
-                <p class="text-lg mb-6">Choose an amount or enter a custom donation value to help us create change.</p>
-                <div>
-                    <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
-                    <input type="email" placeholder="Your Email" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
-                    <select class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
-                        <option value="">Select Amount</option>
-                        <option value="500">₹500</option>
-                        <option value="1000">₹1000</option>
-                        <option value="2000">₹2000</option>
-                        <option value="5000">₹5000</option>
-                        <option value="custom">Other</option>
-                    </select>
-                    <textarea placeholder="Message or Reason for Donation (optional)" rows="4" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
-                    <button class="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition font-bold text-lg">Donate Now</button>
+    <!-- Donation Form Section -->
+    <section class="bg-[#F0F5FF] py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-[#1E3A8A]">Make a Donation</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Your donation helps us educate children, empower farmers, and promote awareness. Every contribution counts!</p>
+            <form id="donation-form" class="bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
+                <div class="mb-4 text-left">
+                    <label for="name" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Name</label>
+                    <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
                 </div>
-            </div>
-
-            <!-- Payment Options -->
-            <div class="lg:w-2/5 glass-effect p-8 rounded-lg">
-                <h3 class="text-2xl font-semibold mb-6 text-green-700" style="font-family: 'Montserrat', sans-serif;">Choose Payment Method</h3>
-                <div class="space-y-4">
-                    <label class="payment-option flex items-center p-4 bg-white rounded-lg shadow-md transition cursor-pointer">
-                        <input type="radio" name="payment-method" value="credit-debit" class="mr-3 text-green-500 focus:ring-green-500">
-                        <span class="flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                            Credit / Debit Card
-                        </span>
-                    </label>
-                    <label class="payment-option flex items-center p-4 bg-white rounded-lg shadow-md transition cursor-pointer">
-                        <input type="radio" name="payment-method" value="upi" class="mr-3 text-green-500 focus:ring-green-500">
-                        <span class="flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.1.9-2 2-2s2 .9 2 2-2 4-2 4m-4-4c0-1.1-.9-2-2-2s-2 .9-2 2 2 4 2 4m8-8h-4m0 0H8m4 0V3m0 8v10"></path></svg>
-                            UPI
-                        </span>
-                    </label>
-                    <label class="payment-option flex items-center p-4 bg-white rounded-lg shadow-md transition cursor-pointer">
-                        <input type="radio" name="payment-method" value="netbanking" class="mr-3 text-green-500 focus:ring-green-500">
-                        <span class="flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            Net Banking
-                        </span>
-                    </label>
-                    <label class="payment-option flex items-center p-4 bg-white rounded-lg shadow-md transition cursor-pointer">
-                        <input type="radio" name="payment-method" value="wallet" class="mr-3 text-green-500 focus:ring-green-500">
-                        <span class="flex items-center">
-                            <svg class="w-6 h-6 mr-2 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
-                            Wallets (Paytm, Google Pay, etc.)
-                        </span>
-                    </label>
+                <div class="mb-4 text-left">
+                    <label for="email" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
                 </div>
-            </div>
+                <div class="mb-4 text-left">
+                    <label for="amount" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Donation Amount (INR)</label>
+                    <input type="number" id="amount" name="amount" min="1" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
+                </div>
+                <button type="submit" class="bg-[#1E3A8A] text-white px-6 py-3 rounded-full hover:bg-[#3B82F6] transition w-full">Donate</button>
+            </form>
+            <p id="form-message" class="mt-4 text-lg"></p>
         </div>
-    </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-green-700 text-white p-6 text-center">
-        <div class="container mx-auto">
-            <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+    <footer class="bg-[#1E3A8A] text-white p-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
+                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:underline">Home</a></li>
+                        <li><a href="about.html" class="hover:underline">About</a></li>
+                        <li><a href="get-involved.html" class="hover:underline">Get Involved</a></li>
+                        <li><a href="donate.html" class="hover:underline">Donate</a></li>
+                        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p>Email: info@viswavignana.org</p>
+                    <p>Phone: +91-9876543210</p>
+                    <p>Address: 123, Social Cause Street, Hyderabad, India</p>
+                </div>
+            </div>
+            <div class="mt-6 text-center">
+                <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- JavaScript for Form Submission -->
+    <script>
+        document.getElementById('donation-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formMessage = document.getElementById('form-message');
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            try {
+                const response = await fetch('https://viswavignanavaaradhi.org/api/donate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, amount })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    formMessage.className = 'text-[#1E3A8A]';
+                    formMessage.textContent = 'Thank you for your donation! We appreciate your support.';
+                    document.getElementById('donation-form').reset();
+                } else {
+                    formMessage.className = 'text-red-500';
+                    formMessage.textContent = data.message || 'Error submitting donation. Please try again.';
+                }
+            } catch (error) {
+                console.error('Error submitting donation:', error);
+                formMessage.className = 'text-red-500';
+                formMessage.textContent = 'Error submitting donation. Please try again.';
+            }
+        });
+    </script>
 </body>
 </html>

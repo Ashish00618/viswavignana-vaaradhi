@@ -1,60 +1,24 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact – Viswa Vignana Vaaradhi</title>
+    <title>Contact - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="font-sans bg-gray-100 text-gray-800" style="font-family: 'Open Sans', sans-serif;">
+<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-green-700 text-white p-6 sticky top-0 z-10">
+    <header class="bg-[#1E3A8A] text-white p-4 sticky top-0 z-20 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <h2 class="text-2xl font-bold" style="font-family: 'Montserrat', sans-serif;">Viswa Vignana Vaaradhi</h2>
-            <nav class="space-x-4">
-                <a href="index.html#home" class="hover:underline">Home</a>
+            <div class="flex items-center space-x-3">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10">
+                <h2 class="text-xl font-bold">Viswa Vignana Vaaradhi</h2>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <a href="index.html" class="hover:underline">Home</a>
                 <a href="about.html" class="hover:underline">About</a>
-                <a href="index.html#work" class="hover:underline">Our Work</a>
+                <a href="get-involved.html" class="hover:underline">Our Work</a>
                 <a href="get-involved.html" class="hover:underline">Get Involved</a>
                 <a href="donate.html" class="hover:underline">Donate</a>
                 <a href="testimonials.html" class="hover:underline">Testimonials</a>
@@ -64,42 +28,45 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-green-600 text-white py-20 text-center">
-        <div class="container mx-auto px-4">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: 'Montserrat', sans-serif;">Get in Touch</h1>
-            <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">Have questions or want to get involved? Reach out to us!</p>
-        </div>
-    </section>
-
     <!-- Contact Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <div class="flex flex-col md:flex-row gap-8">
+    <section class="bg-[#F0F5FF] py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6 text-[#1E3A8A]">Get in Touch</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Have questions or want to get involved? Reach out to us!</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <!-- Contact Form -->
-                <div class="md:w-1/2 bg-white p-8 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-6 text-green-700" style="font-family: 'Montserrat', sans-serif;">Send Us a Message</h2>
-                    <div>
-                        <input type="text" placeholder="Your Name" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                        <input type="email" placeholder="Your Email" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                        <input type="tel" placeholder="Your Phone" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
-                        <textarea placeholder="Your Message" class="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" rows="5"></textarea>
-                        <button class="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600 transition font-bold">Send Message</button>
-                    </div>
-                </div>
-                <!-- Contact Details -->
-                <div class="md:w-1/2 bg-gray-50 p-8 rounded-lg shadow-md">
-                    <h2 class="text-2xl font-bold mb-6 text-green-700" style="font-family: 'Montserrat', sans-serif;">Contact Information</h2>
-                    <p class="text-lg mb-4"><strong>Email:</strong> info@viswavignana.org</p>
-                    <p class="text-lg mb-4"><strong>Phone:</strong> +91-9876543210</p>
-                    <p class="text-lg mb-4"><strong>Address:</strong> 123, Social Cause Street, Hyderabad, India</p>
-                    <div class="mt-6">
-                        <h3 class="text-xl font-semibold mb-4 text-green-700">Follow Us</h3>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-green-700 hover:text-green-600"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-3V7a3 3 0 013-3h3V2z"></path></svg></a>
-                            <a href="#" class="text-green-700 hover:text-green-600"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path></svg></a>
-                            <a href="#" class="text-green-700 hover:text-green-600"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-9.96 4.46-9.96 9.96 0 4.4 3.58 8.04 8.04 8.04V14.4H7.2v-2.4h2.88V9.6c0-2.88 1.76-4.44 4.32-4.44 1.24 0 2.28.08 2.6.12v3H15.6c-1.24 0-1.48.6-1.48 1.44v1.88h2.96l-.4 2.4h-2.56v5.64c4.46-.04 8.04-3.68 8.04-8.04 0-5.5-4.46-9.96-9.96-9.96z"></path></svg></a>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold text-[#1E3A8A] mb-4">Send Us a Message</h3>
+                    <form>
+                        <div class="mb-4 text-left">
+                            <label for="name" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
                         </div>
+                        <div class="mb-4 text-left">
+                            <label for="email" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
+                        </div>
+                        <div class="mb-4 text-left">
+                            <label for="message" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required></textarea>
+                        </div>
+                        <button type="submit" class="bg-[#1E3A8A] text-white px-6 py-3 rounded-full hover:bg-[#3B82F6] transition w-full">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="text-left">
+                    <h3 class="text-xl font-semibold text-[#1E3A8A] mb-4">Contact Information</h3>
+                    <p class="mb-2">Email: info@viswavignana.org</p>
+                    <p class="mb-2">Phone: +91-9876543210</p>
+                    <p class="mb-4">Address: 123, Social Cause Street, Hyderabad, India</p>
+
+                    <h4 class="text-lg font-semibold text-[#1E3A8A] mb-2">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-[#1E3A8A] hover:text-[#3B82F6]"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-[#1E3A8A] hover:text-[#3B82F6]"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-[#1E3A8A] hover:text-[#3B82F6]"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -107,9 +74,11 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-green-700 text-white p-6 text-center">
-        <div class="container mx-auto">
-            <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+    <footer class="bg-[#1E3A8A] text-white p-8">
+        <div class="container mx-auto px-4">
+            <div class="mt-6 text-center">
+                <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
