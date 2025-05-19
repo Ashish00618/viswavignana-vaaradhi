@@ -5,97 +5,174 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Involved - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: scale(1.1);
+            color: #F0F5FF;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #1E3A8A, #3B82F6);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .input-field {
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            border-color: #3B82F6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        .footer-link:hover {
+            color: #F0F5FF;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] text-white p-4 sticky top-0 z-20 shadow-md">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10">
-                <h2 class="text-xl font-bold">Viswa Vignana Vaaradhi</h2>
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
+                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
-                <a href="index.html" class="hover:underline">Home</a>
-                <a href="about.html" class="hover:underline">About</a>
-                <a href="get-involved.html" class="hover:underline">Get Involved</a>
-                <a href="testimonials.html" class="hover:underline">Testimonials</a>
-                <a href="gallery.html" class="hover:underline">Gallery</a>
-                <a href="contact.html" class="hover:underline">Contact</a>
-                <a href="donate.html" class="bg-[#1E3A8A] text-white px-4 py-2 rounded-full hover:bg-[#3B82F6] transition">Donate Now</a>
+                <a href="index.html" class="nav-link hover:underline">Home</a>
+                <a href="about.html" class="nav-link hover:underline">About</a>
+                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+                <a href="testimonials.html" class="nav-link hover:underline">Testimonials</a>
+                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
+                <a href="contact.html" class="nav-link hover:underline">Contact</a>
+                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
             </nav>
         </div>
     </header>
 
-    <!-- Volunteer Form Section -->
-    <section class="bg-[#F0F5FF] py-20 text-center">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
+        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Get Involved</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join our mission to make a difference by volunteering with us.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-20">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-6 text-[#1E3A8A]">Get Involved</h2>
-            <p class="text-lg mb-8 max-w-2xl mx-auto">Join us as a volunteer and make a difference in education, agriculture, and community empowerment!</p>
-            <form id="volunteer-form" class="bg-white p-8 rounded-lg shadow-md max-w-lg mx-auto">
-                <div class="mb-4 text-left">
-                    <label for="name" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Name</label>
-                    <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
+            <div class="fade-in">
+                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Volunteer with Us</h3>
+                <div class="max-w-lg mx-auto">
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <div class="space-y-4">
+                            <div>
+                                <label for="volunteer-name" class="block text-sm font-medium mb-1">Name</label>
+                                <input type="text" id="volunteer-name" class="input-field w-full p-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Enter your name" required>
+                            </div>
+                            <div>
+                                <label for="volunteer-email" class="block text-sm font-medium mb-1">Email</label>
+                                <input type="email" id="volunteer-email" class="input-field w-full p-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Enter your email" required>
+                            </div>
+                            <div>
+                                <label for="volunteer-role" class="block text-sm font-medium mb-1">Role</label>
+                                <select id="volunteer-role" class="input-field w-full p-3 border border-gray-300 rounded-lg focus:outline-none" required>
+                                    <option value="" disabled selected>Select a role</option>
+                                    <option value="event-organizer">Event Organizer</option>
+                                    <option value="fundraiser">Fundraiser</option>
+                                    <option value="educator">Educator</option>
+                                    <option value="field-worker">Field Worker</option>
+                                </select>
+                            </div>
+                            <button id="volunteer-submit" class="btn-primary text-white px-6 py-3 rounded-full w-full" onclick="submitVolunteer()">Submit</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-4 text-left">
-                    <label for="email" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Email</label>
-                    <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
-                </div>
-                <div class="mb-4 text-left">
-                    <label for="role" class="block text-lg font-semibold text-[#1E3A8A] mb-2">Preferred Role</label>
-                    <select id="role" name="role" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6]" required>
-                        <option value="" disabled selected>Select a role</option>
-                        <option value="Educator">Educator</option>
-                        <option value="Field Worker">Field Worker</option>
-                        <option value="Community Organizer">Community Organizer</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <button type="submit" class="bg-[#1E3A8A] text-white px-6 py-3 rounded-full hover:bg-[#3B82F6] transition w-full">Submit</button>
-            </form>
-            <p id="form-message" class="mt-4 text-lg"></p>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#1E3A8A] text-white p-8">
+    <footer class="bg-[#1E3A8A] text-white p-10">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
+                    <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
                     <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="hover:underline">Home</a></li>
-                        <li><a href="about.html" class="hover:underline">About</a></li>
-                        <li><a href="get-involved.html" class="hover:underline">Get Involved</a></li>
-                        <li><a href="donate.html" class="hover:underline">Donate</a></li>
-                        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
+                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
+                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
+                        <li><a href="donate.html" class="footer-link hover:underline">Donate</a></li>
+                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
                     <p>Email: info@viswavignana.org</p>
                     <p>Phone: +91-9876543210</p>
                     <p>Address: 123, Social Cause Street, Hyderabad, India</p>
                 </div>
             </div>
-            <div class="mt-6 text-center">
+            <div class="mt-8 text-center">
                 <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Form Submission -->
+    <!-- JavaScript for Animations and Form Submission -->
     <script>
-        document.getElementById('volunteer-form').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const formMessage = document.getElementById('form-message');
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const role = document.getElementById('role').value;
+        function animateSections() {
+            const sections = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        async function submitVolunteer() {
+            const name = document.getElementById('volunteer-name').value.trim();
+            const email = document.getElementById('volunteer-email').value.trim();
+            const role = document.getElementById('volunteer-role').value;
+
+            if (!name || !email || !role) {
+                alert('Please fill in all fields.');
+                return;
+            }
 
             try {
                 const response = await fetch('https://viswavignanavaaradhi.org/api/volunteer', {
@@ -103,20 +180,22 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ name, email, role })
                 });
+
                 const data = await response.json();
                 if (response.ok) {
-                    formMessage.className = 'text-[#1E3A8A]';
-                    formMessage.textContent = 'Thank you for volunteering! We will contact you soon.';
-                    document.getElementById('volunteer-form').reset();
+                    alert('Thank you for registering as a volunteer!');
+                    window.location.reload();
                 } else {
-                    formMessage.className = 'text-red-500';
-                    formMessage.textContent = data.message || 'Error submitting form. Please try again.';
+                    alert(data.message || 'Error submitting volunteer registration.');
                 }
             } catch (error) {
-                console.error('Error submitting volunteer form:', error);
-                formMessage.className = 'text-red-500';
-                formMessage.textContent = 'Error submitting form. Please try again.';
+                console.error('Error submitting volunteer registration:', error);
+                alert('Error submitting volunteer registration. Please try again.');
             }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            animateSections();
         });
     </script>
 </body>

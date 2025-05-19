@@ -6,6 +6,7 @@ const serverless = require('serverless-http');
 const donateRoutes = require('./routes/donate');
 const userRoutes = require('./routes/user');
 const volunteerRoutes = require('./routes/volunteer');
+const contactRoutes = require('./routes/contact');
 const errorHandler = require('./middleware/errorHandler');
 const logger = require('./utils/logger');
 
@@ -32,6 +33,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://viswavignanavaaradhi:
 app.use('/api/donate', donateRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/volunteer', volunteerRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Error Handling
 app.use(errorHandler);
