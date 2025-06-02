@@ -160,6 +160,38 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1E3A8A;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background-color: #3B82F6;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
@@ -174,7 +206,16 @@
                 <a href="index.html" class="nav-link hover:underline">Home</a>
                 <a href="about.html" class="nav-link hover:underline">About</a>
                 <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
-                <a href="testimonials.html" class="nav-link hover:underline">Testimonials</a>
+                <div class="dropdown">
+                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <div class="dropdown-content">
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
+                        <a href="health.html">Health</a>
+                    </div>
+                </div>
                 <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
                 <a href="contact.html" class="nav-link hover:underline">Contact</a>
                 <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>

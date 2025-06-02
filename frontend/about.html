@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Viswa Vignana Vaaradhi</title>
+    <title>About Us - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -45,21 +45,61 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1E3A8A;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background-color: #3B82F6;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+        <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
                 <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
                 <a href="index.html" class="nav-link hover:underline">Home</a>
                 <a href="about.html" class="nav-link hover:underline">About</a>
                 <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
-                <a href="testimonials.html" class="nav-link hover:underline">Testimonials</a>
+                <div class="dropdown">
+                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <div class="dropdown-content">
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
+                        <a href="health.html">Health</a>
+                    </div>
+                </div>
                 <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
                 <a href="contact.html" class="nav-link hover:underline">Contact</a>
                 <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
@@ -72,31 +112,50 @@
         <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
         <div class="container mx-auto px-4 relative z-10">
             <h2 class="text-5xl font-bold mb-4 text-shadow-lg">About Us</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Learn more about our mission to empower communities through education, awareness, and sustainable development.</p>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Learn more about our mission, vision, and the team behind Viswa Vignana Vaaradhi.</p>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <section class="py-20">
+    <!-- Mission Section -->
+    <section class="py-20 text-center">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="fade-in">
+                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm">Our Mission</h3>
+                <p class="text-lg mb-6 max-w-3xl mx-auto">At Viswa Vignana Vaaradhi, we are dedicated to uplifting communities through education, political awareness, and agricultural development. Our goal is to empower individuals with the knowledge and resources they need to build a better future.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="py-20 text-center bg-[#F0F5FF]">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="fade-in">
+                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm">Our Vision</h3>
+                <p class="text-lg mb-6 max-w-3xl mx-auto">We envision a world where every child has access to quality education, every farmer can sustain their livelihood, and every citizen is aware of their rights and responsibilities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 text-center">
         <div class="container mx-auto px-4">
             <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Our Mission</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm">Our Team</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Education</h4>
-                        <p>We provide resources and support to ensure quality education for underprivileged children, helping them build a brighter future.</p>
+                        <img src="/images/team-member-1.jpg" alt="Team Member 1" class="h-48 w-full object-cover rounded-lg mb-4">
+                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Priya Sharma</h4>
+                        <p class="text-gray-600">Founder & Director</p>
                     </div>
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Awareness</h4>
-                        <p>We promote political and social awareness to empower communities to make informed decisions and drive change.</p>
+                        <img src="/images/team-member-2.jpg" alt="Team Member 2" class="h-48 w-full object-cover rounded-lg mb-4">
+                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Rahul Reddy</h4>
+                        <p class="text-gray-600">Program Coordinator</p>
                     </div>
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Sustainable Development</h4>
-                        <p>We support farmers with sustainable agricultural practices to enhance productivity and livelihoods.</p>
-                    </div>
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Community Empowerment</h4>
-                        <p>We work to uplift communities by providing tools, training, and opportunities for growth and self-reliance.</p>
+                        <img src="/images/team-member-3.jpg" alt="Team Member 3" class="h-48 w-full object-cover rounded-lg mb-4">
+                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Anita Patel</h4>
+                        <p class="text-gray-600">Community Outreach Lead</p>
                     </div>
                 </div>
             </div>
@@ -117,7 +176,7 @@
                         <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
                         <li><a href="about.html" class="footer-link hover:underline">About</a></li>
                         <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="donate.html" class="footer-link hover:underline">Donate</a></li>
+                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
                         <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
                     </ul>
                 </div>

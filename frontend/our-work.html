@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work - Viswa Vignana Vaaradhi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: scale(1.1);
+            color: #F0F5FF;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #1E3A8A, #3B82F6);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        .footer-link:hover {
+            color: #F0F5FF;
+            text-decoration: underline;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1E3A8A;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background-color: #3B82F6;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
+    <!-- Header -->
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+        <div class="container mx-auto flex justify-between items-center h-full">
+            <div class="flex items-center space-x-3">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
+                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <a href="index.html" class="nav-link hover:underline">Home</a>
+                <a href="about.html" class="nav-link hover:underline">About</a>
+                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+                <div class="dropdown">
+                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <div class="dropdown-content">
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
+                        <a href="health.html">Health</a>
+                    </div>
+                </div>
+                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
+                <a href="contact.html" class="nav-link hover:underline">Contact</a>
+                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
+        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Our Work</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Explore the various initiatives we undertake to empower communities through education, awareness, and sustainable development.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="fade-in">
+                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Our Initiatives</h3>
+                <p class="text-lg mb-6 max-w-3xl mx-auto text-center">Select an area of our work from the dropdown menu above to learn more about our efforts in Education, Political/Legal Literacy, Rural Development, Agriculture, and Health.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1E3A8A] text-white p-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
+                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
+                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
+                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
+                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
+                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+                    <p>Email: info@viswavignana.org</p>
+                    <p>Phone: +91-9876543210</p>
+                    <p>Address: 123, Social Cause Street, Hyderabad, India</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Animations -->
+    <script>
+        function animateSections() {
+            const sections = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            animateSections();
+        });
+    </script>
+</body>
+</html>
