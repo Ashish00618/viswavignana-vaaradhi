@@ -38,24 +38,6 @@
             transform: scale(1.03);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
-        .input-field {
-            transition: all 0.3s ease;
-        }
-        .input-field:focus {
-            border-color: #3B82F6;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-        }
-        .donation-option {
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        .donation-option:hover {
-            background-color: #F0F5FF;
-        }
-        .donation-option.selected {
-            border-color: #3B82F6;
-            background-color: #E0F2FE;
-        }
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -129,77 +111,37 @@
     <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
         <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Make a Difference Today</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Your contribution helps us educate children, empower farmers, and promote awareness. Every amount counts!</p>
+            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Donate</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Support our mission to empower communities through education, health, and rural development.</p>
         </div>
     </section>
 
     <!-- Donation Form Section -->
-    <section class="py-20 text-center">
-        <div class="container mx-auto px-4 max-w-5xl">
+    <section class="py-20">
+        <div class="container mx-auto px-4">
             <div class="fade-in">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-2xl font-bold mb-4 text-[#1E3A8A]">Your Information</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label for="donor-name" class="block text-sm font-medium mb-1">Name</label>
-                                <input type="text" id="donor-name" class="input-field w-full p-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Enter your name" required>
-                            </div>
-                            <div>
-                                <label for="donor-email" class="block text-sm font-medium mb-1">Email</label>
-                                <input type="email" id="donor-email" class="input-field w-full p-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Enter your email" required>
-                            </div>
-                        </div>
+                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Make a Difference Today</h3>
+                <p class="text-lg mb-6 max-w-3xl mx-auto text-center">Your donation helps us continue our work in underserved communities.</p>
+                <div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md">
+                    <div class="mb-4">
+                        <label for="amount" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Donation Amount (INR)</label>
+                        <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" min="1">
                     </div>
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-2xl font-bold mb-4 text-[#1E3A8A]">Choose Your Donation Amount</h3>
-                        <div class="space-y-4">
-                            <div class="donation-option card bg-gray-50 p-4 rounded-lg border-2 border-gray-200" data-amount="500">
-                                <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">₹500</h4>
-                                <p class="text-gray-600">Support education for one child for a month.</p>
-                            </div>
-                            <div class="donation-option card bg-gray-50 p-4 rounded-lg border-2 border-gray-200" data-amount="1000">
-                                <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">₹1000</h4>
-                                <p class="text-gray-600">Provide books and materials for 2 children.</p>
-                            </div>
-                            <div class="donation-option card bg-gray-50 p-4 rounded-lg border-2 border-gray-200" data-amount="2000">
-                                <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">₹2000</h4>
-                                <p class="text-gray-600">Help educate 5 children for a month.</p>
-                            </div>
-                            <div class="donation-option card bg-gray-50 p-4 rounded-lg border-2 border-gray-200" data-amount="5000">
-                                <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">₹5000</h4>
-                                <p class="text-gray-600">Support an entire community project.</p>
-                            </div>
-                            <div class="donation-option card bg-gray-50 p-4 rounded-lg border-2 border-gray-200">
-                                <label for="custom-amount" class="block text-sm font-medium mb-1">Custom Amount</label>
-                                <input type="number" id="custom-amount" class="input-field w-full p-3 border border-gray-300 rounded-lg focus:outline-none" placeholder="Enter custom amount">
-                            </div>
-                        </div>
+                    <div class="mb-4">
+                        <label for="payment-method" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Payment Method</label>
+                        <select id="payment-method" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
+                            <option value="" disabled selected>Select a payment method</option>
+                            <option value="upi">UPI (Scan QR Code)</option>
+                            <option value="bank">Bank Transfer</option>
+                        </select>
                     </div>
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-2xl font-bold mb-4 text-[#1E3A8A]">Choose Payment Method</h3>
-                        <div class="space-y-4">
-                            <select id="payment-method" class="input-field w-full p-3 border border-gray-300 rounded-lg focus:outline-none" required>
-                                <option value="" disabled selected>Select a payment method</option>
-                                <option value="credit-card">Credit/Debit Card</option>
-                                <option value="upi">UPI</option>
-                                <option value="net-banking">Net Banking</option>
-                                <option value="wallets">Wallets</option>
-                            </select>
-                            <p class="text-sm text-gray-600">Select a payment method to proceed.</p>
-                        </div>
-                        <div class="mt-6">
-                            <h3 class="text-xl font-bold mb-4 text-[#1E3A8A]">Donation Summary</h3>
-                            <div id="donation-summary" class="text-left space-y-2">
-                                <p><strong>Name:</strong> <span id="summary-name">Not provided</span></p>
-                                <p><strong>Email:</strong> <span id="summary-email">Not provided</span></p>
-                                <p><strong>Amount:</strong> ₹<span id="summary-amount">0</span></p>
-                                <p><strong>Payment Method:</strong> <span id="summary-method">Not selected</span></p>
-                            </div>
-                            <button id="donate-submit" class="btn-primary text-white px-6 py-3 rounded-full w-full mt-4" onclick="submitDonation()">Donate Now</button>
-                        </div>
-                    </div>
+                    <button id="proceedButton" class="btn-primary w-full text-white px-6 py-3 rounded-full transition">Proceed to Pay</button>
+                </div>
+                <!-- Payment Details Section (Hidden Initially) -->
+                <div id="payment-details" class="max-w-md mx-auto mt-6 bg-white p-6 rounded-xl shadow-md hidden">
+                    <h4 id="payment-title" class="text-xl font-semibold mb-4 text-[#1E3A8A]"></h4>
+                    <div id="payment-content"></div>
+                    <p class="text-sm mt-4 text-gray-600">After making the payment, please email the transaction details to <a href="mailto:info@viswavignana.org" class="text-[#1E3A8A] hover:underline">info@viswavignana.org</a> for confirmation.</p>
                 </div>
             </div>
         </div>
@@ -219,7 +161,7 @@
                         <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
                         <li><a href="about.html" class="footer-link hover:underline">About</a></li>
                         <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="donate.html" class="footer-link hover:underline">Donate</a></li>
+                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
                         <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
                     </ul>
                 </div>
@@ -236,7 +178,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Animations and Form Submission -->
+    <!-- JavaScript for Animations and Payment Logic -->
     <script>
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
@@ -252,93 +194,55 @@
             sections.forEach(section => observer.observe(section));
         }
 
-        function handleDonationSelection() {
-            const options = document.querySelectorAll('.donation-option');
-            const customAmountInput = document.getElementById('custom-amount');
-            let selectedAmount = 0;
-
-            options.forEach(option => {
-                option.addEventListener('click', () => {
-                    options.forEach(opt => opt.classList.remove('selected'));
-                    option.classList.add('selected');
-                    const amount = option.getAttribute('data-amount');
-                    if (amount) {
-                        selectedAmount = parseInt(amount);
-                        customAmountInput.value = '';
-                    } else {
-                        selectedAmount = parseInt(customAmountInput.value) || 0;
-                    }
-                    updateSummary();
-                });
-            });
-
-            customAmountInput.addEventListener('input', () => {
-                options.forEach(opt => opt.classList.remove('selected'));
-                const customOption = customAmountInput.parentElement;
-                customOption.classList.add('selected');
-                selectedAmount = parseInt(customAmountInput.value) || 0;
-                updateSummary();
-            });
-
-            return () => selectedAmount;
-        }
-
-        function updateSummary() {
-            const name = document.getElementById('donor-name').value.trim() || 'Not provided';
-            const email = document.getElementById('donor-email').value.trim() || 'Not provided';
-            const amount = document.querySelector('.donation-option.selected')?.getAttribute('data-amount') || document.getElementById('custom-amount').value || 0;
-            const paymentMethod = document.getElementById('payment-method').value || 'Not selected';
-
-            document.getElementById('summary-name').textContent = name;
-            document.getElementById('summary-email').textContent = email;
-            document.getElementById('summary-amount').textContent = amount;
-            document.getElementById('summary-method').textContent = paymentMethod === 'credit-card' ? 'Credit/Debit Card' : paymentMethod === 'upi' ? 'UPI' : paymentMethod === 'net-banking' ? 'Net Banking' : paymentMethod === 'wallets' ? 'Wallets' : 'Not selected';
-        }
-
-        async function submitDonation() {
-            const name = document.getElementById('donor-name').value.trim();
-            const email = document.getElementById('donor-email').value.trim();
-            const amount = document.querySelector('.donation-option.selected')?.getAttribute('data-amount') || document.getElementById('custom-amount').value || 0;
-            const paymentMethod = document.getElementById('payment-method').value;
-
-            if (!name || !email || !amount || !paymentMethod) {
-                alert('Please fill in all fields.');
-                return;
-            }
-
-            if (amount <= 0) {
-                alert('Please enter a valid donation amount.');
-                return;
-            }
-
-            try {
-                const response = await fetch('https://viswavignanavaaradhi.org/api/donate', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, amount, paymentMethod })
-                });
-
-                const data = await response.json();
-                if (response.ok) {
-                    alert('Thank you for your donation!');
-                    window.location.reload();
-                } else {
-                    alert(data.message || 'Error processing donation.');
-                }
-            } catch (error) {
-                console.error('Error processing donation:', error);
-                alert('Error processing donation. Please try again.');
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             animateSections();
-            handleDonationSelection();
 
-            // Update summary on input change
-            document.getElementById('donor-name').addEventListener('input', updateSummary);
-            document.getElementById('donor-email').addEventListener('input', updateSummary);
-            document.getElementById('payment-method').addEventListener('change', updateSummary);
+            const proceedButton = document.getElementById('proceedButton');
+            const paymentDetails = document.getElementById('payment-details');
+            const paymentTitle = document.getElementById('payment-title');
+            const paymentContent = document.getElementById('payment-content');
+
+            proceedButton.addEventListener('click', () => {
+                const amount = document.getElementById('amount').value;
+                const paymentMethod = document.getElementById('payment-method').value;
+
+                // Validate inputs
+                if (!amount || amount <= 0) {
+                    alert('Please enter a valid donation amount.');
+                    return;
+                }
+                if (!paymentMethod) {
+                    alert('Please select a payment method.');
+                    return;
+                }
+
+                // Clear previous content
+                paymentContent.innerHTML = '';
+
+                // Show payment details based on the selected method
+                if (paymentMethod === 'upi') {
+                    paymentTitle.textContent = 'Pay via UPI';
+                    paymentContent.innerHTML = `
+                        <p class="mb-4">Please scan the QR code below to donate ₹${amount}:</p>
+                        <img src="/images/upi-qr-code.png" alt="UPI QR Code" class="w-48 h-48 mx-auto mb-4">
+                        <p>UPI ID: viswavignana@upi</p>
+                    `;
+                } else if (paymentMethod === 'bank') {
+                    paymentTitle.textContent = 'Pay via Bank Transfer';
+                    paymentContent.innerHTML = `
+                        <p class="mb-4">Please transfer ₹${amount} to the following bank account:</p>
+                        <p><strong>Account Name:</strong> Viswa Vignana Vaaradhi</p>
+                        <p><strong>Account Number:</strong> 123456789012</p>
+                        <p><strong>IFSC Code:</strong> ABCD0001234</p>
+                        <p><strong>Bank Name:</strong> Example Bank</p>
+                        <p><strong>Branch:</strong> Hyderabad</p>
+                    `;
+                }
+
+                // Show the payment details section
+                paymentDetails.classList.remove('hidden');
+                paymentDetails.scrollIntoView({ behavior: 'smooth' });
+            });
         });
     </script>
 </body>
