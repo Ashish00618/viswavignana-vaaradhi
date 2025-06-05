@@ -13,7 +13,9 @@ const logger = require('./utils/logger');
 const app = express();
 
 // Middleware
-app.use(cors({ origin: 'https://viswavignanavaaradhi.org' }));
+app.use(cors({ 
+    origin: ['https://viswavignanavaaradhi.org', 'https://ashish00618.github.io']
+}));
 app.use(express.json());
 app.use((req, res, next) => {
     logger.info(`${req.method} ${req.url}`);
