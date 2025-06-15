@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,13 +30,6 @@
         .btn-primary:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        .card {
-            transition: all 0.3s ease;
-        }
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
         .footer-link {
             transition: all 0.3s ease;
@@ -115,6 +69,10 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Hide district and assembly constituency dropdowns by default */
+        #districtSection, #assemblyConstituencySection {
+            display: none;
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
@@ -151,37 +109,16 @@
         <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
         <div class="container mx-auto px-4 relative z-10">
             <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Volunteer Registration</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Join our mission to empower communities. Fill out the form below to become a volunteer.</p>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join our mission to make a difference! Register as a volunteer and contribute to our initiatives.</p>
         </div>
     </section>
 
-    <!-- Volunteer Form Section -->
+    <!-- Volunteer Registration Form Section -->
     <section class="py-20">
         <div class="container mx-auto px-4">
             <div class="fade-in">
                 <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Volunteer Registration Form</h3>
                 <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md">
-                    <!-- Welcome Note -->
-                    <div class="mb-8">
-                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Welcome Note</h4>
-                        <p class="text-gray-700 leading-relaxed">
-                            <strong>Dear Torchbearers of Change,</strong><br><br>
-                            The time has come—not to wait, but to walk.<br>
-                            Not to whisper, but to roar.<br>
-                            Not to serve power, but to empower the voiceless.<br><br>
-                            India stands at a crossroads where truth must rise,<br>
-                            Where justice must reach every doorstep,<br>
-                            Where knowledge must become the weapon of the poor.<br><br>
-                            Join this mission—not as volunteers, but as soldiers of transformation,<br>
-                            To awaken minds, to protect rights, and to rebuild the nation from its roots.<br><br>
-                            This is not just service.<br>
-                            This is a movement.<br>
-                            This is Viswa Vignana Vaaradhi.<br>
-                            March with us—for the people, for the truth, for India.<br><br>
-                            <strong>Jai Hind!</strong>
-                        </p>
-                    </div>
-
                     <form id="volunteerForm">
                         <!-- 1. Personal Information -->
                         <div class="mb-6">
@@ -192,138 +129,130 @@
                             </div>
                             <div class="mb-4">
                                 <label for="age" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Age</label>
-                                <input type="number" id="age" name="age" min="18" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <input type="number" id="age" name="age" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="occupation" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Occupation</label>
+                                <input type="text" id="occupation" name="occupation" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                            </div>
+                        </div>
+
+                        <!-- 2. Contact Information -->
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">2. Contact Information</h4>
+                            <div class="mb-4">
+                                <label for="state" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">State</label>
+                                <select id="state" name="state" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                    <option value="" disabled selected>Select a state</option>
+                                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                                    <option value="assam">Assam</option>
+                                    <option value="bihar">Bihar</option>
+                                    <option value="chhattisgarh">Chhattisgarh</option>
+                                    <option value="goa">Goa</option>
+                                    <option value="gujarat">Gujarat</option>
+                                    <option value="haryana">Haryana</option>
+                                    <option value="himachal-pradesh">Himachal Pradesh</option>
+                                    <option value="jharkhand">Jharkhand</option>
+                                    <option value="karnataka">Karnataka</option>
+                                    <option value="kerala">Kerala</option>
+                                    <option value="madhya-pradesh">Madhya Pradesh</option>
+                                    <option value="maharashtra">Maharashtra</option>
+                                    <option value="manipur">Manipur</option>
+                                    <option value="meghalaya">Meghalaya</option>
+                                    <option value="mizoram">Mizoram</option>
+                                    <option value="nagaland">Nagaland</option>
+                                    <option value="odisha">Odisha</option>
+                                    <option value="punjab">Punjab</option>
+                                    <option value="rajasthan">Rajasthan</option>
+                                    <option value="sikkim">Sikkim</option>
+                                    <option value="tamil-nadu">Tamil Nadu</option>
+                                    <option value="telangana">Telangana</option>
+                                    <option value="tripura">Tripura</option>
+                                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                                    <option value="uttarakhand">Uttarakhand</option>
+                                    <option value="west-bengal">West Bengal</option>
+                                    <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
+                                    <option value="chandigarh">Chandigarh</option>
+                                    <option value="dadra-nagar-haveli-daman-diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                    <option value="delhi">Delhi</option>
+                                    <option value="jammu-kashmir">Jammu and Kashmir</option>
+                                    <option value="ladakh">Ladakh</option>
+                                    <option value="lakshadweep">Lakshadweep</option>
+                                    <option value="puducherry">Puducherry</option>
+                                </select>
+                            </div>
+                            <div id="districtSection" class="mb-4">
+                                <label for="district" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">District</label>
+                                <select id="district" name="district" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                    <option value="" disabled selected>Select a district</option>
+                                </select>
+                            </div>
+                            <div id="assemblyConstituencySection" class="mb-4">
+                                <label for="assemblyConstituency" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Assembly Constituency</label>
+                                <select id="assemblyConstituency" name="assemblyConstituency" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                    <option value="" disabled selected>Select an assembly constituency</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="mandal" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Mandal</label>
+                                <input type="text" id="mandal" name="mandal" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="village" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Village</label>
+                                <input type="text" id="village" name="village" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="pinCode" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Pin Code</label>
+                                <input type="text" id="pinCode" name="pinCode" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
                                 <label for="mobileNumber" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Mobile Number</label>
                                 <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Is this your WhatsApp number?</label>
-                                <div class="flex space-x-4">
-                                    <label><input type="radio" name="isWhatsApp" value="yes" required> Yes</label>
-                                    <label><input type="radio" name="isWhatsApp" value="no"> No</label>
-                                </div>
-                            </div>
-                            <div class="mb-4">
                                 <label for="email" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Email ID (Optional)</label>
                                 <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
                             </div>
-                            <div class="mb-4">
-                                <label for="profession" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Profession</label>
-                                <input type="text" id="profession" name="profession" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
-                            </div>
                         </div>
 
-                        <!-- 2. Address Details -->
+                        <!-- 3. Volunteering Preferences -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">2. Address Details</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">3. Volunteering Preferences</h4>
                             <div class="mb-4">
-                                <label for="state" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">State</label>
-                                <input type="text" id="state" name="state" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="district" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">District</label>
-                                <input type="text" id="district" name="district" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
-                            </div>
-                            <div class="mb-4">
-                                <label for="assemblyConstituency" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Assembly Constituency</label>
-                                <input type="text" id="assemblyConstituency" name="assemblyConstituency" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="areaOfInterest" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Area of Interest</label>
+                                <select id="areaOfInterest" name="areaOfInterest" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                    <option value="" disabled selected>Select an area of interest</option>
+                                    <option value="education-skill-development">Education & Skill Development</option>
+                                    <option value="political-literacy-civic-engagement">Political Literacy & Civic Engagement</option>
+                                    <option value="legal-literacy-access-to-justice">Legal Literacy & Access to Justice</option>
+                                    <option value="agriculture-rural-livelihoods">Agriculture & Rural Livelihoods</option>
+                                    <option value="rural-development-community-empowerment">Rural Development & Community Empowerment</option>
+                                    <option value="health-well-being">Health & Well-being</option>
+                                </select>
                             </div>
                             <div class="mb-4">
-                                <label for="mandal" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Mandal</label>
-                                <input type="text" id="mandal" name="mandal" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="availability" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Availability</label>
+                                <select id="availability" name="availability" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                    <option value="" disabled selected>Select your availability</option>
+                                    <option value="full-time">Full-time</option>
+                                    <option value="part-time">Part-time</option>
+                                    <option value="weekends">Weekends Only</option>
+                                    <option value="specific-days">Specific Days</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="skills" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Skills/Experience (Optional)</label>
+                                <textarea id="skills" name="skills" rows="3" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]"></textarea>
                             </div>
                         </div>
 
-                        <!-- 3. Areas of Interest -->
+                        <!-- 4. Declaration -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">3. Areas of Interest (Select all that apply)</h4>
-                            <div class="space-y-2">
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="areasOfInterest" value="political-literacy"> Political Literacy – Engage and Participate
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="areasOfInterest" value="legal-literacy"> Legal Literacy – Know Your Rights
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="areasOfInterest" value="education"> Education – Shaping Futures
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="areasOfInterest" value="agriculture"> Agriculture & Sustainable Growth
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="areasOfInterest" value="rural-development"> Rural Development
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="areasOfInterest" value="health"> Health & Well-being – Care for All
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- 4. Preferred Wing(s) of Involvement -->
-                        <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">4. Preferred Wing(s) of Involvement (Select all that apply)</h4>
-                            <div class="space-y-2">
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="preferredWings" value="administration"> Administration & Programme Implementation
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="preferredWings" value="finance"> Finance & Accounts
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="preferredWings" value="legal"> Legal & Compliance
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="preferredWings" value="public-relations"> Public Relations & Communications
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="preferredWings" value="social-media"> Social Media & Content Creation
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="preferredWings" value="fundraising"> Fundraising & Donor Management
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="preferredWings" value="volunteer-management"> Volunteer & Human Resources
-                                </label>
-                                <label class="flex items-center">
-                                    <input type="checkbox" name="preferredWings" value="partnerships"> Partnerships & Networking
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- 5. Financial Contribution -->
-                        <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">5. Financial Contribution</h4>
-                            <label class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Are you capable of contributing ₹100 per month to support our mission?</label>
-                            <div class="flex space-x-4">
-                                <label><input type="radio" name="financialContribution" value="yes" required> Yes</label>
-                                <label><input type="radio" name="financialContribution" value="no"> No</label>
-                            </div>
-                        </div>
-
-                        <!-- 6. Communication Preference -->
-                        <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">6. Communication Preference</h4>
-                            <label class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Preferred Language for Communication:</label>
-                            <div class="flex space-x-4 mb-2">
-                                <label><input type="radio" name="preferredLanguage" value="english" required> English</label>
-                                <label><input type="radio" name="preferredLanguage" value="telugu"> Telugu</label>
-                                <label><input type="radio" name="preferredLanguage" value="hindi"> Hindi</label>
-                                <label><input type="radio" name="preferredLanguage" value="other" id="otherLanguageRadio"> Other</label>
-                            </div>
-                            <div id="otherLanguageInput" class="hidden">
-                                <label for="otherLanguage" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Specify Other Language</label>
-                                <input type="text" id="otherLanguage" name="otherLanguage" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
-                            </div>
-                        </div>
-
-                        <!-- 7. Declaration -->
-                        <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">7. Declaration</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">4. Declaration</h4>
                             <label class="flex items-center">
                                 <input type="checkbox" name="declaration" required>
-                                <span class="ml-2">I agree to uphold the values of Viswa Vignana Vaaradhi and understand that my involvement is voluntary in nature.</span>
+                                <span class="ml-2">I confirm that the information provided is true to the best of my knowledge and I am willing to volunteer for Viswa Vignana Vaaradhi.</span>
                             </label>
                         </div>
 
@@ -388,15 +317,284 @@
 
             const volunteerForm = document.getElementById('volunteerForm');
             const formMessage = document.getElementById('formMessage');
-            const otherLanguageRadio = document.getElementById('otherLanguageRadio');
-            const otherLanguageInput = document.getElementById('otherLanguageInput');
+            const stateSelect = document.getElementById('state');
+            const districtSection = document.getElementById('districtSection');
+            const districtSelect = document.getElementById('district');
+            const assemblyConstituencySection = document.getElementById('assemblyConstituencySection');
+            const assemblyConstituencySelect = document.getElementById('assemblyConstituency');
 
-            // Show/hide "Other" language input based on selection
-            otherLanguageRadio.addEventListener('change', () => {
-                if (otherLanguageRadio.checked) {
-                    otherLanguageInput.classList.remove('hidden');
+            // Define districts for each state
+            const districts = {
+                "andhra-pradesh": [
+                    "Alluri Sitharama Raju", "Anakapalli", "Anantapur", "Annamayya", "Bapatla", "Chittoor",
+                    "East Godavari", "Eluru", "Guntur", "Kakinada", "Konaseema", "Krishna", "Kurnool",
+                    "Nandyal", "Nellore", "Palnadu", "Parvathipuram Manyam", "Prakasam", "Sri Balaji",
+                    "Sri Potti Sriramulu Nellore", "Sri Sathya Sai", "Srikakulam", "Visakhapatnam",
+                    "Vizianagaram", "West Godavari", "YSR Kadapa"
+                ],
+                "arunachal-pradesh": [
+                    "Anjaw", "Changlang", "Dibang Valley", "East Kameng", "East Siang", "Kamle", "Kra Daadi",
+                    "Kurung Kumey", "Lepa Rada", "Lohit", "Longding", "Lower Dibang Valley", "Lower Siang",
+                    "Lower Subansiri", "Namsai", "Pakke Kessang", "Papum Pare", "Shi Yomi", "Siang",
+                    "Tawang", "Tirap", "Upper Siang", "Upper Subansiri", "West Kameng", "West Siang"
+                ],
+                "assam": [
+                    "Baksa", "Barpeta", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji",
+                    "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Jorhat", "Kamrup",
+                    "Kamrup Metropolitan", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli",
+                    "Morigaon", "Nagaon", "Nalbari", "Dima Hasao", "Sivasagar", "Sonitpur", "South Salmara-Mankachar",
+                    "Tinsukia", "Udalguri", "West Karbi Anglong"
+                ],
+                "bihar": [
+                    "Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar",
+                    "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur",
+                    "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger",
+                    "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur",
+                    "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"
+                ],
+                "chhattisgarh": [
+                    "Balod", "Baloda Bazar", "Balrampur-Ramanujganj", "Bastar", "Bemetara", "Bijapur", "Bilaspur",
+                    "Dantewada", "Dhamtari", "Durg", "Gariaband", "Gaurela-Pendra-Marwahi", "Janjgir-Champa",
+                    "Jashpur", "Kabirdham", "Kanker", "Khairagarh-Chhuikhadan-Gandai", "Kondagaon", "Korba",
+                    "Koriya", "Mahasamund", "Manendragarh-Chirmiri-Bharatpur", "Mohla-Manpur-Ambagarh Chowki",
+                    "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sakti", "Sarangarh-Bilaigarh",
+                    "Sukma", "Surajpur", "Surguja"
+                ],
+                "goa": [
+                    "North Goa", "South Goa"
+                ],
+                "gujarat": [
+                    "Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha", "Bharuch", "Bhavnagar", "Botad",
+                    "Chhota Udaipur", "Dahod", "Dang", "Devbhoomi Dwarka", "Gandhinagar", "Gir Somnath",
+                    "Jamnagar", "Junagadh", "Kheda", "Kutch", "Mahisagar", "Mehsana", "Morbi", "Narmada",
+                    "Navsari", "Panchmahal", "Patan", "Porbandar", "Rajkot", "Sabarkantha", "Surat",
+                    "Surendranagar", "Tapi", "Vadodara", "Valsad"
+                ],
+                "haryana": [
+                    "Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurugram", "Hisar",
+                    "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Nuh", "Palwal",
+                    "Panchkula", "Panipat", "Rewari", "Rohtak", "Sirsa", "Sonipat", "Yamunanagar"
+                ],
+                "himachal-pradesh": [
+                    "Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul and Spiti",
+                    "Mandi", "Shimla", "Sirmaur", "Solan", "Una"
+                ],
+                "jharkhand": [
+                    "Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih",
+                    "Godda", "Gumla", "Hazaribagh", "Jamtara", "Khunti", "Kodarma", "Latehar", "Lohardaga",
+                    "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahibganj", "Seraikela Kharsawan", "Simdega",
+                    "West Singhbhum"
+                ],
+                "karnataka": [
+                    "Bagalkot", "Ballari", "Belagavi", "Bengaluru Rural", "Bengaluru Urban", "Bidar",
+                    "Chamarajanagar", "Chikkaballapur", "Chikkamagaluru", "Chitradurga", "Dakshina Kannada",
+                    "Davanagere", "Dharwad", "Gadag", "Hassan", "Haveri", "Kalaburagi", "Kodagu", "Kolar",
+                    "Koppal", "Mandya", "Mysuru", "Raichur", "Ramanagara", "Shivamogga", "Tumakuru",
+                    "Udupi", "Uttara Kannada", "Vijayanagara", "Vijayapura", "Yadgir"
+                ],
+                "kerala": [
+                    "Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", "Kollam", "Kottayam",
+                    "Kozhikode", "Malappuram", "Palakkad", "Pathanamthitta", "Thiruvananthapuram",
+                    "Thrissur", "Wayanad"
+                ],
+                "madhya-pradesh": [
+                    "Agar Malwa", "Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul",
+                    "Bhind", "Bhopal", "Burhanpur", "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas",
+                    "Dhar", "Dindori", "Guna", "Gwalior", "Harda", "Hoshangabad", "Indore", "Jabalpur",
+                    "Jhabua", "Katni", "Khandwa", "Khargone", "Mandla", "Mandsaur", "Morena", "Narmadapuram",
+                    "Narsinghpur", "Neemuch", "Niwari", "Panna", "Raisen", "Rajgarh", "Ratlam", "Rewa",
+                    "Sagar", "Satna", "Sehore", "Seoni", "Shahdol", "Shajapur", "Sheopur", "Shivpuri",
+                    "Sidhi", "Singrauli", "Tikamgarh", "Ujjain", "Umaria", "Vidisha"
+                ],
+                "maharashtra": [
+                    "Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana",
+                    "Chandrapur", "Dhule", "Gadchiroli", "Gondia", "Hingoli", "Jalgaon", "Jalna",
+                    "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nandurbar",
+                    "Nashik", "Osmanabad", "Palghar", "Parbhani", "Pune", "Raigad", "Ratnagiri",
+                    "Sangli", "Satara", "Sindhudurg", "Solapur", "Thane", "Wardha", "Washim", "Yavatmal"
+                ],
+                "manipur": [
+                    "Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam",
+                    "Kakching", "Kamjong", "Kangpokpi", "Noney", "Pherzawl", "Senapati", "Tamenglong",
+                    "Tengnoupal", "Thoubal", "Ukhrul"
+                ],
+                "meghalaya": [
+                    "East Garo Hills", "East Jaintia Hills", "East Khasi Hills", "Mairang", "North Garo Hills",
+                    "Ri Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills",
+                    "West Garo Hills", "West Jaintia Hills", "West Khasi Hills"
+                ],
+                "mizoram": [
+                    "Aizawl", "Champhai", "Hnahthial", "Khawzawl", "Kolasib", "Lawngtlai", "Lunglei",
+                    "Mamit", "Saiha", "Saitual", "Serchhip"
+                ],
+                "nagaland": [
+                    "Chumukedima", "Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon",
+                    "Niuland", "Noklak", "Peren", "Phek", "Shamator", "Tseminyu", "Tuensang", "Wokha", "Zunheboto"
+                ],
+                "odisha": [
+                    "Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Boudh", "Cuttack", "Deogarh",
+                    "Dhenkanal", "Gajapati", "Ganjam", "Jagatsinghpur", "Jajpur", "Jharsuguda", "Kalahandi",
+                    "Kandhamal", "Kendrapara", "Kendujhar", "Khordha", "Koraput", "Malkangiri", "Mayurbhanj",
+                    "Nabarangpur", "Nayagarh", "Nuapada", "Puri", "Rayagada", "Sambalpur", "Subarnapur",
+                    "Sundargarh"
+                ],
+                "punjab": [
+                    "Amritsar", "Barnala", "Bathinda", "Faridkot", "Fatehgarh Sahib", "Fazilka", "Ferozepur",
+                    "Gurdaspur", "Hoshiarpur", "Jalandhar", "Kapurthala", "Ludhiana", "Malerkotla", "Mansa",
+                    "Moga", "Pathankot", "Patiala", "Rupnagar", "Sahibzada Ajit Singh Nagar", "Sangrur",
+                    "Shahid Bhagat Singh Nagar", "Sri Muktsar Sahib", "Tarn Taran"
+                ],
+                "rajasthan": [
+                    "Ajmer", "Alwar", "Anupgarh", "Balotra", "Banswara", "Baran", "Barmer", "Beawar",
+                    "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Deeg",
+                    "Dholpur", "Dudu", "Dungarpur", "Ganganagar", "Gangapur City", "Hanumangarh", "Jaipur",
+                    "Jaipur Rural", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu", "Jodhpur", "Jodhpur Rural",
+                    "Karauli", "Kekri", "Khairthal-Tijara", "Kota", "Kotputli-Behror", "Nagaur", "Neem ka Thana",
+                    "Pali", "Phalodi", "Pratapgarh", "Rajsamand", "Salumbar", "Sanchore", "Sawai Madhopur",
+                    "Shahpura", "Sikar", "Sirohi", "Tonk", "Udaipur"
+                ],
+                "sikkim": [
+                    "Gangtok", "Gyalshing", "Mangan", "Namchi", "Pakyong", "Soreng"
+                ],
+                "tamil-nadu": [
+                    "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul",
+                    "Erode", "Kallakurichi", "Kancheepuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai",
+                    "Mayiladuthurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai",
+                    "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi", "Thanjavur", "Theni",
+                    "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tirupathur", "Tiruppur", "Tiruvallur",
+                    "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"
+                ],
+                "telangana": [
+                    "Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhupalpally",
+                    "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem Asifabad",
+                    "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal-Malkajgiri", "Mulugu",
+                    "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla",
+                    "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy",
+                    "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"
+                ],
+                "tripura": [
+                    "Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti",
+                    "West Tripura"
+                ],
+                "uttar-pradesh": [
+                    "Agra", "Aligarh", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Ayodhya", "Azamgarh",
+                    "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti",
+                    "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria",
+                    "Etah", "Etawah", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar",
+                    "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur", "Hardoi",
+                    "Hathras", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar",
+                    "Kasganj", "Kaushambi", "Kheri", "Kushinagar", "Lalitpur", "Lucknow", "Maharajganj",
+                    "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad",
+                    "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Prayagraj", "Raebareli", "Rampur",
+                    "Saharanpur", "Sambhal", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shravasti",
+                    "Siddharthnagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"
+                ],
+                "uttarakhand": [
+                    "Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital",
+                    "Pauri Garhwal", "Pithoragarh", "Rudraprayag", "Tehri Garhwal", "Udham Singh Nagar",
+                    "Uttarkashi"
+                ],
+                "west-bengal": [
+                    "Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dakshin Dinajpur", "Darjeeling",
+                    "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda",
+                    "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Bardhaman", "Paschim Medinipur",
+                    "Purba Bardhaman", "Purba Medinipur", "Purulia", "South 24 Parganas", "Uttar Dinajpur"
+                ],
+                "andaman-nicobar": [
+                    "Nicobar", "North and Middle Andaman", "South Andaman"
+                ],
+                "chandigarh": [
+                    "Chandigarh"
+                ],
+                "dadra-nagar-haveli-daman-diu": [
+                    "Daman", "Diu", "Dadra and Nagar Haveli"
+                ],
+                "delhi": [
+                    "Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi",
+                    "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi",
+                    "West Delhi"
+                ],
+                "jammu-kashmir": [
+                    "Anantnag", "Bandipora", "Baramulla", "Budgam", "Doda", "Ganderbal", "Jammu", "Kathua",
+                    "Kishtwar", "Kulgam", "Kupwara", "Poonch", "Pulwama", "Rajouri", "Ramban", "Reasi",
+                    "Samba", "Shopian", "Srinagar", "Udhampur"
+                ],
+                "ladakh": [
+                    "Kargil", "Leh"
+                ],
+                "lakshadweep": [
+                    "Lakshadweep"
+                ],
+                "puducherry": [
+                    "Karaikal", "Mahe", "Puducherry", "Yanam"
+                ]
+            };
+
+            // Define assembly constituencies for each district (partial data for demonstration)
+            const assemblyConstituencies = {
+                // Andhra Pradesh
+                "visakhapatnam": [
+                    "Gajuwaka", "Visakhapatnam East", "Visakhapatnam West", "Visakhapatnam North", "Visakhapatnam South", "Bheemili"
+                ],
+                "east-godavari": [
+                    "Rajahmundry City", "Rajahmundry Rural", "Kakinada City", "Kakinada Rural", "Pithapuram", "Peddapuram", "Jaggampeta"
+                ],
+                // Telangana
+                "hyderabad": [
+                    "Malakpet", "Amberpet", "Khairatabad", "Jubilee Hills", "Sanathnagar", "Nampally", "Goshamahal",
+                    "Charminar", "Chandrayangutta", "Yakutpura", "Bahadurpura", "Secunderabad", "Secunderabad Cantt.",
+                    "Karwan", "Musheerabad"
+                ],
+                "rangareddy": [
+                    "Maheshwaram", "Rajendranagar", "Serilingampally", "Chevella", "L.B. Nagar", "Uppal"
+                ],
+                // Delhi
+                "east-delhi": [
+                    "Laxmi Nagar", "Kondli", "Patparganj", "Jangpura", "Okhla", "Trilokpuri"
+                ],
+                "south-delhi": [
+                    "Chhatarpur", "Deoli", "Ambedkar Nagar", "Sangam Vihar", "Kalkaji", "Tughlakabad"
+                ]
+                // TODO: Add assembly constituencies for other districts in all states and UTs
+                // Source from Election Commission of India (eci.gov.in) or state-specific Chief Electoral Officer websites
+            };
+
+            // Show/hide and populate district dropdown based on state selection
+            stateSelect.addEventListener('change', () => {
+                const selectedState = stateSelect.value;
+                districtSelect.innerHTML = '<option value="" disabled selected>Select a district</option>';
+                assemblyConstituencySelect.innerHTML = '<option value="" disabled selected>Select an assembly constituency</option>';
+
+                if (selectedState && districts[selectedState]) {
+                    districts[selectedState].forEach(district => {
+                        const option = document.createElement('option');
+                        option.value = district.toLowerCase().replace(/\s+/g, '-');
+                        option.textContent = district;
+                        districtSelect.appendChild(option);
+                    });
+                    districtSection.style.display = 'block';
+                    assemblyConstituencySection.style.display = 'none';
                 } else {
-                    otherLanguageInput.classList.add('hidden');
+                    districtSection.style.display = 'none';
+                    assemblyConstituencySection.style.display = 'none';
+                }
+            });
+
+            // Show/hide and populate assembly constituency dropdown based on district selection
+            districtSelect.addEventListener('change', () => {
+                const selectedDistrict = districtSelect.value;
+                assemblyConstituencySelect.innerHTML = '<option value="" disabled selected>Select an assembly constituency</option>';
+
+                if (selectedDistrict && assemblyConstituencies[selectedDistrict]) {
+                    assemblyConstituencies[selectedDistrict].forEach(constituency => {
+                        const option = document.createElement('option');
+                        option.value = constituency.toLowerCase().replace(/\s+/g, '-');
+                        option.textContent = constituency;
+                        assemblyConstituencySelect.appendChild(option);
+                    });
+                    assemblyConstituencySection.style.display = 'block';
+                } else {
+                    assemblyConstituencySection.style.display = 'none';
                 }
             });
 
@@ -405,30 +603,21 @@
 
                 // Collect form data
                 const formData = new FormData(volunteerForm);
-                const areasOfInterest = [];
-                const preferredWings = [];
-                document.querySelectorAll('input[name="areasOfInterest"]:checked').forEach(checkbox => {
-                    areasOfInterest.push(checkbox.value);
-                });
-                document.querySelectorAll('input[name="preferredWings"]:checked').forEach(checkbox => {
-                    preferredWings.push(checkbox.value);
-                });
-
                 const data = {
                     fullName: formData.get('fullName'),
                     age: formData.get('age'),
-                    mobileNumber: formData.get('mobileNumber'),
-                    isWhatsApp: formData.get('isWhatsApp'),
-                    email: formData.get('email') || '',
-                    profession: formData.get('profession'),
+                    occupation: formData.get('occupation'),
                     state: formData.get('state'),
                     district: formData.get('district'),
                     assemblyConstituency: formData.get('assemblyConstituency'),
                     mandal: formData.get('mandal'),
-                    areasOfInterest,
-                    preferredWings,
-                    financialContribution: formData.get('financialContribution'),
-                    preferredLanguage: formData.get('preferredLanguage') === 'other' ? formData.get('otherLanguage') : formData.get('preferredLanguage'),
+                    village: formData.get('village'),
+                    pinCode: formData.get('pinCode'),
+                    mobileNumber: formData.get('mobileNumber'),
+                    email: formData.get('email') || '',
+                    areaOfInterest: formData.get('areaOfInterest'),
+                    availability: formData.get('availability'),
+                    skills: formData.get('skills') || '',
                     declaration: formData.get('declaration') === 'on'
                 };
 
@@ -450,6 +639,8 @@
                     formMessage.classList.add('text-green-500');
                     formMessage.textContent = 'Volunteer registration submitted successfully!';
                     volunteerForm.reset();
+                    districtSection.style.display = 'none';
+                    assemblyConstituencySection.style.display = 'none';
                 } catch (error) {
                     console.error('Error submitting form:', error);
                     formMessage.classList.remove('hidden', 'text-green-500');
