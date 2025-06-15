@@ -76,6 +76,60 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Horizontal layout for options with equal sizes */
+        .options-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .option-card {
+            flex: 1 1 0; /* Equal width: grow and shrink equally, base width 0 */
+            width: 300px; /* Fixed width for consistency */
+            min-width: 250px; /* Minimum width for smaller screens */
+            max-width: 300px; /* Maximum width to prevent stretching */
+            height: 300px; /* Fixed height for all cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .option-card .card-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .option-card p {
+            flex-grow: 1; /* Allow text to take up remaining space */
+            margin-bottom: 1.5rem; /* Space between text and button */
+            overflow: hidden; /* Prevent overflow */
+            text-overflow: ellipsis; /* Add ellipsis if text overflows */
+            display: -webkit-box;
+            -webkit-line-clamp: 4; /* Limit text to 4 lines */
+            -webkit-box-orient: vertical;
+        }
+        @media (max-width: 768px) {
+            .options-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .option-card {
+                width: 100%;
+                max-width: 100%;
+                height: auto; /* Allow height to adjust on mobile */
+                margin-bottom: 2rem;
+            }
+            .option-card .card-content {
+                height: auto; /* Allow content to expand on mobile */
+            }
+            .option-card p {
+                -webkit-line-clamp: unset; /* Remove line clamp on mobile */
+            }
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
@@ -119,30 +173,32 @@
     <!-- Get Involved Options -->
     <section class="py-20">
         <div class="container mx-auto px-4">
-            <!-- Volunteer Registration Section -->
-            <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Volunteer Registration</h3>
-                <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md text-center">
-                    <p class="text-lg mb-6">Join our mission as a volunteer and help us empower communities through education, health, and rural development.</p>
-                    <a href="volunteer-registration.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Register as a Volunteer</a>
+            <div class="options-container">
+                <!-- Volunteer Registration Section -->
+                <div class="option-card fade-in">
+                    <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Volunteer Registration</h3>
+                    <div class="card-content">
+                        <p class="text-lg">Join our mission as a volunteer and help us empower communities through education, health, and rural development.</p>
+                        <a href="volunteer-registration.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Register as a Volunteer</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Donate Now Section -->
-            <div class="fade-in mt-16">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Donate Now</h3>
-                <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md text-center">
-                    <p class="text-lg mb-6">Your financial support can help us continue our mission to empower communities through education, health, and rural development.</p>
-                    <a href="donate.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Make a Donation</a>
+                <!-- Donate Now Section -->
+                <div class="option-card fade-in">
+                    <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Donate Now</h3>
+                    <div class="card-content">
+                        <p class="text-lg">Your financial support can help us continue our mission to empower communities through education, health, and rural development.</p>
+                        <a href="donate.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Make a Donation</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Grievance/Support Request Section -->
-            <div class="fade-in mt-16">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Grievance/Support Request</h3>
-                <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md text-center">
-                    <p class="text-lg mb-6">Have a concern or need support? Submit a grievance or request assistance, and our team will assist you.</p>
-                    <a href="grievance-support.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Submit a Request</a>
+                <!-- Grievance/Support Request Section -->
+                <div class="option-card fade-in">
+                    <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Grievance/Support Request</h3>
+                    <div class="card-content">
+                        <p class="text-lg">Have a concern or need support? Submit a grievance or request assistance, and our team will assist you.</p>
+                        <a href="grievance-support.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Submit a Request</a>
+                    </div>
                 </div>
             </div>
         </div>
