@@ -124,12 +124,36 @@
                 <p class="text-lg mb-6 max-w-3xl mx-auto text-center">Your donation helps us continue our work in underserved communities.</p>
                 <div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md">
                     <div class="mb-4">
+                        <label for="name" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="phone" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                    </div>
+                    <div class="mb-4">
                         <label for="amount" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Donation Amount (INR)</label>
-                        <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" min="1">
+                        <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" min="1" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="purpose" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Purpose of Donation (Optional)</label>
+                        <select id="purpose" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
+                            <option value="">Select a purpose (optional)</option>
+                            <option value="education">Education</option>
+                            <option value="health">Health</option>
+                            <option value="rural-development">Rural Development</option>
+                            <option value="agriculture">Agriculture</option>
+                            <option value="political-legal-literacy">Political/Legal Literacy</option>
+                            <option value="general">General Support</option>
+                        </select>
                     </div>
                     <div class="mb-4">
                         <label for="payment-method" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Payment Method</label>
-                        <select id="payment-method" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
+                        <select id="payment-method" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             <option value="" disabled selected>Select a payment method</option>
                             <option value="upi">UPI (Scan QR Code)</option>
                             <option value="bank">Bank Transfer</option>
@@ -140,8 +164,15 @@
                 <!-- Payment Details Section (Hidden Initially) -->
                 <div id="payment-details" class="max-w-md mx-auto mt-6 bg-white p-6 rounded-xl shadow-md hidden">
                     <h4 id="payment-title" class="text-xl font-semibold mb-4 text-[#1E3A8A]"></h4>
+                    <div id="donor-info" class="mb-4">
+                        <p><strong>Name:</strong> <span id="donor-name"></span></p>
+                        <p><strong>Email:</strong> <span id="donor-email"></span></p>
+                        <p><strong>Phone:</strong> <span id="donor-phone"></span></p>
+                        <p><strong>Amount:</strong> ₹<span id="donor-amount"></span></p>
+                        <p><strong>Purpose:</strong> <span id="donor-purpose"></span></p>
+                    </div>
                     <div id="payment-content"></div>
-                    <p class="text-sm mt-4 text-gray-600">After making the payment, please email the transaction details to <a href="mailto:info@viswavignana.org" class="text-[#1E3A8A] hover:underline">info@viswavignana.org</a> for confirmation.</p>
+                    <p class="text-sm mt-4 text-gray-600">After making the payment, please email the transaction details to <a href="mailto:updated-email@viswavignana.org" class="text-[#1E3A8A] hover:underline">updated-email@viswavignana.org</a> for confirmation.</p>
                 </div>
             </div>
         </div>
@@ -167,9 +198,9 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: viswavignanavaaradhi@gmail.com</p>
-                    <p>Phone: +91-9010937358</p>
-                    <p>Address: Visakhapatnam, Andhra Pradesh</p>
+                    <p>Email: updated-email@viswavignana.org</p>
+                    <p>Phone: +91-1234567890</p>
+                    <p>Address: New Address, Hyderabad, Telangana, India</p>
                 </div>
             </div>
             <div class="mt-8 text-center">
@@ -201,12 +232,33 @@
             const paymentDetails = document.getElementById('payment-details');
             const paymentTitle = document.getElementById('payment-title');
             const paymentContent = document.getElementById('payment-content');
+            const donorName = document.getElementById('donor-name');
+            const donorEmail = document.getElementById('donor-email');
+            const donorPhone = document.getElementById('donor-phone');
+            const donorAmount = document.getElementById('donor-amount');
+            const donorPurpose = document.getElementById('donor-purpose');
 
             proceedButton.addEventListener('click', () => {
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
                 const amount = document.getElementById('amount').value;
+                const purpose = document.getElementById('purpose').value;
                 const paymentMethod = document.getElementById('payment-method').value;
 
                 // Validate inputs
+                if (!name) {
+                    alert('Please enter your full name.');
+                    return;
+                }
+                if (!email) {
+                    alert('Please enter your email.');
+                    return;
+                }
+                if (!phone) {
+                    alert('Please enter your phone number.');
+                    return;
+                }
                 if (!amount || amount <= 0) {
                     alert('Please enter a valid donation amount.');
                     return;
@@ -215,6 +267,13 @@
                     alert('Please select a payment method.');
                     return;
                 }
+
+                // Populate donor info
+                donorName.textContent = name;
+                donorEmail.textContent = email;
+                donorPhone.textContent = phone;
+                donorAmount.textContent = amount;
+                donorPurpose.textContent = purpose || 'Not specified';
 
                 // Clear previous content
                 paymentContent.innerHTML = '';
@@ -231,12 +290,11 @@
                     paymentTitle.textContent = 'Pay via Bank Transfer';
                     paymentContent.innerHTML = `
                         <p class="mb-4">Please transfer ₹${amount} to the following bank account:</p>
-                        <p><strong>Account Name:</strong> Viswa Vignana Vaaradhi Welfare Society</p>
-                        <p><strong>Account Number:</strong> 42087404874</p>
-                        <p><strong>IFSC Code:</strong> SBIN0000772</p>
-                        <p><strong>Bank Name:</strong> State Bank of India</p>
-                        <p><strong>Branch:</strong>State Bank of India AU Campus-VSP </p>
-                        <p><strong>Branck Code: 772</p>
+                        <p><strong>Account Name:</strong> Viswa Vignana Vaaradhi</p>
+                        <p><strong>Account Number:</strong> 123456789012</p>
+                        <p><strong>IFSC Code:</strong> ABCD0001234</p>
+                        <p><strong>Bank Name:</strong> Example Bank</p>
+                        <p><strong>Branch:</strong> Hyderabad</p>
                     `;
                 }
 
