@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -16,6 +17,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -23,6 +25,7 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
@@ -31,13 +34,16 @@
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-        .card {
+        .btn-secondary {
+            border: 1px solid #1E3A8A;
             transition: all 0.3s ease;
         }
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            background-color: #F0F5FF;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
+        /* Footer Links */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -45,6 +51,7 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -80,10 +87,10 @@
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
-        <div class="container mx-auto flex justify-between items-center h-full">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
                 <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
@@ -107,63 +114,51 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
-        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">About Us</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Learn more about our mission, vision, and the team behind Viswa Vignana Vaaradhi.</p>
-        </div>
-    </section>
-
-    <!-- Mission Section -->
-   <section class="fade-in mb-12">
-                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Our Mission</h2>
-                <p class="text-lg max-w-3xl mx-auto text-center mb-6">
-                    "Viswa Vignana Vaaradhi" (A Bridge of Universal Knowledge) is committed to serving as a <em>transformative bridge of knowledge and support</em>, dedicated to empowering citizens across India, especially the underserved, through its multi-faceted objectives . We achieve this by:
-                </p>
-                <ul class="list-disc list-inside text-lg max-w-3xl mx-auto space-y-4">
-                    <li><strong>Enhancing Political Awareness and Participation:</strong> Educating citizens on their right to vote, the importance of elections, democratic institutions, and their role in governance, while inspiring youth to engage ethically in politics [1, 7-12].</li>
-                    <li><strong>Promoting Comprehensive Legal Literacy:</strong> Empowering individuals with an understanding of their fundamental rights and responsibilities, providing guidance on legal aid, access to justice mechanisms, and specialized protections for women, children, and marginalized communities .</li>
-                    <li><strong>Ensuring Quality Education and Skill Development:</strong> Offering support to academically struggling students, establishing community learning centers, and providing free educational opportunities, alongside promoting holistic development, career awareness, and essential digital and financial literacy .</li>
-                    <li><strong>Empowering Farmers and Fostering Sustainable Agriculture:</strong> Training farmers in modern and organic farming techniques, educating them on government schemes and land rights, enhancing market access, promoting water conservation, and fostering agri-entrepreneurship for improved rural livelihoods .</li>
-                    <li><strong>Driving Holistic Rural Development:</strong> Strengthening rural education and infrastructure, creating employment opportunities and skill development programs, empowering women, improving healthcare and sanitation, expanding digital connectivity, and promoting disaster preparedness for self-sustaining villages .</li>
-                    <li><strong>Advancing Community Health and Well-being:</strong> Increasing access to basic healthcare services, promoting preventive care and disease awareness, fostering mental health support, addressing substance abuse, and ensuring specialized health support for women, adolescents, the elderly, and disabled individuals .</li>
-                </ul>
-            </section>
-    <!-- Vision Section -->
-     <section class="fade-in mb-12">
+    <!-- Main Content: About Us -->
+    <main class="py-20">
+        <div class="container mx-auto px-4">
+            <!-- Vision Statement -->
+            <section class="fade-in mb-12">
                 <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Our Vision</h2>
                 <p class="text-lg max-w-3xl mx-auto text-center">
-                    To envision a <em>knowledge-empowered society</em> where every individual, regardless of their background, is equipped with the understanding, skills, and resources to participate actively in democratic processes, achieve personal and collective well-being, and contribute to <em>self-reliant, equitable, and sustainably developed communities</em> .
+                    To envision a <em>knowledge-empowered society</em> where every individual, regardless of their background, is equipped with the understanding, skills, and resources to participate actively in democratic processes, achieve personal and collective well-being, and contribute to <em>self-reliant, equitable, and sustainably developed communities</em>.
                 </p>
             </section>
 
-    <!-- Team Section -->
-    <section class="py-20 text-center">
-        <div class="container mx-auto px-4">
-            <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm">Our Team</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <img src="/images/team-member-1.jpg" alt="Team Member 1" class="h-48 w-full object-cover rounded-lg mb-4">
-                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Priya Sharma</h4>
-                        <p class="text-gray-600">Founder & Director</p>
-                    </div>
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <img src="/images/team-member-2.jpg" alt="Team Member 2" class="h-48 w-full object-cover rounded-lg mb-4">
-                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Rahul Reddy</h4>
-                        <p class="text-gray-600">Program Coordinator</p>
-                    </div>
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <img src="/images/team-member-3.jpg" alt="Team Member 3" class="h-48 w-full object-cover rounded-lg mb-4">
-                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Anita Patel</h4>
-                        <p class="text-gray-600">Community Outreach Lead</p>
-                    </div>
-                </div>
-            </div>
+            <!-- Mission Statement -->
+            <section class="fade-in mb-12">
+                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Our Mission</h2>
+                <p class="text-lg max-w-3xl mx-auto text-center mb-6">
+                    "Viswa Vignana Vaaradhi" (A Bridge of Universal Knowledge) is committed to serving as a <em>transformative bridge of knowledge and support</em>, dedicated to empowering citizens across India, especially the underserved, through its multi-faceted objectives. We achieve this by:
+                </p>
+                <ul class="list-disc list-inside text-lg max-w-3xl mx-auto space-y-4">
+                    <li><strong>Enhancing Political Awareness and Participation:</strong> Educating citizens on their right to vote, the importance of elections, democratic institutions, and their role in governance, while inspiring youth to engage ethically in politics.</li>
+                    <li><strong>Promoting Comprehensive Legal Literacy:</strong> Empowering individuals with an understanding of their fundamental rights and responsibilities, providing guidance on legal aid, access to justice mechanisms, and specialized protections for women, children, and marginalized communities.</li>
+                    <li><strong>Ensuring Quality Education and Skill Development:</strong> Offering support to academically struggling students, establishing community learning centers, and providing free educational opportunities, alongside promoting holistic development, career awareness, and essential digital and financial literacy.</li>
+                    <li><strong>Empowering Farmers and Fostering Sustainable Agriculture:</strong> Training farmers in modern and organic farming techniques, educating them on government schemes and land rights, enhancing market access, promoting water conservation, and fostering agri-entrepreneurship for improved rural livelihoods.</li>
+                    <li><strong>Driving Holistic Rural Development:</strong> Strengthening rural education and infrastructure, creating employment opportunities and skill development programs, empowering women, improving healthcare and sanitation, expanding digital connectivity, and promoting disaster preparedness for self-sustaining villages.</li>
+                    <li><strong>Advancing Community Health and Well-being:</strong> Increasing access to basic healthcare services, promoting preventive care and disease awareness, fostering mental health support, addressing substance abuse, and ensuring specialized health support for women, adolescents, the elderly, and disabled individuals.</li>
+                </ul>
+            </section>
+
+            <!-- Ideology -->
+            <section class="fade-in">
+                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Our Ideology</h2>
+                <p class="text-lg max-w-3xl mx-auto text-center mb-6">
+                    Our ideology, forming the bedrock of "Viswa Vignana Vaaradhi," is built on the unwavering belief in the <em>transformative power of knowledge and empowerment</em> to uplift individuals and communities. We are guided by the following principles designed to attract a broad base of support:
+                </p>
+                <ul class="list-disc list-inside text-lg max-w-3xl mx-auto space-y-4">
+                    <li><strong>Knowledge as Liberation:</strong> We believe that access to accurate, accessible, and practical knowledge – be it political, legal, educational, agricultural, or health-related – is the fundamental tool for <em>individual empowerment and societal progress</em>. We aim to simplify complex information, making it universally available to all sections of society.</li>
+                    <li><strong>Inclusivity and Equity:</strong> We are committed to reaching and uplifting <em>every segment of society</em>, especially the marginalized, underprivileged, women, youth, farmers, and those in remote and underserved areas. Our programs are designed to bridge existing disparities and ensure equitable access to opportunities.</li>
+                    <li><strong>Active Citizenship and Participatory Democracy:</strong> We champion the idea that a vibrant democracy thrives on <em>informed and active citizen participation</em>. We empower individuals to understand their rights and responsibilities, engage with governance mechanisms, and contribute directly to decision-making processes, fostering a sense of ownership and collective responsibility.</li>
+                    <li><strong>Holistic Development for Sustainable Living:</strong> We recognize that true progress is multi-dimensional. Our approach integrates political, legal, educational, agricultural, rural, and health initiatives to ensure <em>comprehensive development that promotes self-reliance, sustainability, and resilience</em> in the face of modern challenges. We advocate for eco-friendly practices and climate-smart solutions.</li>
+                    <li><strong>Transparency and Accountability:</strong> We advocate for and enable citizens to demand transparency and accountability from governance structures through mechanisms like <em>Right to Information (RTI) applications</em> and engagement in electoral reforms, fostering a system based on integrity.</li>
+                    <li><strong>Compassion and Well-being:</strong> We prioritize the <em>physical and mental well-being</em> of all citizens, establishing support systems and promoting preventive care, nutrition, and mental health awareness to ensure a healthier, happier society.</li>
+                    <li><strong>Collaboration and Community-Led Change:</strong> We believe in fostering strong partnerships with local communities, government bodies, educational institutions, and other NGOs. We encourage <em>community-led initiatives</em> and peer-to-peer learning, recognizing that sustainable change originates from within.</li>
+                </ul>
+            </section>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-[#1E3A8A] text-white p-10">
@@ -179,7 +174,7 @@
                         <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
                         <li><a href="about.html" class="footer-link hover:underline">About</a></li>
                         <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
+                        <li><a href="donate.html" class="footer-link hover:underline">Donate</a></li>
                         <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
                     </ul>
                 </div>
@@ -196,8 +191,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Animations -->
+    <!-- JavaScript for Fade-In Animation -->
     <script>
+        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -212,8 +208,14 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            animateSections();
+            try {
+                animateSections();
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
+            }
         });
     </script>
 </body>
