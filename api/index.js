@@ -3,7 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const serverless = require('serverless-http');
-const donateRoutes = require('./routes/donate');
 const userRoutes = require('./routes/user');
 const volunteerRoutes = require('./routes/volunteer');
 const contactRoutes = require('./routes/contact');
@@ -13,9 +12,7 @@ const logger = require('./utils/logger');
 const app = express();
 
 // Middleware
-app.use(cors({ 
-    origin: ['https://viswavignanavaaradhi.org', 'https://ashish00618.github.io']
-}));
+app.use(cors({ origin: ['https://viswavignanavaaradhi.org', 'https://ashish00618.github.io'] }));
 app.use(express.json());
 app.use((req, res, next) => {
     logger.info(`${req.method} ${req.url}`);
@@ -32,7 +29,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://viswavignanavaaradhi:
 .catch(err => logger.error('MongoDB connection error:', err));
 
 // Routes
-app.use('/api/donate', donateRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/volunteer', volunteerRoutes);
 app.use('/api/contact', contactRoutes);
