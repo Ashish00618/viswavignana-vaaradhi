@@ -6,7 +6,10 @@
     <title>Volunteer Registration - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Particles.js for background particle animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
+        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -16,6 +19,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -23,14 +27,39 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
+        /* Form Container Styles */
+        .form-container {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .form-container:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #3B82F6;
+        }
+        /* Form Input Styles */
+        input, select, textarea {
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus, textarea:focus {
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            border-color: #3B82F6;
+        }
+        /* Style for multi-select dropdown */
+        select[multiple] {
+            height: 150px; /* Adjust height to show multiple options */
+        }
+        /* Footer Links */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -38,6 +67,7 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -68,6 +98,35 @@
             display: block;
             opacity: 1;
             transform: translateY(0);
+        }
+        /* Gradient Background Animation for Hero and Form Sections */
+        .hero-section, .form-section {
+            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
+        }
+        #scrollToTopBtn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
         }
         /* Hide district and assembly constituency dropdowns by default */
         #districtSection, #assemblyConstituencySection {
@@ -104,44 +163,45 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
-        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
+    <!-- Hero Section with Gradient Animation and Particle Background -->
+    <section class="hero-section py-20 text-center text-white relative fade-in">
+        <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Volunteer Registration</h2>
+            <h2 class="text-5xl font-bold mb-4">Volunteer Registration</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Join our mission to make a difference! Register as a volunteer and contribute to our initiatives.</p>
         </div>
     </section>
 
-    <!-- Volunteer Registration Form Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-4">
+    <!-- Volunteer Registration Form Section with Gradient Animation and Particle Background -->
+    <section class="form-section py-20 relative">
+        <div id="particles-js-form" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
             <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Volunteer Registration Form</h3>
-                <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-3xl font-bold mb-6 text-white text-center">Volunteer Registration Form</h3>
+                <div class="max-w-2xl mx-auto form-container p-6 rounded-xl">
                     <form id="volunteerForm">
                         <!-- 1. Personal Information -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">1. Personal Information</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-white">1. Personal Information</h4>
                             <div class="mb-4">
-                                <label for="fullName" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Full Name</label>
+                                <label for="fullName" class="block text-lg font-semibold mb-2 text-white">Full Name</label>
                                 <input type="text" id="fullName" name="fullName" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label for="age" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Age</label>
+                                <label for="age" class="block text-lg font-semibold mb-2 text-white">Age</label>
                                 <input type="number" id="age" name="age" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label for="occupation" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Occupation</label>
+                                <label for="occupation" class="block text-lg font-semibold mb-2 text-white">Occupation</label>
                                 <input type="text" id="occupation" name="occupation" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                         </div>
 
                         <!-- 2. Contact Information -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">2. Contact Information</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-white">2. Contact Information</h4>
                             <div class="mb-4">
-                                <label for="state" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">State</label>
+                                <label for="state" class="block text-lg font-semibold mb-2 text-white">State</label>
                                 <select id="state" name="state" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select a state</option>
                                     <option value="andhra-pradesh">Andhra Pradesh</option>
@@ -183,44 +243,44 @@
                                 </select>
                             </div>
                             <div id="districtSection" class="mb-4">
-                                <label for="district" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">District</label>
+                                <label for="district" class="block text-lg font-semibold mb-2 text-white">District</label>
                                 <select id="district" name="district" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select a district</option>
                                 </select>
                             </div>
                             <div id="assemblyConstituencySection" class="mb-4">
-                                <label for="assemblyConstituency" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Assembly Constituency</label>
+                                <label for="assemblyConstituency" class="block text-lg font-semibold mb-2 text-white">Assembly Constituency</label>
                                 <select id="assemblyConstituency" name="assemblyConstituency" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select an assembly constituency</option>
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="mandal" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Mandal</label>
+                                <label for="mandal" class="block text-lg font-semibold mb-2 text-white">Mandal</label>
                                 <input type="text" id="mandal" name="mandal" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label for="village" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Village</label>
+                                <label for="village" class="block text-lg font-semibold mb-2 text-white">Village</label>
                                 <input type="text" id="village" name="village" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label for="pinCode" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Pin Code</label>
-                                <input type="text" id="pinCode" name="pinCode" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="pinCode" class="block text-lg font-semibold mb-2 text-white">Pin Code</label>
+                                <input type="text" id="pinCode" name="pinCode" class=" aveva p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label for="mobileNumber" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Mobile Number</label>
+                                <label for="mobileNumber" class="block text-lg font-semibold mb-2 text-white">Mobile Number</label>
                                 <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label for="email" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Email ID (Optional)</label>
+                                <label for="email" class="block text-lg font-semibold mb-2 text-white">Email ID (Optional)</label>
                                 <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
                             </div>
                         </div>
 
                         <!-- 3. Volunteering Preferences -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">3. Volunteering Preferences</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-white">3. Volunteering Preferences</h4>
                             <div class="mb-4">
-                                <label for="areaOfInterest" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Area of Interest</label>
+                                <label for="areaOfInterest" class="block text-lg font-semibold mb-2 text-white">Area of Interest</label>
                                 <select id="areaOfInterest" name="areaOfInterest" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select an area of interest</option>
                                     <option value="education-skill-development">Education & Skill Development</option>
@@ -232,7 +292,7 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="availability" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Availability</label>
+                                <label for="availability" class="block text-lg font-semibold mb-2 text-white">Availability</label>
                                 <select id="availability" name="availability" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select your availability</option>
                                     <option value="full-time">Full-time</option>
@@ -242,15 +302,33 @@
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="skills" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Skills/Experience (Optional)</label>
+                                <label for="skills" class="block text-lg font-semibold mb-2 text-white">Skills/Experience (Optional)</label>
                                 <textarea id="skills" name="skills" rows="3" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]"></textarea>
                             </div>
                         </div>
 
-                        <!-- 4. Declaration -->
+                        <!-- 4. Preferred Wing(s) of Involvement -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">4. Declaration</h4>
-                            <label class="flex items-center">
+                            <h4 class="text-xl font-semibold mb-4 text-white">4. Preferred Wing(s) of Involvement (Select all that apply)</h4>
+                            <div class="mb-4">
+                                <label for="areaOfInterest" class="block text-lg font-semibold mb-2 text-white">Area of Interest</label>
+                                <select id="areaOfInterest" name="areaOfInterest" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required></select>
+                                    <option value="administration-programme-implementation">Administration & Programme Implementation</option>
+                                    <option value="finance-accounts">Finance & Accounts</option>
+                                    <option value="legal-compliance">Legal & Compliance</option>
+                                    <option value="public-relations-communications">Public Relations & Communications</option>
+                                    <option value="social-media-content-creation">Social Media & Content Creation</option>
+                                    <option value="fundraising-donor-management">Fundraising & Donor Management</option>
+                                    <option value="volunteer-human-resources">Volunteer & Human Resources</option>
+                                    <option value="partnerships-networking">Partnerships & Networking</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- 5. Declaration -->
+                        <div class="mb-6">
+                            <h4 class="text-xl font-semibold mb-4 text-white">5. Declaration</h4>
+                            <label class="flex items-center text-gray-200">
                                 <input type="checkbox" name="declaration" required>
                                 <span class="ml-2">I confirm that the information provided is true to the best of my knowledge and I am willing to volunteer for Viswa Vignana Vaaradhi.</span>
                             </label>
@@ -285,8 +363,8 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: updated-email@viswavignana.org</p>
-                    <p>Phone: +91-1234567890</p>
+                    <p>Email: viswavignanavaaradhi@gmail.com</p>
+                    <p>Phone: +91-9010937358</p>
                     <p>Address: New Address, Hyderabad, Telangana, India</p>
                 </div>
             </div>
@@ -296,8 +374,12 @@
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
     <!-- JavaScript -->
     <script>
+        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -312,8 +394,65 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Initialize Particles.js for Hero and Form Sections
+        function initParticles() {
+            particlesJS('particles-js-hero', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+
+            particlesJS('particles-js-form', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Scroll to Top Button
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Form Handling and Dynamic Dropdowns
         document.addEventListener('DOMContentLoaded', () => {
             animateSections();
+            initParticles();
+            initScrollToTop();
 
             const volunteerForm = document.getElementById('volunteerForm');
             const formMessage = document.getElementById('formMessage');
@@ -598,11 +737,13 @@
                 }
             });
 
+            // Form submission handling
             volunteerForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
                 // Collect form data
                 const formData = new FormData(volunteerForm);
+                const wings = Array.from(formData.getAll('wings')); // Collect all selected wings from the dropdown
                 const data = {
                     fullName: formData.get('fullName'),
                     age: formData.get('age'),
@@ -618,6 +759,7 @@
                     areaOfInterest: formData.get('areaOfInterest'),
                     availability: formData.get('availability'),
                     skills: formData.get('skills') || '',
+                    wings: wings.length > 0 ? wings : [], // Include selected wings (array)
                     declaration: formData.get('declaration') === 'on'
                 };
 
