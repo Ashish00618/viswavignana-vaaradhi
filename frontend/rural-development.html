@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -122,147 +161,130 @@
         </div>
     </header>
 
-    <!-- Main Content: Agriculture & Rural Empowerment -->
+    <!-- Main Content: Rural Development -->
     <main class="py-20">
         <div class="container mx-auto px-4">
-            <!-- Agriculture & Rural Empowerment Section -->
+            <!-- Rural Development Section -->
             <section class="fade-in mb-12">
-                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Agriculture & Strengthening the Roots of India</h2>
+                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Rural Development – Empowering India’s Villages from the Ground Up</h2>
                 <p class="text-lg max-w-3xl mx-auto text-center mb-8">
-                    At VISWA VIGNANA VAARADHI, we believe that farmers are the true backbone of our nation. Yet, many of them continue to face challenges like outdated farming methods, poor market access, and lack of support. Our goal is to ensure that no farmer feels alone, and every farming family is supported with knowledge, tools, and opportunities. Through awareness, training, and collaboration, we are working to create a strong, sustainable, and self-reliant rural India.
+                    At VISWA VIGNANA VAARADHI, we believe that real change begins in our villages. A strong nation is built when its rural communities are self-reliant, educated, healthy, and empowered. Through focused efforts in education, employment, infrastructure, and inclusion—we aim to transform rural lives and livelihoods. Our vision is to create model villages that are resilient, modern, and socially empowered.
                 </p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Tile 1 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣ Modern and Eco-Friendly Farming</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣ Strengthening Rural Education & Digital Learning</h3>
                         <p class="text-gray-600 mb-4">
-                            We help farmers shift from old, struggling techniques to modern, scientific, and eco-friendly practices. We want every farmer to grow more, spend less, and protect the land.
+                            Education is the first step toward empowerment. We’re making sure no child or adult is left behind in learning.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Teaching organic and sustainable farming methods</li>
-                            <li>Promoting natural fertilizers, bio-pesticides, and soil health practices</li>
-                            <li>Providing training on precision farming, climate-smart agriculture, and pest control</li>
-                            <li>Helping farmers access modern tools, seeds, and machinery at low cost</li>
+                            <li>Setting up Community Learning Centers for children, adults, and dropouts</li>
+                            <li>Offering vocational training and adult literacy programs</li>
+                            <li>Supporting struggling rural students with mentorship, tutoring, and Mission Medha guidance</li>
+                            <li>Promoting digital education through e-learning platforms, online courses, and virtual libraries</li>
                         </ul>
                     </div>
                     <!-- Tile 2 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">2️⃣ Regional Agricultural Community Centers</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">2️⃣ Building Better Rural Infrastructure</h3>
                         <p class="text-gray-600 mb-4">
-                            To bring help closer to where farmers live, these centers will become knowledge hubs for rural progress.
+                            For villages to thrive, basic facilities must be in place. Because every village deserves dignity, cleanliness, and access.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Establishing Agricultural Resource Centers in villages</li>
-                            <li>Offering expert guidance, demo sessions, and workshops</li>
-                            <li>Connecting farmers to scientists, KVKs, and agri-experts for practical advice</li>
+                            <li>Better roads, public transport, electricity, and mobile/internet connectivity</li>
+                            <li>Building schools, libraries, and community centers as learning and social hubs</li>
+                            <li>Ensuring clean drinking water, toilets, and proper sanitation</li>
+                            <li>Promoting renewable energy solutions like solar lights and off-grid electricity</li>
                         </ul>
                     </div>
                     <!-- Tile 3 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">3️⃣ Awareness on Government Schemes and Farmer Rights</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">3️⃣ Rural Employment & Skill Development</h3>
                         <p class="text-gray-600 mb-4">
-                            Many farmers miss out on benefits just because they don’t know about them. We want every farmer to know their rights and how to claim them.
+                            We help rural youth and families gain the skills to succeed. Our goal: jobs in villages, not just job migrations.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Conducting awareness drives about government schemes, crop insurance, MSP, and subsidies</li>
-                            <li>Assisting farmers in applying for loans, welfare programs, and legal help</li>
-                            <li>Educating about land rights, tenancy laws, and legal protections</li>
+                            <li>Creating Skill Development Centers for trades like tailoring, carpentry, computer basics, and repair work</li>
+                            <li>Organizing entrepreneurship workshops to build local businesses and start-ups</li>
+                            <li>Encouraging women and youth to take up non-agricultural work—like handicrafts and digital services</li>
+                            <li>Supporting self-employment, microfinance access, and job linkages</li>
                         </ul>
                     </div>
                     <!-- Tile 4 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">4️⃣ Better Market Access and Farmer Empowerment</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">4️⃣ Empowering Rural Women & Promoting Inclusion</h3>
                         <p class="text-gray-600 mb-4">
-                            We want farmers to earn more and rely less on middlemen. We aim to create confident, independent farmer-entrepreneurs.
+                            Rural development isn’t possible without strong, self-reliant women. We build women-led communities that lead with dignity and strength.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Train farmers to sell directly through digital platforms and local markets</li>
-                            <li>Promote Farmer Producer Organizations (FPOs) and self-help groups for better bargaining</li>
-                            <li>Guide them to government procurement schemes and e-commerce markets</li>
+                            <li>Form and support Self-Help Groups (SHGs) for savings and financial independence</li>
+                            <li>Conduct legal literacy and leadership training for women</li>
+                            <li>Help women access micro-loans, markets, and skill-based training</li>
+                            <li>Organize awareness sessions on domestic violence, early marriage, and workplace rights</li>
                         </ul>
                     </div>
                     <!-- Tile 5 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">5️⃣ Organic Farming and Sustainability</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">5️⃣ Improving Rural Healthcare & Sanitation</h3>
                         <p class="text-gray-600 mb-4">
-                            Our soil is our future. Our vision: Healthy soil, safe food, and a greener future.
+                            Health is a basic right. We focus on both physical and emotional well-being in villages.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Promoting organic farming, eco-certifications, and sustainable models</li>
-                            <li>Teaching composting, water-saving, and natural pest control methods</li>
-                            <li>Supporting tree plantation and watershed development projects</li>
+                            <li>Free health camps, vaccination drives, and mother-child care awareness</li>
+                            <li>Training on nutrition, hygiene, preventive care, and sanitation</li>
+                            <li>Mobile medical vans and telemedicine services for remote areas</li>
+                            <li>Mental health support and community counseling for those facing emotional distress</li>
                         </ul>
                     </div>
                     <!-- Tile 6 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">6️⃣ Smart Water Use and Climate Resilience</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">6️⃣ Digital Transformation in Rural India</h3>
                         <p class="text-gray-600 mb-4">
-                            Water is life for farmers. This helps farmers prepare for the future, today.
+                            We bridge the digital divide by helping villages become tech-enabled. We ensure villagers are connected, informed, and included in India’s digital future.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Teaching drip irrigation, rainwater harvesting, and efficient water use</li>
-                            <li>Encouraging climate-resilient crops that withstand droughts and floods</li>
-                            <li>Supporting community-led efforts for water conservation and recharge</li>
+                            <li>Expanding internet access in remote areas</li>
+                            <li>Training villagers in online services, banking, and government portals</li>
+                            <li>Promoting digital payment systems and online marketplaces for rural products</li>
+                            <li>Launching community radio and digital awareness drives for better information flow</li>
                         </ul>
                     </div>
                     <!-- Tile 7 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">7️⃣ Skills and Rural Entrepreneurship</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">7️⃣ Disaster Preparedness & Climate Resilience</h3>
                         <p class="text-gray-600 mb-4">
-                            Farming is more than just growing crops. It’s a powerful business. We turn small ideas into big rural success stories.
+                            Rural communities are often the first to suffer in disasters. We equip villages to be resilient and ready for any crisis.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Skill-building in dairy, poultry, fishery, food processing, and vermicomposting</li>
-                            <li>Supporting agripreneurs and rural start-ups with training and mentorship</li>
-                            <li>Providing market connections and financial literacy programs</li>
+                            <li>Educating them on emergency response, first aid, and disaster safety</li>
+                            <li>Building early warning systems for floods, cyclones, and droughts</li>
+                            <li>Promoting safe housing and disaster-resilient construction</li>
+                            <li>Supporting climate adaptation strategies for rural sustainability</li>
                         </ul>
                     </div>
                     <!-- Tile 8 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">8️⃣ Agricultural Education and Research</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">8️⃣ Rural Tourism & Cultural Heritage</h3>
                         <p class="text-gray-600 mb-4">
-                            We connect the field with the lab. We help farmers stay updated with the latest knowledge and tools.
+                            We celebrate rural culture while creating new income sources. Our villages become centers of art, hospitality, and rural pride.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Partnering with universities and Krishi Vigyan Kendras</li>
-                            <li>Organizing agri-exhibitions, fairs, and innovation tours</li>
-                            <li>Supporting research on better seeds, climate solutions, and pest resistance</li>
+                            <li>Promoting homestays, eco-tourism, and village tours</li>
+                            <li>Supporting handicrafts, traditional arts, and folk performances</li>
+                            <li>Organizing local festivals and fairs to showcase culture and generate income</li>
                         </ul>
                     </div>
                     <!-- Tile 9 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">9️⃣ Digital Literacy and Smart Farming</h3>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">9️⃣ Strengthening Rural Governance & Civic Participation</h3>
                         <p class="text-gray-600 mb-4">
-                            Technology can transform farming. We’re building a future of smart, tech-savvy farming communities.
+                            We believe in village-led development. We help build active, responsible rural citizens who lead their communities.
                         </p>
                         <ul class="list-disc list-inside text-gray-600">
-                            <li>Using apps, weather tools, and satellite data for crop planning</li>
-                            <li>Promoting platforms like eNAM for digital market access</li>
-                            <li>Helping farmers digitize records, payments, and farm data</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 10 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">🔟 Supporting Farmers' Mental Health & Crisis Help</h3>
-                        <p class="text-gray-600 mb-4">
-                            We care for the well-being of our annadatas (food providers). Because behind every farm is a human story that deserves support.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Train farmers in budgeting, financial planning, and debt prevention</li>
-                            <li>Offer mental health counseling and emotional support</li>
-                            <li>Connect families to crisis relief, loan restructuring, and helplines</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 11 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣1️⃣ Agro-Tourism and Rural Development</h3>
-                        <p class="text-gray-600 mb-4">
-                            We help farmers earn more through new ideas. We help create diverse income sources for stronger rural economies.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Turning farms into tourist spots and learning centers</li>
-                            <li>Supporting rural handcrafts, local industries, and eco-tourism</li>
-                            <li>Promoting green and climate-resilient agriculture</li>
+                            <li>Conduct sessions on Panchayati Raj, civic duties, and rights</li>
+                            <li>Train villagers in budget planning, social audits, and local problem-solving</li>
+                            <li>Encourage youth and women to take leadership roles in governance</li>
+                            <li>Support legal aid awareness and public grievance redressal</li>
                         </ul>
                     </div>
                 </div>
@@ -270,8 +292,7 @@
                 <div class="mt-8 text-center">
                     <h3 class="text-2xl font-semibold text-[#1E3A8A] mb-4">🌱 Our Vision:</h3>
                     <p class="text-lg max-w-3xl mx-auto">
-                        A future where every farmer is respected, self-reliant, and thriving—with knowledge in their hands, hope in their hearts, and prosperity in their fields.<br><br>
-                        Let’s sow the seeds of change—together.
+                        To build self-reliant villages where education, opportunity, health, and dignity reach every home, every hand, and every heart.
                     </p>
                 </div>
             </section>
