@@ -1,0 +1,375 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health - Viswa Vignana Vaaradhi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Header Styles */
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            transform: scale(1.1);
+            color: #F0F5FF;
+        }
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(to right, #1E3A8A, #3B82F6);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        .btn-secondary {
+            border: 1px solid #1E3A8A;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            background-color: #F0F5FF;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Card Styles */
+        .card {
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        /* Footer Links */
+        .footer-link {
+            transition: all 0.3s ease;
+        }
+        .footer-link:hover {
+            color: #F0F5FF;
+            text-decoration: underline;
+        }
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1E3A8A;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            top: 100%;
+            left: 0;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+        .dropdown-content a:hover {
+            background-color: #3B82F6;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
+    <!-- Header -->
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
+                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <a href="index.html" class="nav-link hover:underline">Home</a>
+                <a href="about.html" class="nav-link hover:underline">About</a>
+                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+                <div class="dropdown">
+                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <div class="dropdown-content">
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
+                        <a href="health.html">Health</a>
+                    </div>
+                </div>
+                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
+                <a href="contact.html" class="nav-link hover:underline">Contact</a>
+                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content: Health -->
+    <main class="py-20">
+        <div class="container mx-auto px-4">
+            <!-- Health Section -->
+            <section class="fade-in mb-12">
+                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Health – Ensuring Wellness, Dignity, and Care for Every Life</h2>
+                <p class="text-lg max-w-3xl mx-auto text-center mb-8">
+                    At VISWA VIGNANA VAARADHI, we believe health is not a privilege—it is a right. We are committed to making quality healthcare, mental well-being, and health awareness accessible to all, especially in rural and underserved communities. Our mission is to build a society where every individual—regardless of income or location—can live a healthy, informed, and dignified life.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Tile 1 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣ Access to Basic Healthcare for All</h3>
+                        <p class="text-gray-600 mb-4">
+                            We bring healthcare to where it’s needed the most.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Organizing free health camps, mobile medical vans, and vaccination drives in remote areas</li>
+                            <li>Supporting primary health centers, maternal care units, and child wellness programs</li>
+                            <li>Providing telemedicine services to connect rural patients with specialists</li>
+                            <li>Creating awareness on Ayushman Bharat, Aarogyasri, Janani Suraksha Yojana, and other govt. schemes</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 2 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">2️⃣ Preventive Healthcare & Disease Awareness</h3>
+                        <p class="text-gray-600 mb-4">
+                            We empower people to prevent illness before it starts.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Running health awareness campaigns on TB, malaria, HIV/AIDS, diabetes, and heart disease</li>
+                            <li>Teaching hygiene, sanitation, and nutrition to prevent everyday illnesses</li>
+                            <li>Organizing regular health check-ups and screening camps for early detection</li>
+                            <li>Educating families on maternal health, reproductive wellness, and family planning</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 3 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">3️⃣ Mental Health Matters</h3>
+                        <p class="text-gray-600 mb-4">
+                            Mental health is health—and we treat it with care.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Spreading awareness about depression, anxiety, stress, and trauma in schools and communities</li>
+                            <li>Offering free counseling services, helplines, and mental health support groups</li>
+                            <li>Training teachers, community workers, and health staff to identify mental health issues</li>
+                            <li>Creating safe spaces for emotional well-being and healing</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 4 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">4️⃣ Fighting Substance Abuse & Addiction</h3>
+                        <p class="text-gray-600 mb-4">
+                            We take a firm stand against addiction and its impact.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Launching awareness drives on alcohol, tobacco, and drug abuse</li>
+                            <li>Offering rehabilitation support and de-addiction counseling</li>
+                            <li>Partnering with experts and authorities for therapy programs</li>
+                            <li>Educating youth about peer pressure and teaching healthy coping methods</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 5 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">5️⃣ Women’s and Adolescent Health</h3>
+                        <p class="text-gray-600 mb-4">
+                            Empowering women begins with protecting their health.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Teaching menstrual hygiene, reproductive rights, and maternal care</li>
+                            <li>Distributing free sanitary napkins in schools and villages</li>
+                            <li>Running prenatal and postnatal workshops for mothers</li>
+                            <li>Addressing adolescent health—nutrition, puberty education, and mental care</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 6 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">6️⃣ Nutrition and Wellness for Every Family</h3>
+                        <p class="text-gray-600 mb-4">
+                            We fight malnutrition and promote wellness.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Teaching balanced diets, food hygiene, and healthy cooking</li>
+                            <li>Running nutrition drives for children, pregnant women, and mothers</li>
+                            <li>Supporting kitchen gardens and organic food practices</li>
+                            <li>Partnering with mid-day meal programs and food security initiatives</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 7 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">7️⃣ Fitness, Yoga, and Healthy Lifestyles</h3>
+                        <p class="text-gray-600 mb-4">
+                            Good health is a lifelong habit. We encourage:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Regular exercise, yoga, and meditation as part of daily routine</li>
+                            <li>Hosting sports events, community fitness challenges, and health walks</li>
+                            <li>Educating people on the dangers of obesity, sedentary life, and heart risks</li>
+                            <li>Promoting Ayurveda, naturopathy, and holistic wellness systems</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 8 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">8️⃣ Care for the Elderly and Persons with Disabilities</h3>
+                        <p class="text-gray-600 mb-4">
+                            We serve those who need extra care with dignity and respect.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Providing geriatric care, assistive tools, and medical access for senior citizens</li>
+                            <li>Organizing physiotherapy and mobility aid camps for the disabled</li>
+                            <li>Educating families on disability pensions and government support</li>
+                            <li>Promoting youth-elder support programs to foster mutual care and respect</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 9 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">9️⃣ Emergency Health Response & Disaster Preparedness</h3>
+                        <p class="text-gray-600 mb-4">
+                            Health doesn’t wait in an emergency—we act fast.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Training communities in first aid, CPR, and emergency preparedness</li>
+                            <li>Establishing rapid response teams for pandemics, floods, and health disasters</li>
+                            <li>Offering mental health counseling during post-disaster recovery</li>
+                            <li>Coordinating with hospitals and government for relief programs</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 10 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">🔟 Health Policy Advocacy & Environmental Wellness</h3>
+                        <p class="text-gray-600 mb-4">
+                            We work to create a better system for everyone.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Encouraging community voices in health policy discussions</li>
+                            <li>Promoting clean air, safe water, and waste management education</li>
+                            <li>Partnering with doctors, hospitals, and NGOs for health awareness drives</li>
+                            <li>Conducting research and policy recommendations based on ground-level health needs</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Closing Goal Statement -->
+                <div class="mt-8 text-center">
+                    <h3 class="text-2xl font-semibold text-[#1E3A8A] mb-4">🌿 Our Goal:</h3>
+                    <p class="text-lg max-w-3xl mx-auto">
+                        To build a health-conscious, physically fit, and emotionally strong India, where no one is left behind due to illness, stigma, or lack of access.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1E3A8A] text-white p-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
+                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
+                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
+                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
+                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
+                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+                    <p>Email: viswavignanavaaradhi@gmail.com</p>
+                    <p>Phone: +91-9010937358</p>
+                    <p>Address: Visakhapatnam, Andhra Pradesh</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Fade-In Animation -->
+    <script>
+        // Fade-In Animation for Sections
+        function animateSections() {
+            const sections = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                animateSections();
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
+            }
+        });
+    </script>
+</body>
+</html>
