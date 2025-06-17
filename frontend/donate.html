@@ -6,10 +6,8 @@
     <title>Donate - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add Particles.js for background particle animation -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -19,7 +17,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -27,7 +24,6 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
-        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
@@ -39,7 +35,6 @@
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
-        /* Form Container Styles (Glassmorphism) */
         .form-container {
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.1);
@@ -61,7 +56,6 @@
         .form-container.pulse {
             animation: pulse 2s infinite;
         }
-        /* Form Input Styles */
         input, select {
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.3);
@@ -78,7 +72,6 @@
         input::placeholder {
             color: rgba(255, 255, 255, 0.7);
         }
-        /* Footer Links */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -86,7 +79,6 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
-        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -118,7 +110,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Gradient Background Animation for Hero and Form Sections */
         .hero-section, .form-section {
             background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
             background-size: 400%;
@@ -129,7 +120,6 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        /* Scroll to Top Button */
         #scrollToTopBtn {
             position: fixed;
             bottom: 30px;
@@ -147,7 +137,6 @@
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
             transform: scale(1.1);
         }
-        /* Thank You Message */
         #thankYouMessage {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
@@ -161,7 +150,6 @@
             padding-bottom: 0.5rem;
             margin-bottom: 1rem;
         }
-        /* Responsive Adjustments */
         @media (max-width: 768px) {
             header {
                 padding: 0.5rem 1rem;
@@ -222,7 +210,6 @@
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <!-- Header -->
     <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
         <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
@@ -250,7 +237,6 @@
         </div>
     </header>
 
-    <!-- Hero Section with Gradient Animation and Particle Background -->
     <section class="hero-section py-20 text-center text-white relative fade-in">
         <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
@@ -259,7 +245,6 @@
         </div>
     </section>
 
-    <!-- Donation Form Section with Gradient Animation and Particle Background -->
     <section class="form-section py-20 relative">
         <div id="particles-js-form" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
@@ -305,7 +290,6 @@
                     </div>
                     <button id="proceedButton" class="btn-primary w-full text-white px-6 py-3 rounded-full transition">Proceed to Pay</button>
                 </div>
-                <!-- Payment Details Section (Hidden Initially) -->
                 <div id="payment-details" class="max-w-md mx-auto mt-6 form-container pulse hidden">
                     <h4 id="payment-title" class="text-xl font-semibold mb-4 text-white border-bottom-2"></h4>
                     <div id="donor-info" class="mb-4 text-white">
@@ -319,7 +303,6 @@
                     <p class="text-sm mt-4 text-gray-200">After making the payment, please email the transaction details to <a href="mailto:updated-email@viswavignana.org" class="text-blue-300 hover:underline">updated-email@viswavignana.org</a> for confirmation.</p>
                     <button id="submitButton" class="btn-primary w-full text-white px-6 py-3 rounded-full transition mt-4">Submit</button>
                 </div>
-                <!-- Thank You Message (Hidden Initially) -->
                 <div id="thankYouMessage" class="max-w-md mx-auto mt-6 hidden">
                     <h4 class="text-xl font-semibold">Thank You for Your Donation!</h4>
                     <p>We sincerely appreciate your support. Your contribution will help us empower communities through education, health, and rural development.</p>
@@ -328,7 +311,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-[#1E3A8A] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -359,12 +341,9 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
-    <!-- JavaScript for Animations and Payment Logic -->
     <script>
-        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -379,7 +358,6 @@
             sections.forEach(section => observer.observe(section));
         }
 
-        // Initialize Particles.js for Hero and Form Sections
         function initParticles() {
             particlesJS('particles-js-hero', {
                 particles: {
@@ -418,7 +396,6 @@
             });
         }
 
-        // Scroll to Top Button
         function initScrollToTop() {
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             window.onscroll = function () {
@@ -433,7 +410,6 @@
             });
         }
 
-        // Payment and Submission Logic
         document.addEventListener('DOMContentLoaded', () => {
             animateSections();
             initParticles();
@@ -460,7 +436,6 @@
                 const purpose = document.getElementById('purpose').value;
                 const paymentMethod = document.getElementById('payment-method').value;
 
-                // Validate inputs
                 if (!name) {
                     alert('Please enter your full name.');
                     return;
@@ -482,17 +457,14 @@
                     return;
                 }
 
-                // Populate donor info
                 donorName.textContent = name;
                 donorEmail.textContent = email;
                 donorPhone.textContent = phone;
                 donorAmount.textContent = amount;
                 donorPurpose.textContent = purpose || 'Not specified';
 
-                // Clear previous content
                 paymentContent.innerHTML = '';
 
-                // Show payment details based on the selected method
                 if (paymentMethod === 'upi') {
                     paymentTitle.textContent = 'Pay via UPI';
                     paymentContent.innerHTML = `
@@ -512,7 +484,6 @@
                     `;
                 }
 
-                // Show the payment details section, hide the form
                 donationFormSection.classList.add('hidden');
                 paymentDetails.classList.remove('hidden');
                 paymentDetails.scrollIntoView({ behavior: 'smooth' });
@@ -526,7 +497,6 @@
                 const purpose = document.getElementById('purpose').value;
                 const paymentMethod = document.getElementById('payment-method').value;
 
-                // Prepare data to send to the database
                 const data = {
                     name,
                     email,
@@ -547,15 +517,14 @@
                     });
 
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        const errorData = await response.json();
+                        throw new Error(errorData.error || 'Network response was not ok');
                     }
 
-                    // On success, hide payment details and show thank you message
                     paymentDetails.classList.add('hidden');
                     thankYouMessage.classList.remove('hidden');
                     thankYouMessage.scrollIntoView({ behavior: 'smooth' });
 
-                    // Reset the form for future donations
                     document.getElementById('name').value = '';
                     document.getElementById('email').value = '';
                     document.getElementById('phone').value = '';
@@ -563,8 +532,8 @@
                     document.getElementById('purpose').value = '';
                     document.getElementById('payment-method').value = '';
                 } catch (error) {
-                    console.error('Error submitting donation:', error);
-                    alert('Error submitting your donation. Please try again.');
+                    console.error('Error submitting donation:', error.message);
+                    alert(`Error submitting your donation: ${error.message}. Please try again.`);
                 }
             });
         });
