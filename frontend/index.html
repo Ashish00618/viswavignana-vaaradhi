@@ -6,6 +6,10 @@
     <title>Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Vanilla Tilt for 3D tilt effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <!-- Add Particles.js for background particle animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
         /* Global Animations */
         .fade-in {
@@ -32,7 +36,7 @@
         }
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
         .btn-secondary {
             border: 1px solid #1E3A8A;
@@ -40,117 +44,21 @@
         }
         .btn-secondary:hover {
             transform: scale(1.05);
-            background-color: #F0F5FF;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(to right, #8B5CF6, #EC4899);
+            color: white;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
         }
         /* Card Styles */
         .card {
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .card:hover {
             transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-        /* Carousel Styles */
-        .carousel {
-            position: relative;
-            width: 100%;
-            min-height: 500px;
-            overflow: hidden;
-        }
-        .carousel-slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transform: scale(1);
-            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-        }
-        .carousel-slide.active {
-            opacity: 1;
-            transform: scale(1.05);
-        }
-        .carousel-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 1;
-        }
-        .carousel-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-        }
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            z-index: 3;
-            transition: all 0.3s ease;
-        }
-        .carousel-arrow:hover {
-            color: #F0F5FF;
-            transform: translateY(-50%) scale(1.2);
-        }
-        .carousel-arrow.left {
-            left: 20px;
-        }
-        .carousel-arrow.right {
-            right: 20px;
-        }
-        .carousel-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 3;
-        }
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            background: white;
-            border-radius: 50%;
-            cursor: pointer;
-            opacity: 0.5;
-            transition: all 0.3s ease;
-        }
-        .carousel-dot.active {
-            opacity: 1;
-            background: #3B82F6;
-        }
-        /* Focus Areas */
-        .focus-areas-container img {
-            object-fit: cover;
-        }
-        .focus-areas-container img:first-child {
-            z-index: 2;
-        }
-        .focus-areas-container img:last-child {
-            z-index: 1;
-        }
-        /* Testimonials */
-        .testimonial::before {
-            content: '“';
-            font-size: 3rem;
-            color: #3B82F6;
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            opacity: 0.3;
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #3B82F6;
         }
         /* Footer Links */
         .footer-link {
@@ -192,6 +100,160 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Parallax Effect for Hero */
+        .hero-section {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Typing Animation for Tagline */
+        .typing-text {
+            border-right: 2px solid #3B82F6;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #3B82F6; }
+        }
+        /* Gradient Background Animation for What We Do Section */
+        .what-we-do-section {
+            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Neon Glow for Impact Stats */
+        .impact-stat {
+            transition: all 0.3s ease;
+        }
+        .impact-stat:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transform: scale(1.05);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        }
+        .impact-stat.pulse {
+            animation: pulse 2s infinite;
+        }
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
+        }
+        #scrollToTopBtn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
+        }
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .carousel-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .carousel-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(59, 130, 246, 0.8);
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            z-index: 3;
+            transition: background 0.3s ease;
+        }
+        .carousel-btn:hover {
+            background: rgba(139, 92, 246, 0.8);
+        }
+        .prev-btn {
+            left: 10px;
+        }
+        .next-btn {
+            right: 10px;
+        }
+        .carousel-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .dot.active {
+            background: #3B82F6;
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
@@ -223,40 +285,147 @@
         </div>
     </header>
 
-    <!-- Hero Section with Carousel -->
-    <section id="carousel" class="carousel fade-in"></section>
-
-    <!-- Stats Section -->
-    <section id="stats" class="bg-white py-12 text-center fade-in">
-        <div class="container mx-auto px-4">
-            <div id="stats-container" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    <!-- Hero Section with Parallax and Typing Animation -->
+    <section class="hero-section h-screen flex items-center justify-center text-center text-white bg-[url('/images/hero-bg.jpg')] relative">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10">
+            <h1 class="text-5xl md:text-6xl font-bold mb-4">Empowering Lives, Transforming Futures</h1>
+            <p class="text-xl md:text-2xl mb-6 typing-text">Join us in building a better tomorrow for rural India</p>
+            <div class="space-x-4">
+                <a href="get-involved.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Get Involved</a>
+                <a href="donate.html" class="btn-secondary text-white px-6 py-3 rounded-full transition">Donate Now</a>
+            </div>
         </div>
     </section>
 
-    <!-- Our Work Section -->
-    <section id="focus-areas" class="bg-[#F0F5FF] py-20 text-center fade-in">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm">Our Focus Areas</h2>
-            <div id="focus-areas-container" class="grid grid-cols-1 md:grid-cols-3 gap-6 focus-areas-container"></div>
+    <!-- Carousel Section -->
+    <section class="py-10">
+        <div class="carousel">
+            <div class="carousel-slides">
+                <!-- Slide 1: Education -->
+                <div class="carousel-slide" style="background-image: url('/images/education-slide.jpg');">
+                    <div class="carousel-content">
+                        <h3 class="text-3xl font-bold mb-4">Education for All</h3>
+                        <p class="text-lg mb-6">Providing quality education to underprivileged children and adults in rural areas.</p>
+                        <a href="education.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+                <!-- Slide 2: Rural Development -->
+                <div class="carousel-slide" style="background-image: url('/images/rural-development-slide.jpg');">
+                    <div class="carousel-content">
+                        <h3 class="text-3xl font-bold mb-4">Empowering Rural India</h3>
+                        <p class="text-lg mb-6">Transforming villages through infrastructure, education, and economic opportunities.</p>
+                        <a href="rural-development.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+                <!-- Slide 3: Agriculture -->
+                <div class="carousel-slide" style="background-image: url('/images/agriculture-slide.jpg');">
+                    <div class="carousel-content">
+                        <h3 class="text-3xl font-bold mb-4">Sustainable Farming</h3>
+                        <p class="text-lg mb-6">Supporting farmers with modern, eco-friendly agricultural practices.</p>
+                        <a href="agriculture.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+                <!-- Slide 4: Health -->
+                <div class="carousel-slide" style="background-image: url('/images/health-slide.jpg');">
+                    <div class="carousel-content">
+                        <h3 class="text-3xl font-bold mb-4">Health and Wellness</h3>
+                        <p class="text-lg mb-6">Ensuring access to healthcare and promoting wellness in rural communities.</p>
+                        <a href="health.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+                <!-- Slide 5: Political/Legal Literacy -->
+                <div class="carousel-slide" style="background-image: url('/images/political-legal-slide.jpg');">
+                    <div class="carousel-content">
+                        <h3 class="text-3xl font-bold mb-4">Political & Legal Awareness</h3>
+                        <p class="text-lg mb-6">Empowering citizens with knowledge of their rights and responsibilities.</p>
+                        <a href="political-legal-literacy.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Navigation Buttons -->
+            <button class="carousel-btn prev-btn">❮</button>
+            <button class="carousel-btn next-btn">❯</button>
+            <!-- Dots -->
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="bg-white py-20 text-center fade-in">
+    <!-- What We Do Section with Gradient Animation and 3D Tilt -->
+    <section class="what-we-do-section py-20">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm">Stories of Impact</h2>
-            <div id="testimonials-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">What We Do</h2>
+            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-12 fade-in">
+                We are dedicated to uplifting rural communities through education, political awareness, agriculture, and more.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Education</h3>
+                    <p class="text-gray-200 mb-4">Providing quality education to underprivileged children and adults in rural areas.</p>
+                    <a href="education.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                </div>
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Political/Legal Literacy</h3>
+                    <p class="text-gray-200 mb-4">Empowering citizens with knowledge of their rights and responsibilities.</p>
+                    <a href="political-legal-literacy.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                </div>
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Rural Development</h3>
+                    <p class="text-gray-200 mb-4">Supporting rural communities with infrastructure, education, and economic opportunities.</p>
+                    <a href="rural-development.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                </div>
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Agriculture</h3>
+                    <p class="text-gray-200 mb-4">Promoting sustainable farming practices and supporting rural farmers.</p>
+                    <a href="agriculture.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                </div>
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">Health</h3>
+                    <p class="text-gray-200 mb-4">Ensuring access to healthcare and promoting wellness in rural communities.</p>
+                    <a href="health.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Call-to-Action Section -->
-    <section class="bg-[#1E3A8A] text-white py-16 text-center fade-in">
+    <!-- Our Impact Section with Number Counter and Neon Glow -->
+    <section class="py-20 bg-[#F0F5FF]">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-4 text-shadow-sm">Support Our Mission</h2>
-            <p class="text-lg mb-6 max-w-2xl mx-auto">Your support helps educate children, empower farmers, and spread awareness. Join us today!</p>
+            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-center fade-in">Our Impact</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
+                    <h3 class="text-4xl font-bold text-[#1E3A8A] counter" data-target="500">0</h3>
+                    <p class="text-gray-600">Students Educated</p>
+                </div>
+                <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
+                    <h3 class="text-4xl font-bold text-[#1E3A8A] counter" data-target="1000">0</h3>
+                    <p class="text-gray-600">Farmers Supported</p>
+                </div>
+                <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
+                    <h3 class="text-4xl font-bold text-[#1E3A8A] counter" data-target="50">0</h3>
+                    <p class="text-gray-600">Villages Reached</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section with Particle Background -->
+    <section class="py-20 relative">
+        <div id="particles-js" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-center fade-in">Get Involved</h2>
+            <p class="text-lg max-w-3xl mx-auto text-center mb-12 fade-in">
+                Join us in making a difference. Whether through volunteering, donating, or spreading the word—your support matters.
+            </p>
             <div class="flex justify-center space-x-4">
-                <a href="donate.html" class="btn-secondary bg-white text-[#1E3A8A] px-6 py-3 rounded-full transition">Donate Now</a>
-                <a href="get-involved.html" class="btn-secondary bg-white text-[#1E3A8A] px-6 py-3 rounded-full transition">Volunteer</a>
+                <a href="volunteer.html" class="btn-secondary text-[#1E3A8A] px-6 py-3 rounded-full transition">Volunteer</a>
+                <a href="donate.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Donate</a>
             </div>
         </div>
     </section>
@@ -275,7 +444,7 @@
                         <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
                         <li><a href="about.html" class="footer-link hover:underline">About</a></li>
                         <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="donate.html" class="footer-link hover:underline">Donate</a></li>
+                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
                         <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
                     </ul>
                 </div>
@@ -292,264 +461,11 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Dynamic Rendering -->
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <!-- JavaScript for Enhanced Features -->
     <script>
-        // Data source for dynamic content
-        const data = {
-            carouselSlides: [
-                {
-                    image: "images/political-literacy-slide.jpg",
-                    headline: "Political Literacy: Engage & Participate",
-                    subheadline: "Enhancing <em>political awareness and participation</em> among citizens.",
-                    ctaLink: "get-involved.html",
-                    ctaText: "Join Us"
-                },
-                {
-                    image: "images/legal-literacy-slide.jpg",
-                    headline: "Legal Literacy: Know Your Rights",
-                    subheadline: "Empowering citizens by increasing <em>awareness of legal rights, responsibilities, and access to justice</em>.",
-                    ctaLink: "get-involved.html",
-                    ctaText: "Join Us"
-                },
-                {
-                    image: "images/education-slide.jpg",
-                    headline: "Education: Shaping Futures",
-                    subheadline: "Promoting <em>quality education, academic excellence, and skill development</em> for a successful future.",
-                    ctaLink: "get-involved.html",
-                    ctaText: "Join Us"
-                },
-                {
-                    image: "images/agriculture-slide.jpg",
-                    headline: "Agriculture: Sustainable Growth, Empowered Farmers",
-                    subheadline: "Empowering farmers, promoting <em>sustainable agriculture, and improving rural livelihoods</em>.",
-                    ctaLink: "get-involved.html",
-                    ctaText: "Join Us"
-                },
-                {
-                    image: "images/rural-development-slide.jpg",
-                    headline: "Rural Development: Building Resilient Villages",
-                    subheadline: "Enhancing the <em>quality of life in rural areas</em> through infrastructure, skill development, economic opportunities, and social empowerment.",
-                    ctaLink: "get-involved.html",
-                    ctaText: "Join Us"
-                },
-                {
-                    image: "images/health-slide.jpg",
-                    headline: "Health & Well-being: Care for All",
-                    subheadline: "Promoting <em>physical and mental well-being</em> through healthcare awareness, preventive care, and essential support.",
-                    ctaLink: "get-involved.html",
-                    ctaText: "Join Us"
-                }
-            ],
-            stats: [
-                { number: "500+", description: "Children Educated" },
-                { number: "100+", description: "Farmers Supported" },
-                { number: "50+", description: "Communities Empowered" }
-            ],
-            focusAreas: [
-                {
-                    image: "images/education-icon.jpg",
-                    hoverImage: "images/education-icon-hover.jpg",
-                    title: "Education for the Poor",
-                    description: "Helping children from underprivileged backgrounds access quality education."
-                },
-                {
-                    image: "images/agriculture-icon.jpg",
-                    hoverImage: "images/agriculture-icon-hover.jpg",
-                    title: "Agricultural Assistance",
-                    description: "Empowering farmers with resources and modern techniques to improve yields."
-                },
-                {
-                    image: "images/awareness-icon.jpg",
-                    hoverImage: "images/awareness-icon-hover.jpg",
-                    title: "Political Literacy",
-                    description: "Educating communities about their rights, duties, and democratic engagement."
-                }
-            ],
-            testimonials: [
-                {
-                    quote: "Viswa Vignana Vaaradhi is doing incredible work. Volunteering here has changed my life!",
-                    author: "Asha, Volunteer"
-                },
-                {
-                    quote: "Thanks to their education programs, my children now attend school regularly.",
-                    author: "Ravi, Beneficiary"
-                }
-            ]
-        };
-
-        // Render Carousel
-        function renderCarousel() {
-            const carousel = document.getElementById('carousel');
-            let currentSlide = 0;
-            const slideInterval = 5000;
-
-            // Create slides
-            data.carouselSlides.forEach((slide, index) => {
-                const slideDiv = document.createElement('div');
-                slideDiv.className = `carousel-slide ${index === 0 ? 'active' : ''}`;
-                slideDiv.style.backgroundImage = `url(${slide.image})`;
-                slideDiv.innerHTML = `
-                    <div class="carousel-content h-full flex flex-col justify-center items-center text-center">
-                        <div class="container mx-auto px-4">
-                            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-shadow-sm">${slide.headline}</h1>
-                            <p class="text-lg md:text-xl mb-6 max-w-2xl mx-auto">${slide.subheadline}</p>
-                            <a href="${slide.ctaLink}" class="btn-primary text-white px-6 py-3 rounded-full transition">${slide.ctaText}</a>
-                        </div>
-                    </div>
-                `;
-                carousel.appendChild(slideDiv);
-            });
-
-            // Create navigation arrows
-            const leftArrow = document.createElement('div');
-            leftArrow.className = 'carousel-arrow left';
-            leftArrow.innerHTML = '❮';
-            carousel.appendChild(leftArrow);
-
-            const rightArrow = document.createElement('div');
-            rightArrow.className = 'carousel-arrow right';
-            rightArrow.innerHTML = '❯';
-            carousel.appendChild(rightArrow);
-
-            // Create dots
-            const dotsContainer = document.createElement('div');
-            dotsContainer.className = 'carousel-dots';
-            data.carouselSlides.forEach((_, index) => {
-                const dot = document.createElement('div');
-                dot.className = `carousel-dot ${index === 0 ? 'active' : ''}`;
-                dotsContainer.appendChild(dot);
-            });
-            carousel.appendChild(dotsContainer);
-
-            // Carousel logic
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-
-            function showSlide(index) {
-                slides.forEach((slide, i) => {
-                    slide.classList.toggle('active', i === index);
-                });
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === index);
-                });
-                currentSlide = index;
-            }
-
-            function nextSlide() {
-                const next = (currentSlide + 1) % slides.length;
-                showSlide(next);
-            }
-
-            function prevSlide() {
-                const prev = (currentSlide - 1 + slides.length) % slides.length;
-                showSlide(prev);
-            }
-
-            let autoSlide = setInterval(nextSlide, slideInterval);
-
-            leftArrow.addEventListener('click', () => {
-                clearInterval(autoSlide);
-                prevSlide();
-                autoSlide = setInterval(nextSlide, slideInterval);
-            });
-
-            rightArrow.addEventListener('click', () => {
-                clearInterval(autoSlide);
-                nextSlide();
-                autoSlide = setInterval(nextSlide, slideInterval);
-            });
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    clearInterval(autoSlide);
-                    showSlide(index);
-                    autoSlide = setInterval(nextSlide, slideInterval);
-                });
-            });
-        }
-
-        // Render Stats with Count-Up Animation
-        function renderStats() {
-            const statsContainer = document.getElementById('stats-container');
-            
-            // Create stat elements with initial value of 0
-            data.stats.forEach(stat => {
-                const statDiv = document.createElement('div');
-                const hasPlus = stat.number.includes('+');
-                const targetNumber = parseInt(stat.number.replace('+', '')); // e.g., "500+" -> 500
-                statDiv.innerHTML = `
-                    <h3 class="text-5xl font-bold text-[#1E3A8A] text-shadow-sm" data-target="${targetNumber}" data-plus="${hasPlus}">0${hasPlus ? '+' : ''}</h3>
-                    <p class="text-lg font-medium mt-2">${stat.description}</p>
-                `;
-                statsContainer.appendChild(statDiv);
-            });
-
-            // Animate numbers when the stats section is in view
-            const statsSection = document.getElementById('stats');
-            const numberElements = statsContainer.querySelectorAll('h3');
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        numberElements.forEach(element => {
-                            const target = parseInt(element.getAttribute('data-target'));
-                            const hasPlus = element.getAttribute('data-plus') === 'true';
-                            let current = 0;
-                            const duration = 2000; // 2 seconds
-                            const increment = target / (duration / 50); // Update every 50ms
-
-                            const updateNumber = () => {
-                                current += increment;
-                                if (current >= target) {
-                                    current = target;
-                                    element.textContent = current + (hasPlus ? '+' : '');
-                                    return;
-                                }
-                                element.textContent = Math.floor(current) + (hasPlus ? '+' : '');
-                                setTimeout(updateNumber, 50);
-                            };
-                            updateNumber();
-                        });
-                        observer.unobserve(statsSection); // Stop observing after animation
-                    }
-                });
-            }, { threshold: 0.5 }); // Trigger when 50% of the section is visible
-
-            observer.observe(statsSection);
-        }
-
-        // Render Focus Areas
-        function renderFocusAreas() {
-            const focusAreasContainer = document.getElementById('focus-areas-container');
-            data.focusAreas.forEach(area => {
-                const areaDiv = document.createElement('div');
-                areaDiv.className = 'card bg-white p-6 rounded-xl shadow-md';
-                areaDiv.innerHTML = `
-                    <div class="relative h-48 mb-4">
-                        <img src="${area.image}" alt="${area.title} Image" class="absolute inset-0 h-full w-full object-cover rounded-lg transition-opacity duration-300 opacity-100 hover:opacity-0">
-                        <img src="${area.hoverImage}" alt="${area.title} Hover Image" class="absolute inset-0 h-full w-full object-cover rounded-lg transition-opacity duration-300 opacity-0 hover:opacity-100">
-                    </div>
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">${area.title}</h3>
-                    <p>${area.description}</p>
-                `;
-                focusAreasContainer.appendChild(areaDiv);
-            });
-        }
-
-        // Render Testimonials
-        function renderTestimonials() {
-            const testimonialsContainer = document.getElementById('testimonials-container');
-            data.testimonials.forEach(testimonial => {
-                const testimonialDiv = document.createElement('div');
-                testimonialDiv.className = 'card testimonial relative bg-[#F0F5FF] p-6 rounded-xl shadow-md';
-                testimonialDiv.innerHTML = `
-                    <p class="text-lg italic mb-4">“${testimonial.quote}”</p>
-                    <p class="font-semibold text-[#1E3A8A]">– ${testimonial.author}</p>
-                `;
-                testimonialsContainer.appendChild(testimonialDiv);
-            });
-        }
-
         // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
@@ -565,14 +481,128 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Number Counter Animation for Impact Stats
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const speed = 200;
+                    const increment = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target + '+';
+                    }
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        updateCount();
+                        observer.disconnect();
+                    }
+                }, { threshold: 0.5 });
+
+                observer.observe(counter);
+            });
+        }
+
+        // Initialize 3D Tilt Effect
+        function initTiltEffect() {
+            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.5,
+            });
+        }
+
+        // Initialize Particles.js
+        function initParticles() {
+            particlesJS('particles-js', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Scroll to Top Button
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Carousel Functionality
+        function initCarousel() {
+            const slides = document.querySelector('.carousel-slides');
+            const slideCount = document.querySelectorAll('.carousel-slide').length;
+            const dots = document.querySelectorAll('.dot');
+            let currentIndex = 0;
+
+            // Function to go to a specific slide
+            function goToSlide(index) {
+                if (index < 0) index = slideCount - 1;
+                if (index >= slideCount) index = 0;
+                currentIndex = index;
+                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[currentIndex].classList.add('active');
+            }
+
+            // Next and Previous Buttons
+            document.querySelector('.prev-btn').addEventListener('click', () => {
+                goToSlide(currentIndex - 1);
+            });
+            document.querySelector('.next-btn').addEventListener('click', () => {
+                goToSlide(currentIndex + 1);
+            });
+
+            // Dots Navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+
+            // Automatic Sliding
+            setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 5000);
+        }
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             try {
-                renderCarousel();
-                renderStats();
-                renderFocusAreas();
-                renderTestimonials();
                 animateSections();
+                animateCounters();
+                initTiltEffect();
+                initParticles();
+                initScrollToTop();
+                initCarousel();
             } catch (error) {
                 console.error('Error rendering page:', error);
                 document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
