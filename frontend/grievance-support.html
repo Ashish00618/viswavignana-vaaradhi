@@ -188,12 +188,7 @@
                                     <option value="" disabled selected>Select a district</option>
                                 </select>
                             </div>
-                            <div id="assemblyConstituencySection" class="mb-4">
-                                <label for="assemblyConstituency" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Assembly Constituency</label>
-                                <select id="assemblyConstituency" name="assemblyConstituency" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
-                                    <option value="" disabled selected>Select an assembly constituency</option>
-                                </select>
-                            </div>
+                            
                             <div class="mb-4">
                                 <label for="mandal" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Mandal</label>
                                 <input type="text" id="mandal" name="mandal" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
@@ -592,76 +587,7 @@
                 ]
             };
 
-            // Define assembly constituencies for each district (sample data for Andhra Pradesh, Telangana, and Uttar Pradesh)
-            const assemblyConstituencies = {
-                // Andhra Pradesh
-                "alluri-sitharama-raju": ["Paderu", "Araku Valley"],
-                "anakapalli": ["Anakapalli", "Chodavaram"],
-                "anantapur": ["Anantapur Urban", "Guntakal", "Tadpatri"],
-                "annamayya": ["Rajampet", "Madanapalle"],
-                "bapatla": ["Bapatla", "Addanki"],
-                "chittoor": ["Chittoor", "Nagari", "Puthalapattu"],
-                "east-godavari": ["Rajahmundry City", "Rajahmundry Rural", "Kothapeta"],
-                "eluru": ["Eluru", "Denduluru", "Polavaram"],
-                "guntur": ["Guntur East", "Guntur West", "Tenali"],
-                "kakinada": ["Kakinada City", "Kakinada Rural", "Pithapuram"],
-                "konaseema": ["Amalapuram", "Razole"],
-                "krishna": ["Machilipatnam", "Vijayawada Central", "Vijayawada East"],
-                "kurnool": ["Kurnool", "Adoni", "Yemmiganur"],
-                "nandyal": ["Nandyal", "Allagadda"],
-                "nellore": ["Nellore City", "Nellore Rural", "Kavali"],
-                "palnadu": ["Narasaraopet", "Chilakaluripet"],
-                "parvathipuram-manyam": ["Parvathipuram", "Salur"],
-                "prakasam": ["Ongole", "Kandukur", "Markapuram"],
-                "sri-balaji": ["Tirupati", "Srikalahasti"],
-                "sri-potti-sriramulu-nellore": ["Atmakur", "Udayagiri"],
-                "sri-sathya-sai": ["Dharmavaram", "Kadiri"],
-                "srikakulam": ["Srikakulam", "Palasa", "Tekkali"],
-                "visakhapatnam": ["Visakhapatnam East", "Visakhapatnam West", "Gajuwaka"],
-                "vizianagaram": ["Vizianagaram", "Nellimarla"],
-                "west-godavari": ["Bhimavaram", "Tadepalligudem", "Tanuku"],
-                "ysr-kadapa": ["Kadapa", "Proddatur", "Jammalamadugu"],
-
-                // Telangana
-                "adilabad": ["Adilabad", "Boath"],
-                "bhadradri-kothagudem": ["Kothagudem", "Aswaraopeta"],
-                "hyderabad": ["Malakpet", "Amberpet", "Jubilee Hills"],
-                "jagtial": ["Jagtial", "Dharmapuri"],
-                "jangaon": ["Jangaon", "Ghanpur"],
-                "jayashankar-bhupalpally": ["Bhupalpalle", "Manthani"],
-                "jogulamba-gadwal": ["Gadwal", "Alampur"],
-                "kamareddy": ["Kamareddy", "Yellareddy"],
-                "karimnagar": ["Karimnagar", "Huzurabad"],
-                "khammam": ["Khammam", "Palair"],
-                "komaram-bheem-asifabad": ["Asifabad", "Sirpur"],
-                "mahabubabad": ["Mahabubabad", "Dornakal"],
-                "mahbubnagar": ["Mahbubnagar", "Jadcherla"],
-                "mancherial": ["Mancherial", "Bellampalli"],
-                "medak": ["Medak", "Narsapur"],
-                "medchal-malkajgiri": ["Medchal", "Quthbullapur"],
-                "mulugu": ["Mulugu"],
-                "nagarkurnool": ["Nagarkurnool", "Achampet"],
-                "nalgonda": ["Nalgonda", "Miryalaguda"],
-                "narayanpet": ["Narayanpet"],
-                "nirmal": ["Nirmal", "Mudhole"],
-                "nizamabad": ["Nizamabad Urban", "Nizamabad Rural"],
-                "peddapalli": ["Peddapalli", "Manthani"],
-                "rajanna-sircilla": ["Sircilla", "Vemulawada"],
-                "rangareddy": ["Serilingampally", "Rajendranagar"],
-                "sangareddy": ["Sangareddy", "Zaheerabad"],
-                "siddipet": ["Siddipet", "Dubbak"],
-                "suryapet": ["Suryapet", "Kodad"],
-                "vikarabad": ["Vikarabad", "Tandur"],
-                "wanaparthy": ["Wanaparthy"],
-                "warangal-rural": ["Wardhannapet", "Parkal"],
-                "warangal-urban": ["Warangal East", "Warangal West"],
-                "yadadri-bhuvanagiri": ["Bhuvanagiri", "Aler"],
-
-                // Uttar Pradesh (Sample for Prayagraj based on web ID: 8)
-                "prayagraj": ["Phaphamau", "Soraon", "Phulpur", "Allahabad North", "Allahabad South"],
-                "azamgarh": ["Gopalpur", "Sagri", "Mubarakpur"],
-                // Add more districts and constituencies as needed
-            };
+           
 
             // Show/hide and populate subcategory dropdown based on main category selection
             categorySelect.addEventListener('change', () => {
