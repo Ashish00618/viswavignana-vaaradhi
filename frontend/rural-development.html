@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,6 +6,10 @@
     <title>Rural Development - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Vanilla Tilt for 3D tilt effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <!-- Add Particles.js for background particle animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
         /* Global Animations */
         .fade-in {
@@ -71,24 +36,19 @@
         }
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        .btn-secondary {
-            border: 1px solid #1E3A8A;
-            transition: all 0.3s ease;
-        }
-        .btn-secondary:hover {
-            transform: scale(1.05);
-            background-color: #F0F5FF;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
         /* Card Styles */
         .card {
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .card:hover {
             transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #3B82F6;
         }
         /* Footer Links */
         .footer-link {
@@ -130,6 +90,35 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Gradient Background Animation for Rural Development Section */
+        .rural-development-section {
+            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
+        }
+        #scrollToTopBtn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
@@ -161,143 +150,141 @@
         </div>
     </header>
 
-    <!-- Main Content: Rural Development -->
-    <main class="py-20">
-        <div class="container mx-auto px-4">
-            <!-- Rural Development Section -->
-            <section class="fade-in mb-12">
-                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Rural Development – Empowering India’s Villages from the Ground Up</h2>
-                <p class="text-lg max-w-3xl mx-auto text-center mb-8">
-                    At VISWA VIGNANA VAARADHI, we believe that real change begins in our villages. A strong nation is built when its rural communities are self-reliant, educated, healthy, and empowered. Through focused efforts in education, employment, infrastructure, and inclusion—we aim to transform rural lives and livelihoods. Our vision is to create model villages that are resilient, modern, and socially empowered.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Tile 1 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣ Strengthening Rural Education & Digital Learning</h3>
-                        <p class="text-gray-600 mb-4">
-                            Education is the first step toward empowerment. We’re making sure no child or adult is left behind in learning.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Setting up Community Learning Centers for children, adults, and dropouts</li>
-                            <li>Offering vocational training and adult literacy programs</li>
-                            <li>Supporting struggling rural students with mentorship, tutoring, and Mission Medha guidance</li>
-                            <li>Promoting digital education through e-learning platforms, online courses, and virtual libraries</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 2 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">2️⃣ Building Better Rural Infrastructure</h3>
-                        <p class="text-gray-600 mb-4">
-                            For villages to thrive, basic facilities must be in place. Because every village deserves dignity, cleanliness, and access.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Better roads, public transport, electricity, and mobile/internet connectivity</li>
-                            <li>Building schools, libraries, and community centers as learning and social hubs</li>
-                            <li>Ensuring clean drinking water, toilets, and proper sanitation</li>
-                            <li>Promoting renewable energy solutions like solar lights and off-grid electricity</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 3 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">3️⃣ Rural Employment & Skill Development</h3>
-                        <p class="text-gray-600 mb-4">
-                            We help rural youth and families gain the skills to succeed. Our goal: jobs in villages, not just job migrations.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Creating Skill Development Centers for trades like tailoring, carpentry, computer basics, and repair work</li>
-                            <li>Organizing entrepreneurship workshops to build local businesses and start-ups</li>
-                            <li>Encouraging women and youth to take up non-agricultural work—like handicrafts and digital services</li>
-                            <li>Supporting self-employment, microfinance access, and job linkages</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 4 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">4️⃣ Empowering Rural Women & Promoting Inclusion</h3>
-                        <p class="text-gray-600 mb-4">
-                            Rural development isn’t possible without strong, self-reliant women. We build women-led communities that lead with dignity and strength.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Form and support Self-Help Groups (SHGs) for savings and financial independence</li>
-                            <li>Conduct legal literacy and leadership training for women</li>
-                            <li>Help women access micro-loans, markets, and skill-based training</li>
-                            <li>Organize awareness sessions on domestic violence, early marriage, and workplace rights</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 5 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">5️⃣ Improving Rural Healthcare & Sanitation</h3>
-                        <p class="text-gray-600 mb-4">
-                            Health is a basic right. We focus on both physical and emotional well-being in villages.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Free health camps, vaccination drives, and mother-child care awareness</li>
-                            <li>Training on nutrition, hygiene, preventive care, and sanitation</li>
-                            <li>Mobile medical vans and telemedicine services for remote areas</li>
-                            <li>Mental health support and community counseling for those facing emotional distress</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 6 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">6️⃣ Digital Transformation in Rural India</h3>
-                        <p class="text-gray-600 mb-4">
-                            We bridge the digital divide by helping villages become tech-enabled. We ensure villagers are connected, informed, and included in India’s digital future.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Expanding internet access in remote areas</li>
-                            <li>Training villagers in online services, banking, and government portals</li>
-                            <li>Promoting digital payment systems and online marketplaces for rural products</li>
-                            <li>Launching community radio and digital awareness drives for better information flow</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 7 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">7️⃣ Disaster Preparedness & Climate Resilience</h3>
-                        <p class="text-gray-600 mb-4">
-                            Rural communities are often the first to suffer in disasters. We equip villages to be resilient and ready for any crisis.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Educating them on emergency response, first aid, and disaster safety</li>
-                            <li>Building early warning systems for floods, cyclones, and droughts</li>
-                            <li>Promoting safe housing and disaster-resilient construction</li>
-                            <li>Supporting climate adaptation strategies for rural sustainability</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 8 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">8️⃣ Rural Tourism & Cultural Heritage</h3>
-                        <p class="text-gray-600 mb-4">
-                            We celebrate rural culture while creating new income sources. Our villages become centers of art, hospitality, and rural pride.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Promoting homestays, eco-tourism, and village tours</li>
-                            <li>Supporting handicrafts, traditional arts, and folk performances</li>
-                            <li>Organizing local festivals and fairs to showcase culture and generate income</li>
-                        </ul>
-                    </div>
-                    <!-- Tile 9 -->
-                    <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">9️⃣ Strengthening Rural Governance & Civic Participation</h3>
-                        <p class="text-gray-600 mb-4">
-                            We believe in village-led development. We help build active, responsible rural citizens who lead their communities.
-                        </p>
-                        <ul class="list-disc list-inside text-gray-600">
-                            <li>Conduct sessions on Panchayati Raj, civic duties, and rights</li>
-                            <li>Train villagers in budget planning, social audits, and local problem-solving</li>
-                            <li>Encourage youth and women to take leadership roles in governance</li>
-                            <li>Support legal aid awareness and public grievance redressal</li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- Closing Vision Statement -->
-                <div class="mt-8 text-center">
-                    <h3 class="text-2xl font-semibold text-[#1E3A8A] mb-4">🌱 Our Vision:</h3>
-                    <p class="text-lg max-w-3xl mx-auto">
-                        To build self-reliant villages where education, opportunity, health, and dignity reach every home, every hand, and every heart.
+    <!-- Rural Development Section with Gradient Animation and Particle Background -->
+    <section class="rural-development-section py-20 relative">
+        <div id="particles-js-rural-development" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">Rural Development – Empowering India’s Villages from the Ground Up</h2>
+            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-8 fade-in">
+                At VISWA VIGNANA VAARADHI, we believe that real change begins in our villages. A strong nation is built when its rural communities are self-reliant, educated, healthy, and empowered. Through focused efforts in education, employment, infrastructure, and inclusion—we aim to transform rural lives and livelihoods. Our vision is to create model villages that are resilient, modern, and socially empowered.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tile 1 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">1️⃣ Strengthening Rural Education & Digital Learning</h3>
+                    <p class="text-gray-200 mb-4">
+                        Education is the first step toward empowerment. We’re making sure no child or adult is left behind in learning.
                     </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Setting up Community Learning Centers for children, adults, and dropouts</li>
+                        <li>Offering vocational training and adult literacy programs</li>
+                        <li>Supporting struggling rural students with mentorship, tutoring, and Mission Medha guidance</li>
+                        <li>Promoting digital education through e-learning platforms, online courses, and virtual libraries</li>
+                    </ul>
                 </div>
-            </section>
+                <!-- Tile 2 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">2️⃣ Building Better Rural Infrastructure</h3>
+                    <p class="text-gray-200 mb-4">
+                        For villages to thrive, basic facilities must be in place. Because every village deserves dignity, cleanliness, and access.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Better roads, public transport, electricity, and mobile/internet connectivity</li>
+                        <li>Building schools, libraries, and community centers as learning and social hubs</li>
+                        <li>Ensuring clean drinking water, toilets, and proper sanitation</li>
+                        <li>Promoting renewable energy solutions like solar lights and off-grid electricity</li>
+                    </ul>
+                </div>
+                <!-- Tile 3 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">3️⃣ Rural Employment & Skill Development</h3>
+                    <p class="text-gray-200 mb-4">
+                        We help rural youth and families gain the skills to succeed. Our goal: jobs in villages, not just job migrations.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Creating Skill Development Centers for trades like tailoring, carpentry, computer basics, and repair work</li>
+                        <li>Organizing entrepreneurship workshops to build local businesses and start-ups</li>
+                        <li>Encouraging women and youth to take up non-agricultural work—like handicrafts and digital services</li>
+                        <li>Supporting self-employment, microfinance access, and job linkages</li>
+                    </ul>
+                </div>
+                <!-- Tile 4 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">4️⃣ Empowering Rural Women & Promoting Inclusion</h3>
+                    <p class="text-gray-200 mb-4">
+                        Rural development isn’t possible without strong, self-reliant women. We build women-led communities that lead with dignity and strength.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Form and support Self-Help Groups (SHGs) for savings and financial independence</li>
+                        <li>Conduct legal literacy and leadership training for women</li>
+                        <li>Help women access micro-loans, markets, and skill-based training</li>
+                        <li>Organize awareness sessions on domestic violence, early marriage, and workplace rights</li>
+                    </ul>
+                </div>
+                <!-- Tile 5 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">5️⃣ Improving Rural Healthcare & Sanitation</h3>
+                    <p class="text-gray-200 mb-4">
+                        Health is a basic right. We focus on both physical and emotional well-being in villages.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Free health camps, vaccination drives, and mother-child care awareness</li>
+                        <li>Training on nutrition, hygiene, preventive care, and sanitation</li>
+                        <li>Mobile medical vans and telemedicine services for remote areas</li>
+                        <li>Mental health support and community counseling for those facing emotional distress</li>
+                    </ul>
+                </div>
+                <!-- Tile 6 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">6️⃣ Digital Transformation in Rural India</h3>
+                    <p class="text-gray-200 mb-4">
+                        We bridge the digital divide by helping villages become tech-enabled. We ensure villagers are connected, informed, and included in India’s digital future.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Expanding internet access in remote areas</li>
+                        <li>Training villagers in online services, banking, and government portals</li>
+                        <li>Promoting digital payment systems and online marketplaces for rural products</li>
+                        <li>Launching community radio and digital awareness drives for better information flow</li>
+                    </ul>
+                </div>
+                <!-- Tile 7 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">7️⃣ Disaster Preparedness & Climate Resilience</h3>
+                    <p class="text-gray-200 mb-4">
+                        Rural communities are often the first to suffer in disasters. We equip villages to be resilient and ready for any crisis.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Educating them on emergency response, first aid, and disaster safety</li>
+                        <li>Building early warning systems for floods, cyclones, and droughts</li>
+                        <li>Promoting safe housing and disaster-resilient construction</li>
+                        <li>Supporting climate adaptation strategies for rural sustainability</li>
+                    </ul>
+                </div>
+                <!-- Tile 8 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">8️⃣ Rural Tourism & Cultural Heritage</h3>
+                    <p class="text-gray-200 mb-4">
+                        We celebrate rural culture while creating new income sources. Our villages become centers of art, hospitality, and rural pride.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Promoting homestays, eco-tourism, and village tours</li>
+                        <li>Supporting handicrafts, traditional arts, and folk performances</li>
+                        <li>Organizing local festivals and fairs to showcase culture and generate income</li>
+                    </ul>
+                </div>
+                <!-- Tile 9 -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white">9️⃣ Strengthening Rural Governance & Civic Participation</h3>
+                    <p class="text-gray-200 mb-4">
+                        We believe in village-led development. We help build active, responsible rural citizens who lead their communities.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-200">
+                        <li>Conduct sessions on Panchayati Raj, civic duties, and rights</li>
+                        <li>Train villagers in budget planning, social audits, and local problem-solving</li>
+                        <li>Encourage youth and women to take leadership roles in governance</li>
+                        <li>Support legal aid awareness and public grievance redressal</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Closing Vision Statement -->
+            <div class="mt-8 text-center fade-in">
+                <h3 class="text-2xl font-semibold text-white mb-4">🌱 Our Vision:</h3>
+                <p class="text-lg text-white max-w-3xl mx-auto">
+                    To build self-reliant villages where education, opportunity, health, and dignity reach every home, every hand, and every heart.
+                </p>
+            </div>
         </div>
-    </main>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-[#1E3A8A] text-white p-10">
@@ -321,7 +308,7 @@
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
                     <p>Email: viswavignanavaaradhi@gmail.com</p>
                     <p>Phone: +91-9010937358</p>
-                    <p>Address: Visakhapatnam, Andhra Pradesh</p>
+                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
                 </div>
             </div>
             <div class="mt-8 text-center">
@@ -330,7 +317,10 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Fade-In Animation -->
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <!-- JavaScript for Enhanced Features -->
     <script>
         // Fade-In Animation for Sections
         function animateSections() {
@@ -347,10 +337,59 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Initialize 3D Tilt Effect
+        function initTiltEffect() {
+            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.5,
+            });
+        }
+
+        // Initialize Particles.js for Rural Development Section
+        function initParticles() {
+            particlesJS('particles-js-rural-development', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Scroll to Top Button
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             try {
                 animateSections();
+                initTiltEffect();
+                initParticles();
+                initScrollToTop();
             } catch (error) {
                 console.error('Error rendering page:', error);
                 document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
