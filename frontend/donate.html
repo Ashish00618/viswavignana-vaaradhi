@@ -6,7 +6,10 @@
     <title>Donate - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Particles.js for background particle animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
+        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -16,6 +19,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -23,21 +27,35 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
-        .card {
+        /* Form Container Styles (Glassmorphism) */
+        .form-container {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        .form-container:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #3B82F6;
         }
+        /* Form Input Styles */
+        input, select {
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            border-color: #3B82F6;
+        }
+        /* Footer Links */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -45,6 +63,7 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -75,6 +94,35 @@
             display: block;
             opacity: 1;
             transform: translateY(0);
+        }
+        /* Gradient Background Animation for Hero and Form Sections */
+        .hero-section, .form-section {
+            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
+        }
+        #scrollToTopBtn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -107,40 +155,41 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
-        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
+    <!-- Hero Section with Gradient Animation and Particle Background -->
+    <section class="hero-section py-20 text-center text-white relative fade-in">
+        <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Donate</h2>
+            <h2 class="text-5xl font-bold mb-4">Donate</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Support our mission to empower communities through education, health, and rural development.</p>
         </div>
     </section>
 
-    <!-- Donation Form Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-4">
+    <!-- Donation Form Section with Gradient Animation and Particle Background -->
+    <section class="form-section py-20 relative">
+        <div id="particles-js-form" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
             <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Make a Difference Today</h3>
-                <p class="text-lg mb-6 max-w-3xl mx-auto text-center">Your donation helps us continue our work in underserved communities.</p>
-                <div class="max-w-md mx-auto bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-3xl font-bold mb-6 text-white text-center">Make a Difference Today</h3>
+                <p class="text-lg mb-6 max-w-3xl mx-auto text-center text-white">Your donation helps us continue our work in underserved communities.</p>
+                <div class="max-w-md mx-auto form-container p-6 rounded-xl">
                     <div class="mb-4">
-                        <label for="name" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Full Name</label>
+                        <label for="name" class="block text-lg font-semibold mb-2 text-white">Full Name</label>
                         <input type="text" id="name" placeholder="Enter your full name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                     </div>
                     <div class="mb-4">
-                        <label for="email" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Email</label>
+                        <label for="email" class="block text-lg font-semibold mb-2 text-white">Email</label>
                         <input type="email" id="email" placeholder="Enter your email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                     </div>
                     <div class="mb-4">
-                        <label for="phone" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Phone Number</label>
+                        <label for="phone" class="block text-lg font-semibold mb-2 text-white">Phone Number</label>
                         <input type="tel" id="phone" placeholder="Enter your phone number" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                     </div>
                     <div class="mb-4">
-                        <label for="amount" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Donation Amount (INR)</label>
+                        <label for="amount" class="block text-lg font-semibold mb-2 text-white">Donation Amount (INR)</label>
                         <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" min="1" required>
                     </div>
                     <div class="mb-4">
-                        <label for="purpose" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Purpose of Donation (Optional)</label>
+                        <label for="purpose" class="block text-lg font-semibold mb-2 text-white">Purpose of Donation (Optional)</label>
                         <select id="purpose" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
                             <option value="">Select a purpose (optional)</option>
                             <option value="education">Education</option>
@@ -152,7 +201,7 @@
                         </select>
                     </div>
                     <div class="mb-4">
-                        <label for="payment-method" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Payment Method</label>
+                        <label for="payment-method" class="block text-lg font-semibold mb-2 text-white">Payment Method</label>
                         <select id="payment-method" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             <option value="" disabled selected>Select a payment method</option>
                             <option value="upi">UPI (Scan QR Code)</option>
@@ -162,17 +211,17 @@
                     <button id="proceedButton" class="btn-primary w-full text-white px-6 py-3 rounded-full transition">Proceed to Pay</button>
                 </div>
                 <!-- Payment Details Section (Hidden Initially) -->
-                <div id="payment-details" class="max-w-md mx-auto mt-6 bg-white p-6 rounded-xl shadow-md hidden">
-                    <h4 id="payment-title" class="text-xl font-semibold mb-4 text-[#1E3A8A]"></h4>
-                    <div id="donor-info" class="mb-4">
+                <div id="payment-details" class="max-w-md mx-auto mt-6 form-container p-6 rounded-xl hidden">
+                    <h4 id="payment-title" class="text-xl font-semibold mb-4 text-white"></h4>
+                    <div id="donor-info" class="mb-4 text-white">
                         <p><strong>Name:</strong> <span id="donor-name"></span></p>
                         <p><strong>Email:</strong> <span id="donor-email"></span></p>
                         <p><strong>Phone:</strong> <span id="donor-phone"></span></p>
                         <p><strong>Amount:</strong> ₹<span id="donor-amount"></span></p>
                         <p><strong>Purpose:</strong> <span id="donor-purpose"></span></p>
                     </div>
-                    <div id="payment-content"></div>
-                    <p class="text-sm mt-4 text-gray-600">After making the payment, please email the transaction details to <a href="mailto:updated-email@viswavignana.org" class="text-[#1E3A8A] hover:underline">updated-email@viswavignana.org</a> for confirmation.</p>
+                    <div id="payment-content" class="text-white"></div>
+                    <p class="text-sm mt-4 text-gray-200">After making the payment, please email the transaction details to <a href="mailto:updated-email@viswavignana.org" class="text-blue-300 hover:underline">updated-email@viswavignana.org</a> for confirmation.</p>
                 </div>
             </div>
         </div>
@@ -209,8 +258,12 @@
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
     <!-- JavaScript for Animations and Payment Logic -->
     <script>
+        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -225,8 +278,65 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Initialize Particles.js for Hero and Form Sections
+        function initParticles() {
+            particlesJS('particles-js-hero', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+
+            particlesJS('particles-js-form', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Scroll to Top Button
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Payment Logic
         document.addEventListener('DOMContentLoaded', () => {
             animateSections();
+            initParticles();
+            initScrollToTop();
 
             const proceedButton = document.getElementById('proceedButton');
             const paymentDetails = document.getElementById('payment-details');
@@ -290,8 +400,8 @@
                     paymentTitle.textContent = 'Pay via Bank Transfer';
                     paymentContent.innerHTML = `
                         <p class="mb-4">Please transfer ₹${amount} to the following bank account:</p>
-                        <p><strong>Account Name:</strong>Viswa Vignana Vaaradhi Welfare Society</p>
-                        <p><strong>Account Number:</strong>42087404874</p>
+                        <p><strong>Account Name:</strong> Viswa Vignana Vaaradhi Welfare Society</p>
+                        <p><strong>Account Number:</strong> 42087404874</p>
                         <p><strong>IFSC Code:</strong> SBIN0000772</p>
                         <p><strong>Bank Name:</strong> State Bank of India AU Campus-VSP</p>
                         <p><strong>Branch Code:</strong> 772</p>
