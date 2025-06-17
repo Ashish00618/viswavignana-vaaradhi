@@ -6,7 +6,12 @@
     <title>Grievance/Support Request - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Vanilla Tilt for 3D tilt effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <!-- Add Particles.js for background particle animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
+        /* Fade-In Animation */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -16,6 +21,8 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -23,14 +30,21 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
+
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
         }
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
+
+        /* Footer Link Styles */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -38,6 +52,8 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -69,15 +85,177 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Hide subcategory, district, and assembly constituency dropdowns by default */
-        #subcategorySection, #districtSection, #assemblyConstituencySection {
+
+        /* Gradient Background Animation for Form Section */
+        .form-section {
+            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Form Container Styles with Tilt and Pulse Effects */
+        #grievanceForm {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        #grievanceForm:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #3B82F6;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        }
+        #grievanceForm.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Form Element Styles */
+        #grievanceForm h4 {
+            color: #ffffff;
+            border-bottom: 2px solid #3B82F6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        #grievanceForm label {
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        #grievanceForm input,
+        #grievanceForm select,
+        #grievanceForm textarea {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+        #grievanceForm input:focus,
+        #grievanceForm select:focus,
+        #grievanceForm textarea:focus {
+            border-color: #3B82F6;
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+            outline: none;
+        }
+        #grievanceForm input::placeholder,
+        #grievanceForm textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        #grievanceForm textarea {
+            resize: vertical;
+        }
+        #grievanceForm .mb-6 {
+            margin-bottom: 2rem;
+        }
+        #grievanceForm p {
+            color: #e5e7eb;
+        }
+        #grievanceForm .flex label span {
+            color: #e5e7eb;
+        }
+
+        /* Hide Subcategory, District, and Assembly Constituency Dropdowns by Default */
+        #subcategorySection,
+        #districtSection,
+        #assemblyConstituencySection {
             display: none;
+        }
+
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
+        }
+        #scrollToTopBtn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 0.5rem 1rem;
+            }
+            header img {
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+            header h2 {
+                font-size: 1.25rem;
+            }
+            nav a {
+                font-size: 0.875rem;
+                padding: 0.5rem;
+            }
+            .btn-primary {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+                line-height: 1.25rem;
+            }
+            #grievanceForm {
+                padding: 1rem;
+            }
+            #grievanceForm h4 {
+                font-size: 1.25rem;
+            }
+            #grievanceForm label {
+                font-size: 0.875rem;
+            }
+            #grievanceForm input,
+            #grievanceForm select,
+            #grievanceForm textarea {
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
+            #formMessage {
+                font-size: 0.75rem;
+            }
+            footer {
+                padding: 1.5rem;
+            }
+            footer h3 {
+                font-size: 1.25rem;
+            }
+            footer p,
+            footer a {
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .btn-primary {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white sticky top-0 z-20 shadow-lg py-0 px-4">
         <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
                 <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
@@ -113,36 +291,37 @@
         </div>
     </section>
 
-    <!-- Grievance/Support Form Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-4">
+    <!-- Grievance/Support Form Section with Gradient and Particles -->
+    <section class="form-section py-20 relative">
+        <div id="particles-js-form" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
             <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Grievance/Support Request Form</h3>
-                <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md">
-                    <form id="grievanceForm">
+                <h3 class="text-3xl font-bold mb-6 text-white text-center text-shadow-sm">Grievance/Support Request Form</h3>
+                <div class="max-w-2xl mx-auto">
+                    <form id="grievanceForm" class="tilt-card pulse">
                         <!-- 1. Personal Information -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">1. Personal Information</h4>
+                            <h4 class="text-xl font-semibold mb-4">1. Personal Information</h4>
                             <div class="mb-4">
-                                <label for="fullName" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Full Name</label>
-                                <input type="text" id="fullName" name="fullName" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="fullName" class="block">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" class="w-full" required>
                             </div>
                             <div class="mb-4">
-                                <label for="mobileNumber" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Mobile Number</label>
-                                <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="mobileNumber" class="block">Mobile Number</label>
+                                <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full" required>
                             </div>
                             <div class="mb-4">
-                                <label for="email" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Email ID (Optional)</label>
-                                <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
+                                <label for="email" class="block">Email ID (Optional)</label>
+                                <input type="email" id="email" name="email" class="w-full">
                             </div>
                         </div>
 
                         <!-- 2. Address Details -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">2. Address Details</h4>
+                            <h4 class="text-xl font-semibold mb-4">2. Address Details</h4>
                             <div class="mb-4">
-                                <label for="state" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">State</label>
-                                <select id="state" name="state" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="state" class="block">State</label>
+                                <select id="state" name="state" class="w-full" required>
                                     <option value="" disabled selected>Select a state</option>
                                     <option value="andhra-pradesh">Andhra Pradesh</option>
                                     <option value="arunachal-pradesh">Arunachal Pradesh</option>
@@ -183,25 +362,24 @@
                                 </select>
                             </div>
                             <div id="districtSection" class="mb-4">
-                                <label for="district" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">District</label>
-                                <select id="district" name="district" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="district" class="block">District</label>
+                                <select id="district" name="district" class="w-full" required>
                                     <option value="" disabled selected>Select a district</option>
                                 </select>
                             </div>
-                            
                             <div class="mb-4">
-                                <label for="mandal" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Mandal</label>
-                                <input type="text" id="mandal" name="mandal" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="mandal" class="block">Mandal</label>
+                                <input type="text" id="mandal" name="mandal" class="w-full" required>
                             </div>
                         </div>
 
                         <!-- 3. Area of Service / Concern -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">3. Area of Service / Concern</h4>
-                            <p class="text-gray-700 mb-4">Please select the category that best describes your grievance or the type of support you are seeking. This helps us direct your query to the right department.</p>
+                            <h4 class="text-xl font-semibold mb-4">3. Area of Service / Concern</h4>
+                            <p class="text-gray-200 mb-4">Please select the category that best describes your grievance or the type of support you are seeking. This helps us direct your query to the right department.</p>
                             <div class="mb-4">
-                                <label for="category" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Select Desired Service</label>
-                                <select id="category" name="category" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="category" class="block">Select Desired Service</label>
+                                <select id="category" name="category" class="w-full" required>
                                     <option value="" disabled selected>Select a category</option>
                                     <option value="political-literacy-civic-engagement">Political Literacy & Civic Engagement</option>
                                     <option value="legal-literacy-access-to-justice">Legal Literacy & Access to Justice</option>
@@ -212,8 +390,8 @@
                                 </select>
                             </div>
                             <div id="subcategorySection" class="mb-4">
-                                <label for="subcategory" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Select Subcategory</label>
-                                <select id="subcategory" name="subcategory" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="subcategory" class="block">Select Subcategory</label>
+                                <select id="subcategory" name="subcategory" class="w-full" required>
                                     <option value="" disabled selected>Select a subcategory</option>
                                 </select>
                             </div>
@@ -221,16 +399,16 @@
 
                         <!-- 4. Details of Grievance/Support Request -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">4. Details of Grievance/Support Request</h4>
+                            <h4 class="text-xl font-semibold mb-4">4. Details of Grievance/Support Request</h4>
                             <div class="mb-4">
-                                <label for="description" class="block text-lg font-semibold mb-2 text-[#1E3A8A]">Description</label>
-                                <textarea id="description" name="description" rows="5" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required></textarea>
+                                <label for="description" class="block">Description</label>
+                                <textarea id="description" name="description" rows="5" class="w-full" required></textarea>
                             </div>
                         </div>
 
                         <!-- 5. Declaration -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4 text-[#1E3A8A]">5. Declaration</h4>
+                            <h4 class="text-xl font-semibold mb-4">5. Declaration</h4>
                             <label class="flex items-center">
                                 <input type="checkbox" name="declaration" required>
                                 <span class="ml-2">I confirm that the information provided is true to the best of my knowledge.</span>
@@ -238,9 +416,9 @@
                         </div>
 
                         <!-- Submit Button -->
-                        <button type="submit" class="btn-primary w-full text-white px-6 py-3 rounded-full transition">Submit</button>
+                        <button type="submit" class="btn-primary w-full text-white rounded-full transition">Submit</button>
                     </form>
-                    <p id="formMessage" class="mt-4 text-center text-sm hidden"></p>
+                    <p id="formMessage" class="mt-4 text-center text-sm text-white hidden"></p>
                 </div>
             </div>
         </div>
@@ -266,9 +444,9 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: updated-email@viswavignana.org</p>
-                    <p>Phone: +91-1234567890</p>
-                    <p>Address: New Address, Hyderabad, Telangana, India</p>
+                    <p>Email: viswavignanavaaradhi@gmail.com</p>
+                    <p>Phone: +91-9010937358</p>
+                    <p>Address: Visakhapatnam, Amdhra Pradesh, India</p>
                 </div>
             </div>
             <div class="mt-8 text-center">
@@ -277,8 +455,12 @@
         </div>
     </footer>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
     <!-- JavaScript -->
     <script>
+        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -293,9 +475,54 @@
             sections.forEach(section => observer.observe(section));
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            animateSections();
+        // Initialize 3D Tilt Effect
+        function initTiltEffect() {
+            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.5,
+            });
+        }
 
+        // Initialize Particles.js for Form Section
+        function initParticles() {
+            particlesJS('particles-js-form', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Scroll to Top Button
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Form Functionality
+        function initForm() {
             const grievanceForm = document.getElementById('grievanceForm');
             const formMessage = document.getElementById('formMessage');
             const categorySelect = document.getElementById('category');
@@ -587,8 +814,6 @@
                 ]
             };
 
-           
-
             // Show/hide and populate subcategory dropdown based on main category selection
             categorySelect.addEventListener('change', () => {
                 const selectedCategory = categorySelect.value;
@@ -692,6 +917,20 @@
                     formMessage.textContent = 'Error submitting grievance/support request. Please try again.';
                 }
             });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                animateSections();
+                initTiltEffect();
+                initParticles();
+                initScrollToTop();
+                initForm();
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
+            }
         });
     </script>
 </body>
