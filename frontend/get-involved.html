@@ -33,6 +33,7 @@
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
+            white-space: nowrap; /* Prevent text wrapping */
         }
         .btn-primary:hover {
             transform: scale(1.05);
@@ -127,6 +128,26 @@
             box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
             transform: scale(1.1);
         }
+        /* Responsive Adjustments for Buttons and Tiles */
+        @media (max-width: 768px) {
+            .tile {
+                padding: 1rem; /* Reduce padding on smaller screens */
+                margin-bottom: 1.5rem; /* Add more spacing between stacked tiles */
+            }
+            .btn-primary {
+                width: 100%; /* Full-width buttons on smaller screens */
+                padding: 0.5rem 1rem; /* Compact padding */
+                font-size: 0.75rem; /* Smaller font size to prevent wrapping */
+                line-height: 1.25rem; /* Adjust line height for better fit */
+            }
+        }
+        @media (min-width: 769px) {
+            .btn-primary {
+                width: auto; /* Auto-width on larger screens */
+                padding: 0.75rem 1.5rem; /* Original padding */
+                font-size: 1rem; /* Original font size */
+            }
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
@@ -182,7 +203,7 @@
                         Become a volunteer and support our initiatives in education, health, and rural development. Roles include teaching, organizing health camps, and community outreach. Gain valuable skills and make a direct impact.
                     </p>
                     <div class="text-center">
-                        <a href="volunteer-registration.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Register as a Volunteer</a>
+                        <a href="volunteer-registration.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Join Us</a>
                     </div>
                 </div>
                 <!-- Donate Now -->
@@ -231,7 +252,7 @@
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
                     <p>Email: viswavignanavaaradhi@gmail.com</p>
                     <p>Phone: +91-1234567890</p>
-                    <p>Address: New Address, Hyderabad, Telangana, India</p>
+                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
                 </div>
             </div>
             <div class="mt-8 text-center">
