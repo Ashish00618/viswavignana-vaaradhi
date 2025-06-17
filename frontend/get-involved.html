@@ -6,7 +6,12 @@
     <title>Get Involved - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Vanilla Tilt for 3D tilt effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <!-- Add Particles.js for background particle animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
+        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -16,6 +21,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -23,21 +29,36 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
-        .card {
+        /* Tile Styles */
+        .tile {
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        .card:hover {
+        .tile:hover {
             transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #3B82F6;
         }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        }
+        .tile.pulse {
+            animation: pulse 2s infinite;
+        }
+        /* Footer Links */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -45,6 +66,7 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -76,68 +98,43 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Horizontal layout for options with equal sizes */
-        .options-container {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+        /* Gradient Background Animation for Get Involved Section */
+        .get-involved-section {
+            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 400%;
+            animation: gradientAnimation 15s ease infinite;
         }
-        .option-card {
-            flex: 1 1 0; /* Equal width: grow and shrink equally, base width 0 */
-            width: 300px; /* Fixed width for consistency */
-            min-width: 250px; /* Minimum width for smaller screens */
-            max-width: 300px; /* Maximum width to prevent stretching */
-            height: 300px; /* Fixed height for all cards */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        .option-card .card-content {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 1.5rem;
-            background-color: white;
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
         }
-        .option-card p {
-            flex-grow: 1; /* Allow text to take up remaining space */
-            margin-bottom: 1.5rem; /* Space between text and button */
-            overflow: hidden; /* Prevent overflow */
-            text-overflow: ellipsis; /* Add ellipsis if text overflows */
-            display: -webkit-box;
-            -webkit-line-clamp: 4; /* Limit text to 4 lines */
-            -webkit-box-orient: vertical;
-        }
-        @media (max-width: 768px) {
-            .options-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .option-card {
-                width: 100%;
-                max-width: 100%;
-                height: auto; /* Allow height to adjust on mobile */
-                margin-bottom: 2rem;
-            }
-            .option-card .card-content {
-                height: auto; /* Allow content to expand on mobile */
-            }
-            .option-card p {
-                -webkit-line-clamp: unset; /* Remove line clamp on mobile */
-            }
+        #scrollToTopBtn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
-        <div class="container mx-auto flex justify-between items-center h-full">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
                 <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
@@ -161,43 +158,51 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
-        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
+    <!-- Get Involved Section with Gradient Animation and Particle Background -->
+    <section class="get-involved-section py-20 relative">
+        <div id="particles-js-get-involved" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Get Involved</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Join us in making a difference. Become a volunteer, donate, or submit a grievance/support request today!</p>
-        </div>
-    </section>
-
-    <!-- Get Involved Options -->
-    <section class="py-20">
-        <div class="container mx-auto px-4">
-            <div class="options-container">
-                <!-- Volunteer Registration Section -->
-                <div class="option-card fade-in">
-                    <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Volunteer Registration</h3>
-                    <div class="card-content">
-                        <p class="text-lg">Join our mission as a volunteer and help us empower communities through education, health, and rural development.</p>
-                        <a href="volunteer-registration.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Register as a Volunteer</a>
+            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">Get Involved</h2>
+            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-8 fade-in">
+                Join Viswa Vignana Vaaradhi in our mission to empower rural communities across India. Whether you volunteer your time, donate to support our initiatives, or seek assistance through a grievance or support request, your involvement can create lasting change.
+            </p>
+            <!-- Why Get Involved -->
+            <div class="text-center fade-in">
+                <h3 class="text-2xl font-semibold mb-4 text-white">Why Get Involved?</h3>
+                <p class="text-lg text-white max-w-3xl mx-auto mb-12">
+                    By participating, you’ll contribute to transformative initiatives in education, health, and rural development, gain meaningful experiences, and help build a more equitable future for underserved communities.
+                </p>
+            </div>
+            <!-- Involvement Options -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Volunteer Registration -->
+                <div class="tile p-6 rounded-xl tilt-card pulse">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Volunteer Registration</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        Become a volunteer and support our initiatives in education, health, and rural development. Roles include teaching, organizing health camps, and community outreach. Gain valuable skills and make a direct impact.
+                    </p>
+                    <div class="text-center">
+                        <a href="volunteer-apply.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Register as a Volunteer</a>
                     </div>
                 </div>
-
-                <!-- Donate Now Section -->
-                <div class="option-card fade-in">
-                    <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Donate Now</h3>
-                    <div class="card-content">
-                        <p class="text-lg">Your financial support can help us continue our mission to empower communities through education, health, and rural development.</p>
-                        <a href="donate.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Make a Donation</a>
+                <!-- Donate Now -->
+                <div class="tile p-6 rounded-xl tilt-card pulse">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Donate Now</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        Your donation helps fund our programs in education, health, and rural development. For example, ₹500 can educate a child for a month, and ₹5,000 can sponsor a health camp for a village.
+                    </p>
+                    <div class="text-center">
+                        <a href="donate.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Make a Donation</a>
                     </div>
                 </div>
-
-                <!-- Grievance/Support Request Section -->
-                <div class="option-card fade-in">
-                    <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Grievance/Support Request</h3>
-                    <div class="card-content">
-                        <p class="text-lg">Have a concern or need support? Submit a grievance or request assistance, and our team will assist you.</p>
-                        <a href="grievance-support.html" class="btn-primary inline-block text-white px-6 py-3 rounded-full transition">Submit a Request</a>
+                <!-- Grievance/Support Request -->
+                <div class="tile p-6 rounded-xl tilt-card pulse">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Grievance/Support Request</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        Need assistance or want to raise a concern? Submit a grievance or support request, and our team will respond promptly to address your needs.
+                    </p>
+                    <div class="text-center">
+                        <a href="support-request.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Submit a Request</a>
                     </div>
                 </div>
             </div>
@@ -224,7 +229,7 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: updated-email@viswavignana.org</p>
+                    <p>Email: viswavignanavaaradhi@gmail.com</p>
                     <p>Phone: +91-1234567890</p>
                     <p>Address: New Address, Hyderabad, Telangana, India</p>
                 </div>
@@ -235,8 +240,12 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <!-- JavaScript for Enhanced Features -->
     <script>
+        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -251,8 +260,63 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Initialize 3D Tilt Effect
+        function initTiltEffect() {
+            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.5,
+            });
+        }
+
+        // Initialize Particles.js for Get Involved Section
+        function initParticles() {
+            particlesJS('particles-js-get-involved', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Scroll to Top Button
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            animateSections();
+            try {
+                animateSections();
+                initTiltEffect();
+                initParticles();
+                initScrollToTop();
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
+            }
         });
     </script>
 </body>
