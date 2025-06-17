@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -55,6 +17,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -62,6 +25,7 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
@@ -70,6 +34,16 @@
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
+        .btn-secondary {
+            border: 1px solid #1E3A8A;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            background-color: #F0F5FF;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Card Styles */
         .card {
             transition: all 0.3s ease;
         }
@@ -77,6 +51,7 @@
             transform: scale(1.03);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
+        /* Footer Links */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -84,6 +59,7 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -119,10 +95,10 @@
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
-        <div class="container mx-auto flex justify-between items-center h-full">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
                 <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
@@ -146,34 +122,224 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
-        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Political/Legal Literacy</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Empowering communities with knowledge about their rights, responsibilities, and legal systems.</p>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <section class="py-20">
+    <!-- Main Content: Political and Legal Literacy -->
+    <main class="py-20">
         <div class="container mx-auto px-4">
-            <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Our Political and Legal Literacy Programs</h3>
-                <p class="text-lg mb-6 max-w-3xl mx-auto text-center">We conduct workshops and awareness campaigns to educate communities about their democratic rights, legal protections, and how to engage in local governance.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Political and Legal Literacy Section -->
+            <section class="fade-in mb-12">
+                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Political and Legal Literacy – Empowering Citizens for a Stronger Future</h2>
+                <p class="text-lg max-w-3xl mx-auto text-center mb-8">
+                    At VISWA VIGNANA VAARADHI, we believe that an aware and active citizenry is the foundation of a healthy democracy, and justice begins with awareness. Many people in our society are unaware of their rights, the roles of elected leaders, how the government works, or their basic legal protections. This leads to exploitation, injustice, and disengagement. Our Political and Legal Literacy programs aim to bridge these gaps by educating people about the political system, encouraging meaningful participation in governance, and making law accessible, understandable, and useful for every citizen—especially those from rural, tribal, and marginalized communities.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Tile 1: Political Literacy -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Workshops</h4>
-                        <p>We organize workshops to teach citizens about voting rights, legal aid, and how to access government services.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣ Voter Education: Know Your Power, Use Your Vote</h3>
+                        <p class="text-gray-600 mb-4">
+                            We help people understand why voting is not just a right, but a responsibility. Many citizens, especially first-time voters, women, and underprivileged communities, do not vote because they are unaware or unsure about the process.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Awareness campaigns to explain why voting matters in a democracy</li>
+                            <li>Workshops on how to register to vote, update voter details, and avoid falling victim to election fraud</li>
+                            <li>Special drives to encourage groups who are usually left out, like rural youth and women, to become confident voters</li>
+                        </ul>
                     </div>
+                    <!-- Tile 2: Political Literacy -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Community Outreach</h4>
-                        <p>Our team visits rural areas to spread awareness about legal rights and the importance of political participation.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">2️⃣ Understanding How Our Government Works</h3>
+                        <p class="text-gray-600 mb-4">
+                            Most people know that India has a government, but few understand how it functions. We use infographics, storytelling, and live sessions to make it easy for everyone to understand.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>How the Parliament, President, Prime Minister, Chief Ministers, Courts, and other institutions work</li>
+                            <li>What MLAs, MPs, and Panchayat leaders actually do in their roles</li>
+                            <li>How ordinary citizens can raise their concerns, meet their elected representatives, or influence decisions at local and national levels</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 3: Political Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">3️⃣ Electoral Processes and Reforms: Behind the Voting Booth</h3>
+                        <p class="text-gray-600 mb-4">
+                            India’s election process is one of the largest in the world. We even organize mock elections and Youth Parliament simulations in colleges so that young people can learn by doing.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>The role of the Election Commission of India (ECI) in ensuring free and fair elections</li>
+                            <li>What NOTA (None of the Above) means</li>
+                            <li>What rules political parties must follow during elections, like the Model Code of Conduct</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 4: Political Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">4️⃣ Citizens’ Role in Governance: Not Just Vote and Forget</h3>
+                        <p class="text-gray-600 mb-4">
+                            Democracy doesn’t end with voting. Citizens must stay involved in everyday governance.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Teaching people how to raise grievances, join local committees, and attend public consultations</li>
+                            <li>Training citizens to use the Right to Information (RTI) Act to ask questions and demand accountability from the government</li>
+                            <li>Creating platforms for communities to discuss budgets, policies, and development projects affecting their lives</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 5: Political Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">5️⃣ Promoting Political Ethics and Responsibilities</h3>
+                        <p class="text-gray-600 mb-4">
+                            Elections often see unethical practices like vote-buying, spreading fake news, or manipulating communities. We work to build a more honest political culture.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Teaching people to vote based on issues, not freebies or caste</li>
+                            <li>Creating awareness among youth about qualities of good leadership, integrity, and service</li>
+                            <li>Promoting peaceful political dialogue, avoiding hate speech, and fostering respectful debates</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 6: Political Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">6️⃣ Encouraging Youth to Take Up Political Leadership</h3>
+                        <p class="text-gray-600 mb-4">
+                            India is a young country, but not enough young people are entering politics. We aim to build future leaders by:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li><strong>Leadership Training:</strong> Organizing workshops, mentorships, and public speaking sessions to give young people the confidence and skills to lead.</li>
+                            <li><strong>Political Literacy Clubs:</strong> Helping colleges form student-led political awareness clubs where youth can discuss governance, laws, and elections.</li>
+                            <li><strong>Representation in Local Bodies:</strong> Motivating youth to contest student union elections, participate in Youth Councils, and eventually take part in local self-government.</li>
+                            <li><strong>Internship & Fellowship Programs:</strong> We link students with legislators, political offices, research teams, and government departments to gain real-life experience.</li>
+                            <li><strong>Career Pathways in Politics:</strong> We guide students on how to enter politics lawfully and ethically—whether through political parties, social movements, or as independent leaders.</li>
+                            <li><strong>Responsible Digital Engagement:</strong> Training youth on how to use social media to raise awareness, fight fake news, and run positive campaigns.</li>
+                            <li><strong>Town Halls & Mock Assemblies:</strong> Hosting debates, mock legislative sessions, and public discussions to develop youth leadership and critical thinking.</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 7: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">7️⃣ Understanding Basic Laws and the Constitution</h3>
+                        <p class="text-gray-600 mb-4">
+                            We help people understand their fundamental rights and duties as citizens of India. We aim to make law less scary and more empowering.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>What the Indian Constitution guarantees—like the right to equality, freedom, and dignity</li>
+                            <li>Key everyday laws—like rules about property, consumer rights, labor rights, and family matters</li>
+                            <li>How legal systems work in real-life situations—with simplified language that everyone can follow</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 8: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">8️⃣ Legal Rights and Personal Protections</h3>
+                        <p class="text-gray-600 mb-4">
+                            Many people don’t know what to do if they are arrested, harassed, or threatened. We help people feel safe and informed in situations where they usually feel helpless.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Their rights during police questioning or arrest</li>
+                            <li>Protections against domestic violence, harassment, and discrimination at work or in public</li>
+                            <li>Common legal issues like tenant-landlord disputes, inheritance, or contract enforcement</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 9: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">9️⃣ Free Legal Aid and Justice for All</h3>
+                        <p class="text-gray-600 mb-4">
+                            Justice should not depend on money. We teach people where to go and what to do when they face injustice.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Free legal help available from government legal aid bodies and NGOs</li>
+                            <li>How to approach Lok Adalats, consumer courts, and complaint authorities</li>
+                            <li>The use of mediation and arbitration—which are faster and friendlier than courts</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 10: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">🔟 Women's Legal Rights and Protections</h3>
+                        <p class="text-gray-600 mb-4">
+                            We believe every woman must know her rights. Our goal is to help women become legally strong and independent.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Laws against domestic abuse, dowry, sexual harassment, and workplace injustice</li>
+                            <li>Legal rights in marriage, divorce, child custody, and property</li>
+                            <li>Understanding and using the POSH Act (law against sexual harassment at the workplace)</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 11: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣1️⃣ Child Rights and Legal Protections</h3>
+                        <p class="text-gray-600 mb-4">
+                            Children are the most vulnerable. We encourage schools and communities to protect every child’s rights.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Child labor laws and how to report child abuse</li>
+                            <li>The Right to Education (RTE), and laws against child marriage and trafficking</li>
+                            <li>Legal processes related to juvenile justice and adoption</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 12: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣2️⃣ Legal Awareness for Marginalized Communities</h3>
+                        <p class="text-gray-600 mb-4">
+                            Many tribal people, laborers, and poor families suffer silently. We ensure that no one is left out of justice.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Conducting legal camps in villages and slums</li>
+                            <li>Teaching about SC/ST rights, anti-discrimination laws, and reservation benefits</li>
+                            <li>Helping them access government schemes and demand their rightful entitlements</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 13: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣3️⃣ Consumer Rights and Cyber Safety</h3>
+                        <p class="text-gray-600 mb-4">
+                            In today’s world, everyone uses mobile phones and online services. We run digital safety awareness programs, especially for youth and women.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>How to file complaints for defective products or bad services under the Consumer Protection Act</li>
+                            <li>Online safety tips to avoid fraud, scams, cyberbullying, and data theft</li>
+                            <li>What laws protect people on social media, mobile apps, and internet platforms</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 14: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣4️⃣ Legal Literacy Cells in Colleges</h3>
+                        <p class="text-gray-600 mb-4">
+                            The future of legal empowerment lies with the youth. This helps students become legal leaders and change-makers in their communities.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Setting up Legal Literacy Cells in colleges to educate students on their rights</li>
+                            <li>Training students as Legal Ambassadors who spread awareness in villages, slums, and schools</li>
+                            <li>Organizing legal workshops with law schools and bar associations</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 15: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣5️⃣ Training on RTI and PIL: Tools for Social Justice</h3>
+                        <p class="text-gray-600 mb-4">
+                            We train citizens and activists to use powerful tools. We help people become active defenders of justice.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>RTI (Right to Information)—to get answers from the government and ensure transparency</li>
+                            <li>PIL (Public Interest Litigation)—to fight for the rights of others and challenge injustice in society</li>
+                            <li>Workshops on how to write complaints, petitions, and legal documents for public causes</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 16: Legal Literacy -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣6️⃣ Community Legal Reforms and Participation</h3>
+                        <p class="text-gray-600 mb-4">
+                            We involve ordinary people in legal discussions and reform movements. We believe that when people understand the law, they can shape it for the better.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Hosting public meetings on new laws, judicial reforms, and legal changes</li>
+                            <li>Using radio, videos, pamphlets, and social media to explain laws in simple words</li>
+                            <li>Collaborating with judges, lawyers, professors, and activists to break down complex legal issues</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
+                <!-- Closing Goal Statement -->
+                <div class="mt-8 text-center">
+                    <h3 class="text-2xl font-semibold text-[#1E3A8A] mb-4">🌟 Our Vision:</h3>
+                    <p class="text-lg max-w-3xl mx-auto">
+                        We want to build a generation of informed, ethical, and active citizens who don’t just complain about politics or fear the law—but change them for the better. A society where every person—regardless of age, gender, income, or education—knows their legal rights, understands their responsibilities, and has access to justice.<br><br>
+                        Join us in making political and legal literacy a mass movement. Because democracy and justice work best when people understand how they work. Legal knowledge is not just for lawyers—it’s for every citizen. Let’s make law and governance languages of empowerment, not fear.
+                    </p>
+                </div>
+            </section>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-[#1E3A8A] text-white p-10">
@@ -206,8 +372,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Animations -->
+    <!-- JavaScript for Fade-In Animation -->
     <script>
+        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -222,8 +389,14 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            animateSections();
+            try {
+                animateSections();
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
+            }
         });
     </script>
 </body>
