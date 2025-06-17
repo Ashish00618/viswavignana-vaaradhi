@@ -1,43 +1,4 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -55,6 +17,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -62,6 +25,7 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
@@ -70,6 +34,16 @@
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
+        .btn-secondary {
+            border: 1px solid #1E3A8A;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            background-color: #F0F5FF;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        /* Card Styles */
         .card {
             transition: all 0.3s ease;
         }
@@ -77,6 +51,7 @@
             transform: scale(1.03);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
         }
+        /* Footer Links */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -84,6 +59,7 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -119,10 +95,10 @@
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
-        <div class="container mx-auto flex justify-between items-center h-full">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
                 <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
@@ -146,34 +122,153 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
-        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Education</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Empowering underprivileged children with access to quality education to build a brighter future.</p>
-        </div>
-    </section>
-
-    <!-- Main Content -->
-    <section class="py-20">
+    <!-- Main Content: Education -->
+    <main class="py-20">
         <div class="container mx-auto px-4">
-            <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Our Education Initiatives</h3>
-                <p class="text-lg mb-6 max-w-3xl mx-auto text-center">We focus on providing educational resources, scholarships, and mentorship programs to children in rural and underprivileged communities. Our goal is to ensure that every child has the opportunity to learn and succeed.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Education for All Section -->
+            <section class="fade-in mb-12">
+                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Education for All – Empowering the Future</h2>
+                <p class="text-lg max-w-3xl mx-auto text-center mb-8">
+                    At VISWA VIGNANA VAARADHI, we believe education is not a privilege—it is a right. Every child, every student, no matter where they come from or what background they belong to, deserves a fair chance to learn, grow, and succeed.<br><br>
+                    Unfortunately, many bright minds are left behind due to poverty, lack of resources, poor schooling, and lack of guidance. We are here to change that.<br><br>
+                    Our Education Program works to make sure that no child is left behind and every student is given the tools, support, and confidence to dream big and achieve their goals.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Tile 1 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Scholarships</h4>
-                        <p>We provide financial assistance to deserving students to help them continue their education without financial burdens.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">1️⃣ Helping Students Who Are Struggling</h3>
+                        <p class="text-gray-600 mb-4">
+                            Many students fall behind because they lack support, not ability. We believe every student can shine with the right help.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Identify students who are facing learning difficulties</li>
+                            <li>Offer free extra classes, one-on-one tutoring, and mentoring</li>
+                            <li>Provide career guidance and motivation for exams like NEET, JEE, SSC, and UPSC</li>
+                            <li>Help students choose the right path for their future—whether it's college, vocational training, or competitive exams</li>
+                        </ul>
                     </div>
+                    <!-- Tile 2 -->
                     <div class="card bg-white p-6 rounded-xl shadow-md">
-                        <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Learning Centers</h4>
-                        <p>We establish learning centers in rural areas, equipped with books, computers, and teachers to support children’s education.</p>
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">2️⃣ Setting Up Community Learning Centers</h3>
+                        <p class="text-gray-600 mb-4">
+                            In rural and poor urban areas, basic education is a daily struggle. These centers become safe spaces for learning and hope.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Set up Community Education Centers in remote villages and slums</li>
+                            <li>Provide free tuition, books, and access to digital learning</li>
+                            <li>Run parent awareness programs to stress the importance of supporting their children’s studies</li>
+                            <li>Partner with local schools and volunteers for continued support</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 3 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">3️⃣ Free Schools and Institutes (Where Needed)</h3>
+                        <p class="text-gray-600 mb-4">
+                            In areas with high dropout rates and no schools, we turn empty classrooms into centers of opportunity.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Free schools and skill training centers</li>
+                            <li>Free access to uniforms, books, and learning kits</li>
+                            <li>Courses that prepare students for jobs and self-reliance</li>
+                            <li>Funding through partnerships with NGOs, government bodies, and donors</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 4 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">4️⃣ Making Education Accessible for All</h3>
+                        <p class="text-gray-600 mb-4">
+                            We ensure students are not left out just because they can’t afford school.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Their Right to Education (RTE) and how to use it</li>
+                            <li>How to apply for scholarships and educational aid</li>
+                            <li>The benefits of digital education—through mobiles, tablets, and online classes</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 5 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">5️⃣ Creating Support Networks for Learning</h3>
+                        <p class="text-gray-600 mb-4">
+                            Learning is stronger when done together. Education is not just about books—it’s about building community confidence.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Build peer learning groups where students help each other</li>
+                            <li>Involve teachers, volunteers, and parents in creating a supportive environment</li>
+                            <li>Set up study centers and mentorship groups for regular engagement</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 6 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">6️⃣ Legal and Political Literacy in Schools</h3>
+                        <p class="text-gray-600 mb-4">
+                            We believe students should grow up as informed citizens. This helps students become active, aware, and responsible citizens.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Set up Legal and Political Literacy Cells in schools and colleges</li>
+                            <li>Conduct debates, mock parliaments, and legal awareness events</li>
+                            <li>Train students as Legal Ambassadors to teach their peers</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 7 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">7️⃣ Developing Leadership and Personality</h3>
+                        <p class="text-gray-600 mb-4">
+                            Every child has a unique talent. We aim to build confident, compassionate future leaders.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Public speaking, personality development, and leadership training</li>
+                            <li>Encouraging participation in sports, arts, music, and cultural activities</li>
+                            <li>Guiding students to engage in social service and community leadership</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 8 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">8️⃣ Career Awareness and Higher Education Support</h3>
+                        <p class="text-gray-600 mb-4">
+                            We support students to dream big and aim high—with the resources to back it up.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Conducting career counseling sessions and mentorship programs</li>
+                            <li>Organizing exposure visits to universities, industries, and professions</li>
+                            <li>Helping students apply for scholarships and prepare for competitive exams</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 9 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">9️⃣ Teaching Digital and Financial Skills</h3>
+                        <p class="text-gray-600 mb-4">
+                            Modern education must include life skills. These are skills for life that empower students beyond the classroom.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Basic computer literacy and internet safety</li>
+                            <li>How to manage money, savings, and personal finance</li>
+                            <li>Training in entrepreneurship, digital banking, and government schemes</li>
+                        </ul>
+                    </div>
+                    <!-- Tile 10 -->
+                    <div class="card bg-white p-6 rounded-xl shadow-md">
+                        <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">🔟 From Education to Employment</h3>
+                        <p class="text-gray-600 mb-4">
+                            We prepare students not just for exams—but for real-world success.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-600">
+                            <li>Offering internships, apprenticeships, and skill-building programs</li>
+                            <li>Connecting students with mentors and industry experts</li>
+                            <li>Conducting job-readiness workshops on communication, resume writing, and interviews</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
+                <!-- Closing Vision Statement -->
+                <div class="mt-8 text-center">
+                    <h3 class="text-2xl font-semibold text-[#1E3A8A] mb-4">🌟 Our Vision:</h3>
+                    <p class="text-lg max-w-3xl mx-auto">
+                        To build an India where every child learns, every youth leads, and no one is denied education because of poverty or lack of opportunity.<br><br>
+                        Education opens doors. Let’s open them for everyone—together.
+                    </p>
+                </div>
+            </section>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-[#1E3A8A] text-white p-10">
@@ -206,8 +301,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Animations -->
+    <!-- JavaScript for Fade-In Animation -->
     <script>
+        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -222,8 +318,14 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            animateSections();
+            try {
+                animateSections();
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
+            }
         });
     </script>
 </body>
