@@ -6,7 +6,12 @@
     <title>Our Work - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Vanilla Tilt for 3D tilt effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <!-- Add Particles.js for background particle animation -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
+        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -16,6 +21,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -23,21 +29,46 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
+        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
+        /* Card Styles */
         .card {
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         .card:hover {
             transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #3B82F6;
         }
+        /* Impact Card Styles */
+        .impact-card {
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .impact-card:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            transform: scale(1.05);
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        }
+        .impact-card.pulse {
+            animation: pulse 2s infinite;
+        }
+        /* Footer Links */
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -45,6 +76,7 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -76,14 +108,43 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Gradient Background Animation for Our Initiatives Section */
+        .our-initiatives-section {
+            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
+        }
+        #scrollToTopBtn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
-        <div class="container mx-auto flex justify-between items-center h-full">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
                 <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
@@ -107,21 +168,90 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
-        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
+    <!-- Our Initiatives Section with Gradient Animation and Particle Background -->
+    <section class="our-initiatives-section py-20 relative">
+        <div id="particles-js-our-work" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Our Work</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Explore the various initiatives we undertake to empower communities through education, awareness, and sustainable development.</p>
+            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">Our Initiatives</h2>
+            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-8 fade-in">
+                At Viswa Vignana Vaaradhi, we are committed to empowering rural communities across India through our multi-faceted initiatives. Explore our focus areas below to learn how we’re making a difference in Education, Political/Legal Literacy, Rural Development, Agriculture, and Health.
+            </p>
+            <!-- What We Do -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Education -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Education</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        We provide quality education to underserved children through community learning centers, support for struggling students, and programs promoting digital and financial literacy.
+                    </p>
+                    <div class="text-center">
+                        <a href="education.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+                <!-- Political/Legal Literacy -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Political/Legal Literacy</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        We empower citizens with knowledge of their rights, the importance of voting, and access to legal aid, fostering active participation in democracy.
+                    </p>
+                    <div class="text-center">
+                        <a href="political-legal-literacy.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+                <!-- Rural Development -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Rural Development</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        We strengthen rural communities by improving education, infrastructure, healthcare, and digital connectivity while promoting disaster preparedness.
+                    </p>
+                    <div class="text-center">
+                        <a href="rural-development.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+                <!-- Agriculture -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Agriculture</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        We support farmers with modern and organic farming techniques, market access, and education on government schemes to foster sustainable livelihoods.
+                    </p>
+                    <div class="text-center">
+                        <a href="agriculture.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+                <!-- Health -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Health</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        We enhance community health by providing access to basic healthcare, promoting preventive care, and supporting mental health and well-being.
+                    </p>
+                    <div class="text-center">
+                        <a href="health.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Main Content -->
-    <section class="py-20">
+    <!-- Our Impact Section -->
+    <section class="py-20 bg-[#F0F5FF]">
         <div class="container mx-auto px-4">
-            <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-[#1E3A8A] text-center text-shadow-sm">Our Initiatives</h3>
-                <p class="text-lg mb-6 max-w-3xl mx-auto text-center">Select an area of our work from the dropdown menu above to learn more about our efforts in Education, Political/Legal Literacy, Rural Development, Agriculture, and Health.</p>
+            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-center fade-in">Our Impact</h2>
+            <p class="text-lg max-w-3xl mx-auto text-center mb-12 fade-in">
+                Through our initiatives, we aim to create lasting change in rural communities. Here’s a glimpse of the impact we’ve made so far.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="impact-card p-6 rounded-xl shadow-md text-center pulse">
+                    <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Educated 500+ Students</h4>
+                    <p class="text-gray-600">Through our Community Learning Centers and education programs.</p>
+                </div>
+                <div class="impact-card p-6 rounded-xl shadow-md text-center pulse">
+                    <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Supported 1,000+ Farmers</h4>
+                    <p class="text-gray-600">With sustainable farming practices and digital tools.</p>
+                </div>
+                <div class="impact-card p-6 rounded-xl shadow-md text-center pulse">
+                    <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Reached 50+ Villages</h4>
+                    <p class="text-gray-600">Across Andhra Pradesh with our diverse initiatives.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -157,8 +287,12 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Animations -->
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+    <!-- JavaScript for Enhanced Features -->
     <script>
+        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -173,8 +307,63 @@
             sections.forEach(section => observer.observe(section));
         }
 
+        // Initialize 3D Tilt Effect
+        function initTiltEffect() {
+            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
+                max: 15,
+                speed: 400,
+                glare: true,
+                "max-glare": 0.5,
+            });
+        }
+
+        // Initialize Particles.js for Our Initiatives Section
+        function initParticles() {
+            particlesJS('particles-js-our-work', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        // Scroll to Top Button
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
+        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            animateSections();
+            try {
+                animateSections();
+                initTiltEffect();
+                initParticles();
+                initScrollToTop();
+            } catch (error) {
+                console.error('Error rendering page:', error);
+                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
+            }
         });
     </script>
 </body>
