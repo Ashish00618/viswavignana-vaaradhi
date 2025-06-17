@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Viswa Vignana Vaaradhi</title>
+    <title>Get Involved - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Add Vanilla Tilt for 3D tilt effect -->
@@ -48,7 +48,7 @@
             color: white;
             box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
         }
-        /* Card Styles (Team Cards) */
+        /* Card Styles */
         .card {
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
@@ -59,24 +59,6 @@
             transform: scale(1.03);
             box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
             border: 1px solid #3B82F6;
-        }
-        /* Mission and Ideology Card Styles */
-        .mission-card, .ideology-card {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.9);
-        }
-        .mission-card:hover, .ideology-card:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-            transform: scale(1.03);
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-        }
-        .mission-card.pulse, .ideology-card.pulse {
-            animation: pulse 2s infinite;
         }
         /* Footer Links */
         .footer-link {
@@ -118,8 +100,8 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Gradient Background Animation for About Us Section */
-        .about-us-section {
+        /* Gradient Background Animation for Get Involved Section */
+        .get-involved-section {
             background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
             background-size: 400%;
             animation: gradientAnimation 15s ease infinite;
@@ -128,6 +110,14 @@
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
+        }
+        /* Social Media Icons */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #3B82F6;
         }
         /* Scroll to Top Button */
         #scrollToTopBtn {
@@ -178,183 +168,67 @@
         </div>
     </header>
 
-    <!-- About Us Section with Gradient Animation and Particle Background -->
-    <section class="about-us-section py-20 relative">
-        <div id="particles-js-about" class="absolute inset-0"></div>
+    <!-- Get Involved Section with Gradient Animation and Particle Background -->
+    <section class="get-involved-section py-20 relative">
+        <div id="particles-js-get-involved" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">About Us</h2>
+            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">Get Involved</h2>
             <p class="text-lg text-white max-w-3xl mx-auto text-center mb-8 fade-in">
-                Founded in 2025, Viswa Vignana Vaaradhi is a newly established not-for-profit organization dedicated to uplifting rural communities across India. Our name, meaning "A Bridge of Universal Knowledge," reflects our mission to empower citizens through knowledge and support, bridging the gap between urban opportunities and rural realities. We focus on education, health, agriculture, legal literacy, political awareness, and rural development to create sustainable, self-reliant communities where every individual can thrive with dignity.
+                At Viswa Vignana Vaaradhi, we believe that collective action can transform lives. Your involvement—whether through volunteering, donating, or spreading awareness—can make a lasting impact on rural communities across India. Join us in building a brighter, more equitable future for all.
             </p>
-            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-12 fade-in">
-                Our core values—integrity, inclusivity, and innovation—guide every initiative we undertake. From building schools in remote villages to advocating for policy changes, we are committed to transforming lives, one village at a time.
-            </p>
-        </div>
-    </section>
-
-    <!-- Our Team Section with 3D Tilt Effects -->
-    <section class="py-20 bg-[#F0F5FF]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-center fade-in">Our Team</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <div class="card p-6 rounded-xl tilt-card">
-                    <img src="/images/team-member1.jpg" alt="John Doe" class="h-32 w-32 rounded-full mx-auto mb-4">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A] text-center">John Doe</h3>
-                    <p class="text-gray-600 text-center mb-2">Founder & Director</p>
-                    <p class="text-gray-600 text-center mb-4">John leads our mission with a passion for rural empowerment, overseeing all major initiatives.</p>
-                    <p class="text-gray-600 text-center italic">"Together, we can build a future where every village thrives."</p>
-                </div>
-                <div class="card p-6 rounded-xl tilt-card">
-                    <img src="/images/team-member2.jpg" alt="Jane Smith" class="h-32 w-32 rounded-full mx-auto mb-4">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A] text-center">Jane Smith</h3>
-                    <p class="text-gray-600 text-center mb-2">Program Manager</p>
-                    <p class="text-gray-600 text-center mb-4">Jane manages our education and health programs, ensuring impact at the grassroots level.</p>
-                    <p class="text-gray-600 text-center italic">"Education and health are the foundations of a strong community."</p>
-                </div>
-                <div class="card p-6 rounded-xl tilt-card">
-                    <img src="/images/team-member3.jpg" alt="Alex Johnson" class="h-32 w-32 rounded-full mx-auto mb-4">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A] text-center">Alex Johnson</h3>
-                    <p class="text-gray-600 text-center mb-2">Outreach Coordinator</p>
-                    <p class="text-gray-600 text-center mb-4">Alex connects with communities, driving our rural development and agricultural efforts.</p>
-                    <p class="text-gray-600 text-center italic">"Empowering villages starts with listening to their needs."</p>
-                </div>
-            </div>
-            <!-- Meet Our Volunteers -->
+            <!-- Why Get Involved -->
             <div class="text-center fade-in">
-                <h3 class="text-2xl font-semibold mb-4 text-[#1E3A8A]">Meet Our Volunteers</h3>
-                <p class="text-lg max-w-3xl mx-auto">
-                    Our dedicated team of volunteers includes teachers, doctors, farmers, and students who work tirelessly to bring our initiatives to life. From organizing health camps to teaching in rural schools, their passion and commitment are the backbone of our organization.
+                <h3 class="text-2xl font-semibold mb-4 text-white">Why Get Involved?</h3>
+                <p class="text-lg text-white max-w-3xl mx-auto mb-12">
+                    By joining our mission, you’ll help empower underserved communities, gain valuable skills, and become part of a passionate network dedicated to social change. Together, we can create sustainable, self-reliant villages where every individual thrives.
                 </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Our Mission Section with Detailed Objectives and Achievements -->
-    <section class="py-20 bg-[#F0F5FF]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-center fade-in">Our Mission</h2>
-            <p class="text-lg max-w-3xl mx-auto text-center mb-12 fade-in">
-                "Viswa Vignana Vaaradhi" (A Bridge of Universal Knowledge) is committed to serving as a transformative bridge of knowledge and support, dedicated to empowering citizens across India, especially the underserved, through its multi-faceted objectives. We achieve this by:
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                <!-- Mission Objective 1 -->
-                <div class="mission-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Enhancing Political Awareness and Participation</h3>
-                    <p class="text-gray-600">
-                        Educating citizens on their right to vote, the importance of elections, democratic institutions, and their role in governance, while inspiring youth to engage ethically in politics.
-                    </p>
-                </div>
-                <!-- Mission Objective 2 -->
-                <div class="mission-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Promoting Comprehensive Legal Literacy</h3>
-                    <p class="text-gray-600">
-                        Empowering individuals with an understanding of their fundamental rights and responsibilities, providing guidance on legal aid, access to justice mechanisms, and specialized protections for women, children, and marginalized communities.
-                    </p>
-                </div>
-                <!-- Mission Objective 3 -->
-                <div class="mission-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Ensuring Quality Education and Skill Development</h3>
-                    <p class="text-gray-600">
-                        Offering support to academically struggling students, establishing community learning centers, and providing free educational opportunities, alongside promoting holistic development, career awareness, and essential digital and financial literacy.
-                    </p>
-                </div>
-                <!-- Mission Objective 4 -->
-                <div class="mission-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Empowering Farmers and Fostering Sustainable Agriculture</h3>
-                    <p class="text-gray-600">
-                        Training farmers in modern and organic farming techniques, educating them on government schemes and land rights, enhancing market access, promoting water conservation, and fostering agri-entrepreneurship for improved rural livelihoods.
-                    </p>
-                </div>
-                <!-- Mission Objective 5 -->
-                <div class="mission-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Driving Holistic Rural Development</h3>
-                    <p class="text-gray-600">
-                        Strengthening rural education and infrastructure, creating employment opportunities and skill development programs, empowering women, improving healthcare and sanitation, expanding digital connectivity, and promoting disaster preparedness for self-sustaining villages.
-                    </p>
-                </div>
-                <!-- Mission Objective 6 -->
-                <div class="mission-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Advancing Community Health and Well-being</h3>
-                    <p class="text-gray-600">
-                        Increasing access to basic healthcare services, promoting preventive care and disease awareness, fostering mental health support, addressing substance abuse, and ensuring specialized health support for women, adolescents, the elderly, and disabled individuals.
-                    </p>
-                </div>
-            </div>
-            <!-- Our Achievements -->
-            <h3 class="text-2xl font-semibold mb-6 text-[#1E3A8A] text-center fade-in">Our Achievements</h3>
+            <!-- Involvement Options -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="mission-card p-6 rounded-xl shadow-md text-center pulse">
-                    <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Educated 500+ Students</h4>
-                    <p class="text-gray-600">Through our Community Learning Centers and Mission Medha program.</p>
-                </div>
-                <div class="mission-card p-6 rounded-xl shadow-md text-center pulse">
-                    <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Supported 1,000+ Farmers</h4>
-                    <p class="text-gray-600">With sustainable farming practices and digital tools.</p>
-                </div>
-                <div class="mission-card p-6 rounded-xl shadow-md text-center pulse">
-                    <h4 class="text-xl font-semibold text-[#1E3A8A] mb-2">Reached 50+ Villages</h4>
-                    <p class="text-gray-600">Across Andhra Pradesh with our diverse initiatives.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Ideology Section -->
-    <section class="py-20 bg-[#F0F5FF]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-center fade-in">Our Ideology</h2>
-            <p class="text-lg max-w-3xl mx-auto text-center mb-12 fade-in">
-                Our ideology, forming the bedrock of "Viswa Vignana Vaaradhi," is built on the unwavering belief in the transformative power of knowledge and empowerment to uplift individuals and communities. We are guided by the following principles designed to attract a broad base of support:
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Ideology Principle 1 -->
-                <div class="ideology-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Knowledge as Liberation</h3>
-                    <p class="text-gray-600">
-                        We believe that access to accurate, accessible, and practical knowledge – be it political, legal, educational, agricultural, or health-related – is the fundamental tool for individual empowerment and societal progress. We aim to simplify complex information, making it universally available to all sections of society.
+                <!-- Volunteer -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Volunteer</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        We’re looking for passionate individuals to join us as volunteers. Opportunities include teaching at community learning centers, organizing health camps, supporting farmers, and raising awareness about legal and political rights.
                     </p>
-                </div>
-                <!-- Ideology Principle 2 -->
-                <div class="ideology-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Inclusivity and Equity</h3>
-                    <p class="text-gray-600">
-                        We are committed to reaching and uplifting every segment of society, especially the marginalized, underprivileged, women, youth, farmers, and those in remote and underserved areas. Our programs are designed to bridge existing disparities and ensure equitable access to opportunities.
+                    <p class="text-gray-200 text-center mb-4">
+                        <strong>Requirements:</strong> Commitment to our mission, willingness to work in rural areas, and a minimum of 4 hours per week.<br>
+                        <strong>Benefits:</strong> Skill development, community impact, and a certificate of appreciation.
                     </p>
+                    <div class="text-center">
+                        <a href="volunteer-apply.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Apply to Volunteer</a>
+                    </div>
                 </div>
-                <!-- Ideology Principle 3 -->
-                <div class="ideology-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Active Citizenship and Participatory Democracy</h3>
-                    <p class="text-gray-600">
-                        We champion the idea that a vibrant democracy thrives on informed and active citizen participation. We empower individuals to understand their rights and responsibilities, engage with governance mechanisms, and contribute directly to decision-making processes, fostering a sense of ownership and collective responsibility.
+                <!-- Donate -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Donate</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        Your donations help fund our initiatives, from building schools and providing healthcare to supporting sustainable farming practices. Every contribution, big or small, makes a difference in the lives of rural communities.
                     </p>
+                    <p class="text-gray-200 text-center mb-4">
+                        <strong>Impact:</strong> ₹500 can educate a child for a month, ₹1,000 can provide farming tools for a family, and ₹5,000 can sponsor a health camp for a village.
+                    </p>
+                    <div class="text-center">
+                        <a href="donate.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Donate Now</a>
+                    </div>
                 </div>
-                <!-- Ideology Principle 4 -->
-                <div class="ideology-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Holistic Development for Sustainable Living</h3>
-                    <p class="text-gray-600">
-                        We recognize that true progress is multi-dimensional. Our approach integrates political, legal, educational, agricultural, rural, and health initiatives to ensure comprehensive development that promotes self-reliance, sustainability, and resilience in the face of modern challenges. We advocate for eco-friendly practices and climate-smart solutions.
+                <!-- Spread the Word -->
+                <div class="card p-6 rounded-xl tilt-card">
+                    <h3 class="text-xl font-semibold mb-2 text-white text-center">Spread the Word</h3>
+                    <p class="text-gray-200 text-center mb-4">
+                        Help us reach more people by sharing our mission with your network. Use social media, attend our events, or simply talk about our work with friends and family to inspire others to join the cause.
                     </p>
-                </div>
-                <!-- Ideology Principle 5 -->
-                <div class="ideology-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Transparency and Accountability</h3>
-                    <p class="text-gray-600">
-                        We advocate for and enable citizens to demand transparency and accountability from governance structures through mechanisms like Right to Information (RTI) applications and engagement in electoral reforms, fostering a system based on integrity.
-                    </p>
-                </div>
-                <!-- Ideology Principle 6 -->
-                <div class="ideology-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Compassion and Well-being</h3>
-                    <p class="text-gray-600">
-                        We prioritize the physical and mental well-being of all citizens, establishing support systems and promoting preventive care, nutrition, and mental health awareness to ensure a healthier, happier society.
-                    </p>
-                </div>
-                <!-- Ideology Principle 7 -->
-                <div class="ideology-card p-6 rounded-xl shadow-md pulse">
-                    <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Collaboration and Community-Led Change</h3>
-                    <p class="text-gray-600">
-                        We believe in fostering strong partnerships with local communities, government bodies, educational institutions, and other NGOs. We encourage community-led initiatives and peer-to-peer learning, recognizing that sustainable change originates from within.
-                    </p>
+                    <div class="flex justify-center space-x-4 mb-4">
+                        <a href="https://twitter.com/intent/tweet?text=Join%20Viswa%20Vignana%20Vaaradhi%20to%20empower%20rural%20India!%20https://viswavignanavaaradhi.org" target="_blank" class="social-icon text-white text-2xl">
+                            Twitter
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=https://viswavignanavaaradhi.org" target="_blank" class="social-icon text-white text-2xl">
+                            Facebook
+                        </a>
+                    </div>
+                    <div class="text-center">
+                        <a href="contact.html" class="btn-secondary text-white px-6 py-3 rounded-full transition">Contact Us to Collaborate</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -421,9 +295,9 @@
             });
         }
 
-        // Initialize Particles.js for About Us Section
+        // Initialize Particles.js for Get Involved Section
         function initParticles() {
-            particlesJS('particles-js-about', {
+            particlesJS('particles-js-get-involved', {
                 particles: {
                     number: { value: 80, density: { enable: true, value_area: 800 } },
                     color: { value: '#3B82F6' },
