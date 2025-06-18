@@ -6,8 +6,6 @@
     <title>Grievance/Support Request - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add Vanilla Tilt for 3D tilt effect -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <!-- Add Particles.js for background particle animation -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
@@ -86,19 +84,13 @@
             transform: translateY(0);
         }
 
-        /* Gradient Background Animation for Form Section */
-        .form-section {
-            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
-            background-size: 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        /* Hero and Form Section Styles */
+        .hero-section, .form-section {
+            background: #1E3A8A; /* Solid background for even color */
+            position: relative;
         }
 
-        /* Form Container Styles with Pulse Effects */
+        /* Form Container Styles */
         #grievanceForm {
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.1);
@@ -255,7 +247,7 @@
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white sticky top-0 z-20 shadow-lg py-0 px-4">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
         <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
                 <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
@@ -283,22 +275,22 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-b from-[#1E3A8A] to-[#F0F5FF] py-20 text-center text-white relative fade-in">
-        <div class="absolute inset-0 bg-[#1E3A8A] opacity-20"></div>
+    <section class="hero-section py-20 text-center text-white relative fade-in">
+        <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4 text-shadow-lg">Grievance/Support Request</h2>
+            <h2 class="text-5xl font-bold mb-4">Grievance/Support Request</h2>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Have a concern or need support? Submit your request, and our team will assist you.</p>
         </div>
     </section>
 
-    <!-- Grievance/Support Form Section with Gradient and Particles -->
+    <!-- Grievance/Support Form Section -->
     <section class="form-section py-20 relative">
         <div id="particles-js-form" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-white text-center text-shadow-sm">Grievance/Support Request Form</h3>
+                <h3 class="text-3xl font-bold mb-6 text-white text-center">Grievance/Support Request Form</h3>
                 <div class="max-w-2xl mx-auto">
-                    <form id="grievanceForm" class="tilt-card pulse">
+                    <form id="grievanceForm" class="pulse">
                         <!-- 1. Personal Information -->
                         <div class="mb-6">
                             <h4 class="text-xl font-semibold mb-4">1. Personal Information</h4>
@@ -475,18 +467,26 @@
             sections.forEach(section => observer.observe(section));
         }
 
-        // Initialize 3D Tilt Effect with Reduced Intensity
-        function initTiltEffect() {
-            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-                max: 5, // Reduced from 15 to 5 for less tilt
-                speed: 800, // Increased from 400 to 800 for slower, smoother movement
-                glare: true,
-                "max-glare": 0.5,
-            });
-        }
-
-        // Initialize Particles.js for Form Section
+        // Initialize Particles.js for Hero and Form Sections
         function initParticles() {
+            particlesJS('particles-js-hero', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+
             particlesJS('particles-js-form', {
                 particles: {
                     number: { value: 80, density: { enable: true, value_area: 800 } },
@@ -633,7 +633,7 @@
                     "Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar",
                     "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur",
                     "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger",
-                    "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur",
+                    "Muzaffarnagar", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur",
                     "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"
                 ],
                 "chhattisgarh": [
@@ -923,7 +923,6 @@
         document.addEventListener('DOMContentLoaded', () => {
             try {
                 animateSections();
-                initTiltEffect();
                 initParticles();
                 initScrollToTop();
                 initForm();
