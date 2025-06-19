@@ -264,7 +264,7 @@
                             </div>
                             <div class="mb-4">
                                 <label for="pinCode" class="block text-lg font-semibold mb-2 text-white">Pin Code</label>
-                                <input type="text" id="pinCode" name="pinCode" class=" aveva p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <input type="text" id="pinCode" name="pinCode" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
                                 <label for="mobileNumber" class="block text-lg font-semibold mb-2 text-white">Mobile Number</label>
@@ -308,11 +308,11 @@
                         </div>
 
                         <!-- 4. Preferred Wing(s) of Involvement -->
-                         <div class="mb-6">
+                        <div class="mb-6">
                             <h4 class="text-xl font-semibold mb-4 text-white">4. Preferred Wing(s) of Involvement (Select all that apply)</h4>
                             <div class="mb-4">
-                                <label for="areaOfInterest" class="block text-lg font-semibold mb-2 text-white">Area of Interest</label>
-                                <select id="areaOfInterest" name="areaOfInterest" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <label for="preferredWing" class="block text-lg font-semibold mb-2 text-white">Area of Interest</label>
+                                <select id="preferredWing" name="preferredWing" multiple class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select an area of interest</option>
                                     <option value="administration-programme-implementation">Administration & Programme Implementation</option>
                                     <option value="finance-accounts">Finance & Accounts</option>
@@ -326,8 +326,7 @@
                             </div>
                         </div>
 
-                        
-                         <!-- 5. Financial Contribution -->
+                        <!-- 5. Financial Contribution -->
                         <div class="mb-6">
                             <h4 class="text-xl font-semibold mb-4 text-white">5. Financial Contribution</h4>
                             <p class="text-gray-200 mb-2">Are you willing to contribute ₹100 towards the society?</p>
@@ -506,7 +505,7 @@
                     "Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar",
                     "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur",
                     "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger",
-                    "Muzaffarpur", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur",
+                    "Muzaffarnagar", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur",
                     "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"
                 ],
                 "chhattisgarh": [
@@ -687,16 +686,14 @@
                 ]
             };
 
-            // Define assembly constituencies for each district (partial data for demonstration)
+            // Define assembly constituencies for each district
             const assemblyConstituencies = {
-                // Andhra Pradesh
                 "visakhapatnam": [
                     "Gajuwaka", "Visakhapatnam East", "Visakhapatnam West", "Visakhapatnam North", "Visakhapatnam South", "Bheemili"
                 ],
                 "east-godavari": [
                     "Rajahmundry City", "Rajahmundry Rural", "Kakinada City", "Kakinada Rural", "Pithapuram", "Peddapuram", "Jaggampeta"
                 ],
-                // Telangana
                 "hyderabad": [
                     "Malakpet", "Amberpet", "Khairatabad", "Jubilee Hills", "Sanathnagar", "Nampally", "Goshamahal",
                     "Charminar", "Chandrayangutta", "Yakutpura", "Bahadurpura", "Secunderabad", "Secunderabad Cantt.",
@@ -705,16 +702,28 @@
                 "rangareddy": [
                     "Maheshwaram", "Rajendranagar", "Serilingampally", "Chevella", "L.B. Nagar", "Uppal"
                 ],
-                // Delhi
                 "east-delhi": [
                     "Laxmi Nagar", "Kondli", "Patparganj", "Jangpura", "Okhla", "Trilokpuri"
                 ],
                 "south-delhi": [
                     "Chhatarpur", "Deoli", "Ambedkar Nagar", "Sangam Vihar", "Kalkaji", "Tughlakabad"
                 ]
-                // TODO: Add assembly constituencies for other districts in all states and UTs
-                // Source from Election Commission of India (eci.gov.in) or state-specific Chief Electoral Officer websites
+                // Note: Expand this object with full assembly constituency data for all districts
+                // as per the Election Commission of India (eci.gov.in) or state-specific data
             };
+
+            // Validation function
+            function validateForm(data) {
+                if (!data.fullName || !data.age || !data.occupation || !data.state || !data.district ||
+                    !data.assemblyConstituency || !data.mandal || !data.village || !data.pinCode ||
+                    !data.mobileNumber || !data.areaOfInterest || !data.availability || !data.declaration) {
+                    return false;
+                }
+                if (data.age < 18) return false;
+                if (!/^\d{6}$/.test(data.pinCode)) return false;
+                if (!/^\d{10}$/.test(data.mobileNumber)) return false;
+                return true;
+            }
 
             // Show/hide and populate district dropdown based on state selection
             stateSelect.addEventListener('change', () => {
@@ -761,10 +770,10 @@
 
                 // Collect form data
                 const formData = new FormData(volunteerForm);
-                const wings = Array.from(formData.getAll('wings')); // Collect all selected wings from the dropdown
+                const preferredWings = formData.getAll('preferredWing').filter(wing => wing !== ''); // Get all selected wings
                 const data = {
                     fullName: formData.get('fullName'),
-                    age: formData.get('age'),
+                    age: parseInt(formData.get('age'), 10),
                     occupation: formData.get('occupation'),
                     state: formData.get('state'),
                     district: formData.get('district'),
@@ -777,9 +786,18 @@
                     areaOfInterest: formData.get('areaOfInterest'),
                     availability: formData.get('availability'),
                     skills: formData.get('skills') || '',
-                    wings: wings.length > 0 ? wings : [], // Include selected wings (array)
+                    preferredWing: preferredWings.length > 0 ? preferredWings : [], // Use correct field name
+                    financialContribution: formData.get('financialContribution') || 'no',
                     declaration: formData.get('declaration') === 'on'
                 };
+
+                // Validate form data
+                if (!validateForm(data)) {
+                    formMessage.classList.remove('hidden', 'text-green-500');
+                    formMessage.classList.add('text-red-500');
+                    formMessage.textContent = 'Please fill all required fields correctly. Age must be 18+, Pin Code must be 6 digits, and Mobile Number must be 10 digits.';
+                    return;
+                }
 
                 try {
                     const response = await fetch('https://viswavignana-api.vercel.app/api/volunteer', {
@@ -791,21 +809,22 @@
                     });
 
                     if (!response.ok) {
-                        throw new Error('Network response was not ok');
+                        throw new Error(`HTTP error! status: ${response.status}`);
                     }
 
                     const result = await response.json();
                     formMessage.classList.remove('hidden', 'text-red-500');
                     formMessage.classList.add('text-green-500');
-                    formMessage.textContent = 'Volunteer registration submitted successfully!';
+                    formMessage.textContent = 'Volunteer registration submitted successfully! Thank you.';
                     volunteerForm.reset();
                     districtSection.style.display = 'none';
                     assemblyConstituencySection.style.display = 'none';
+                    stateSelect.value = '';
                 } catch (error) {
                     console.error('Error submitting form:', error);
                     formMessage.classList.remove('hidden', 'text-green-500');
                     formMessage.classList.add('text-red-500');
-                    formMessage.textContent = 'Error submitting volunteer registration. Please try again.';
+                    formMessage.textContent = 'Error submitting volunteer registration. Please try again or contact support.';
                 }
             });
         });
