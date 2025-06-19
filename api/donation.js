@@ -3,7 +3,7 @@ const cors = require('cors');
 const { MongoClient } = require('mongodb');
 const app = express();
 app.use(cors({
-    origin: ['http://localhost:5500'], 
+    origin: ['http://localhost:3000'], 
     methods: ['GET', 'POST', 'OPTIONS'],
     allowedHeaders: ['Content-Type']
 }));
@@ -41,5 +41,5 @@ app.post('/api/donation', async (req, res) => {
     }
 });
 
-const PORT = process.env.PORT || 5500;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
