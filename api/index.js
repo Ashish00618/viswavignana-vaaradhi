@@ -13,7 +13,7 @@ const app = express();
 
 // Middleware
 app.use(cors({ origin: ['https://viswavignanavaaradhi.org', ] }));
-app.use(cors({origin: "localhost:5500"}))
+app.use(cors({origin: "http://localhost:5500"}))
 app.use(express.json());
 app.use((req, res, next) => {
     logger.info(`${req.method} ${req.url}`);
