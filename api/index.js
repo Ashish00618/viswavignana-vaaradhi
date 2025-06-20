@@ -26,13 +26,10 @@ const corsOptions = {
 // ✅ Use CORS middleware globally
 app.use(cors(corsOptions));
 
-
-app.options('*', cors(corsOptions));
-
+app.options("*", cors(corsOptions));
 app.use(express.json());
-
 app.use((req, res, next) => {
-  logger.info(`${req.method} ${req.url}`); 
+  logger.info('${req.method} ${req.url}');
   next();
 });
 
@@ -40,7 +37,7 @@ app.use((req, res, next) => {
 mongoose
   .connect(
     process.env.MONGODB_URI ||
-      "mongodb+srv://viswavignanavaaradhi:vision%402047@vaaradi.gwmgxia.mongodb.net/viswavignana?retryWrites=true&w=majority",
+      "mongodb+srv://viswavignanavaaradhi:vinod123@vaaradi.gwmgxia.mongodb.net/viswavignana?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -70,7 +67,9 @@ app.post("/api/donation", async (req, res) => {
   }
 
   try {
-    const client = await MongoClient.connect(process.env.MONGODB_URI);
+    const client = await MongoClient.connect(
+      "mongodb+srv://viswavignanavaaradhi:vinod123@vaaradi.gwmgxia.mongodb.net/viswavignana?retryWrites=true&w=majority"
+    );
     const db = client.db("viswavignana");
     const collection = db.collection("donations");
 

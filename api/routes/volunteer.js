@@ -1,7 +1,6 @@
-// routes/volunteer.js
 const express = require('express');
 const router = express.Router();
-const Volunteer = require('api/models/volunteer'); // Adjust path if necessary
+const Volunteer = require('../models/volunteer'); // ✅ Fixed relative path
 const logger = require('../utils/logger');
 
 // Validation function
