@@ -17,7 +17,7 @@ const corsOptions = {
   origin: [
     "http://127.0.0.1:5500",
     "http://localhost:5500",
-    "https://viswavignanavaaradhi.org",
+    "https://www.viswavignanavaaradhi.org",
   ],
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type"],

@@ -1,3 +1,7 @@
 2025-06-19T14:57:21.128Z [error]: MongoDB connection error: bad auth : authentication failed
 2025-06-20T11:25:48.408Z [error]: Error: Bad control character in string literal in JSON at position 105 (line 6 column 26)
 2025-06-20T11:28:49.519Z [error]: MongoDB connection error: bad auth : authentication failed
+2025-06-20T11:29:21.384Z [error]: Error: Bad control character in string literal in JSON at position 105 (line 6 column 26)
+2025-06-20T11:29:22.167Z [error]: Error: Bad control character in string literal in JSON at position 105 (line 6 column 26)
+2025-06-20T11:29:22.521Z [error]: Error: Bad control character in string literal in JSON at position 105 (line 6 column 26)
+2025-06-20T11:29:36.611Z [error]: Error: Expected double-quoted property name in JSON at position 110 (line 8 column 1)
