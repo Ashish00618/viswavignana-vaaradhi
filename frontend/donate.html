@@ -508,7 +508,7 @@
                 };
 
                 try {
-                    const response = await fetch('http://localhost:3000/api/donation', {
+                    const response = await fetch('http://localhost:5500/api/donation', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -523,6 +523,10 @@
 
                     paymentDetails.classList.add('hidden');
                     thankYouMessage.classList.remove('hidden');
+                    thankYouMessage.innerHTML = `
+        <h4 class="text-xl font-semibold">Thank You, ${data.name}, for Your Donation!</h4>
+        <p>We sincerely appreciate your support of ₹${data.amount}. Your contribution will help us empower communities through education, health, and rural development.</p>
+    `;
                     thankYouMessage.scrollIntoView({ behavior: 'smooth' });
 
                     document.getElementById('name').value = '';
