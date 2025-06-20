@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Viswa Vignana Vaaradhi</title>
+    <title>About - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        /* Global Animations */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -17,7 +17,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Header Styles */
         .nav-link {
             transition: all 0.3s ease;
         }
@@ -25,25 +24,62 @@
             transform: scale(1.1);
             color: #F0F5FF;
         }
-        /* Button Styles */
         .btn-primary {
             background: linear-gradient(to right, #1E3A8A, #3B82F6);
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
         }
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
         }
-        .btn-secondary {
-            border: 1px solid #1E3A8A;
+        .content-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 2rem;
             transition: all 0.3s ease;
-        }
-        .btn-secondary:hover {
-            transform: scale(1.05);
-            background-color: #F0F5FF;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
-        /* Footer Links */
+        .content-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
+            border: 1px solid #3B82F6;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        }
+        .hero-section, .content-section {
+            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
+            background-size: 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #3B82F6, #8B5CF6);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+            display: none;
+            z-index: 1000;
+        }
+        #scrollToTopBtn:hover {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+            transform: scale(1.1);
+        }
         .footer-link {
             transition: all 0.3s ease;
         }
@@ -51,7 +87,6 @@
             color: #F0F5FF;
             text-decoration: underline;
         }
-        /* Dropdown Styles */
         .dropdown {
             position: relative;
         }
@@ -83,14 +118,59 @@
             opacity: 1;
             transform: translateY(0);
         }
+        @media (max-width: 768px) {
+            header {
+                padding: 0.5rem 1rem;
+            }
+            header img {
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+            header h2 {
+                font-size: 1.25rem;
+            }
+            nav a {
+                font-size: 0.875rem;
+                padding: 0.5rem;
+            }
+            .btn-primary {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+                line-height: 1.25rem;
+            }
+            .content-card {
+                padding: 1rem;
+            }
+            .content-card h3 {
+                font-size: 1.25rem;
+            }
+            .content-card p {
+                font-size: 0.875rem;
+            }
+            footer {
+                padding: 1.5rem;
+            }
+            footer h3 {
+                font-size: 1.25rem;
+            }
+            footer p,
+            footer a {
+                font-size: 0.875rem;
+            }
+        }
+        @media (min-width: 769px) {
+            .btn-primary {
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+        <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
                 <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
@@ -114,53 +194,51 @@
         </div>
     </header>
 
-    <!-- Main Content: About Us -->
-    <main class="py-20">
-        <div class="container mx-auto px-4">
-            <!-- Vision Statement -->
-            <section class="fade-in mb-12">
-                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Our Vision</h2>
-                <p class="text-lg max-w-3xl mx-auto text-center">
-                    To envision a <em>knowledge-empowered society</em> where every individual, regardless of their background, is equipped with the understanding, skills, and resources to participate actively in democratic processes, achieve personal and collective well-being, and contribute to <em>self-reliant, equitable, and sustainably developed communities</em>.
-                </p>
-            </section>
-
-            <!-- Mission Statement -->
-            <section class="fade-in mb-12">
-                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Our Mission</h2>
-                <p class="text-lg max-w-3xl mx-auto text-center mb-6">
-                    "Viswa Vignana Vaaradhi" (A Bridge of Universal Knowledge) is committed to serving as a <em>transformative bridge of knowledge and support</em>, dedicated to empowering citizens across India, especially the underserved, through its multi-faceted objectives. We achieve this by:
-                </p>
-                <ul class="list-disc list-inside text-lg max-w-3xl mx-auto space-y-4">
-                    <li><strong>Enhancing Political Awareness and Participation:</strong> Educating citizens on their right to vote, the importance of elections, democratic institutions, and their role in governance, while inspiring youth to engage ethically in politics.</li>
-                    <li><strong>Promoting Comprehensive Legal Literacy:</strong> Empowering individuals with an understanding of their fundamental rights and responsibilities, providing guidance on legal aid, access to justice mechanisms, and specialized protections for women, children, and marginalized communities.</li>
-                    <li><strong>Ensuring Quality Education and Skill Development:</strong> Offering support to academically struggling students, establishing community learning centers, and providing free educational opportunities, alongside promoting holistic development, career awareness, and essential digital and financial literacy.</li>
-                    <li><strong>Empowering Farmers and Fostering Sustainable Agriculture:</strong> Training farmers in modern and organic farming techniques, educating them on government schemes and land rights, enhancing market access, promoting water conservation, and fostering agri-entrepreneurship for improved rural livelihoods.</li>
-                    <li><strong>Driving Holistic Rural Development:</strong> Strengthening rural education and infrastructure, creating employment opportunities and skill development programs, empowering women, improving healthcare and sanitation, expanding digital connectivity, and promoting disaster preparedness for self-sustaining villages.</li>
-                    <li><strong>Advancing Community Health and Well-being:</strong> Increasing access to basic healthcare services, promoting preventive care and disease awareness, fostering mental health support, addressing substance abuse, and ensuring specialized health support for women, adolescents, the elderly, and disabled individuals.</li>
-                </ul>
-            </section>
-
-            <!-- Ideology -->
-            <section class="fade-in">
-                <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-shadow-sm text-center">Our Ideology</h2>
-                <p class="text-lg max-w-3xl mx-auto text-center mb-6">
-                    Our ideology, forming the bedrock of "Viswa Vignana Vaaradhi," is built on the unwavering belief in the <em>transformative power of knowledge and empowerment</em> to uplift individuals and communities. We are guided by the following principles designed to attract a broad base of support:
-                </p>
-                <ul class="list-disc list-inside text-lg max-w-3xl mx-auto space-y-4">
-                    <li><strong>Knowledge as Liberation:</strong> We believe that access to accurate, accessible, and practical knowledge – be it political, legal, educational, agricultural, or health-related – is the fundamental tool for <em>individual empowerment and societal progress</em>. We aim to simplify complex information, making it universally available to all sections of society.</li>
-                    <li><strong>Inclusivity and Equity:</strong> We are committed to reaching and uplifting <em>every segment of society</em>, especially the marginalized, underprivileged, women, youth, farmers, and those in remote and underserved areas. Our programs are designed to bridge existing disparities and ensure equitable access to opportunities.</li>
-                    <li><strong>Active Citizenship and Participatory Democracy:</strong> We champion the idea that a vibrant democracy thrives on <em>informed and active citizen participation</em>. We empower individuals to understand their rights and responsibilities, engage with governance mechanisms, and contribute directly to decision-making processes, fostering a sense of ownership and collective responsibility.</li>
-                    <li><strong>Holistic Development for Sustainable Living:</strong> We recognize that true progress is multi-dimensional. Our approach integrates political, legal, educational, agricultural, rural, and health initiatives to ensure <em>comprehensive development that promotes self-reliance, sustainability, and resilience</em> in the face of modern challenges. We advocate for eco-friendly practices and climate-smart solutions.</li>
-                    <li><strong>Transparency and Accountability:</strong> We advocate for and enable citizens to demand transparency and accountability from governance structures through mechanisms like <em>Right to Information (RTI) applications</em> and engagement in electoral reforms, fostering a system based on integrity.</li>
-                    <li><strong>Compassion and Well-being:</strong> We prioritize the <em>physical and mental well-being</em> of all citizens, establishing support systems and promoting preventive care, nutrition, and mental health awareness to ensure a healthier, happier society.</li>
-                    <li><strong>Collaboration and Community-Led Change:</strong> We believe in fostering strong partnerships with local communities, government bodies, educational institutions, and other NGOs. We encourage <em>community-led initiatives</em> and peer-to-peer learning, recognizing that sustainable change originates from within.</li>
-                </ul>
-            </section>
+    <section class="hero-section py-20 text-center text-white relative fade-in">
+        <div id="particles-js-hero" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-5xl font-bold mb-4">About Us</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Learn about our mission to empower rural India through knowledge and development.</p>
         </div>
-    </main>
+    </section>
 
-    <!-- Footer -->
+    <section class="content-section py-20 relative">
+        <div id="particles-js-content" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="fade-in">
+                <div class="content-card mb-8">
+                    <h3 class="text-3xl font-bold mb-4 text-white">Our Vision</h3>
+                    <p class="text-lg text-white">To envision a knowledge-empowered society where every individual, regardless of their background, is equipped with the understanding, skills, and resources to participate actively in democratic processes, achieve personal and collective well-being, and contribute to self-reliant, equitable, and sustainably developed communities.</p>
+                </div>
+                <div class="content-card mb-8">
+                    <h3 class="text-3xl font-bold mb-4 text-white">Our Mission</h3>
+                    <p class="text-lg text-white">"Viswa Vignana Vaaradhi" (A Bridge of Universal Knowledge) is committed to serving as a transformative bridge of knowledge and support, dedicated to empowering citizens across India, especially the underserved, through its multi-faceted objectives. We achieve this by:</p>
+                    <ul class="list-disc list-inside text-white mt-4">
+                        <li>Enhancing Political Awareness and Participation: Educating citizens on their right to vote, the importance of elections, democratic institutions, and their role in governance, while inspiring youth to engage ethically in politics.</li>
+                        <li>Promoting Comprehensive Legal Literacy: Empowering individuals with an understanding of their fundamental rights and responsibilities, providing guidance on legal aid, access to justice mechanisms, and specialized protections for women, children, and marginalized communities.</li>
+                        <li>Ensuring Quality Education and Skill Development: Offering support to academically struggling students, establishing community learning centers, and providing free educational opportunities, alongside promoting holistic development, career awareness, and essential digital and financial literacy.</li>
+                        <li>Empowering Farmers and Fostering Sustainable Agriculture: Training farmers in modern and organic farming techniques, educating them on government schemes and land rights, enhancing market access, promoting water conservation, and fostering agri-entrepreneurship for improved rural livelihoods.</li>
+                        <li>Driving Holistic Rural Development: Strengthening rural education and infrastructure, creating employment opportunities and skill development programs, empowering women, improving healthcare and sanitation, expanding digital connectivity, and promoting disaster preparedness for self-sustaining villages.</li>
+                        <li>Advancing Community Health and Well-being: Increasing access to basic healthcare services, promoting preventive care and disease awareness, fostering mental health support, addressing substance abuse, and ensuring specialized health support for women, adolescents, the elderly, and disabled individuals.</li>
+                    </ul>
+                </div>
+                <div class="content-card">
+                    <h3 class="text-3xl font-bold mb-4 text-white">Our Ideology</h3>
+                    <p class="text-lg text-white">Our ideology, forming the bedrock of "Viswa Vignana Vaaradhi," is built on the unwavering belief in the transformative power of knowledge and empowerment to uplift individuals and communities. We are guided by the following principles designed to attract a broad base of support:</p>
+                    <ul class="list-disc list-inside text-white mt-4">
+                        <li>Knowledge as Liberation: We believe that access to accurate, accessible, and practical knowledge – be it political, legal, educational, agricultural, or health-related – is the fundamental tool for individual empowerment and societal progress. We aim to simplify complex information, making it universally available to all sections of society.</li>
+                        <li>Inclusivity and Equity: We are committed to reaching and uplifting every segment of society, especially the marginalized, underprivileged, women, youth, farmers, and those in remote and underserved areas. Our programs are designed to bridge existing disparities and ensure equitable access to opportunities.</li>
+                        <li>Active Citizenship and Participatory Democracy: We champion the idea that a vibrant democracy thrives on informed and active citizen participation. We empower individuals to understand their rights and responsibilities, engage with governance mechanisms, and contribute directly to decision-making processes, fostering a sense of ownership and collective responsibility.</li>
+                        <li>Holistic Development for Sustainable Living: We recognize that true progress is multi-dimensional. Our approach integrates political, legal, educational, agricultural, rural, and health initiatives to ensure comprehensive development that promotes self-reliance, sustainability, and resilience in the face of modern challenges. We advocate for eco-friendly practices and climate-smart solutions.</li>
+                        <li>Transparency and Accountability: We advocate for and enable citizens to demand transparency and accountability from governance structures through mechanisms like Right to Information (RTI) applications and engagement in electoral reforms, fostering a system based on integrity.</li>
+                        <li>Compassion and Well-being: We prioritize the physical and mental well-being of all citizens, establishing support systems and promoting preventive care, nutrition, and mental health awareness to ensure a healthier, happier society.</li>
+                        <li>Collaboration and Community-Led Change: We believe in fostering strong partnerships with local communities, government bodies, educational institutions, and other NGOs. We encourage community-led initiatives and peer-to-peer learning, recognizing that sustainable change originates from within.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer class="bg-[#1E3A8A] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -180,7 +258,7 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: viswavignanavaaradhi@gmail.com</p>
+                    <p>Email: [email protected]</p>
                     <p>Phone: +91-9010937358</p>
                     <p>Address: Visakhapatnam, Andhra Pradesh</p>
                 </div>
@@ -191,9 +269,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Fade-In Animation -->
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
+
     <script>
-        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -208,14 +286,62 @@
             sections.forEach(section => observer.observe(section));
         }
 
-        // Initialize the page
+        function initParticles() {
+            particlesJS('particles-js-hero', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+
+            particlesJS('particles-js-content', {
+                particles: {
+                    number: { value: 80, density: { enable: true, value_area: 800 } },
+                    color: { value: '#3B82F6' },
+                    shape: { type: 'circle' },
+                    opacity: { value: 0.5, random: true },
+                    size: { value: 3, random: true },
+                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+                },
+                interactivity: {
+                    detect_on: 'canvas',
+                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+                },
+                retina_detect: true
+            });
+        }
+
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
-            try {
-                animateSections();
-            } catch (error) {
-                console.error('Error rendering page:', error);
-                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
-            }
+            animateSections();
+            initParticles();
+            initScrollToTop();
         });
     </script>
 </body>
