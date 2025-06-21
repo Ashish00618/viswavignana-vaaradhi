@@ -133,6 +133,7 @@
                                 <select id="subcategory" name="subcategory" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select a subcategory</option>
                                     <!-- Subcategories to be populated dynamically or manually -->
+                        
                                 </select>
                             </div>
                         </div>
@@ -269,12 +270,101 @@
             const stateSelect = document.getElementById('state');
             const districtSection = document.getElementById('districtSection');
             const districtSelect = document.getElementById('district');
+            const subcategories = {
+                "political-literacy-civic-engagement": [
+                    { value: "voter-education-electoral-process-assistance", label: "Voter Education & Electoral Process Assistance (e.g., voter registration, electoral fraud prevention)" },
+                    { value: "understanding-democratic-institutions", label: "Understanding Democratic Institutions & Engaging with Representatives" },
+                    { value: "electoral-processes-reforms", label: "Electoral Processes & Reforms (e.g., Election Commission, NOTA, Model Code of Conduct)" },
+                    { value: "citizens-role-in-governance", label: "Citizens’ Role in Governance (e.g., public consultations, grievance mechanisms, Right to Information (RTI) applications)" },
+                    { value: "political-ethics-responsibilities", label: "Political Ethics & Responsibilities (e.g., ethical voting, misinformation)" },
+                    { value: "youth-participation-in-politics", label: "Youth Participation in Politics (e.g., leadership, political literacy clubs, career pathways)" },
+                    { value: "youth-student-political-awareness", label: "Youth & Student Political Awareness (e.g., civic participation, leadership programs)" },
+                    { value: "political-electoral-rights", label: "Political & Electoral Rights (e.g., Representation of the People Act, anti-defection laws, challenging malpractices)" }
+                ],
+                "legal-literacy-access-to-justice": [
+                    { value: "basic-legal-awareness", label: "Basic Legal Awareness (e.g., fundamental rights, consumer rights, property, labor, family laws)" },
+                    { value: "legal-rights-responsibilities", label: "Legal Rights & Responsibilities (e.g., rights in case of arrest, protection against violence/discrimination, tenant/landlord rights)" },
+                    { value: "access-to-legal-aid-justice", label: "Access to Legal Aid & Justice (e.g., free legal aid, Lok Adalats, Alternative Dispute Resolution)" },
+                    { value: "womens-rights-legal-protections", label: "Women’s Rights & Legal Protections (e.g., domestic violence, sexual harassment, POSH Act, marriage, divorce, inheritance)" },
+                    { value: "child-rights-protection-laws", label: "Child Rights & Protection Laws (e.g., child labor, abuse prevention, RTE Act, juvenile justice)" },
+                    { value: "legal-awareness-marginalized-communities", label: "Legal Awareness for Marginalized Communities (e.g., reservation policies, SC/ST rights, anti-discrimination)" },
+                    { value: "consumer-rights-cyber-law-awareness", label: "Consumer Rights & Cyber Law Awareness (e.g., online fraud, data privacy, cybercrime)" },
+                    { value: "support-with-rti-pil", label: "Support with Right to Information (RTI) & Public Interest Litigation (PIL)" },
+                    { value: "community-participation-legal-reforms", label: "Community Participation in Legal Reforms" }
+                ],
+                "education-skill-development": [
+                    { value: "academic-support-struggling-students", label: "Academic Support for Struggling Students (e.g., mentorship, remedial classes, career counseling)" },
+                    { value: "access-to-community-learning-centers", label: "Access to Community Learning Centers" },
+                    { value: "support-for-free-educational-institutes", label: "Support for Free Educational Institutes (e.g., schooling, vocational training, study materials)" },
+                    { value: "enhancing-access-to-education", label: "Enhancing Access to Education (e.g., RTE Act, scholarships, government schemes, digital education)" },
+                    { value: "learning-support-networks-peer-learning", label: "Learning Support Networks & Peer Learning Opportunities" },
+                    { value: "political-legal-literacy-in-education", label: "Political & Legal Literacy in Educational Institutions" },
+                    { value: "holistic-development-leadership-programs", label: "Holistic Development & Leadership Programs" },
+                    { value: "career-guidance-higher-education", label: "Career Guidance & Higher Education Opportunities (e.g., competitive exam prep, scholarships)" },
+                    { value: "digital-financial-literacy-training", label: "Digital & Financial Literacy Training (e.g., online safety, personal finance, government schemes)" },
+                    { value: "bridging-education-employment", label: "Bridging Education & Employment (e.g., internships, job-oriented training, interview preparation)" }
+                ],
+                "agriculture-rural-livelihoods": [
+                    { value: "modern-sustainable-farming-techniques", label: "Modern & Sustainable Farming Techniques (e.g., organic farming, precision farming)" },
+                    { value: "agricultural-knowledge-resource-center", label: "Agricultural Knowledge & Resource Center Support" },
+                    { value: "government-schemes-legal-rights-farmers", label: "Government Schemes & Legal Rights for Farmers (e.g., subsidies, loans, crop insurance, land rights, MSP)" },
+                    { value: "market-access-farmer-empowerment", label: "Market Access & Farmer Empowerment (e.g., direct market, digital trading, FPOs)" },
+                    { value: "organic-farming-sustainable-agriculture", label: "Organic Farming & Sustainable Agriculture Promotion" },
+                    { value: "water-conservation-irrigation-efficiency", label: "Water Conservation & Irrigation Efficiency" },
+                    { value: "skill-development-entrepreneurship-agriculture", label: "Skill Development & Entrepreneurship in Agriculture (e.g., agri-business, food processing)" },
+                    { value: "agricultural-education-research-support", label: "Agricultural Education & Research Support" },
+                    { value: "digital-literacy-smart-agriculture", label: "Digital Literacy & Smart Agriculture (e.g., mobile apps, eNAM)" },
+                    { value: "farmer-suicides-mental-health-support", label: "Farmer Suicides & Mental Health Support" },
+                    { value: "agro-tourism-rural-development", label: "Agro-Tourism & Rural Development Initiatives" }
+                ],
+                "rural-development-community-empowerment": [
+                    { value: "strengthening-rural-education-digital-learning", label: "Strengthening Rural Education & Digital Learning" },
+                    { value: "enhancing-rural-infrastructure-public-services", label: "Enhancing Rural Infrastructure & Public Services (e.g., roads, electricity, sanitation)" },
+                    { value: "rural-employment-skill-development", label: "Rural Employment & Skill Development (e.g., vocational skills, entrepreneurship)" },
+                    { value: "empowering-women-social-inclusion", label: "Empowering Women & Social Inclusion (e.g., SHGs, legal awareness, microcredit)" },
+                    { value: "improving-healthcare-sanitation-rural", label: "Improving Healthcare & Sanitation in Rural Areas" },
+                    { value: "digital-transformation-rural-connectivity", label: "Digital Transformation & Rural Connectivity (e.g., internet access, e-governance)" },
+                    { value: "disaster-preparedness-climate-resilience", label: "Disaster Preparedness & Climate Resilience in Rural Communities" },
+                    { value: "rural-tourism-cultural-preservation", label: "Rural Tourism & Cultural Preservation" },
+                    { value: "strengthening-rural-governance-civic-participation", label: "Strengthening Rural Governance & Civic Participation (e.g., Panchayati Raj, citizen rights)" }
+                ],
+                "health-well-being": [
+                    { value: "access-to-basic-healthcare-services", label: "Access to Basic Healthcare Services (e.g., health camps, mobile clinics, telemedicine, government schemes)" },
+                    { value: "preventive-healthcare-disease-awareness", label: "Preventive Healthcare & Disease Awareness (e.g., nutrition, hygiene, disease prevention)" },
+                    { value: "mental-health-awareness-support", label: "Mental Health Awareness & Support (e.g., counseling, support groups, helplines)" },
+                    { value: "addressing-substance-abuse-addiction", label: "Addressing Substance Abuse & Addiction" },
+                    { value: "womens-adolescent-health", label: "Women's & Adolescent Health (e.g., menstrual hygiene, reproductive health, maternal care)" },
+                    { value: "nutrition-wellness-programs", label: "Nutrition & Wellness Programs" },
+                    { value: "physical-fitness-lifestyle-awareness", label: "Physical Fitness & Lifestyle Awareness" },
+                    { value: "special-support-elderly-disabled", label: "Special Support for Elderly & Disabled Individuals" },
+                    { value: "emergency-response-disaster-health-preparedness", label: "Emergency Response & Disaster Health Preparedness" },
+                    { value: "advocacy-policy-support-public-health", label: "Advocacy & Policy Support for Public Health" }
+                ]
+            };
+
 
             const districts = {
                 "andhra-pradesh": ["Alluri Sitharama Raju", "Anakapalli", "Anantapur", "Annamayya", "Bapatla", "Chittoor", "East Godavari", "Eluru", "Guntur", "Kakinada", "Konaseema", "Krishna", "Kurnool", "Nandyal", "Nellore", "Palnadu", "Parvathipuram Manyam", "Prakasam", "Sri Balaji", "Sri Potti Sriramulu Nellore", "Sri Sathya Sai", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
                 "telangana": ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhupalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem Asifabad", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal-Malkajgiri", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"],
                 "delhi": ["Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi", "West Delhi"]
             };
+            categorySelect.addEventListener('change', () => {
+                const selectedCategory = categorySelect.value;
+                subcategorySelect.innerHTML = '<option value="" disabled selected>Select a subcategory</option>';
+
+                if (selectedCategory && subcategories[selectedCategory]) {
+                    subcategories[selectedCategory].forEach(sub => {
+                        const option = document.createElement('option');
+                        option.value = sub.value;
+                        option.textContent = sub.label;
+                        subcategorySelect.appendChild(option);
+                    });
+                    subcategorySection.style.display = 'block';
+                } else {
+                    subcategorySection.style.display = 'none';
+                }
+            });
+
 
             stateSelect.addEventListener('change', () => {
                 const selectedState = stateSelect.value;
