@@ -6,6 +6,7 @@ const serverless = require("serverless-http");
 const userRoutes = require("./routes/user");
 const volunteerRoutes = require("./routes/volunteer");
 const contactRoutes = require("./routes/contact");
+const grievanceRoutes = require('./routes/grievance');
 const errorHandler = require("./middleware/errorHandler");
 const logger = require("./utils/logger");
 const { MongoClient } = require("mongodb");
@@ -51,6 +52,7 @@ mongoose
 app.use("/api/user", userRoutes);
 app.use("/api/volunteer", volunteerRoutes);
 app.use("/api/contact", contactRoutes);
+app.use('/api/grievance', grievanceRoutes);
 
 // Error Handling
 app.use(errorHandler);

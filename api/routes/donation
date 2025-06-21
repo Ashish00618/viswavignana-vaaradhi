@@ -1,0 +1,38 @@
+// routes/donation.js
+const express = require('express');
+const router = express.Router();
+const Donation = require('../models/donation'); // Create this model if needed
+const logger = require('../utils/logger');
+
+// Validation function (customize based on your donation form)
+const validateDonationData = (data) => {
+  if (!data || !data.amount || !data.donorName || !/^\d+$/.test(data.amount)) {
+    return false;
+  }
+  return true;
+};
+
+// POST /api/donation - Save donation data
+router.post('/', async (req, res) => {
+  try {
+    const donationData = req.body;
+
+    // Validate data
+    if (!validateDonationData(donationData)) {
+      logger.warn('Invalid donation data received:', donationData);
+      return res.status(400).json({ message: 'Invalid data. Amount must be a positive number and donor name is required.' });
+    }
+
+    // Create new donation instance (adjust schema fields)
+    const newDonation = new Donation(donationData);
+    await newDonation.save();
+
+    logger.info(`Donation registered: ${donationData.donorName} - $${donationData.amount}`);
+    res.status(201).json({ message: 'Donation submitted successfully!' });
+  } catch (error) {
+    logger.error('Error saving donation:', error);
+    res.status(500).json({ message: 'Error submitting donation. Please try again or contact support.' });
+  }
+});
+
+module.exports = router;
