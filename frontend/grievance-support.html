@@ -6,247 +6,33 @@
     <title>Grievance/Support Request - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add Particles.js for background particle animation -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        /* Fade-In Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Header Styles */
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            transform: scale(1.1);
-            color: #F0F5FF;
-        }
-
-        /* Button Styles */
-        .btn-primary {
-            background: linear-gradient(to right, #1E3A8A, #3B82F6);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
-        }
-
-        /* Footer Link Styles */
-        .footer-link {
-            transition: all 0.3s ease;
-        }
-        .footer-link:hover {
-            color: #F0F5FF;
-            text-decoration: underline;
-        }
-
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #1E3A8A;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-            top: 100%;
-            left: 0;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .dropdown-content a:hover {
-            background-color: #3B82F6;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Hero and Form Section Styles */
-        .hero-section, .form-section {
-            background: #1E3A8A; /* Solid background for even color */
-            position: relative;
-        }
-
-        /* Form Container Styles */
-        #grievanceForm {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-        #grievanceForm:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
-            border: 1px solid #3B82F6;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-        }
-        #grievanceForm.pulse {
-            animation: pulse 2s infinite;
-        }
-
-        /* Form Element Styles */
-        #grievanceForm h4 {
-            color: #ffffff;
-            border-bottom: 2px solid #3B82F6;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-        #grievanceForm label {
-            color: #ffffff;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        #grievanceForm input,
-        #grievanceForm select,
-        #grievanceForm textarea {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            color: #ffffff;
-            transition: all 0.3s ease;
-        }
-        #grievanceForm input:focus,
-        #grievanceForm select:focus,
-        #grievanceForm textarea:focus {
-            border-color: #3B82F6;
-            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
-            outline: none;
-        }
-        #grievanceForm input::placeholder,
-        #grievanceForm textarea::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        #grievanceForm textarea {
-            resize: vertical;
-        }
-        #grievanceForm .mb-6 {
-            margin-bottom: 2rem;
-        }
-        #grievanceForm p {
-            color: #e5e7eb;
-        }
-        #grievanceForm .flex label span {
-            color: #e5e7eb;
-        }
-
-        /* Hide Subcategory, District, and Assembly Constituency Dropdowns by Default */
-        #subcategorySection,
-        #districtSection,
-        #assemblyConstituencySection {
-            display: none;
-        }
-
-        /* Scroll to Top Button */
-        #scrollToTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(to right, #3B82F6, #8B5CF6);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            transition: all 0.3s ease;
-            display: none;
-            z-index: 1000;
-        }
-        #scrollToTopBtn:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-            transform: scale(1.1);
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            header {
-                padding: 0.5rem 1rem;
-            }
-            header img {
-                height: 2.5rem;
-                width: 2.5rem;
-            }
-            header h2 {
-                font-size: 1.25rem;
-            }
-            nav a {
-                font-size: 0.875rem;
-                padding: 0.5rem;
-            }
-            .btn-primary {
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-                line-height: 1.25rem;
-            }
-            #grievanceForm {
-                padding: 1rem;
-            }
-            #grievanceForm h4 {
-                font-size: 1.25rem;
-            }
-            #grievanceForm label {
-                font-size: 0.875rem;
-            }
-            #grievanceForm input,
-            #grievanceForm select,
-            #grievanceForm textarea {
-                padding: 0.5rem;
-                font-size: 0.875rem;
-            }
-            #formMessage {
-                font-size: 0.75rem;
-            }
-            footer {
-                padding: 1.5rem;
-            }
-            footer h3 {
-                font-size: 1.25rem;
-            }
-            footer p,
-            footer a {
-                font-size: 0.875rem;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .btn-primary {
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { transform: scale(1.1); color: #F0F5FF; }
+        .btn-primary { background: linear-gradient(to right, #1E3A8A, #3B82F6); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3); }
+        .form-container { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
+        .form-container:hover { box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3); border: 1px solid #3B82F6; }
+        input, select, textarea { transition: all 0.3s ease; }
+        input:focus, select:focus, textarea:focus { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); border-color: #3B82F6; }
+        .footer-link { transition: all 0.3s ease; }
+        .footer-link:hover { color: #F0F5FF; text-decoration: underline; }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; background-color: #1E3A8A; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
+        .dropdown-content a:hover { background-color: #3B82F6; }
+        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
+        .hero-section, .form-section { background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #3B82F6, #8B5CF6); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); transform: scale(1.1); }
+        #districtSection { display: none; }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <!-- Header -->
     <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
         <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
@@ -274,7 +60,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero-section py-20 text-center text-white relative fade-in">
         <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
@@ -283,95 +68,57 @@
         </div>
     </section>
 
-    <!-- Grievance/Support Form Section -->
     <section class="form-section py-20 relative">
         <div id="particles-js-form" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="fade-in">
                 <h3 class="text-3xl font-bold mb-6 text-white text-center">Grievance/Support Request Form</h3>
-                <div class="max-w-2xl mx-auto">
-                    <form id="grievanceForm" class="pulse">
-                        <!-- 1. Personal Information -->
+                <div class="max-w-2xl mx-auto form-container p-6 rounded-xl">
+                    <form id="grievanceForm">
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4">1. Personal Information</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-white">1. Personal Information</h4>
                             <div class="mb-4">
-                                <label for="fullName" class="block">Full Name</label>
-                                <input type="text" id="fullName" name="fullName" class="w-full" required>
+                                <label for="fullName" class="block text-lg font-semibold mb-2 text-white">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label for="mobileNumber" class="block">Mobile Number</label>
-                                <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full" required>
+                                <label for="mobileNumber" class="block text-lg font-semibold mb-2 text-white">Mobile Number</label>
+                                <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                             <div class="mb-4">
-                                <label for="email" class="block">Email ID (Optional)</label>
-                                <input type="email" id="email" name="email" class="w-full">
+                                <label for="email" class="block text-lg font-semibold mb-2 text-white">Email ID (Optional)</label>
+                                <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
                             </div>
                         </div>
 
-                        <!-- 2. Address Details -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4">2. Address Details</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-white">2. Address Details</h4>
                             <div class="mb-4">
-                                <label for="state" class="block">State</label>
-                                <select id="state" name="state" class="w-full" required>
+                                <label for="state" class="block text-lg font-semibold mb-2 text-white">State</label>
+                                <select id="state" name="state" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select a state</option>
                                     <option value="andhra-pradesh">Andhra Pradesh</option>
-                                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
-                                    <option value="assam">Assam</option>
-                                    <option value="bihar">Bihar</option>
-                                    <option value="chhattisgarh">Chhattisgarh</option>
-                                    <option value="goa">Goa</option>
-                                    <option value="gujarat">Gujarat</option>
-                                    <option value="haryana">Haryana</option>
-                                    <option value="himachal-pradesh">Himachal Pradesh</option>
-                                    <option value="jharkhand">Jharkhand</option>
-                                    <option value="karnataka">Karnataka</option>
-                                    <option value="kerala">Kerala</option>
-                                    <option value="madhya-pradesh">Madhya Pradesh</option>
-                                    <option value="maharashtra">Maharashtra</option>
-                                    <option value="manipur">Manipur</option>
-                                    <option value="meghalaya">Meghalaya</option>
-                                    <option value="mizoram">Mizoram</option>
-                                    <option value="nagaland">Nagaland</option>
-                                    <option value="odisha">Odisha</option>
-                                    <option value="punjab">Punjab</option>
-                                    <option value="rajasthan">Rajasthan</option>
-                                    <option value="sikkim">Sikkim</option>
-                                    <option value="tamil-nadu">Tamil Nadu</option>
                                     <option value="telangana">Telangana</option>
-                                    <option value="tripura">Tripura</option>
-                                    <option value="uttar-pradesh">Uttar Pradesh</option>
-                                    <option value="uttarakhand">Uttarakhand</option>
-                                    <option value="west-bengal">West Bengal</option>
-                                    <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
-                                    <option value="chandigarh">Chandigarh</option>
-                                    <option value="dadra-nagar-haveli-daman-diu">Dadra and Nagar Haveli and Daman and Diu</option>
                                     <option value="delhi">Delhi</option>
-                                    <option value="jammu-kashmir">Jammu and Kashmir</option>
-                                    <option value="ladakh">Ladakh</option>
-                                    <option value="lakshadweep">Lakshadweep</option>
-                                    <option value="puducherry">Puducherry</option>
                                 </select>
                             </div>
                             <div id="districtSection" class="mb-4">
-                                <label for="district" class="block">District</label>
-                                <select id="district" name="district" class="w-full" required>
+                                <label for="district" class="block text-lg font-semibold mb-2 text-white">District</label>
+                                <select id="district" name="district" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select a district</option>
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <label for="mandal" class="block">Mandal</label>
-                                <input type="text" id="mandal" name="mandal" class="w-full" required>
+                                <label for="mandal" class="block text-lg font-semibold mb-2 text-white">Mandal</label>
+                                <input type="text" id="mandal" name="mandal" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                             </div>
                         </div>
 
-                        <!-- 3. Area of Service / Concern -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4">3. Area of Service / Concern</h4>
-                            <p class="text-gray-200 mb-4">Please select the category that best describes your grievance or the type of support you are seeking. This helps us direct your query to the right department.</p>
+                            <h4 class="text-xl font-semibold mb-4 text-white">3. Area of Service / Concern</h4>
                             <div class="mb-4">
-                                <label for="category" class="block">Select Desired Service</label>
-                                <select id="category" name="category" class="w-full" required>
+                                <label for="category" class="block text-lg font-semibold mb-2 text-white">Select Desired Service</label>
+                                <select id="category" name="category" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select a category</option>
                                     <option value="political-literacy-civic-engagement">Political Literacy & Civic Engagement</option>
                                     <option value="legal-literacy-access-to-justice">Legal Literacy & Access to Justice</option>
@@ -381,42 +128,39 @@
                                     <option value="health-well-being">Health & Well-being</option>
                                 </select>
                             </div>
-                            <div id="subcategorySection" class="mb-4">
-                                <label for="subcategory" class="block">Select Subcategory</label>
-                                <select id="subcategory" name="subcategory" class="w-full" required>
+                            <div class="mb-4">
+                                <label for="subcategory" class="block text-lg font-semibold mb-2 text-white">Select Subcategory</label>
+                                <select id="subcategory" name="subcategory" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
                                     <option value="" disabled selected>Select a subcategory</option>
+                                    <!-- Subcategories to be populated dynamically or manually -->
                                 </select>
                             </div>
                         </div>
 
-                        <!-- 4. Details of Grievance/Support Request -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4">4. Details of Grievance/Support Request</h4>
+                            <h4 class="text-xl font-semibold mb-4 text-white">4. Details of Grievance/Support Request</h4>
                             <div class="mb-4">
-                                <label for="description" class="block">Description</label>
-                                <textarea id="description" name="description" rows="5" class="w-full" required></textarea>
+                                <label for="description" class="block text-lg font-semibold mb-2 text-white">Description</label>
+                                <textarea id="description" name="description" rows="5" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required></textarea>
                             </div>
                         </div>
 
-                        <!-- 5. Declaration -->
                         <div class="mb-6">
-                            <h4 class="text-xl font-semibold mb-4">5. Declaration</h4>
-                            <label class="flex items-center">
-                                <input type="checkbox" name="declaration" required>
+                            <h4 class="text-xl font-semibold mb-4 text-white">5. Declaration</h4>
+                            <label class="flex items-center text-gray-200">
+                                <input type="checkbox" id="declaration" name="declaration" required>
                                 <span class="ml-2">I confirm that the information provided is true to the best of my knowledge.</span>
                             </label>
                         </div>
 
-                        <!-- Submit Button -->
-                        <button type="submit" class="btn-primary w-full text-white rounded-full transition">Submit</button>
+                        <button type="submit" class="btn-primary w-full text-white px-6 py-3 rounded-full transition">Submit</button>
                     </form>
-                    <p id="formMessage" class="mt-4 text-center text-sm text-white hidden"></p>
+                    <p id="formMessage" class="mt-4 text-center text-sm hidden"></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-[#1E3A8A] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -436,7 +180,7 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: updated-email@viswavignana.org</p>
+                    <p>Email: viswavignanavaaradhi@gmail.com</p>
                     <p>Phone: +91-1234567890</p>
                     <p>Address: New Address, Hyderabad, Telangana, India</p>
                 </div>
@@ -447,12 +191,9 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
-    <!-- JavaScript -->
     <script>
-        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -463,11 +204,9 @@
                     }
                 });
             }, { threshold: 0.2 });
-
             sections.forEach(section => observer.observe(section));
         }
 
-        // Initialize Particles.js for Hero and Form Sections
         function initParticles() {
             particlesJS('particles-js-hero', {
                 particles: {
@@ -506,7 +245,6 @@
             });
         }
 
-        // Scroll to Top Button
         function initScrollToTop() {
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             window.onscroll = function () {
@@ -521,322 +259,26 @@
             });
         }
 
-        // Form Functionality
-        function initForm() {
+        document.addEventListener('DOMContentLoaded', () => {
+            animateSections();
+            initParticles();
+            initScrollToTop();
+
             const grievanceForm = document.getElementById('grievanceForm');
             const formMessage = document.getElementById('formMessage');
-            const categorySelect = document.getElementById('category');
-            const subcategorySection = document.getElementById('subcategorySection');
-            const subcategorySelect = document.getElementById('subcategory');
             const stateSelect = document.getElementById('state');
             const districtSection = document.getElementById('districtSection');
             const districtSelect = document.getElementById('district');
-            const assemblyConstituencySection = document.getElementById('assemblyConstituencySection');
-            const assemblyConstituencySelect = document.getElementById('assemblyConstituency');
 
-            // Define subcategories for each main category
-            const subcategories = {
-                "political-literacy-civic-engagement": [
-                    { value: "voter-education-electoral-process-assistance", label: "Voter Education & Electoral Process Assistance (e.g., voter registration, electoral fraud prevention)" },
-                    { value: "understanding-democratic-institutions", label: "Understanding Democratic Institutions & Engaging with Representatives" },
-                    { value: "electoral-processes-reforms", label: "Electoral Processes & Reforms (e.g., Election Commission, NOTA, Model Code of Conduct)" },
-                    { value: "citizens-role-in-governance", label: "Citizens’ Role in Governance (e.g., public consultations, grievance mechanisms, Right to Information (RTI) applications)" },
-                    { value: "political-ethics-responsibilities", label: "Political Ethics & Responsibilities (e.g., ethical voting, misinformation)" },
-                    { value: "youth-participation-in-politics", label: "Youth Participation in Politics (e.g., leadership, political literacy clubs, career pathways)" },
-                    { value: "youth-student-political-awareness", label: "Youth & Student Political Awareness (e.g., civic participation, leadership programs)" },
-                    { value: "political-electoral-rights", label: "Political & Electoral Rights (e.g., Representation of the People Act, anti-defection laws, challenging malpractices)" }
-                ],
-                "legal-literacy-access-to-justice": [
-                    { value: "basic-legal-awareness", label: "Basic Legal Awareness (e.g., fundamental rights, consumer rights, property, labor, family laws)" },
-                    { value: "legal-rights-responsibilities", label: "Legal Rights & Responsibilities (e.g., rights in case of arrest, protection against violence/discrimination, tenant/landlord rights)" },
-                    { value: "access-to-legal-aid-justice", label: "Access to Legal Aid & Justice (e.g., free legal aid, Lok Adalats, Alternative Dispute Resolution)" },
-                    { value: "womens-rights-legal-protections", label: "Women’s Rights & Legal Protections (e.g., domestic violence, sexual harassment, POSH Act, marriage, divorce, inheritance)" },
-                    { value: "child-rights-protection-laws", label: "Child Rights & Protection Laws (e.g., child labor, abuse prevention, RTE Act, juvenile justice)" },
-                    { value: "legal-awareness-marginalized-communities", label: "Legal Awareness for Marginalized Communities (e.g., reservation policies, SC/ST rights, anti-discrimination)" },
-                    { value: "consumer-rights-cyber-law-awareness", label: "Consumer Rights & Cyber Law Awareness (e.g., online fraud, data privacy, cybercrime)" },
-                    { value: "support-with-rti-pil", label: "Support with Right to Information (RTI) & Public Interest Litigation (PIL)" },
-                    { value: "community-participation-legal-reforms", label: "Community Participation in Legal Reforms" }
-                ],
-                "education-skill-development": [
-                    { value: "academic-support-struggling-students", label: "Academic Support for Struggling Students (e.g., mentorship, remedial classes, career counseling)" },
-                    { value: "access-to-community-learning-centers", label: "Access to Community Learning Centers" },
-                    { value: "support-for-free-educational-institutes", label: "Support for Free Educational Institutes (e.g., schooling, vocational training, study materials)" },
-                    { value: "enhancing-access-to-education", label: "Enhancing Access to Education (e.g., RTE Act, scholarships, government schemes, digital education)" },
-                    { value: "learning-support-networks-peer-learning", label: "Learning Support Networks & Peer Learning Opportunities" },
-                    { value: "political-legal-literacy-in-education", label: "Political & Legal Literacy in Educational Institutions" },
-                    { value: "holistic-development-leadership-programs", label: "Holistic Development & Leadership Programs" },
-                    { value: "career-guidance-higher-education", label: "Career Guidance & Higher Education Opportunities (e.g., competitive exam prep, scholarships)" },
-                    { value: "digital-financial-literacy-training", label: "Digital & Financial Literacy Training (e.g., online safety, personal finance, government schemes)" },
-                    { value: "bridging-education-employment", label: "Bridging Education & Employment (e.g., internships, job-oriented training, interview preparation)" }
-                ],
-                "agriculture-rural-livelihoods": [
-                    { value: "modern-sustainable-farming-techniques", label: "Modern & Sustainable Farming Techniques (e.g., organic farming, precision farming)" },
-                    { value: "agricultural-knowledge-resource-center", label: "Agricultural Knowledge & Resource Center Support" },
-                    { value: "government-schemes-legal-rights-farmers", label: "Government Schemes & Legal Rights for Farmers (e.g., subsidies, loans, crop insurance, land rights, MSP)" },
-                    { value: "market-access-farmer-empowerment", label: "Market Access & Farmer Empowerment (e.g., direct market, digital trading, FPOs)" },
-                    { value: "organic-farming-sustainable-agriculture", label: "Organic Farming & Sustainable Agriculture Promotion" },
-                    { value: "water-conservation-irrigation-efficiency", label: "Water Conservation & Irrigation Efficiency" },
-                    { value: "skill-development-entrepreneurship-agriculture", label: "Skill Development & Entrepreneurship in Agriculture (e.g., agri-business, food processing)" },
-                    { value: "agricultural-education-research-support", label: "Agricultural Education & Research Support" },
-                    { value: "digital-literacy-smart-agriculture", label: "Digital Literacy & Smart Agriculture (e.g., mobile apps, eNAM)" },
-                    { value: "farmer-suicides-mental-health-support", label: "Farmer Suicides & Mental Health Support" },
-                    { value: "agro-tourism-rural-development", label: "Agro-Tourism & Rural Development Initiatives" }
-                ],
-                "rural-development-community-empowerment": [
-                    { value: "strengthening-rural-education-digital-learning", label: "Strengthening Rural Education & Digital Learning" },
-                    { value: "enhancing-rural-infrastructure-public-services", label: "Enhancing Rural Infrastructure & Public Services (e.g., roads, electricity, sanitation)" },
-                    { value: "rural-employment-skill-development", label: "Rural Employment & Skill Development (e.g., vocational skills, entrepreneurship)" },
-                    { value: "empowering-women-social-inclusion", label: "Empowering Women & Social Inclusion (e.g., SHGs, legal awareness, microcredit)" },
-                    { value: "improving-healthcare-sanitation-rural", label: "Improving Healthcare & Sanitation in Rural Areas" },
-                    { value: "digital-transformation-rural-connectivity", label: "Digital Transformation & Rural Connectivity (e.g., internet access, e-governance)" },
-                    { value: "disaster-preparedness-climate-resilience", label: "Disaster Preparedness & Climate Resilience in Rural Communities" },
-                    { value: "rural-tourism-cultural-preservation", label: "Rural Tourism & Cultural Preservation" },
-                    { value: "strengthening-rural-governance-civic-participation", label: "Strengthening Rural Governance & Civic Participation (e.g., Panchayati Raj, citizen rights)" }
-                ],
-                "health-well-being": [
-                    { value: "access-to-basic-healthcare-services", label: "Access to Basic Healthcare Services (e.g., health camps, mobile clinics, telemedicine, government schemes)" },
-                    { value: "preventive-healthcare-disease-awareness", label: "Preventive Healthcare & Disease Awareness (e.g., nutrition, hygiene, disease prevention)" },
-                    { value: "mental-health-awareness-support", label: "Mental Health Awareness & Support (e.g., counseling, support groups, helplines)" },
-                    { value: "addressing-substance-abuse-addiction", label: "Addressing Substance Abuse & Addiction" },
-                    { value: "womens-adolescent-health", label: "Women's & Adolescent Health (e.g., menstrual hygiene, reproductive health, maternal care)" },
-                    { value: "nutrition-wellness-programs", label: "Nutrition & Wellness Programs" },
-                    { value: "physical-fitness-lifestyle-awareness", label: "Physical Fitness & Lifestyle Awareness" },
-                    { value: "special-support-elderly-disabled", label: "Special Support for Elderly & Disabled Individuals" },
-                    { value: "emergency-response-disaster-health-preparedness", label: "Emergency Response & Disaster Health Preparedness" },
-                    { value: "advocacy-policy-support-public-health", label: "Advocacy & Policy Support for Public Health" }
-                ]
-            };
-
-            // Define districts for each state
             const districts = {
-                "andhra-pradesh": [
-                    "Alluri Sitharama Raju", "Anakapalli", "Anantapur", "Annamayya", "Bapatla", "Chittoor",
-                    "East Godavari", "Eluru", "Guntur", "Kakinada", "Konaseema", "Krishna", "Kurnool",
-                    "Nandyal", "Nellore", "Palnadu", "Parvathipuram Manyam", "Prakasam", "Sri Balaji",
-                    "Sri Potti Sriramulu Nellore", "Sri Sathya Sai", "Srikakulam", "Visakhapatnam",
-                    "Vizianagaram", "West Godavari", "YSR Kadapa"
-                ],
-                "arunachal-pradesh": [
-                    "Anjaw", "Changlang", "Dibang Valley", "East Kameng", "East Siang", "Kamle", "Kra Daadi",
-                    "Kurung Kumey", "Lepa Rada", "Lohit", "Longding", "Lower Dibang Valley", "Lower Siang",
-                    "Lower Subansiri", "Namsai", "Pakke Kessang", "Papum Pare", "Shi Yomi", "Siang",
-                    "Tawang", "Tirap", "Upper Siang", "Upper Subansiri", "West Kameng", "West Siang"
-                ],
-                "assam": [
-                    "Baksa", "Barpeta", "Bongaigaon", "Cachar", "Charaideo", "Chirang", "Darrang", "Dhemaji",
-                    "Dhubri", "Dibrugarh", "Goalpara", "Golaghat", "Hailakandi", "Jorhat", "Kamrup",
-                    "Kamrup Metropolitan", "Karbi Anglong", "Karimganj", "Kokrajhar", "Lakhimpur", "Majuli",
-                    "Morigaon", "Nagaon", "Nalbari", "Dima Hasao", "Sivasagar", "Sonitpur", "South Salmara-Mankachar",
-                    "Tinsukia", "Udalguri", "West Karbi Anglong"
-                ],
-                "bihar": [
-                    "Araria", "Arwal", "Aurangabad", "Banka", "Begusarai", "Bhagalpur", "Bhojpur", "Buxar",
-                    "Darbhanga", "East Champaran", "Gaya", "Gopalganj", "Jamui", "Jehanabad", "Kaimur",
-                    "Katihar", "Khagaria", "Kishanganj", "Lakhisarai", "Madhepura", "Madhubani", "Munger",
-                    "Muzaffarnagar", "Nalanda", "Nawada", "Patna", "Purnia", "Rohtas", "Saharsa", "Samastipur",
-                    "Saran", "Sheikhpura", "Sheohar", "Sitamarhi", "Siwan", "Supaul", "Vaishali", "West Champaran"
-                ],
-                "chhattisgarh": [
-                    "Balod", "Baloda Bazar", "Balrampur-Ramanujganj", "Bastar", "Bemetara", "Bijapur", "Bilaspur",
-                    "Dantewada", "Dhamtari", "Durg", "Gariaband", "Gaurela-Pendra-Marwahi", "Janjgir-Champa",
-                    "Jashpur", "Kabirdham", "Kanker", "Khairagarh-Chhuikhadan-Gandai", "Kondagaon", "Korba",
-                    "Koriya", "Mahasamund", "Manendragarh-Chirmiri-Bharatpur", "Mohla-Manpur-Ambagarh Chowki",
-                    "Mungeli", "Narayanpur", "Raigarh", "Raipur", "Rajnandgaon", "Sakti", "Sarangarh-Bilaigarh",
-                    "Sukma", "Surajpur", "Surguja"
-                ],
-                "goa": [
-                    "North Goa", "South Goa"
-                ],
-                "gujarat": [
-                    "Ahmedabad", "Amreli", "Anand", "Aravalli", "Banaskantha", "Bharuch", "Bhavnagar", "Botad",
-                    "Chhota Udaipur", "Dahod", "Dang", "Devbhoomi Dwarka", "Gandhinagar", "Gir Somnath",
-                    "Jamnagar", "Junagadh", "Kheda", "Kutch", "Mahisagar", "Mehsana", "Morbi", "Narmada",
-                    "Navsari", "Panchmahal", "Patan", "Porbandar", "Rajkot", "Sabarkantha", "Surat",
-                    "Surendranagar", "Tapi", "Vadodara", "Valsad"
-                ],
-                "haryana": [
-                    "Ambala", "Bhiwani", "Charkhi Dadri", "Faridabad", "Fatehabad", "Gurugram", "Hisar",
-                    "Jhajjar", "Jind", "Kaithal", "Karnal", "Kurukshetra", "Mahendragarh", "Nuh", "Palwal",
-                    "Panchkula", "Panipat", "Rewari", "Rohtas", "Sirsa", "Sonipat", "Yamunanagar"
-                ],
-                "himachal-pradesh": [
-                    "Bilaspur", "Chamba", "Hamirpur", "Kangra", "Kinnaur", "Kullu", "Lahaul and Spiti",
-                    "Mandi", "Shimla", "Sirmaur", "Solan", "Una"
-                ],
-                "jharkhand": [
-                    "Bokaro", "Chatra", "Deoghar", "Dhanbad", "Dumka", "East Singhbhum", "Garhwa", "Giridih",
-                    "Godda", "Gumla", "Hazaribagh", "Jamtara", "Khunti", "Kodarma", "Latehar", "Lohardaga",
-                    "Pakur", "Palamu", "Ramgarh", "Ranchi", "Sahibganj", "Seraikela Kharsawan", "Simdega",
-                    "West Singhbhum"
-                ],
-                "karnataka": [
-                    "Bagalkot", "Ballari", "Belagavi", "Bengaluru Rural", "Bengaluru Urban", "Bidar",
-                    "Chamarajanagar", "Chikkaballapur", "Chikkamagaluru", "Chitradurga", "Dakshina Kannada",
-                    "Davanagere", "Dharwad", "Gadag", "Hassan", "Haveri", "Kalaburagi", "Kodagu", "Kolar",
-                    "Koppal", "Mandya", "Mysuru", "Raichur", "Ramanagara", "Shivamogga", "Tumakuru",
-                    "Udupi", "Uttara Kannada", "Vijayanagara", "Vijayapura", "Yadgir"
-                ],
-                "kerala": [
-                    "Alappuzha", "Ernakulam", "Idukki", "Kannur", "Kasaragod", "Kollam", "Kottayam",
-                    "Kozhikode", "Malappuram", "Palakkad", "Pathanamthitta", "Thiruvananthapuram",
-                    "Thrissur", "Wayanad"
-                ],
-                "madhya-pradesh": [
-                    "Agar Malwa", "Alirajpur", "Anuppur", "Ashoknagar", "Balaghat", "Barwani", "Betul",
-                    "Bhind", "Bhopal", "Burhanpur", "Chhatarpur", "Chhindwara", "Damoh", "Datia", "Dewas",
-                    "Dhar", "Dindori", "Guna", "Gwalior", "Harda", "Hoshangabad", "Indore", "Jabalpur",
-                    "Jhabua", "Katni", "Khandwa", "Khargone", "Mandla", "Mandsaur", "Morena", "Narmadapuram",
-                    "Narsinghpur", "Neemuch", "Niwari", "Panna", "Raisen", "Rajgarh", "Ratlam", "Rewa",
-                    "Sagar", "Satna", "Sehore", "Seoni", "Shahdol", "Shajapur", "Sheopur", "Shivpuri",
-                    "Sidhi", "Singrauli", "Tikamgarh", "Ujjain", "Umaria", "Vidisha"
-                ],
-                "maharashtra": [
-                    "Ahmednagar", "Akola", "Amravati", "Aurangabad", "Beed", "Bhandara", "Buldhana",
-                    "Chandrapur", "Dhule", "Gadchiroli", "Gondia", "Hingoli", "Jalgaon", "Jalna",
-                    "Kolhapur", "Latur", "Mumbai City", "Mumbai Suburban", "Nagpur", "Nanded", "Nandurbar",
-                    "Nashik", "Osmanabad", "Palghar", "Parbhani", "Pune", "Raigad", "Ratnagiri",
-                    "Sangli", "Satara", "Sindhudurg", "Solapur", "Thane", "Wardha", "Washim", "Yavatmal"
-                ],
-                "manipur": [
-                    "Bishnupur", "Chandel", "Churachandpur", "Imphal East", "Imphal West", "Jiribam",
-                    "Kakching", "Kamjong", "Kangpokpi", "Noney", "Pherzawl", "Senapati", "Tamenglong",
-                    "Tengnoupal", "Thoubal", "Ukhrul"
-                ],
-                "meghalaya": [
-                    "East Garo Hills", "East Jaintia Hills", "East Khasi Hills", "Mairang", "North Garo Hills",
-                    "Ri Bhoi", "South Garo Hills", "South West Garo Hills", "South West Khasi Hills",
-                    "West Garo Hills", "West Jaintia Hills", "West Khasi Hills"
-                ],
-                "mizoram": [
-                    "Aizawl", "Champhai", "Hnahthial", "Khawzawl", "Kolasib", "Lawngtlai", "Lunglei",
-                    "Mamit", "Saiha", "Saitual", "Serchhip"
-                ],
-                "nagaland": [
-                    "Chumukedima", "Dimapur", "Kiphire", "Kohima", "Longleng", "Mokokchung", "Mon",
-                    "Niuland", "Noklak", "Peren", "Phek", "Shamator", "Tseminyu", "Tuensang", "Wokha", "Zunheboto"
-                ],
-                "odisha": [
-                    "Angul", "Balangir", "Balasore", "Bargarh", "Bhadrak", "Boudh", "Cuttack", "Deogarh",
-                    "Dhenkanal", "Gajapati", "Ganjam", "Jagatsinghpur", "Jajpur", "Jharsuguda", "Kalahandi",
-                    "Kandhamal", "Kendrapara", "Kendujhar", "Khordha", "Koraput", "Malkangiri", "Mayurbhanj",
-                    "Nabarangpur", "Nayagarh", "Nuapada", "Puri", "Rayagada", "Sambalpur", "Subarnapur",
-                    "Sundargarh"
-                ],
-                "punjab": [
-                    "Amritsar", "Barnala", "Bathinda", "Faridkot", "Fatehgarh Sahib", "Fazilka", "Ferozepur",
-                    "Gurdaspur", "Hoshiarpur", "Jalandhar", "Kapurthala", "Ludhiana", "Malerkotla", "Mansa",
-                    "Moga", "Pathankot", "Patiala", "Rupnagar", "Sahibzada Ajit Singh Nagar", "Sangrur",
-                    "Shahid Bhagat Singh Nagar", "Sri Muktsar Sahib", "Tarn Taran"
-                ],
-                "rajasthan": [
-                    "Ajmer", "Alwar", "Anupgarh", "Balotra", "Banswara", "Baran", "Barmer", "Beawar",
-                    "Bharatpur", "Bhilwara", "Bikaner", "Bundi", "Chittorgarh", "Churu", "Dausa", "Deeg",
-                    "Dholpur", "Dudu", "Dungarpur", "Ganganagar", "Gangapur City", "Hanumangarh", "Jaipur",
-                    "Jaipur Rural", "Jaisalmer", "Jalore", "Jhalawar", "Jhunjhunu", "Jodhpur", "Jodhpur Rural",
-                    "Karauli", "Kekri", "Khairthal-Tijara", "Kota", "Kotputli-Behror", "Nagaur", "Neem ka Thana",
-                    "Pali", "Phalodi", "Pratapgarh", "Rajsamand", "Salumbar", "Sanchore", "Sawai Madhopur",
-                    "Shahpura", "Sikar", "Sirohi", "Tonk", "Udaipur"
-                ],
-                "sikkim": [
-                    "Gangtok", "Gyalshing", "Mangan", "Namchi", "Pakyong", "Soreng"
-                ],
-                "tamil-nadu": [
-                    "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul",
-                    "Erode", "Kallakurichi", "Kancheepuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai",
-                    "Mayiladuthurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai",
-                    "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi", "Thanjavur", "Theni",
-                    "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tirupathur", "Tiruppur", "Tiruvallur",
-                    "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar"
-                ],
-                "telangana": [
-                    "Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhupalpally",
-                    "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem Asifabad",
-                    "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal-Malkajgiri", "Mulugu",
-                    "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla",
-                    "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy",
-                    "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"
-                ],
-                "tripura": [
-                    "Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti",
-                    "West Tripura"
-                ],
-                "uttar-pradesh": [
-                    "Agra", "Aligarh", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Ayodhya", "Azamgarh",
-                    "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti",
-                    "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria",
-                    "Etah", "Etawah", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar",
-                    "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur", "Hardoi",
-                    "Hathras", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar",
-                    "Kasganj", "Kaushambi", "Kheri", "Kushinagar", "Lalitpur", "Lucknow", "Maharajganj",
-                    "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad",
-                    "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Prayagraj", "Raebareli", "Rampur",
-                    "Saharanpur", "Sambhal", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shravasti",
-                    "Siddharthnagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"
-                ],
-                "uttarakhand": [
-                    "Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital",
-                    "Pauri Garhwal", "Pithoragarh", "Rudraprayag", "Tehri Garhwal", "Udham Singh Nagar",
-                    "Uttarkashi"
-                ],
-                "west-bengal": [
-                    "Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dakshin Dinajpur", "Darjeeling",
-                    "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda",
-                    "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Bardhaman", "Paschim Medinipur",
-                    "Purba Bardhaman", "Purba Medinipur", "Purulia", "South 24 Parganas", "Uttar Dinajpur"
-                ],
-                "andaman-nicobar": [
-                    "Nicobar", "North and Middle Andaman", "South Andaman"
-                ],
-                "chandigarh": [
-                    "Chandigarh"
-                ],
-                "dadra-nagar-haveli-daman-diu": [
-                    "Daman", "Diu", "Dadra and Nagar Haveli"
-                ],
-                "delhi": [
-                    "Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi",
-                    "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi",
-                    "West Delhi"
-                ],
-                "jammu-kashmir": [
-                    "Anantnag", "Bandipora", "Baramulla", "Budgam", "Doda", "Ganderbal", "Jammu", "Kathua",
-                    "Kishtwar", "Kulgam", "Kupwara", "Poonch", "Pulwama", "Rajouri", "Ramban", "Reasi",
-                    "Samba", "Shopian", "Srinagar", "Udhampur"
-                ],
-                "ladakh": [
-                    "Kargil", "Leh"
-                ],
-                "lakshadweep": [
-                    "Lakshadweep"
-                ],
-                "puducherry": [
-                    "Karaikal", "Mahe", "Puducherry", "Yanam"
-                ]
+                "andhra-pradesh": ["Alluri Sitharama Raju", "Anakapalli", "Anantapur", "Annamayya", "Bapatla", "Chittoor", "East Godavari", "Eluru", "Guntur", "Kakinada", "Konaseema", "Krishna", "Kurnool", "Nandyal", "Nellore", "Palnadu", "Parvathipuram Manyam", "Prakasam", "Sri Balaji", "Sri Potti Sriramulu Nellore", "Sri Sathya Sai", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
+                "telangana": ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhupalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem Asifabad", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal-Malkajgiri", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"],
+                "delhi": ["Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi", "West Delhi"]
             };
 
-            // Show/hide and populate subcategory dropdown based on main category selection
-            categorySelect.addEventListener('change', () => {
-                const selectedCategory = categorySelect.value;
-                subcategorySelect.innerHTML = '<option value="" disabled selected>Select a subcategory</option>';
-
-                if (selectedCategory && subcategories[selectedCategory]) {
-                    subcategories[selectedCategory].forEach(sub => {
-                        const option = document.createElement('option');
-                        option.value = sub.value;
-                        option.textContent = sub.label;
-                        subcategorySelect.appendChild(option);
-                    });
-                    subcategorySection.style.display = 'block';
-                } else {
-                    subcategorySection.style.display = 'none';
-                }
-            });
-
-            // Show/hide and populate district dropdown based on state selection
             stateSelect.addEventListener('change', () => {
                 const selectedState = stateSelect.value;
                 districtSelect.innerHTML = '<option value="" disabled selected>Select a district</option>';
-                assemblyConstituencySelect.innerHTML = '<option value="" disabled selected>Select an assembly constituency</option>';
 
                 if (selectedState && districts[selectedState]) {
                     districts[selectedState].forEach(district => {
@@ -848,88 +290,49 @@
                     districtSection.style.display = 'block';
                 } else {
                     districtSection.style.display = 'none';
-                    assemblyConstituencySection.style.display = 'none';
-                }
-            });
-
-            // Show/hide and populate assembly constituency dropdown based on district selection
-            districtSelect.addEventListener('change', () => {
-                const selectedDistrict = districtSelect.value;
-                assemblyConstituencySelect.innerHTML = '<option value="" disabled selected>Select an assembly constituency</option>';
-
-                if (selectedDistrict && assemblyConstituencies[selectedDistrict]) {
-                    assemblyConstituencies[selectedDistrict].forEach(constituency => {
-                        const option = document.createElement('option');
-                        option.value = constituency.toLowerCase().replace(/\s+/g, '-');
-                        option.textContent = constituency;
-                        assemblyConstituencySelect.appendChild(option);
-                    });
-                    assemblyConstituencySection.style.display = 'block';
-                } else {
-                    assemblyConstituencySection.style.display = 'none';
                 }
             });
 
             grievanceForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                formMessage.classList.add('hidden');
 
-                // Collect form data
-                const formData = new FormData(grievanceForm);
-                const data = {
-                    fullName: formData.get('fullName'),
-                    mobileNumber: formData.get('mobileNumber'),
-                    email: formData.get('email') || '',
-                    state: formData.get('state'),
-                    district: formData.get('district'),
-                    assemblyConstituency: formData.get('assemblyConstituency'),
-                    mandal: formData.get('mandal'),
-                    category: formData.get('category'),
-                    subcategory: formData.get('subcategory'),
-                    description: formData.get('description'),
-                    declaration: formData.get('declaration') === 'on'
+                const formData = {
+                    fullName: document.getElementById('fullName').value,
+                    mobileNumber: document.getElementById('mobileNumber').value,
+                    email: document.getElementById('email').value,
+                    state: document.getElementById('state').value,
+                    district: document.getElementById('district').value,
+                    mandal: document.getElementById('mandal').value,
+                    category: document.getElementById('category').value,
+                    subcategory: document.getElementById('subcategory').value,
+                    description: document.getElementById('description').value,
+                    declaration: document.getElementById('declaration').checked
                 };
 
                 try {
-                    const response = await fetch('https://viswavignana-api.vercel.app/api/grievance', {
+                    const response = await fetch('http://localhost:3000/api/grievance', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(data)
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
                     });
-
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-
                     const result = await response.json();
-                    formMessage.classList.remove('hidden', 'text-red-500');
-                    formMessage.classList.add('text-green-500');
-                    formMessage.textContent = 'Grievance/Support request submitted successfully!';
-                    grievanceForm.reset();
-                    subcategorySection.style.display = 'none';
-                    districtSection.style.display = 'none';
-                    assemblyConstituencySection.style.display = 'none';
+
+                    if (response.ok) {
+                        formMessage.classList.remove('hidden', 'text-red-500');
+                        formMessage.classList.add('text-green-500');
+                        formMessage.textContent = result.message || 'Grievance/Support request submitted successfully!';
+                        grievanceForm.reset();
+                        districtSection.style.display = 'none';
+                    } else {
+                        throw new Error(result.message || 'Submission failed');
+                    }
                 } catch (error) {
-                    console.error('Error submitting form:', error);
                     formMessage.classList.remove('hidden', 'text-green-500');
                     formMessage.classList.add('text-red-500');
-                    formMessage.textContent = 'Error submitting grievance/support request. Please try again.';
+                    formMessage.textContent = error.message || 'Error submitting form. Please try again.';
                 }
             });
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            try {
-                animateSections();
-                initParticles();
-                initScrollToTop();
-                initForm();
-            } catch (error) {
-                console.error('Error rendering page:', error);
-                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
-            }
         });
     </script>
 </body>
