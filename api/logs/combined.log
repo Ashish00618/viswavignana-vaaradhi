@@ -66,3 +66,12 @@
 2025-06-20T12:01:11.694Z [info]: ${req.method} ${req.url}
 2025-06-20T12:01:30.767Z [info]: ${req.method} ${req.url}
 2025-06-20T12:02:39.577Z [info]: ${req.method} ${req.url}
+2025-09-13T08:05:04.690Z [error]: MongoDB connection error: querySrv ENOTFOUND _mongodb._tcp.vaaradi.gwmgxia.mongodb.net
+2025-09-13T08:27:02.241Z [info]: Connected to MongoDB
+2025-09-13T08:36:32.425Z [info]: ${req.method} ${req.url}
+2025-09-13T08:39:24.889Z [info]: Connected to MongoDB
+2025-09-13T08:49:35.473Z [info]: Connected to MongoDB
+2025-09-13T09:05:56.358Z [info]: Connected to MongoDB
+2025-09-18T08:54:31.011Z [info]: Connected to MongoDB
+2025-10-15T20:54:49.675Z [info]: Connected to MongoDB
+2025-10-15T21:56:55.347Z [info]: Connected to MongoDB

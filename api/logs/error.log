@@ -5,3 +5,4 @@
 2025-06-20T11:29:22.167Z [error]: Error: Bad control character in string literal in JSON at position 105 (line 6 column 26)
 2025-06-20T11:29:22.521Z [error]: Error: Bad control character in string literal in JSON at position 105 (line 6 column 26)
 2025-06-20T11:29:36.611Z [error]: Error: Expected double-quoted property name in JSON at position 110 (line 8 column 1)
+2025-09-13T08:05:04.690Z [error]: MongoDB connection error: querySrv ENOTFOUND _mongodb._tcp.vaaradi.gwmgxia.mongodb.net

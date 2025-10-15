@@ -19,6 +19,30 @@
       "src": "/images/(.*)",
       "dest": "frontend/images/$1"
     },
+
+    
+    {
+      "src": "/about",
+      "dest": "frontend/about.html"
+    },
+    {
+      "src": "/contact",
+      "dest": "frontend/contact.html"
+    },
+    {
+      "src": "/donate",
+      "dest": "frontend/donate.html"
+    },
+    {
+      "src": "/volunteer",
+      "dest": "frontend/volunteer.html"
+    },
+    {
+      "src": "/events",
+      "dest": "frontend/events.html"
+    },
+
+    
     {
       "src": "/(.*)",
       "dest": "frontend/$1"

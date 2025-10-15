@@ -18,13 +18,14 @@ const corsOptions = {
   origin: [
     "http://127.0.0.1:5500",
     "http://localhost:5500",
+    "http://localhost:3000",
     "https://www.viswavignanavaaradhi.org",
   ],
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
 };
 
-// ✅ Use CORS middleware globally
+// Use CORS middleware globally
 app.use(cors(corsOptions));
 
 app.options("*", cors(corsOptions));
