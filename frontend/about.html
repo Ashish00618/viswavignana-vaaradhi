@@ -3,205 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Viswa Vignana Vaaradhi</title>
+    <title>About Our Missions - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { transform: scale(1.1); color: #F0F5FF; }
+        .btn-primary { background: linear-gradient(to right, #1E3A8A, #3B82F6); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3); }
+        .footer-link { transition: all 0.3s ease; }
+        .footer-link:hover { color: #F0F5FF; text-decoration: underline; }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; background-color: #1E3A8A; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
+        .dropdown-content a:hover { background-color: #3B82F6; }
+        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
+        .animated-section { background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #3B82F6, #8B5CF6); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); transform: scale(1.1); }
+        
+        /* NEW HERO SECTION STYLE */
+        .hero-section {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
         }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            transform: scale(1.1);
-            color: #F0F5FF;
-        }
-        .btn-primary {
-            background: linear-gradient(to right, #1E3A8A, #3B82F6);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
-        }
-        .feature-card {
+        
+        /* Mission Card Styles */
+        .mission-card {
             background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            height: 100%;
-        }
-        .feature-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
-            border: 1px solid #3B82F6;
-        }
-        .hero-section, .content-section {
-            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
-            background-size: 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        #scrollToTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(to right, #3B82F6, #8B5CF6);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            transition: all 0.3s ease;
-            display: none;
-            z-index: 1000;
-        }
-        #scrollToTopBtn:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-            transform: scale(1.1);
-        }
-        .footer-link {
-            transition: all 0.3s ease;
-        }
-        .footer-link:hover {
-            color: #F0F5FF;
-            text-decoration: underline;
-        }
-        .dropdown {
+            height: 380px;
             position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            perspective: 1000px;
         }
-        .dropdown-content {
-            display: none;
+        .mission-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        .card-content {
             position: absolute;
-            background-color: #1E3A8A;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-            top: 100%;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            text-align: center;
+            transform: translate(-50%, -50%);
+            transition: transform 0.5s ease;
+        }
+        .mission-card:hover .card-content {
+            transform: translate(-50%, -110%);
+        }
+        .card-details {
+            position: absolute;
+            bottom: 0;
             left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
             opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+            text-align: center;
         }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .dropdown-content a:hover {
-            background-color: #3B82F6;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
+        .mission-card:hover .card-details {
             opacity: 1;
             transform: translateY(0);
         }
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            background-color: #3B82F6;
-            color: white;
-            margin-bottom: 0.5rem;
+
+        /* Spotlight Effect */
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
         }
-        .progress-bar {
-            height: 0.5rem;
-            background-color: #EC4899;
-            border-radius: 0.25rem;
-            margin-top: 0.5rem;
+        .mission-card:hover::before {
+            opacity: 1;
         }
-        .sub-content {
-            text-align: left;
-            margin-top: 1rem;
+
+        .mission-icon { font-size: 3.5rem; margin-bottom: 1.5rem; background: -webkit-linear-gradient(#8B5CF6, #EC4899); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .impact-stat { border-top: 1px solid rgba(255, 255, 255, 0.3); padding-top: 0.75rem; margin-top: 0.75rem; }
+
+        /* Core Values Section */
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.4s ease;
         }
-        details summary {
-            cursor: pointer;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #F0F5FF;
-            transition: color 0.3s ease;
-        }
-        details[open] summary {
-            color: #3B82F6;
-        }
-        details p, details ul {
-            color: #ffffff;
-            font-size: 1rem; /* Increased from 0.875rem to 1rem */
-        }
-        details ul li {
-            margin-bottom: 0.25rem;
-        }
-        @media (max-width: 768px) {
-            header {
-                padding: 0.5rem 1rem;
-            }
-            header img {
-                height: 2.5rem;
-                width: 2.5rem;
-            }
-            header h2 {
-                font-size: 1.25rem;
-            }
-            nav a {
-                font-size: 0.875rem;
-                padding: 0.5rem;
-            }
-            .btn-primary {
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-                line-height: 1.25rem;
-            }
-            .feature-card {
-                padding: 1rem;
-            }
-            .feature-card h3 {
-                font-size: 1.25rem;
-            }
-            .feature-card p, .feature-card ul li {
-                font-size: 0.875rem; /* Adjusted for mobile */
-            }
-            footer {
-                padding: 1.5rem;
-            }
-            footer h3 {
-                font-size: 1.25rem;
-            }
-            footer p,
-            footer a {
-                font-size: 0.875rem;
-            }
-        }
-        @media (min-width: 769px) {
-            .btn-primary {
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-            }
-            .feature-card p, .feature-card ul li {
-                font-size: 1rem; /* Default size for desktop */
-            }
-        }
+        .value-card:hover { transform: translateY(-10px); }
+        .value-icon { font-size: 2.5rem; margin-bottom: 1rem; color: #8B5CF6; }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
@@ -232,77 +141,104 @@
         </div>
     </header>
 
-    <section class="hero-section py-20 text-center text-white relative fade-in">
-        <div id="particles-js-hero" class="absolute inset-0"></div>
+    <section class="hero-section h-screen flex items-center justify-center text-center text-white bg-[url('/images/logo1.jpg')] relative fade-in">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4">About Us</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Learn about our mission to empower rural India through knowledge and development.</p>
+            <h1 class="text-5xl font-bold mb-4">About Viswa Vignana Vaaradhi</h1>
+            <p class="text-xl max-w-3xl mx-auto">
+                We are a bridge of universal knowledge, forging a future of empowerment by connecting communities with the resources they need to thrive.
+            </p>
         </div>
     </section>
 
-    <section class="content-section py-20 relative">
+    <section class="animated-section py-20 relative">
         <div id="particles-js-content" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-in">
-                <!-- Our Vision Card -->
-                <div class="feature-card">
-                    <i class="fas fa-eye fa-3x text-[#3B82F6] mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2 text-white">Our Vision</h3>
-                    <span class="badge">Empowerment Goal</span>
-                    <div class="progress-bar w-3/4 mx-auto"></div>
-                    <div class="sub-content mt-4">
-                        <details>
-                            <summary>Explore Our Vision</summary>
-                            <p class="text-sm mt-2">To envision a knowledge-empowered society where every individual, regardless of their background, is equipped with the understanding, skills, and resources to participate actively in democratic processes, achieve personal and collective well-being, and contribute to self-reliant, equitable, and sustainably developed communities.</p>
-                        </details>
+            <div class="text-center text-white mb-16 fade-in">
+                <h2 class="text-4xl font-bold">Our Core Missions</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in">
+                
+                <div class="mission-card">
+                    <div class="card-content">
+                        <div class="mission-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="text-2xl font-bold text-white">Mission Medha</h3>
+                    </div>
+                    <div class="card-details">
+                        <p class="text-gray-200 text-sm">Igniting minds through quality education and mentorship for underprivileged students.</p>
+                        <div class="impact-stat w-full">
+                            <p class="text-white text-lg font-semibold">500+ Students Mentored</p>
+                        </div>
+                        <a href="education.html" class="font-semibold text-white mt-4 inline-block hover:text-gray-300">Learn More &rarr;</a>
                     </div>
                 </div>
 
-                <!-- Our Mission Card -->
-                <div class="feature-card">
-                    <i class="fas fa-bridge fa-3x text-[#3B82F6] mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2 text-white">Our Mission</h3>
-                    <span class="badge">Action Plan</span>
-                    <div class="progress-bar w-1/2 mx-auto"></div>
-                    <div class="sub-content mt-4">
-                        <details>
-                            <summary>Discover Our Mission</summary>
-                            <p class="text-sm mt-2">"Viswa Vignana Vaaradhi" (A Bridge of Universal Knowledge) is committed to serving as a transformative bridge of knowledge and support, dedicated to empowering citizens across India, especially the underserved, through its multi-faceted objectives. We achieve this by:</p>
-                            <ul class="list-disc list-inside mt-2">
-                                <li><i class="fas fa-users text-[#EC4899]"></i> Enhancing Political Awareness and Participation: Educating citizens on voting rights, elections, and governance, inspiring ethical youth engagement.</li>
-                                <li><i class="fas fa-balance-scale text-[#EC4899]"></i> Promoting Comprehensive Legal Literacy: Empowering with rights knowledge, legal aid, and protections for marginalized groups.</li>
-                                <li><i class="fas fa-graduation-cap text-[#EC4899]"></i> Ensuring Quality Education and Skill Development: Supporting students, establishing learning centers, and promoting digital/financial literacy.</li>
-                                <li><i class="fas fa-tractor text-[#EC4899]"></i> Empowering Farmers and Fostering Sustainable Agriculture: Training in modern techniques, enhancing market access, and promoting water conservation.</li>
-                                <li><i class="fas fa-hands-helping text-[#EC4899]"></i> Driving Holistic Rural Development: Strengthening education, infrastructure, and healthcare for self-sustaining villages.</li>
-                                <li><i class="fas fa-heartbeat text-[#EC4899]"></i> Advancing Community Health and Well-being: Increasing healthcare access, preventive care, and mental health support.</li>
-                            </ul>
-                        </details>
+                <div class="mission-card">
+                    <div class="card-content">
+                        <div class="mission-icon"><i class="fas fa-balance-scale-right"></i></div>
+                        <h3 class="text-2xl font-bold text-white">Nyaya Sadan</h3>
+                    </div>
+                    <div class="card-details">
+                        <p class="text-gray-200 text-sm">Delivering justice for all by offering free legal aid and representation to the vulnerable.</p>
+                         <div class="impact-stat w-full">
+                            <p class="text-white text-lg font-semibold">100+ Cases Handled Pro Bono</p>
+                        </div>
+                        <a href="political-legal-literacy.html" class="font-semibold text-white mt-4 inline-block hover:text-gray-300">Learn More &rarr;</a>
                     </div>
                 </div>
 
-                <!-- Our Ideology Card -->
-                <div class="feature-card">
-                    <i class="fas fa-lightbulb fa-3x text-[#3B82F6] mb-4"></i>
-                    <h3 class="text-2xl font-bold mb-2 text-white">Our Ideology</h3>
-                    <span class="badge">Core Values</span>
-                    <div class="progress-bar w-2/3 mx-auto"></div>
-                    <div class="sub-content mt-4">
-                        <details>
-                            <summary>Learn Our Ideology</summary>
-                            <p class="text-sm mt-2">Our ideology is built on the transformative power of knowledge and empowerment, guided by principles to uplift communities:</p>
-                            <ul class="list-disc list-inside mt-2">
-                                <li><i class="fas fa-book text-[#8B5CF6]"></i> Knowledge as Liberation: Making knowledge accessible for societal progress.</li>
-                                <li><i class="fas fa-hands text-[#8B5CF6]"></i> Inclusivity and Equity: Uplifting marginalized and underserved groups.</li>
-                                <li><i class="fas fa-vote-yea text-[#8B5CF6]"></i> Active Citizenship: Fostering informed participation in democracy.</li>
-                                <li><i class="fas fa-leaf text-[#8B5CF6]"></i> Holistic Development: Integrating sustainable and resilient practices.</li>
-                                <li><i class="fas fa-eye text-[#8B5CF6]"></i> Transparency: Enabling accountability through governance engagement.</li>
-                                <li><i class="fas fa-smile text-[#8B5CF6]"></i> Compassion: Prioritizing health and well-being.</li>
-                                <li><i class="fas fa-users-cog text-[#8B5CF6]"></i> Collaboration: Fostering community-led change with partnerships.</li>
-                            </ul>
-                        </details>
+                <div class="mission-card">
+                    <div class="card-content">
+                        <div class="mission-icon"><i class="fas fa-utensils"></i></div>
+                        <h3 class="text-2xl font-bold text-white">Mission Annapurna</h3>
+                    </div>
+                    <div class="card-details">
+                        <p class="text-gray-200 text-sm">Nourishing communities and fighting malnutrition by providing meals to the hungry and needy.</p>
+                         <div class="impact-stat w-full">
+                            <p class="text-white text-lg font-semibold">50,000+ Meals Served</p>
+                        </div>
+                        <a href="rural-development.html" class="font-semibold text-white mt-4 inline-block hover:text-gray-300">Learn More &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="mission-card">
+                    <div class="card-content">
+                        <div class="mission-icon"><i class="fas fa-brain"></i></div>
+                        <h3 class="text-2xl font-bold text-white">Mental Health & Drug De-addiction</h3>
+                    </div>
+                     <div class="card-details">
+                        <p class="text-gray-200 text-sm">Healing minds through compassionate mental health support and drug de-addiction programs.</p>
+                         <div class="impact-stat w-full">
+                            <p class="text-white text-lg font-semibold">200+ Individuals Counseled</p>
+                        </div>
+                        <a href="agriculture.html" class="font-semibold text-white mt-4 inline-block hover:text-gray-300">Learn More &rarr;</a>
                     </div>
                 </div>
             </div>
+            
+            <div class="mt-24 fade-in">
+                <h2 class="text-4xl font-bold text-white text-center mb-12">Our Core Values</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-people-carry-box"></i></div>
+                        <h4 class="text-xl font-semibold text-white">Empowerment</h4>
+                    </div>
+                     <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-shield-halved"></i></div>
+                        <h4 class="text-xl font-semibold text-white">Integrity</h4>
+                    </div>
+                     <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-heart"></i></div>
+                        <h4 class="text-xl font-semibold text-white">Compassion</h4>
+                    </div>
+                     <div class="value-card">
+                        <div class="value-icon"><i class="fas fa-globe"></i></div>
+                        <h4 class="text-xl font-semibold text-white">Inclusivity</h4>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -319,15 +255,15 @@
                         <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
                         <li><a href="about.html" class="footer-link hover:underline">About</a></li>
                         <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="donate.html" class="footer-link hover:underline">Donate</a></li>
+                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
                         <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: [email protected]</p>
+                    <p>Email: viswavignanavaaradhi@gmail.com</p>
                     <p>Phone: +91-9010937358</p>
-                    <p>Address: Visakhapatnam, Andhra Pradesh</p>
+                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
                 </div>
             </div>
             <div class="mt-8 text-center">
@@ -348,52 +284,19 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.2 });
-
+            }, { threshold: 0.1 });
             sections.forEach(section => observer.observe(section));
         }
 
         function initParticles() {
-            particlesJS('particles-js-hero', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
-
-            particlesJS('particles-js-content', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
+            if (document.getElementById('particles-js-content')) {
+                particlesJS('particles-js-content', { particles: { number: { value: 80 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } } });
+            }
         }
 
         function initScrollToTop() {
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            window.onscroll = function () {
+            window.onscroll = function() {
                 if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                     scrollToTopBtn.style.display = 'block';
                 } else {
@@ -404,11 +307,25 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
+        
+        function initInteractiveCards() {
+            const cards = document.querySelectorAll('.mission-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             animateSections();
             initParticles();
             initScrollToTop();
+            initInteractiveCards();
         });
     </script>
 </body>
