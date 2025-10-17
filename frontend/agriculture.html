@@ -3,130 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agriculture - Viswa Vignana Vaaradhi</title>
+    <title>Mission Chetana - Mental Health & De-addiction - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add Vanilla Tilt for 3D tilt effect -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <!-- Add Particles.js for background particle animation -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        /* Global Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Header Styles */
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            transform: scale(1.1);
-            color: #F0F5FF;
-        }
-        /* Button Styles */
-        .btn-primary {
-            background: linear-gradient(to right, #1E3A8A, #3B82F6);
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
-        }
-        /* Card Styles */
-        .card {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
-            border: 1px solid #3B82F6;
-        }
-        /* Footer Links */
-        .footer-link {
-            transition: all 0.3s ease;
-        }
-        .footer-link:hover {
-            color: #F0F5FF;
-            text-decoration: underline;
-        }
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #1E3A8A;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-            top: 100%;
-            left: 0;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .dropdown-content a:hover {
-            background-color: #3B82F6;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Gradient Background Animation for Agriculture Section */
-        .agriculture-section {
-            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
-            background-size: 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        /* Scroll to Top Button */
-        #scrollToTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(to right, #3B82F6, #8B5CF6);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            transition: all 0.3s ease;
-            display: none;
-            z-index: 1000;
-        }
-        #scrollToTopBtn:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-            transform: scale(1.1);
-        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { transform: scale(1.1); color: #F0F5FF; }
+        .btn-primary { background: linear-gradient(to right, #1E3A8A, #3B82F6); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3); }
+        .card { transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .card:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3); border: 1px solid #3B82F6; }
+        .footer-link { transition: all 0.3s ease; }
+        .footer-link:hover { color: #F0F5FF; text-decoration: underline; }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; background-color: #1E3A8A; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
+        .dropdown-content a:hover { background-color: #3B82F6; }
+        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
+        .animated-section { background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #3B82F6, #8B5CF6); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); transform: scale(1.1); }
+        .support-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .support-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
+        .gallery-item { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0, 0, 255, 0.3); }
     </style>
 </head>
 <body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
+    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+        <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
                 <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
             </div>
             <nav class="flex items-center space-x-4">
@@ -150,161 +61,75 @@
         </div>
     </header>
 
-    <!-- Agriculture Section with Gradient Animation and Particle Background -->
-    <section class="agriculture-section py-20 relative">
-        <div id="particles-js-agriculture" class="absolute inset-0"></div>
+    <section class="animated-section py-20 text-center text-white relative fade-in">
+        <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">Agriculture & Strengthening the Roots of India</h2>
-            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-8 fade-in">
-                At VISWA VIGNANA VAARADHI, we believe that farmers are the true backbone of our nation. Yet, many of them continue to face challenges like outdated farming methods, poor market access, and lack of support. Our goal is to ensure that no farmer feels alone, and every farming family is supported with knowledge, tools, and opportunities. Through awareness, training, and collaboration, we are working to create a strong, sustainable, and self-reliant rural India.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Tile 1 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">1️⃣ Modern and Eco-Friendly Farming</h3>
-                    <p class="text-gray-200 mb-4">
-                        We help farmers shift from old, struggling techniques to modern, scientific, and eco-friendly practices. We want every farmer to grow more, spend less, and protect the land.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Teaching organic and sustainable farming methods</li>
-                        <li>Promoting natural fertilizers, bio-pesticides, and soil health practices</li>
-                        <li>Providing training on precision farming, climate-smart agriculture, and pest control</li>
-                        <li>Helping farmers access modern tools, seeds, and machinery at low cost</li>
-                    </ul>
-                </div>
-                <!-- Tile 2 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">2️⃣ Regional Agricultural Community Centers</h3>
-                    <p class="text-gray-200 mb-4">
-                        To bring help closer to where farmers live, these centers will become knowledge hubs for rural progress.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Establishing Agricultural Resource Centers in villages</li>
-                        <li>Offering expert guidance, demo sessions, and workshops</li>
-                        <li>Connecting farmers to scientists, KVKs, and agri-experts for practical advice</li>
-                    </ul>
-                </div>
-                <!-- Tile 3 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">3️⃣ Awareness on Government Schemes and Farmer Rights</h3>
-                    <p class="text-gray-200 mb-4">
-                        Many farmers miss out on benefits just because they don’t know about them. We want every farmer to know their rights and how to claim them.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Conducting awareness drives about government schemes, crop insurance, MSP, and subsidies</li>
-                        <li>Assisting farmers in applying for loans, welfare programs, and legal help</li>
-                        <li>Educating about land rights, tenancy laws, and legal protections</li>
-                    </ul>
-                </div>
-                <!-- Tile 4 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">4️⃣ Better Market Access and Farmer Empowerment</h3>
-                    <p class="text-gray-200 mb-4">
-                        We want farmers to earn more and rely less on middlemen. We aim to create confident, independent farmer-entrepreneurs.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Train farmers to sell directly through digital platforms and local markets</li>
-                        <li>Promote Farmer Producer Organizations (FPOs) and self-help groups for better bargaining</li>
-                        <li>Guide them to government procurement schemes and e-commerce markets</li>
-                    </ul>
-                </div>
-                <!-- Tile 5 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">5️⃣ Organic Farming and Sustainability</h3>
-                    <p class="text-gray-200 mb-4">
-                        Our soil is our future. Our vision: Healthy soil, safe food, and a greener future.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Promoting organic farming, eco-certifications, and sustainable models</li>
-                        <li>Teaching composting, water-saving, and natural pest control methods</li>
-                        <li>Supporting tree plantation and watershed development projects</li>
-                    </ul>
-                </div>
-                <!-- Tile 6 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">6️⃣ Smart Water Use and Climate Resilience</h3>
-                    <p class="text-gray-200 mb-4">
-                        Water is life for farmers. This helps farmers prepare for the future, today.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Teaching drip irrigation, rainwater harvesting, and efficient water use</li>
-                        <li>Encouraging climate-resilient crops that withstand droughts and floods</li>
-                        <li>Supporting community-led efforts for water conservation and recharge</li>
-                    </ul>
-                </div>
-                <!-- Tile 7 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">7️⃣ Skills and Rural Entrepreneurship</h3>
-                    <p class="text-gray-200 mb-4">
-                        Farming is more than just growing crops. It’s a powerful business. We turn small ideas into big rural success stories.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Skill-building in dairy, poultry, fishery, food processing, and vermicomposting</li>
-                        <li>Supporting agripreneurs and rural start-ups with training and mentorship</li>
-                        <li>Providing market connections and financial literacy programs</li>
-                    </ul>
-                </div>
-                <!-- Tile 8 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">8️⃣ Agricultural Education and Research</h3>
-                    <p class="text-gray-200 mb-4">
-                        We connect the field with the lab. We help farmers stay updated with the latest knowledge and tools.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Partnering with universities and Krishi Vigyan Kendras</li>
-                        <li>Organizing agri-exhibitions, fairs, and innovation tours</li>
-                        <li>Supporting research on better seeds, climate solutions, and pest resistance</li>
-                    </ul>
-                </div>
-                <!-- Tile 9 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">9️⃣ Digital Literacy and Smart Farming</h3>
-                    <p class="text-gray-200 mb-4">
-                        Technology can transform farming. We’re building a future of smart, tech-savvy farming communities.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Using apps, weather tools, and satellite data for crop planning</li>
-                        <li>Promoting platforms like eNAM for digital market access</li>
-                        <li>Helping farmers digitize records, payments, and farm data</li>
-                    </ul>
-                </div>
-                <!-- Tile 10 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">🔟 Supporting Farmers' Mental Health & Crisis Help</h3>
-                    <p class="text-gray-200 mb-4">
-                        We care for the well-being of our annadatas (food providers). Because behind every farm is a human story that deserves support.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Train farmers in budgeting, financial planning, and debt prevention</li>
-                        <li>Offer mental health counseling and emotional support</li>
-                        <li>Connect families to crisis relief, loan restructuring, and helplines</li>
-                    </ul>
-                </div>
-                <!-- Tile 11 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">1️⃣1️⃣ Agro-Tourism and Rural Development</h3>
-                    <p class="text-gray-200 mb-4">
-                        We help farmers earn more through new ideas. We help create diverse income sources for stronger rural economies.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Turning farms into tourist spots and learning centers</li>
-                        <li>Supporting rural handcrafts, local industries, and eco-tourism</li>
-                        <li>Promoting green and climate-resilient agriculture</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Closing Vision Statement -->
-            <div class="mt-8 text-center fade-in">
-                <h3 class="text-2xl font-semibold text-white mb-4">🌱 Our Vision:</h3>
-                <p class="text-lg text-white max-w-3xl mx-auto">
-                    A future where every farmer is respected, self-reliant, and thriving—with knowledge in their hands, hope in their hearts, and prosperity in their fields.<br><br>
-                    Let’s sow the seeds of change—together.
+            <h2 class="text-5xl font-bold mb-4">Mental Health & drug De-addiction </h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Healing Minds, Rebuilding Lives. Our mission to provide compassionate support for mental wellness and a path away from addiction.</p>
+        </div>
+    </section>
+    
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center fade-in mb-12">
+                <h3 class="text-3xl font-bold mb-4 text-[#1E3A8A]">Our Path to Mental Wellness</h3>
+                <p class="text-lg max-w-3xl mx-auto">
+                    We recognize that mental health is a critical, yet often neglected, aspect of well-being. Mission Chetana aims to destigmatize mental health issues and provide a safe, supportive environment for healing and recovery.
                 </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="support-card text-center p-6 border rounded-lg shadow-lg fade-in">
+                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Mental Health Awareness</h4>
+                    <p>We conduct workshops and awareness campaigns in communities and schools to break the stigma surrounding mental illness and encourage open conversations.</p>
+                </div>
+                <div class="support-card text-center p-6 border rounded-lg shadow-lg fade-in">
+                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Confidential Counseling</h4>
+                    <p>We offer free and confidential counseling services and support groups, connecting individuals with professionals to help them navigate their challenges.</p>
+                </div>
+                <div class="support-card text-center p-6 border rounded-lg shadow-lg fade-in">
+                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">De-addiction & Rehabilitation</h4>
+                    <p>We provide guidance and a strong support system for individuals and families affected by drug addiction, focusing on rehabilitation and relapse prevention.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold mb-10 text-[#1E3A8A] text-center fade-in">Portraits of Resilience</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
+                    <img src="/images/mental-health-1.jpg" alt="A community workshop on mental health" class="h-64 w-full object-cover">
+                    <div class="p-4">
+                        <p class="font-semibold text-[#1F2937]">Community Awareness Workshop</p>
+                    </div>
+                </div>
+                <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
+                    <img src="/images/mental-health-2.jpg" alt="A support group meeting" class="h-64 w-full object-cover">
+                    <div class="p-4">
+                        <p class="font-semibold text-[#1F2937]">Safe Spaces: A Support Group Meeting</p>
+                    </div>
+                </div>
+                <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
+                    <img src="/images/mental-health-3.jpg" alt="A one-on-one counseling session" class="h-64 w-full object-cover">
+                    <div class="p-4">
+                        <p class="font-semibold text-[#1F2937]">Providing Confidential Counseling</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 text-center bg-white">
+        <div class="container mx-auto px-4 fade-in">
+            <h3 class="text-3xl font-bold mb-4 text-[#1E3A8A]">You Are Not Alone. Help is Here.</h3>
+            <p class="text-lg max-w-2xl mx-auto mb-8">
+                Taking the first step is a sign of strength. If you or someone you know is struggling, please reach out. Our team is here to provide confidential and compassionate support.
+            </p>
+            <a href="grievance-support.html" class="btn-primary text-white px-8 py-3 rounded-full text-lg transition">Seek Confidential Support</a>
+        </div>
+    </section>
+
     <footer class="bg-[#1E3A8A] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -326,7 +151,7 @@
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
                     <p>Email: viswavignanavaaradhi@gmail.com</p>
                     <p>Phone: +91-9010937358</p>
-                    <p>Address: visakhapatnam, Andhra Pradesh, India</p>
+                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
                 </div>
             </div>
             <div class="mt-8 text-center">
@@ -335,12 +160,9 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
-    <!-- JavaScript for Enhanced Features -->
     <script>
-        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -350,46 +172,19 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.2 });
-
+            }, { threshold: 0.1 });
             sections.forEach(section => observer.observe(section));
         }
 
-        // Initialize 3D Tilt Effect
-        function initTiltEffect() {
-            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-                max: 15,
-                speed: 400,
-                glare: true,
-                "max-glare": 0.5,
-            });
-        }
-
-        // Initialize Particles.js for Agriculture Section
         function initParticles() {
-            particlesJS('particles-js-agriculture', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
+            if (document.getElementById('particles-js-hero')) {
+                particlesJS('particles-js-hero', { particles: { number: { value: 60 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } } });
+            }
         }
 
-        // Scroll to Top Button
         function initScrollToTop() {
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            window.onscroll = function () {
+            window.onscroll = function() {
                 if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
                     scrollToTopBtn.style.display = 'block';
                 } else {
@@ -401,17 +196,10 @@
             });
         }
 
-        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            try {
-                animateSections();
-                initTiltEffect();
-                initParticles();
-                initScrollToTop();
-            } catch (error) {
-                console.error('Error rendering page:', error);
-                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
-            }
+            animateSections();
+            initParticles();
+            initScrollToTop();
         });
     </script>
 </body>
