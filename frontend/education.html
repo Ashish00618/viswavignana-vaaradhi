@@ -11,28 +11,26 @@
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .nav-link { transition: all 0.3s ease; }
-        .nav-link:hover { transform: scale(1.1); color: #F0F5FF; }
-        .btn-primary { background: linear-gradient(to right, #1E3A8A, #3B82F6); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3); }
-        .card { transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .card:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3); border: 1px solid #3B82F6; }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
+        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
         .footer-link { transition: all 0.3s ease; }
-        .footer-link:hover { color: #F0F5FF; text-decoration: underline; }
+        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; background-color: #1E3A8A; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
         .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
-        .dropdown-content a:hover { background-color: #3B82F6; }
+        .dropdown-content a:hover { background-color: #2DD4BF; }
         .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-        .animated-section { background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        .animated-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
         @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #3B82F6, #8B5CF6); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
-        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); transform: scale(1.1); }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
         .gallery-item { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .gallery-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0, 0, 255, 0.3); }
+        .gallery-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(13, 148, 136, 0.3); }
     </style>
 </head>
-<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
+    <header class="bg-[#0D9488] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
         <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
                 <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
@@ -45,10 +43,10 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Malnutrition and Hunger-Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
                         <a href="health.html">Health</a>
                     </div>
                 </div>
@@ -70,22 +68,22 @@
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center fade-in">
-                <h3 class="text-3xl font-bold mb-4 text-[#1E3A8A]">Our Approach to Education</h3>
+                <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">Our Approach to Education</h3>
                 <p class="text-lg max-w-3xl mx-auto mb-12">
                     Mission Medha is our hands-on initiative to bridge the educational gap. We go directly into schools and communities to identify and support backward-studied children who lack resources, giving them the confidence and tools they need to succeed.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Personalized Tutoring</h4>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Personalized Tutoring</h4>
                     <p>We provide free, one-on-one and group tutoring sessions to help students overcome their learning difficulties in core subjects.</p>
                 </div>
                 <div class="text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Community Learning Hubs</h4>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Community Learning Hubs</h4>
                     <p>We establish safe and encouraging after-school learning centers where children can receive academic support, guidance, and access to learning materials.</p>
                 </div>
                 <div class="text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Holistic Development</h4>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Holistic Development</h4>
                     <p>Beyond academics, we focus on building confidence, communication skills, and leadership qualities through interactive workshops and activities.</p>
                 </div>
             </div>
@@ -98,37 +96,37 @@
             <h3 class="text-4xl font-bold mb-10 text-white text-center fade-in">Moments from Mission Medha</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/gallery-1.jpg" alt="Students in a classroom" class="h-64 w-full object-cover">
+                    <img src="/images/education-gallery-1.jpg" alt="Students in a classroom" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">Interactive Classroom Session</p>
                     </div>
                 </div>
                 <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/gallery-2.jpg" alt="A volunteer teaching a child" class="h-64 w-full object-cover">
+                    <img src="/images/education-gallery-2.jpg" alt="A volunteer teaching a child" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">One-on-One Mentorship</p>
                     </div>
                 </div>
                 <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/gallery-3.jpg" alt="Group of happy students" class="h-64 w-full object-cover">
+                    <img src="/images/education-gallery-3.jpg" alt="Group of happy students" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">Building a Bright Future Together</p>
                     </div>
                 </div>
                  <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/gallery-4.jpg" alt="Students engaged in an activity" class="h-64 w-full object-cover">
+                    <img src="/images/education-gallery-4.jpg" alt="Students engaged in an activity" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">Learning Through Activities</p>
                     </div>
                 </div>
                  <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/gallery-5.jpg" alt="Distributing study materials" class="h-64 w-full object-cover">
+                    <img src="/images/education-gallery-5.jpg" alt="Distributing study materials" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">Providing Essential Resources</p>
                     </div>
                 </div>
                  <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/gallery-6.jpg" alt="A celebration with students" class="h-64 w-full object-cover">
+                    <img src="/images/education-gallery-6.jpg" alt="A celebration with students" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">Celebrating Small Victories</p>
                     </div>
@@ -139,7 +137,7 @@
 
     <section class="py-20 text-center bg-white">
         <div class="container mx-auto px-4 fade-in">
-            <h3 class="text-3xl font-bold mb-4 text-[#1E3A8A]">You Can Make a Difference</h3>
+            <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">You Can Make a Difference</h3>
             <p class="text-lg max-w-2xl mx-auto mb-8">
                 Your support can help us reach more children in need. Join us as a volunteer or donate to provide a child with the gift of education and a brighter future.
             </p>
@@ -147,7 +145,7 @@
         </div>
     </section>
 
-    <footer class="bg-[#1E3A8A] text-white p-10">
+    <footer class="bg-[#0D9488] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>

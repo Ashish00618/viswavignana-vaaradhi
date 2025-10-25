@@ -11,29 +11,29 @@
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .nav-link { transition: all 0.3s ease; }
-        .nav-link:hover { transform: scale(1.1); color: #F0F5FF; }
-        .btn-primary { background: linear-gradient(to right, #1E3A8A, #3B82F6); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3); }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
+        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
         .form-container { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); transition: all 0.3s ease; }
-        .form-container:hover { box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3); border: 1px solid #3B82F6; }
+        .form-container:hover { box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; }
         input, select, textarea { transition: all 0.3s ease; }
-        input:focus, select:focus, textarea:focus { box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); border-color: #3B82F6; }
+        input:focus, select:focus, textarea:focus { box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); border-color: #2DD4BF; }
         .footer-link { transition: all 0.3s ease; }
-        .footer-link:hover { color: #F0F5FF; text-decoration: underline; }
+        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; background-color: #1E3A8A; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
         .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
-        .dropdown-content a:hover { background-color: #3B82F6; }
+        .dropdown-content a:hover { background-color: #2DD4BF; }
         .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-        .hero-section, .form-section { background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        .animated-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
         @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #3B82F6, #8B5CF6); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
-        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); transform: scale(1.1); }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
         #districtSection { display: none; }
     </style>
 </head>
-<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
+    <header class="bg-[#0D9488] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
         <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
                 <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
@@ -46,10 +46,10 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Malnutrition and Hunger-Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
                         <a href="health.html">Health</a>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
         </div>
     </header>
 
-    <section class="hero-section py-20 text-center text-white relative fade-in">
+    <section class="animated-section py-20 text-center text-white relative fade-in">
         <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
             <h2 class="text-5xl font-bold mb-4">Grievance/Support Request</h2>
@@ -68,7 +68,7 @@
         </div>
     </section>
 
-    <section class="form-section py-20 relative">
+    <section class="animated-section py-20 relative">
         <div id="particles-js-form" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="fade-in">
@@ -79,15 +79,15 @@
                             <h4 class="text-xl font-semibold mb-4 text-white">1. Personal Information</h4>
                             <div class="mb-4">
                                 <label for="fullName" class="block text-lg font-semibold mb-2 text-white">Full Name</label>
-                                <input type="text" id="fullName" name="fullName" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <input type="text" id="fullName" name="fullName" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]" required>
                             </div>
                             <div class="mb-4">
                                 <label for="mobileNumber" class="block text-lg font-semibold mb-2 text-white">Mobile Number</label>
-                                <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <input type="tel" id="mobileNumber" name="mobileNumber" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]" required>
                             </div>
                             <div class="mb-4">
                                 <label for="email" class="block text-lg font-semibold mb-2 text-white">Email ID (Optional)</label>
-                                <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]">
+                                <input type="email" id="email" name="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]">
                             </div>
                         </div>
 
@@ -95,7 +95,7 @@
                             <h4 class="text-xl font-semibold mb-4 text-white">2. Address Details</h4>
                             <div class="mb-4">
                                 <label for="state" class="block text-lg font-semibold mb-2 text-white">State</label>
-                                <select id="state" name="state" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <select id="state" name="state" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]" required>
                                     <option value="" disabled selected>Select a state</option>
                                     <option value="andhra-pradesh">Andhra Pradesh</option>
                                     <option value="telangana">Telangana</option>
@@ -104,13 +104,13 @@
                             </div>
                             <div id="districtSection" class="mb-4">
                                 <label for="district" class="block text-lg font-semibold mb-2 text-white">District</label>
-                                <select id="district" name="district" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <select id="district" name="district" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]" required>
                                     <option value="" disabled selected>Select a district</option>
                                 </select>
                             </div>
                             <div class="mb-4">
                                 <label for="mandal" class="block text-lg font-semibold mb-2 text-white">Mandal</label>
-                                <input type="text" id="mandal" name="mandal" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <input type="text" id="mandal" name="mandal" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]" required>
                             </div>
                         </div>
 
@@ -118,7 +118,7 @@
                             <h4 class="text-xl font-semibold mb-4 text-white">3. Area of Service / Concern</h4>
                             <div class="mb-4">
                                 <label for="category" class="block text-lg font-semibold mb-2 text-white">Select Desired Service</label>
-                                <select id="category" name="category" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <select id="category" name="category" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]" required>
                                     <option value="" disabled selected>Select a category</option>
                                     <option value="political-literacy-civic-engagement">Political Literacy & Civic Engagement</option>
                                     <option value="legal-literacy-access-to-justice">Legal Literacy & Access to Justice</option>
@@ -130,10 +130,8 @@
                             </div>
                             <div class="mb-4">
                                 <label for="subcategory" class="block text-lg font-semibold mb-2 text-white">Select Subcategory</label>
-                                <select id="subcategory" name="subcategory" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required>
+                                <select id="subcategory" name="subcategory" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]" required>
                                     <option value="" disabled selected>Select a subcategory</option>
-                                    <!-- Subcategories to be populated dynamically or manually -->
-                        
                                 </select>
                             </div>
                         </div>
@@ -142,7 +140,7 @@
                             <h4 class="text-xl font-semibold mb-4 text-white">4. Details of Grievance/Support Request</h4>
                             <div class="mb-4">
                                 <label for="description" class="block text-lg font-semibold mb-2 text-white">Description</label>
-                                <textarea id="description" name="description" rows="5" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]" required></textarea>
+                                <textarea id="description" name="description" rows="5" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D9488]" required></textarea>
                             </div>
                         </div>
 
@@ -162,7 +160,7 @@
         </div>
     </section>
 
-    <footer class="bg-[#1E3A8A] text-white p-10">
+    <footer class="bg-[#0D9488] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -209,41 +207,8 @@
         }
 
         function initParticles() {
-            particlesJS('particles-js-hero', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
-
-            particlesJS('particles-js-form', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
+            particlesJS('particles-js-hero', { particles: { number: { value: 80 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.4, width: 1 }, move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true }, modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } } }, retina_detect: true });
+            particlesJS('particles-js-form', { particles: { number: { value: 80 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.4, width: 1 }, move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true }, modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } } }, retina_detect: true });
         }
 
         function initScrollToTop() {
@@ -270,84 +235,24 @@
             const stateSelect = document.getElementById('state');
             const districtSection = document.getElementById('districtSection');
             const districtSelect = document.getElementById('district');
+            const categorySelect = document.getElementById('category');
+            const subcategorySelect = document.getElementById('subcategory');
+            
             const subcategories = {
-                "political-literacy-civic-engagement": [
-                    { value: "voter-education-electoral-process-assistance", label: "Voter Education & Electoral Process Assistance (e.g., voter registration, electoral fraud prevention)" },
-                    { value: "understanding-democratic-institutions", label: "Understanding Democratic Institutions & Engaging with Representatives" },
-                    { value: "electoral-processes-reforms", label: "Electoral Processes & Reforms (e.g., Election Commission, NOTA, Model Code of Conduct)" },
-                    { value: "citizens-role-in-governance", label: "Citizens’ Role in Governance (e.g., public consultations, grievance mechanisms, Right to Information (RTI) applications)" },
-                    { value: "political-ethics-responsibilities", label: "Political Ethics & Responsibilities (e.g., ethical voting, misinformation)" },
-                    { value: "youth-participation-in-politics", label: "Youth Participation in Politics (e.g., leadership, political literacy clubs, career pathways)" },
-                    { value: "youth-student-political-awareness", label: "Youth & Student Political Awareness (e.g., civic participation, leadership programs)" },
-                    { value: "political-electoral-rights", label: "Political & Electoral Rights (e.g., Representation of the People Act, anti-defection laws, challenging malpractices)" }
-                ],
-                "legal-literacy-access-to-justice": [
-                    { value: "basic-legal-awareness", label: "Basic Legal Awareness (e.g., fundamental rights, consumer rights, property, labor, family laws)" },
-                    { value: "legal-rights-responsibilities", label: "Legal Rights & Responsibilities (e.g., rights in case of arrest, protection against violence/discrimination, tenant/landlord rights)" },
-                    { value: "access-to-legal-aid-justice", label: "Access to Legal Aid & Justice (e.g., free legal aid, Lok Adalats, Alternative Dispute Resolution)" },
-                    { value: "womens-rights-legal-protections", label: "Women’s Rights & Legal Protections (e.g., domestic violence, sexual harassment, POSH Act, marriage, divorce, inheritance)" },
-                    { value: "child-rights-protection-laws", label: "Child Rights & Protection Laws (e.g., child labor, abuse prevention, RTE Act, juvenile justice)" },
-                    { value: "legal-awareness-marginalized-communities", label: "Legal Awareness for Marginalized Communities (e.g., reservation policies, SC/ST rights, anti-discrimination)" },
-                    { value: "consumer-rights-cyber-law-awareness", label: "Consumer Rights & Cyber Law Awareness (e.g., online fraud, data privacy, cybercrime)" },
-                    { value: "support-with-rti-pil", label: "Support with Right to Information (RTI) & Public Interest Litigation (PIL)" },
-                    { value: "community-participation-legal-reforms", label: "Community Participation in Legal Reforms" }
-                ],
-                "education-skill-development": [
-                    { value: "academic-support-struggling-students", label: "Academic Support for Struggling Students (e.g., mentorship, remedial classes, career counseling)" },
-                    { value: "access-to-community-learning-centers", label: "Access to Community Learning Centers" },
-                    { value: "support-for-free-educational-institutes", label: "Support for Free Educational Institutes (e.g., schooling, vocational training, study materials)" },
-                    { value: "enhancing-access-to-education", label: "Enhancing Access to Education (e.g., RTE Act, scholarships, government schemes, digital education)" },
-                    { value: "learning-support-networks-peer-learning", label: "Learning Support Networks & Peer Learning Opportunities" },
-                    { value: "political-legal-literacy-in-education", label: "Political & Legal Literacy in Educational Institutions" },
-                    { value: "holistic-development-leadership-programs", label: "Holistic Development & Leadership Programs" },
-                    { value: "career-guidance-higher-education", label: "Career Guidance & Higher Education Opportunities (e.g., competitive exam prep, scholarships)" },
-                    { value: "digital-financial-literacy-training", label: "Digital & Financial Literacy Training (e.g., online safety, personal finance, government schemes)" },
-                    { value: "bridging-education-employment", label: "Bridging Education & Employment (e.g., internships, job-oriented training, interview preparation)" }
-                ],
-                "agriculture-rural-livelihoods": [
-                    { value: "modern-sustainable-farming-techniques", label: "Modern & Sustainable Farming Techniques (e.g., organic farming, precision farming)" },
-                    { value: "agricultural-knowledge-resource-center", label: "Agricultural Knowledge & Resource Center Support" },
-                    { value: "government-schemes-legal-rights-farmers", label: "Government Schemes & Legal Rights for Farmers (e.g., subsidies, loans, crop insurance, land rights, MSP)" },
-                    { value: "market-access-farmer-empowerment", label: "Market Access & Farmer Empowerment (e.g., direct market, digital trading, FPOs)" },
-                    { value: "organic-farming-sustainable-agriculture", label: "Organic Farming & Sustainable Agriculture Promotion" },
-                    { value: "water-conservation-irrigation-efficiency", label: "Water Conservation & Irrigation Efficiency" },
-                    { value: "skill-development-entrepreneurship-agriculture", label: "Skill Development & Entrepreneurship in Agriculture (e.g., agri-business, food processing)" },
-                    { value: "agricultural-education-research-support", label: "Agricultural Education & Research Support" },
-                    { value: "digital-literacy-smart-agriculture", label: "Digital Literacy & Smart Agriculture (e.g., mobile apps, eNAM)" },
-                    { value: "farmer-suicides-mental-health-support", label: "Farmer Suicides & Mental Health Support" },
-                    { value: "agro-tourism-rural-development", label: "Agro-Tourism & Rural Development Initiatives" }
-                ],
-                "rural-development-community-empowerment": [
-                    { value: "strengthening-rural-education-digital-learning", label: "Strengthening Rural Education & Digital Learning" },
-                    { value: "enhancing-rural-infrastructure-public-services", label: "Enhancing Rural Infrastructure & Public Services (e.g., roads, electricity, sanitation)" },
-                    { value: "rural-employment-skill-development", label: "Rural Employment & Skill Development (e.g., vocational skills, entrepreneurship)" },
-                    { value: "empowering-women-social-inclusion", label: "Empowering Women & Social Inclusion (e.g., SHGs, legal awareness, microcredit)" },
-                    { value: "improving-healthcare-sanitation-rural", label: "Improving Healthcare & Sanitation in Rural Areas" },
-                    { value: "digital-transformation-rural-connectivity", label: "Digital Transformation & Rural Connectivity (e.g., internet access, e-governance)" },
-                    { value: "disaster-preparedness-climate-resilience", label: "Disaster Preparedness & Climate Resilience in Rural Communities" },
-                    { value: "rural-tourism-cultural-preservation", label: "Rural Tourism & Cultural Preservation" },
-                    { value: "strengthening-rural-governance-civic-participation", label: "Strengthening Rural Governance & Civic Participation (e.g., Panchayati Raj, citizen rights)" }
-                ],
-                "health-well-being": [
-                    { value: "access-to-basic-healthcare-services", label: "Access to Basic Healthcare Services (e.g., health camps, mobile clinics, telemedicine, government schemes)" },
-                    { value: "preventive-healthcare-disease-awareness", label: "Preventive Healthcare & Disease Awareness (e.g., nutrition, hygiene, disease prevention)" },
-                    { value: "mental-health-awareness-support", label: "Mental Health Awareness & Support (e.g., counseling, support groups, helplines)" },
-                    { value: "addressing-substance-abuse-addiction", label: "Addressing Substance Abuse & Addiction" },
-                    { value: "womens-adolescent-health", label: "Women's & Adolescent Health (e.g., menstrual hygiene, reproductive health, maternal care)" },
-                    { value: "nutrition-wellness-programs", label: "Nutrition & Wellness Programs" },
-                    { value: "physical-fitness-lifestyle-awareness", label: "Physical Fitness & Lifestyle Awareness" },
-                    { value: "special-support-elderly-disabled", label: "Special Support for Elderly & Disabled Individuals" },
-                    { value: "emergency-response-disaster-health-preparedness", label: "Emergency Response & Disaster Health Preparedness" },
-                    { value: "advocacy-policy-support-public-health", label: "Advocacy & Policy Support for Public Health" }
-                ]
+                "political-literacy-civic-engagement": [ { value: "voter-education-electoral-process-assistance", label: "Voter Education & Electoral Process Assistance (e.g., voter registration, electoral fraud prevention)" }, { value: "understanding-democratic-institutions", label: "Understanding Democratic Institutions & Engaging with Representatives" }, { value: "electoral-processes-reforms", label: "Electoral Processes & Reforms (e.g., Election Commission, NOTA, Model Code of Conduct)" }, { value: "citizens-role-in-governance", label: "Citizens’ Role in Governance (e.g., public consultations, grievance mechanisms, Right to Information (RTI) applications)" }, { value: "political-ethics-responsibilities", label: "Political Ethics & Responsibilities (e.g., ethical voting, misinformation)" }, { value: "youth-participation-in-politics", label: "Youth Participation in Politics (e.g., leadership, political literacy clubs, career pathways)" }, { value: "youth-student-political-awareness", label: "Youth & Student Political Awareness (e.g., civic participation, leadership programs)" }, { value: "political-electoral-rights", label: "Political & Electoral Rights (e.g., Representation of the People Act, anti-defection laws, challenging malpractices)" } ],
+                "legal-literacy-access-to-justice": [ { value: "basic-legal-awareness", label: "Basic Legal Awareness (e.g., fundamental rights, consumer rights, property, labor, family laws)" }, { value: "legal-rights-responsibilities", label: "Legal Rights & Responsibilities (e.g., rights in case of arrest, protection against violence/discrimination, tenant/landlord rights)" }, { value: "access-to-legal-aid-justice", label: "Access to Legal Aid & Justice (e.g., free legal aid, Lok Adalats, Alternative Dispute Resolution)" }, { value: "womens-rights-legal-protections", label: "Women’s Rights & Legal Protections (e.g., domestic violence, sexual harassment, POSH Act, marriage, divorce, inheritance)" }, { value: "child-rights-protection-laws", label: "Child Rights & Protection Laws (e.g., child labor, abuse prevention, RTE Act, juvenile justice)" }, { value: "legal-awareness-marginalized-communities", label: "Legal Awareness for Marginalized Communities (e.g., reservation policies, SC/ST rights, anti-discrimination)" }, { value: "consumer-rights-cyber-law-awareness", label: "Consumer Rights & Cyber Law Awareness (e.g., online fraud, data privacy, cybercrime)" }, { value: "support-with-rti-pil", label: "Support with Right to Information (RTI) & Public Interest Litigation (PIL)" }, { value: "community-participation-legal-reforms", label: "Community Participation in Legal Reforms" } ],
+                "education-skill-development": [ { value: "academic-support-struggling-students", label: "Academic Support for Struggling Students (e.g., mentorship, remedial classes, career counseling)" }, { value: "access-to-community-learning-centers", label: "Access to Community Learning Centers" }, { value: "support-for-free-educational-institutes", label: "Support for Free Educational Institutes (e.g., schooling, vocational training, study materials)" }, { value: "enhancing-access-to-education", label: "Enhancing Access to Education (e.g., RTE Act, scholarships, government schemes, digital education)" }, { value: "learning-support-networks-peer-learning", label: "Learning Support Networks & Peer Learning Opportunities" }, { value: "political-legal-literacy-in-education", label: "Political & Legal Literacy in Educational Institutions" }, { value: "holistic-development-leadership-programs", label: "Holistic Development & Leadership Programs" }, { value: "career-guidance-higher-education", label: "Career Guidance & Higher Education Opportunities (e.g., competitive exam prep, scholarships)" }, { value: "digital-financial-literacy-training", label: "Digital & Financial Literacy Training (e.g., online safety, personal finance, government schemes)" }, { value: "bridging-education-employment", label: "Bridging Education & Employment (e.g., internships, job-oriented training, interview preparation)" } ],
+                "agriculture-rural-livelihoods": [ { value: "modern-sustainable-farming-techniques", label: "Modern & Sustainable Farming Techniques (e.g., organic farming, precision farming)" }, { value: "agricultural-knowledge-resource-center", label: "Agricultural Knowledge & Resource Center Support" }, { value: "government-schemes-legal-rights-farmers", label: "Government Schemes & Legal Rights for Farmers (e.g., subsidies, loans, crop insurance, land rights, MSP)" }, { value: "market-access-farmer-empowerment", label: "Market Access & Farmer Empowerment (e.g., direct market, digital trading, FPOs)" }, { value: "organic-farming-sustainable-agriculture", label: "Organic Farming & Sustainable Agriculture Promotion" }, { value: "water-conservation-irrigation-efficiency", label: "Water Conservation & Irrigation Efficiency" }, { value: "skill-development-entrepreneurship-agriculture", label: "Skill Development & Entrepreneurship in Agriculture (e.g., agri-business, food processing)" }, { value: "agricultural-education-research-support", label: "Agricultural Education & Research Support" }, { value: "digital-literacy-smart-agriculture", label: "Digital Literacy & Smart Agriculture (e.g., mobile apps, eNAM)" }, { value: "farmer-suicides-mental-health-support", label: "Farmer Suicides & Mental Health Support" }, { value: "agro-tourism-rural-development", label: "Agro-Tourism & Rural Development Initiatives" } ],
+                "rural-development-community-empowerment": [ { value: "strengthening-rural-education-digital-learning", label: "Strengthening Rural Education & Digital Learning" }, { value: "enhancing-rural-infrastructure-public-services", label: "Enhancing Rural Infrastructure & Public Services (e.g., roads, electricity, sanitation)" }, { value: "rural-employment-skill-development", label: "Rural Employment & Skill Development (e.g., vocational skills, entrepreneurship)" }, { value: "empowering-women-social-inclusion", label: "Empowering Women & Social Inclusion (e.g., SHGs, legal awareness, microcredit)" }, { value: "improving-healthcare-sanitation-rural", label: "Improving Healthcare & Sanitation in Rural Areas" }, { value: "digital-transformation-rural-connectivity", label: "Digital Transformation & Rural Connectivity (e.g., internet access, e-governance)" }, { value: "disaster-preparedness-climate-resilience", label: "Disaster Preparedness & Climate Resilience in Rural Communities" }, { value: "rural-tourism-cultural-preservation", label: "Rural Tourism & Cultural Preservation" }, { value: "strengthening-rural-governance-civic-participation", label: "Strengthening Rural Governance & Civic Participation (e.g., Panchayati Raj, citizen rights)" } ],
+                "health-well-being": [ { value: "access-to-basic-healthcare-services", label: "Access to Basic Healthcare Services (e.g., health camps, mobile clinics, telemedicine, government schemes)" }, { value: "preventive-healthcare-disease-awareness", label: "Preventive Healthcare & Disease Awareness (e.g., nutrition, hygiene, disease prevention)" }, { value: "mental-health-awareness-support", label: "Mental Health Awareness & Support (e.g., counseling, support groups, helplines)" }, { value: "addressing-substance-abuse-addiction", label: "Addressing Substance Abuse & Addiction" }, { value: "womens-adolescent-health", label: "Women's & Adolescent Health (e.g., menstrual hygiene, reproductive health, maternal care)" }, { value: "nutrition-wellness-programs", label: "Nutrition & Wellness Programs" }, { value: "physical-fitness-lifestyle-awareness", label: "Physical Fitness & Lifestyle Awareness" }, { value: "special-support-elderly-disabled", label: "Special Support for Elderly & Disabled Individuals" }, { value: "emergency-response-disaster-health-preparedness", label: "Emergency Response & Disaster Health Preparedness" }, { value: "advocacy-policy-support-public-health", label: "Advocacy & Policy Support for Public Health" } ]
             };
-
 
             const districts = {
                 "andhra-pradesh": ["Alluri Sitharama Raju", "Anakapalli", "Anantapur", "Annamayya", "Bapatla", "Chittoor", "East Godavari", "Eluru", "Guntur", "Kakinada", "Konaseema", "Krishna", "Kurnool", "Nandyal", "Nellore", "Palnadu", "Parvathipuram Manyam", "Prakasam", "Sri Balaji", "Sri Potti Sriramulu Nellore", "Sri Sathya Sai", "Srikakulam", "Visakhapatnam", "Vizianagaram", "West Godavari", "YSR Kadapa"],
                 "telangana": ["Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhupalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem Asifabad", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal-Malkajgiri", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri"],
                 "delhi": ["Central Delhi", "East Delhi", "New Delhi", "North Delhi", "North East Delhi", "North West Delhi", "Shahdara", "South Delhi", "South East Delhi", "South West Delhi", "West Delhi"]
             };
+            
             categorySelect.addEventListener('change', () => {
                 const selectedCategory = categorySelect.value;
                 subcategorySelect.innerHTML = '<option value="" disabled selected>Select a subcategory</option>';
@@ -359,12 +264,8 @@
                         option.textContent = sub.label;
                         subcategorySelect.appendChild(option);
                     });
-                    subcategorySection.style.display = '';
-                } else {
-                    subcategorySection.style.display = 'none';
                 }
             });
-
 
             stateSelect.addEventListener('change', () => {
                 const selectedState = stateSelect.value;
@@ -401,7 +302,7 @@
                 };
 
                 try {
-                    const response = await fetch('http://localhost:3000/api/grievance', {
+                    const response = await fetch('/api/grievance', { // Corrected URL
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(formData)

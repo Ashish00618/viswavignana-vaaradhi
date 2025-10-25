@@ -5,212 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style type="text/css">@font-face {font-family:Poppins;font-style:normal;font-weight:400;src:url(/cf-fonts/s/poppins/5.0.11/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:400;src:url(/cf-fonts/s/poppins/5.0.11/devanagari/400/normal.woff2);unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:400;src:url(/cf-fonts/s/poppins/5.0.11/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:500;src:url(/cf-fonts/s/poppins/5.0.11/latin-ext/500/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:500;src:url(/cf-fonts/s/poppins/5.0.11/devanagari/500/normal.woff2);unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:500;src:url(/cf-fonts/s/poppins/5.0.11/latin/500/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:600;src:url(/cf-fonts/s/poppins/5.0.11/latin/600/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:600;src:url(/cf-fonts/s/poppins/5.0.11/devanagari/600/normal.woff2);unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:600;src:url(/cf-fonts/s/poppins/5.0.11/latin-ext/600/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:700;src:url(/cf-fonts/s/poppins/5.0.11/latin-ext/700/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:700;src:url(/cf-fonts/s/poppins/5.0.11/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Poppins;font-style:normal;font-weight:700;src:url(/cf-fonts/s/poppins/5.0.11/devanagari/700/normal.woff2);unicode-range:U+0900-097F,U+1CD0-1CF9,U+200C-200D,U+20A8,U+20B9,U+25CC,U+A830-A839,U+A8E0-A8FF;font-display:swap;}</style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            transform: scale(1.1);
-            color: #F0F5FF;
-        }
-        .btn-primary {
-            background: linear-gradient(to right, #1E3A8A, #3B82F6);
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
-        }
-        .form-container {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.3s ease;
-        }
-        .form-container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
-            border: 1px solid #3B82F6;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-        }
-        .form-container.pulse {
-            animation: pulse 2s infinite;
-        }
-        input, select {
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            color: #ffffff;
-            transition: all 0.3s ease;
-        }
-        input:focus, select:focus {
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            border-color: #3B82F6;
-            outline: none;
-        }
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .footer-link {
-            transition: all 0.3s ease;
-        }
-        .footer-link:hover {
-            color: #F0F5FF;
-            text-decoration: underline;
-        }
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #1E3A8A;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-            top: 100%;
-            left: 0;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .dropdown-content a:hover {
-            background-color: #3B82F6;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .hero-section, .form-section {
-            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
-            background-size: 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        #scrollToTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(to right, #3B82F6, #8B5CF6);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            transition: all 0.3s ease;
-            display: none;
-            z-index: 1000;
-        }
-        #scrollToTopBtn:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-            transform: scale(1.1);
-        }
-        #thankYouMessage {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1rem;
-            padding: 2rem;
-            text-align: center;
-            color: #ffffff;
-        }
-        #thankYouMessage h4 {
-            border-bottom: 2px solid #3B82F6;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        @media (max-width: 768px) {
-            header {
-                padding: 0.5rem 1rem;
-            }
-            header img {
-                height: 2.5rem;
-                width: 2.5rem;
-            }
-            header h2 {
-                font-size: 1.25rem;
-            }
-            nav a {
-                font-size: 0.875rem;
-                padding: 0.5rem;
-            }
-            .btn-primary {
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-                line-height: 1.25rem;
-            }
-            .form-container {
-                padding: 1rem;
-            }
-            .form-container label {
-                font-size: 0.875rem;
-            }
-            .form-container input,
-            .form-container select {
-                padding: 0.5rem;
-                font-size: 0.875rem;
-            }
-            #thankYouMessage {
-                padding: 1rem;
-            }
-            #thankYouMessage h4 {
-                font-size: 1.25rem;
-            }
-            #thankYouMessage p {
-                font-size: 0.875rem;
-            }
-            footer {
-                padding: 1.5rem;
-            }
-            footer h3 {
-                font-size: 1.25rem;
-            }
-            footer p,
-            footer a {
-                font-size: 0.875rem;
-            }
-        }
-        @media (min-width: 769px) {
-            .btn-primary {
-                padding: 0.75rem 1.5rem;
-                font-size: 1rem;
-            }
-        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
+        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; border: none; cursor: pointer; white-space: nowrap; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
+        .form-container { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .form-container:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; }
+        input, select { background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; }
+        input:focus, select:focus { box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); border-color: #2DD4BF; outline: none; }
+        input::placeholder { color: rgba(255, 255, 255, 0.7); }
+        .footer-link { transition: all 0.3s ease; }
+        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
+        .dropdown-content a:hover { background-color: #2DD4BF; }
+        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
+        .animated-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
     </style>
 </head>
-<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
+    <header class="bg-[#0D9488] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
         <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
                 <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
@@ -223,10 +46,10 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Malnutrition and Hunger-Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
                         <a href="health.html">Health</a>
                     </div>
                 </div>
@@ -237,7 +60,7 @@
         </div>
     </header>
 
-    <section class="hero-section py-20 text-center text-white relative fade-in">
+    <section class="animated-section py-20 text-center text-white relative fade-in">
         <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
             <h2 class="text-5xl font-bold mb-4">Donate</h2>
@@ -245,32 +68,32 @@
         </div>
     </section>
 
-    <section class="form-section py-20 relative">
+    <section class="animated-section py-20 relative">
         <div id="particles-js-form" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="fade-in">
                 <h3 class="text-3xl font-bold mb-6 text-white text-center">Make a Difference Today</h3>
                 <p class="text-lg mb-6 max-w-3xl mx-auto text-center text-white">Your donation helps us continue our work in underserved communities.</p>
-                <div id="donationFormSection" class="max-w-md mx-auto form-container pulse">
+                <div id="donationFormSection" class="max-w-md mx-auto form-container p-6 rounded-xl">
                     <div class="mb-4">
                         <label for="name" class="block text-lg font-semibold mb-2 text-white">Full Name</label>
-                        <input type="text" id="name" placeholder="Enter your full name" class="w-full" required>
+                        <input type="text" id="name" placeholder="Enter your full name" class="w-full p-3 rounded-lg" required>
                     </div>
                     <div class="mb-4">
                         <label for="email" class="block text-lg font-semibold mb-2 text-white">Email</label>
-                        <input type="email" id="email" placeholder="Enter your email" class="w-full" required>
+                        <input type="email" id="email" placeholder="Enter your email" class="w-full p-3 rounded-lg" required>
                     </div>
                     <div class="mb-4">
                         <label for="phone" class="block text-lg font-semibold mb-2 text-white">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="Enter your phone number" class="w-full" required>
+                        <input type="tel" id="phone" placeholder="Enter your phone number" class="w-full p-3 rounded-lg" required>
                     </div>
                     <div class="mb-4">
                         <label for="amount" class="block text-lg font-semibold mb-2 text-white">Donation Amount (INR)</label>
-                        <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" class="w-full" min="1" required>
+                        <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" class="w-full p-3 rounded-lg" min="1" required>
                     </div>
                     <div class="mb-4">
                         <label for="purpose" class="block text-lg font-semibold mb-2 text-white">Purpose of Donation (Optional)</label>
-                        <select id="purpose" class="w-full">
+                        <select id="purpose" class="w-full p-3 rounded-lg">
                             <option value="">Select a purpose (optional)</option>
                             <option value="education">Education</option>
                             <option value="health">Health</option>
@@ -282,7 +105,7 @@
                     </div>
                     <div class="mb-4">
                         <label for="payment-method" class="block text-lg font-semibold mb-2 text-white">Payment Method</label>
-                        <select id="payment-method" class="w-full" required>
+                        <select id="payment-method" class="w-full p-3 rounded-lg" required>
                             <option value="" disabled selected>Select a payment method</option>
                             <option value="upi">UPI (Scan QR Code)</option>
                             <option value="bank">Bank Transfer</option>
@@ -290,8 +113,8 @@
                     </div>
                     <button id="proceedButton" class="btn-primary w-full text-white px-6 py-3 rounded-full transition">Proceed to Pay</button>
                 </div>
-                <div id="payment-details" class="max-w-md mx-auto mt-6 form-container pulse hidden">
-                    <h4 id="payment-title" class="text-xl font-semibold mb-4 text-white border-bottom-2"></h4>
+                <div id="payment-details" class="max-w-md mx-auto mt-6 form-container p-6 rounded-xl hidden">
+                    <h4 id="payment-title" class="text-xl font-semibold mb-4 text-white"></h4>
                     <div id="donor-info" class="mb-4 text-white">
                         <p><strong>Name:</strong> <span id="donor-name"></span></p>
                         <p><strong>Email:</strong> <span id="donor-email"></span></p>
@@ -300,50 +123,21 @@
                         <p><strong>Purpose:</strong> <span id="donor-purpose"></span></p>
                     </div>
                     <div id="payment-content" class="text-white"></div>
-                    <p class="text-sm mt-4 text-gray-200">After making the payment, please email the transaction details to <a href="/cdn-cgi/l/email-protection#5e2b2e3a3f2a3b3a733b333f37321e28372d293f283739303f303f70312c39" class="text-blue-300 hover:underline"><span class="__cf_email__" data-cfemail="d9aca9bdb8adbcbdf4bcb4b8b0b599afb0aaaeb8afb0beb7b8b7b8f7b6abbe">[email&#160;protected]</span></a> for confirmation.</p>
+                    <p class="text-sm mt-4 text-gray-200">After making the payment, please email the transaction details to <a href="mailto:viswavignanavaaradhi@gmail.com" class="text-amber-300 hover:underline">viswavignanavaaradhi@gmail.com</a> for confirmation.</p>
                     <button id="submitButton" class="btn-primary w-full text-white px-6 py-3 rounded-full transition mt-4">Submit</button>
                 </div>
-                <div id="thankYouMessage" class="max-w-md mx-auto mt-6 hidden">
-                    <h4 class="text-xl font-semibold">Thank You for Your Donation!</h4>
-                    <p>We sincerely appreciate your support. Your contribution will help us empower communities through education, health, and rural development.</p>
+                <div id="thankYouMessage" class="max-w-md mx-auto mt-6 hidden form-container p-6 rounded-xl">
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#1E3A8A] text-white p-10">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
-                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
-                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
-                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
-                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f5a5f4b4e5b4a4b0259465c584e594648414e414e594e4e5d4e4b47466f48424e4643014c4042">[email&#160;protected]</a></p>
-                    <p>Phone: +91-9010937358</p>
-                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
-                </div>
-            </div>
-            <div class="mt-8 text-center">
-                <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <footer class="bg-[#0D9488] text-white p-10">
+        </footer>
 
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -354,46 +148,12 @@
                     }
                 });
             }, { threshold: 0.2 });
-
             sections.forEach(section => observer.observe(section));
         }
 
         function initParticles() {
-            particlesJS('particles-js-hero', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
-
-            particlesJS('particles-js-form', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
+            particlesJS('particles-js-hero', { particles: { number: { value: 80 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.4, width: 1 }, move: { enable: true, speed: 2 } } });
+            particlesJS('particles-js-form', { particles: { number: { value: 80 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.4, width: 1 }, move: { enable: true, speed: 2 } } });
         }
 
         function initScrollToTop() {
@@ -436,24 +196,8 @@
                 const purpose = document.getElementById('purpose').value;
                 const paymentMethod = document.getElementById('payment-method').value;
 
-                if (!name) {
-                    alert('Please enter your full name.');
-                    return;
-                }
-                if (!email) {
-                    alert('Please enter your email.');
-                    return;
-                }
-                if (!phone) {
-                    alert('Please enter your phone number.');
-                    return;
-                }
-                if (!amount || amount <= 0) {
-                    alert('Please enter a valid donation amount.');
-                    return;
-                }
-                if (!paymentMethod) {
-                    alert('Please select a payment method.');
+                if (!name || !email || !phone || !amount || amount <= 0 || !paymentMethod) {
+                    alert('Please fill all required fields correctly.');
                     return;
                 }
 
@@ -524,9 +268,9 @@
                     paymentDetails.classList.add('hidden');
                     thankYouMessage.classList.remove('hidden');
                     thankYouMessage.innerHTML = `
-        <h4 class="text-xl font-semibold">Thank You, ${data.name}, for Your Donation!</h4>
-        <p>We sincerely appreciate your support of ₹${data.amount}. Your contribution will help us empower communities through education, health, and rural development.</p>
-    `;
+                        <h4 class="text-xl font-semibold text-white">Thank You, ${data.name}, for Your Donation!</h4>
+                        <p class="text-gray-200 mt-2">We sincerely appreciate your support of ₹${data.amount}. Your contribution will help us empower communities through our missions.</p>
+                    `;
                     thankYouMessage.scrollIntoView({ behavior: 'smooth' });
 
                     document.getElementById('name').value = '';

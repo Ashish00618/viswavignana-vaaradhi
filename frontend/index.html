@@ -6,259 +6,54 @@
     <title>Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add Vanilla Tilt for 3D tilt effect -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <!-- Add Particles.js for background particle animation -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        /* Global Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Header Styles */
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            transform: scale(1.1);
-            color: #F0F5FF;
-        }
-        /* Button Styles */
-        .btn-primary {
-            background: linear-gradient(to right, #1E3A8A, #3B82F6);
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
-        }
-        .btn-secondary {
-            border: 1px solid #1E3A8A;
-            transition: all 0.3s ease;
-        }
-        .btn-secondary:hover {
-            transform: scale(1.05);
-            background: linear-gradient(to right, #8B5CF6, #EC4899);
-            color: white;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-        }
-        /* Card Styles */
-        .card {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
-            border: 1px solid #3B82F6;
-        }
-        /* Footer Links */
-        .footer-link {
-            transition: all 0.3s ease;
-        }
-        .footer-link:hover {
-            color: #F0F5FF;
-            text-decoration: underline;
-        }
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #1E3A8A;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-            top: 100%;
-            left: 0;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .dropdown-content a:hover {
-            background-color: #3B82F6;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Parallax Effect for Hero */
-        .hero-section {
-            background-attachment: fixed;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            overflow: hidden;
-        }
-        /* Typing Animation for Tagline */
-        .typing-text {
-            border-right: 2px solid #3B82F6;
-            white-space: nowrap;
-            overflow: hidden;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #3B82F6; }
-        }
-        /* Gradient Background Animation for What We Do Section */
-        .what-we-do-section {
-            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
-            background-size: 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        /* Neon Glow for Impact Stats */
-        .impact-stat {
-            transition: all 0.3s ease;
-        }
-        .impact-stat:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-            transform: scale(1.05);
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); }
-            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-        }
-        .impact-stat.pulse {
-            animation: pulse 2s infinite;
-        }
-        /* Scroll to Top Button */
-        #scrollToTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(to right, #3B82F6, #8B5CF6);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            transition: all 0.3s ease;
-            display: none;
-            z-index: 1000;
-        }
-        #scrollToTopBtn:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-            transform: scale(1.1);
-        }
-        /* Carousel Styles */
-        .carousel {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-        .carousel-slides {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel-slide {
-            min-width: 100%;
-            height: 500px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-        .carousel-slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-        .carousel-content {
-            position: relative;
-            z-index: 2;
-            color: white;
-            padding: 20px;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-        }
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(59, 130, 246, 0.8);
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            z-index: 3;
-            transition: background 0.3s ease;
-        }
-        .carousel-btn:hover {
-            background: rgba(139, 92, 246, 0.8);
-        }
-        .prev-btn {
-            left: 10px;
-        }
-        .next-btn {
-            right: 10px;
-        }
-        .carousel-dots {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 3;
-        }
-        .dot {
-            width: 12px;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-        .dot.active {
-            background: #3B82F6;
-        }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
+        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
+        .btn-secondary { border: 1px solid #0D9488; transition: all 0.3s ease; }
+        .btn-secondary:hover { transform: scale(1.05); background: linear-gradient(to right, #F59E0B, #fde68a); color: white; border-color: #F59E0B; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
+        .card { transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .card:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; }
+        .footer-link { transition: all 0.3s ease; }
+        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
+        .dropdown-content a:hover { background-color: #2DD4BF; }
+        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
+        .hero-section { background-attachment: fixed; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+        .typing-text { border-right: 2px solid #2DD4BF; white-space: nowrap; overflow: hidden; animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite; }
+        @keyframes typing { from { width: 0; } to { width: 100%; } }
+        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #2DD4BF; } }
+        .what-we-do-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .impact-stat { transition: all 0.3s ease; }
+        .impact-stat:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.5); transform: scale(1.05); }
+        @keyframes pulse { 0% { box-shadow: 0 0 5px rgba(45, 212, 191, 0.5); } 50% { box-shadow: 0 0 15px rgba(45, 212, 191, 0.8); } 100% { box-shadow: 0 0 5px rgba(45, 212, 191, 0.5); } }
+        .impact-stat.pulse { animation: pulse 2s infinite; }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
+        .carousel { position: relative; width: 100%; max-width: 1200px; margin: 0 auto; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
+        .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }
+        .carousel-slide { min-width: 100%; height: 500px; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .carousel-slide::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1; }
+        .carousel-content { position: relative; z-index: 2; color: white; padding: 20px; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; }
+        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(45, 212, 191, 0.8); color: white; padding: 10px; border: none; cursor: pointer; z-index: 3; transition: background 0.3s ease; }
+        .carousel-btn:hover { background: rgba(245, 158, 11, 0.8); }
+        .prev-btn { left: 10px; }
+        .next-btn { right: 10px; }
+        .carousel-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
+        .dot { width: 12px; height: 12px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; transition: background 0.3s ease; }
+        .dot.active { background: #2DD4BF; }
     </style>
 </head>
-<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
+    <header class="bg-[#0D9488] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
@@ -271,10 +66,10 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Malnutrition and Hunger-Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
                         <a href="health.html">Health</a>
                     </div>
                 </div>
@@ -285,7 +80,6 @@
         </div>
     </header>
 
-    <!-- Hero Section with Parallax and Typing Animation -->
     <section class="hero-section h-screen flex items-center justify-center text-center text-white bg-[url('/images/hero-bg.jpg')] relative">
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="relative z-10">
@@ -293,16 +87,14 @@
             <p class="text-xl md:text-2xl mb-6 typing-text">Join us in building a better tomorrow for rural India</p>
             <div class="space-x-4">
                 <a href="get-involved.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Get Involved</a>
-                <a href="donate.html" class="btn-secondary text-white px-6 py-3 rounded-full transition">Donate Now</a>
+                <a href="donate.html" class="btn-secondary text-[#0D9488] px-6 py-3 rounded-full transition">Donate Now</a>
             </div>
         </div>
     </section>
 
-    <!-- Carousel Section -->
-    <section class="py-10">
+    <section class="py-10 bg-[#FFFBEB]">
         <div class="carousel">
             <div class="carousel-slides">
-                <!-- Slide 1: Education -->
                 <div class="carousel-slide" style="background-image: url('/images/education-slide.jpg');">
                     <div class="carousel-content">
                         <h3 class="text-3xl font-bold mb-4">Education for All</h3>
@@ -310,7 +102,6 @@
                         <a href="education.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
                     </div>
                 </div>
-                <!-- Slide 2: Rural Development -->
                 <div class="carousel-slide" style="background-image: url('/images/rural-development-slide.jpg');">
                     <div class="carousel-content">
                         <h3 class="text-3xl font-bold mb-4">Empowering Rural India</h3>
@@ -318,7 +109,6 @@
                         <a href="rural-development.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
                     </div>
                 </div>
-                <!-- Slide 3: Agriculture -->
                 <div class="carousel-slide" style="background-image: url('/images/agriculture-slide.jpg');">
                     <div class="carousel-content">
                         <h3 class="text-3xl font-bold mb-4">Sustainable Farming</h3>
@@ -326,7 +116,6 @@
                         <a href="agriculture.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
                     </div>
                 </div>
-                <!-- Slide 4: Health -->
                 <div class="carousel-slide" style="background-image: url('/images/health-slide.jpg');">
                     <div class="carousel-content">
                         <h3 class="text-3xl font-bold mb-4">Health and Wellness</h3>
@@ -334,7 +123,6 @@
                         <a href="health.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
                     </div>
                 </div>
-                <!-- Slide 5: Political/Legal Literacy -->
                 <div class="carousel-slide" style="background-image: url('/images/political-literacy-slide.jpg');">
                     <div class="carousel-content">
                         <h3 class="text-3xl font-bold mb-4">Political & Legal Awareness</h3>
@@ -343,10 +131,8 @@
                     </div>
                 </div>
             </div>
-            <!-- Navigation Buttons -->
             <button class="carousel-btn prev-btn">❮</button>
             <button class="carousel-btn next-btn">❯</button>
-            <!-- Dots -->
             <div class="carousel-dots">
                 <span class="dot active"></span>
                 <span class="dot"></span>
@@ -357,7 +143,6 @@
         </div>
     </section>
 
-    <!-- What We Do Section with Gradient Animation and 3D Tilt -->
     <section class="what-we-do-section py-20">
         <div class="container mx-auto px-4">
             <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">What We Do</h2>
@@ -368,70 +153,67 @@
                 <div class="card p-6 rounded-xl tilt-card">
                     <h3 class="text-xl font-semibold mb-2 text-white">Education</h3>
                     <p class="text-gray-200 mb-4">Providing quality education to underprivileged children and adults in rural areas.</p>
-                    <a href="education.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                    <a href="education.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
                 </div>
                 <div class="card p-6 rounded-xl tilt-card">
                     <h3 class="text-xl font-semibold mb-2 text-white">Political/Legal Literacy</h3>
                     <p class="text-gray-200 mb-4">Empowering citizens with knowledge of their rights and responsibilities.</p>
-                    <a href="political-legal-literacy.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                    <a href="political-legal-literacy.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
                 </div>
                 <div class="card p-6 rounded-xl tilt-card">
                     <h3 class="text-xl font-semibold mb-2 text-white">Rural Development</h3>
                     <p class="text-gray-200 mb-4">Supporting rural communities with infrastructure, education, and economic opportunities.</p>
-                    <a href="rural-development.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                    <a href="rural-development.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
                 </div>
                 <div class="card p-6 rounded-xl tilt-card">
                     <h3 class="text-xl font-semibold mb-2 text-white">Agriculture</h3>
                     <p class="text-gray-200 mb-4">Promoting sustainable farming practices and supporting rural farmers.</p>
-                    <a href="agriculture.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                    <a href="agriculture.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
                 </div>
                 <div class="card p-6 rounded-xl tilt-card">
                     <h3 class="text-xl font-semibold mb-2 text-white">Health</h3>
                     <p class="text-gray-200 mb-4">Ensuring access to healthcare and promoting wellness in rural communities.</p>
-                    <a href="health.html" class="text-[#3B82F6] hover:underline">Learn More</a>
+                    <a href="health.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Our Impact Section with Number Counter and Neon Glow -->
-    <section class="py-20 bg-[#F0F5FF]">
+    <section class="py-20 bg-[#FFFBEB]">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-center fade-in">Our Impact</h2>
+            <h2 class="text-4xl font-bold mb-6 text-[#0D9488] text-center fade-in">Our Impact</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
-                    <h3 class="text-4xl font-bold text-[#1E3A8A] counter" data-target="500">0</h3>
+                    <h3 class="text-4xl font-bold text-[#0D9488] counter" data-target="500">0</h3>
                     <p class="text-gray-600">Students Educated</p>
                 </div>
                 <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
-                    <h3 class="text-4xl font-bold text-[#1E3A8A] counter" data-target="1000">0</h3>
+                    <h3 class="text-4xl font-bold text-[#0D9488] counter" data-target="1000">0</h3>
                     <p class="text-gray-600">Farmers Supported</p>
                 </div>
                 <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
-                    <h3 class="text-4xl font-bold text-[#1E3A8A] counter" data-target="50">0</h3>
+                    <h3 class="text-4xl font-bold text-[#0D9488] counter" data-target="50">0</h3>
                     <p class="text-gray-600">Villages Reached</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Get Involved Section with Particle Background -->
-    <section class="py-20 relative">
+    <section class="py-20 relative bg-[#FFFBEB]">
         <div id="particles-js" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-4xl font-bold mb-6 text-[#1E3A8A] text-center fade-in">Get Involved</h2>
+            <h2 class="text-4xl font-bold mb-6 text-[#0D9488] text-center fade-in">Get Involved</h2>
             <p class="text-lg max-w-3xl mx-auto text-center mb-12 fade-in">
                 Join us in making a difference. Whether through volunteering, donating, or spreading the word—your support matters.
             </p>
             <div class="flex justify-center space-x-4">
-                <a href="volunteer-registration.html" class="btn-secondary text-[#1E3A8A] px-6 py-3 rounded-full transition">Volunteer</a>
+                <a href="volunteer-registration.html" class="btn-secondary text-[#0D9488] px-6 py-3 rounded-full transition">Volunteer</a>
                 <a href="donate.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Donate</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-[#1E3A8A] text-white p-10">
+    <footer class="bg-[#0D9488] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -461,10 +243,8 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
-    <!-- JavaScript for Enhanced Features -->
     <script>
         // Fade-In Animation for Sections
         function animateSections() {

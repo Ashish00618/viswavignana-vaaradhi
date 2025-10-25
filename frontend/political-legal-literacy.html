@@ -11,30 +11,30 @@
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .nav-link { transition: all 0.3s ease; }
-        .nav-link:hover { transform: scale(1.1); color: #F0F5FF; }
-        .btn-primary { background: linear-gradient(to right, #1E3A8A, #3B82F6); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3); }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
+        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
         .card { transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .card:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3); border: 1px solid #3B82F6; }
+        .card:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; }
         .footer-link { transition: all 0.3s ease; }
-        .footer-link:hover { color: #F0F5FF; text-decoration: underline; }
+        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; background-color: #1E3A8A; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
         .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
-        .dropdown-content a:hover { background-color: #3B82F6; }
+        .dropdown-content a:hover { background-color: #2DD4BF; }
         .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-        .animated-section { background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        .animated-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
         @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #3B82F6, #8B5CF6); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
-        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); transform: scale(1.1); }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
         .service-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
         .gallery-item { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .gallery-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0, 0, 255, 0.3); }
+        .gallery-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(13, 148, 136, 0.3); }
     </style>
 </head>
-<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
+<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
+    <header class="bg-[#0D9488] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
         <div class="container mx-auto flex justify-between items-center h-full">
             <div class="flex items-center space-x-3">
                 <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
@@ -47,10 +47,10 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan </a>
-                        <a href="rural-development.html">Malnutrition and Hunger-Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
                         <a href="health.html">Health</a>
                     </div>
                 </div>
@@ -72,26 +72,26 @@
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center fade-in mb-12">
-                <h3 class="text-3xl font-bold mb-4 text-[#1E3A8A]">How We Provide Justice</h3>
+                <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">How We Provide Justice</h3>
                 <p class="text-lg max-w-3xl mx-auto">
                     Nyaya Sadan is dedicated to breaking down the barriers to justice. We offer a range of free services to ensure that no one is denied their rights due to a lack of resources or knowledge.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="service-card text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Free Legal Aid & Representation</h4>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Free Legal Aid & Representation</h4>
                     <p>We provide qualified legal professionals to represent underprivileged individuals in court, free of charge.</p>
                 </div>
                 <div class="service-card text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Immediate Assistance</h4>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Immediate Assistance</h4>
                     <p>We offer rapid support in police cases, court proceedings, and other urgent legal matters to protect your rights from day one.</p>
                 </div>
                 <div class="service-card text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Guidance & Awareness</h4>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Guidance & Awareness</h4>
                     <p>We conduct legal literacy camps and workshops to educate communities about their fundamental rights and legal protections.</p>
                 </div>
                 <div class="service-card text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Comprehensive Support</h4>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Comprehensive Support</h4>
                     <p>Our team provides support for a wide range of legal concerns, ensuring you have guidance at every step of your legal journey.</p>
                 </div>
             </div>
@@ -128,22 +128,22 @@
 
     <section class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h3 class="text-4xl font-bold mb-10 text-[#1E3A8A] text-center fade-in">Nyaya Sadan in Action</h3>
+            <h3 class="text-4xl font-bold mb-10 text-[#0D9488] text-center fade-in">Nyaya Sadan in Action</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/la1.jpg" alt="Legal aid camp" class="h-64 w-full object-cover">
+                    <img src="/images/legal-aid-1.jpg" alt="Legal aid camp" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">Community Legal Awareness Camp</p>
                     </div>
                 </div>
                 <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/la2.jpg" alt="A lawyer providing counsel" class="h-64 w-full object-cover">
+                    <img src="/images/legal-aid-2.jpg" alt="A lawyer providing counsel" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">Providing Free Legal Counsel</p>
                     </div>
                 </div>
                 <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
-                    <img src="/images/la3.jpg" alt="Team meeting" class="h-64 w-full object-cover">
+                    <img src="/images/legal-aid-3.jpg" alt="Team meeting" class="h-64 w-full object-cover">
                     <div class="p-4">
                         <p class="font-semibold text-[#1F2937]">Empowering Women with Knowledge of Their Rights</p>
                     </div>
@@ -154,7 +154,7 @@
 
     <section class="py-20 text-center bg-white">
         <div class="container mx-auto px-4 fade-in">
-            <h3 class="text-3xl font-bold mb-4 text-[#1E3A8A]">Do You Need Legal Help?</h3>
+            <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">Do You Need Legal Help?</h3>
             <p class="text-lg max-w-2xl mx-auto mb-8">
                 If you or someone you know belongs to these communities and needs legal assistance, do not hesitate to reach out. Your right to justice is our priority.
             </p>
@@ -162,7 +162,7 @@
         </div>
     </section>
 
-    <footer class="bg-[#1E3A8A] text-white p-10">
+    <footer class="bg-[#0D9488] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -195,6 +195,7 @@
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
     <script>
+        // ... (all javascript remains the same) ...
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
