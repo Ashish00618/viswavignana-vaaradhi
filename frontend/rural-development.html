@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission Annapurna - Viswa Vignana Vaaradhi</title>
+    <title>Mission Annapurna - Fighting Hunger & Malnutrition - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -11,29 +11,52 @@
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .nav-link { transition: all 0.3s ease; }
-        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
-        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; } /* Updated hover color */
+        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; } /* Updated gradient */
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); } /* Updated shadow */
+        .card { transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
+        .card:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; } /* Updated hover border/shadow */
         .footer-link { transition: all 0.3s ease; }
-        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
+        .footer-link:hover { color: #FEFCE8; text-decoration: underline; } /* Updated hover color */
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; } /* Updated background */
         .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
-        .dropdown-content a:hover { background-color: #2DD4BF; }
+        .dropdown-content a:hover { background-color: #2DD4BF; } /* Updated hover background */
         .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-        .animated-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
+        .animated-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; } /* Updated gradient */
         @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
-        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; } /* Updated gradient */
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); } /* Updated shadow */
         .activity-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .activity-card:hover { transform: translateY(-10px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1); }
         .gallery-item { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .gallery-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(13, 148, 136, 0.3); }
+        .gallery-item:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(13, 148, 136, 0.3); } /* Updated shadow */
     </style>
 </head>
-<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#0D9488] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
-        </header>
+<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;"> <header class="bg-[#0D9488] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4"> <div class="container mx-auto flex justify-between items-center h-full">
+            <div class="flex items-center space-x-3">
+                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
+                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
+            </div>
+            <nav class="flex items-center space-x-4">
+                <a href="index.html" class="nav-link hover:underline">Home</a>
+                <a href="about.html" class="nav-link hover:underline">About</a>
+                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+                <div class="dropdown">
+                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <div class="dropdown-content">
+                        <a href="education.html">Mission Medha</a>
+                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
+                        <a href="rural-development.html">Malnutrition and Hunger Free</a>
+                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
+                    </div>
+                </div>
+                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
+                <a href="contact.html" class="nav-link hover:underline">Contact</a>
+                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
+            </nav>
+        </div>
+    </header>
 
     <section class="animated-section py-20 text-center text-white relative fade-in">
         <div id="particles-js-hero" class="absolute inset-0"></div>
@@ -46,23 +69,19 @@
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center fade-in mb-12">
-                <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">Our Commitment to a Hunger-Free Future</h3>
-                <p class="text-lg max-w-3xl mx-auto">
+                <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">Our Commitment to a Hunger-Free Future</h3> <p class="text-lg max-w-3xl mx-auto">
                     We believe access to nutritious food is a fundamental human right. Mission Annapurna is our direct response to the critical issues of hunger and malnutrition, providing immediate relief and long-term support to the needy.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="activity-card text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Food Distribution Drives</h4>
-                    <p>We organize regular drives to distribute hot, nutritious meals and essential grocery kits to daily wage laborers, homeless individuals, and families in distress.</p>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Food Distribution Drives</h4> <p>We organize regular drives to distribute hot, nutritious meals and essential grocery kits to daily wage laborers, homeless individuals, and families in distress.</p>
                 </div>
                 <div class="activity-card text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Combating Malnutrition</h4>
-                    <p>We run special programs focusing on malnourished children, pregnant women, and the elderly, providing them with specialized nutritional supplements and care.</p>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Combating Malnutrition</h4> <p>We run special programs focusing on malnourished children, pregnant women, and the elderly, providing them with specialized nutritional supplements and care.</p>
                 </div>
                 <div class="activity-card text-center p-6 border rounded-lg shadow-lg fade-in">
-                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Community Kitchens</h4>
-                    <p>We aim to establish and support community kitchens that serve as a reliable source of daily, affordable, and hygienic food for everyone.</p>
+                    <h4 class="text-xl font-semibold mb-2 text-[#0D9488]">Community Kitchens</h4> <p>We aim to establish and support community kitchens that serve as a reliable source of daily, affordable, and hygienic food for everyone.</p>
                 </div>
             </div>
         </div>
@@ -70,8 +89,7 @@
 
     <section class="py-20 bg-gray-100">
         <div class="container mx-auto px-4">
-            <h3 class="text-4xl font-bold mb-10 text-[#0D9488] text-center fade-in">Glimpses of Hope: Our Mission in Action</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h3 class="text-4xl font-bold mb-10 text-[#0D9488] text-center fade-in">Glimpses of Hope: Our Mission in Action</h3> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="gallery-item bg-white rounded-lg shadow-md overflow-hidden fade-in">
                     <img src="/images/hunger-mission-1.jpg" alt="Volunteers distributing food packets" class="h-64 w-full object-cover">
                     <div class="p-4">
@@ -96,21 +114,45 @@
 
     <section class="py-20 text-center bg-white">
         <div class="container mx-auto px-4 fade-in">
-            <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">Be a Beacon of Hope</h3>
-            <p class="text-lg max-w-2xl mx-auto mb-8">
+            <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">Be a Beacon of Hope</h3> <p class="text-lg max-w-2xl mx-auto mb-8">
                 Your contribution can provide a meal for someone in need. Join us in our fight against hunger by volunteering your time or donating to Mission Annapurna.
             </p>
             <a href="get-involved.html" class="btn-primary text-white px-8 py-3 rounded-full text-lg transition">Support Our Mission</a>
         </div>
     </section>
 
-    <footer class="bg-[#0D9488] text-white p-10">
-        </footer>
+    <footer class="bg-[#0D9488] text-white p-10"> <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
+                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
+                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
+                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
+                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
+                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+                    <p>Email: viswavignanavaaradhi@gmail.com</p>
+                    <p>Phone: +91-9010937358</p>
+                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
     <script>
-        // ... (all javascript remains the same) ...
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
@@ -50,6 +51,23 @@
         .carousel-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
         .dot { width: 12px; height: 12px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; transition: background 0.3s ease; }
         .dot.active { background: #2DD4BF; }
+
+        /* NEW Style for "What We Do" Card Icons */
+        .mission-icon {
+            font-size: 2.5rem; /* Slightly smaller icon */
+            margin-bottom: 1rem;
+            color: #F59E0B; /* Amber color for icons */
+        }
+        .card .learn-more-link {
+           color: #fde68a; /* Lighter amber for link */
+           font-weight: 600;
+           transition: color 0.3s ease;
+        }
+        .card:hover .learn-more-link {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
@@ -66,11 +84,10 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Education</a>
-                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
-                        <a href="rural-development.html">Rural Development</a>
-                        <a href="agriculture.html">Agriculture</a>
-                        <a href="health.html">Health</a>
+                        <a href="education.html">Mission Medha</a>
+                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
+                        <a href="rural-development.html">Malnutrition and Hunger Free</a>
+                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
                     </div>
                 </div>
                 <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
@@ -149,31 +166,36 @@
             <p class="text-lg text-white max-w-3xl mx-auto text-center mb-12 fade-in">
                 We are dedicated to uplifting rural communities through education, political awareness, agriculture, and more.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="card p-6 rounded-xl tilt-card">
+            
+                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
+                    <div class="mission-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h3 class="text-xl font-semibold mb-2 text-white">Education</h3>
-                    <p class="text-gray-200 mb-4">Providing quality education to underprivileged children and adults in rural areas.</p>
-                    <a href="education.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
+                    <p class="text-gray-200 text-sm mb-4 flex-grow">Providing quality education to underprivileged children and adults.</p>
+                    <a href="education.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
                 </div>
-                <div class="card p-6 rounded-xl tilt-card">
+                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
+                    <div class="mission-icon"><i class="fas fa-balance-scale"></i></div>
                     <h3 class="text-xl font-semibold mb-2 text-white">Political/Legal Literacy</h3>
-                    <p class="text-gray-200 mb-4">Empowering citizens with knowledge of their rights and responsibilities.</p>
-                    <a href="political-legal-literacy.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
+                    <p class="text-gray-200 text-sm mb-4 flex-grow">Empowering citizens with knowledge of their rights and responsibilities.</p>
+                    <a href="political-legal-literacy.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
                 </div>
-                <div class="card p-6 rounded-xl tilt-card">
+                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
+                    <div class="mission-icon"><i class="fas fa-users"></i></div>
                     <h3 class="text-xl font-semibold mb-2 text-white">Rural Development</h3>
-                    <p class="text-gray-200 mb-4">Supporting rural communities with infrastructure, education, and economic opportunities.</p>
-                    <a href="rural-development.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
+                    <p class="text-gray-200 text-sm mb-4 flex-grow">Supporting communities with infrastructure, education & opportunities.</p>
+                    <a href="rural-development.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
                 </div>
-                <div class="card p-6 rounded-xl tilt-card">
+                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
+                    <div class="mission-icon"><i class="fas fa-seedling"></i></div>
                     <h3 class="text-xl font-semibold mb-2 text-white">Agriculture</h3>
-                    <p class="text-gray-200 mb-4">Promoting sustainable farming practices and supporting rural farmers.</p>
-                    <a href="agriculture.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
+                    <p class="text-gray-200 text-sm mb-4 flex-grow">Promoting sustainable farming practices and supporting rural farmers.</p>
+                    <a href="agriculture.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
                 </div>
-                <div class="card p-6 rounded-xl tilt-card">
+                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
+                    <div class="mission-icon"><i class="fas fa-heartbeat"></i></div>
                     <h3 class="text-xl font-semibold mb-2 text-white">Health</h3>
-                    <p class="text-gray-200 mb-4">Ensuring access to healthcare and promoting wellness in rural communities.</p>
-                    <a href="health.html" class="text-[#2DD4BF] hover:underline">Learn More</a>
+                    <p class="text-gray-200 text-sm mb-4 flex-grow">Ensuring access to healthcare and promoting wellness in communities.</p>
+                    <a href="health.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
                 </div>
             </div>
         </div>
@@ -246,7 +268,7 @@
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
     <script>
-        // Fade-In Animation for Sections
+        // Fade-In Animation
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -256,72 +278,59 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.2 });
-
+            }, { threshold: 0.1 });
             sections.forEach(section => observer.observe(section));
         }
 
-        // Number Counter Animation for Impact Stats
+        // Number Counter
         function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const updateCount = () => {
-                    const target = +counter.getAttribute('data-target');
-                    const count = +counter.innerText;
-                    const speed = 200;
-                    const increment = target / speed;
+             const counters = document.querySelectorAll('.counter');
+             const speed = 200; // Lower number = faster count
 
-                    if (count < target) {
-                        counter.innerText = Math.ceil(count + increment);
-                        setTimeout(updateCount, 20);
-                    } else {
-                        counter.innerText = target + '+';
-                    }
-                };
+             counters.forEach(counter => {
+                 const updateCount = () => {
+                     const target = +counter.getAttribute('data-target');
+                     const count = +counter.innerText.replace('+',''); // Handle existing '+' if any
+                     const increment = target / speed;
 
-                const observer = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting) {
-                        updateCount();
-                        observer.disconnect();
-                    }
-                }, { threshold: 0.5 });
+                     if (count < target) {
+                         counter.innerText = Math.ceil(count + increment);
+                         setTimeout(updateCount, 15); // Adjust timing for smoothness
+                     } else {
+                         counter.innerText = target + '+'; // Ensure '+' is added at the end
+                     }
+                 };
 
-                observer.observe(counter);
-            });
-        }
+                 // Observer to trigger count when element is visible
+                 const observer = new IntersectionObserver((entries) => {
+                     if(entries[0].isIntersecting){
+                         updateCount();
+                         observer.disconnect(); // Count only once
+                     }
+                 }, { threshold: 0.5 }); // Trigger when 50% visible
 
-        // Initialize 3D Tilt Effect
+                 observer.observe(counter);
+             });
+         }
+
+        // Vanilla Tilt
         function initTiltEffect() {
             VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-                max: 15,
+                max: 15, // Reduced tilt intensity
                 speed: 400,
                 glare: true,
-                "max-glare": 0.5,
+                "max-glare": 0.3, // Reduced glare
             });
         }
 
-        // Initialize Particles.js
+        // Particles JS
         function initParticles() {
-            particlesJS('particles-js', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
-                retina_detect: true
-            });
+            if (document.getElementById('particles-js')) {
+                particlesJS('particles-js', { particles: { number: { value: 60 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.4, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.3, width: 1 }, move: { enable: true, speed: 1.5 } }, interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } } });
+            }
         }
 
-        // Scroll to Top Button
+        // Scroll Top Button
         function initScrollToTop() {
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             window.onscroll = function () {
@@ -343,7 +352,6 @@
             const dots = document.querySelectorAll('.dot');
             let currentIndex = 0;
 
-            // Function to go to a specific slide
             function goToSlide(index) {
                 if (index < 0) index = slideCount - 1;
                 if (index >= slideCount) index = 0;
@@ -353,28 +361,13 @@
                 dots[currentIndex].classList.add('active');
             }
 
-            // Next and Previous Buttons
-            document.querySelector('.prev-btn').addEventListener('click', () => {
-                goToSlide(currentIndex - 1);
-            });
-            document.querySelector('.next-btn').addEventListener('click', () => {
-                goToSlide(currentIndex + 1);
-            });
-
-            // Dots Navigation
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
-                });
-            });
-
-            // Automatic Sliding
-            setInterval(() => {
-                goToSlide(currentIndex + 1);
-            }, 5000);
+            document.querySelector('.prev-btn').addEventListener('click', () => { goToSlide(currentIndex - 1); });
+            document.querySelector('.next-btn').addEventListener('click', () => { goToSlide(currentIndex + 1); });
+            dots.forEach((dot, index) => { dot.addEventListener('click', () => { goToSlide(index); }); });
+            setInterval(() => { goToSlide(currentIndex + 1); }, 5000); // Auto-slide
         }
 
-        // Initialize the page
+        // Initialize all features on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', () => {
             try {
                 animateSections();
@@ -385,7 +378,6 @@
                 initCarousel();
             } catch (error) {
                 console.error('Error rendering page:', error);
-                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
             }
         });
     </script>
