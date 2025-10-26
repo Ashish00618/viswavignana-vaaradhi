@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donate - Viswa Vignana Vaaradhi</title>
+    <title>Donate - Support Our Mission - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -14,11 +14,53 @@
         .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
         .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; border: none; cursor: pointer; white-space: nowrap; }
         .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
-        .form-container { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .form-container:hover { transform: scale(1.02); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; }
-        input, select { background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; }
-        input:focus, select:focus { box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); border-color: #2DD4BF; outline: none; }
-        input::placeholder { color: rgba(255, 255, 255, 0.7); }
+        .form-container, .payment-container, .thankyou-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 2.5rem; /* Increased padding */
+            transition: box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .form-container:hover, .payment-container:hover, .thankyou-container:hover {
+             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        /* Spotlight effect for containers */
+        .form-container::before, .payment-container::before, .thankyou-container::before {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
+        .form-container:hover::before, .payment-container:hover::before, .thankyou-container:hover::before { opacity: 1; }
+
+        input, select {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            border-radius: 0.5rem; /* Slightly less rounded */
+            padding: 0.85rem 1rem; /* Adjusted padding */
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        input:focus, select:focus {
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.6);
+            border-color: #2DD4BF;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        input::placeholder { color: rgba(220, 220, 220, 0.7); }
+        label { display: block; text-lg font-semibold mb-2 text-white; } /* Ensure labels are styled */
+
         .footer-link { transition: all 0.3s ease; }
         .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
         .dropdown { position: relative; }
@@ -46,11 +88,11 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Malnutrition and Hunger Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
-                        
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
+                        <a href="health.html">Health</a>
                     </div>
                 </div>
                 <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
@@ -63,8 +105,8 @@
     <section class="animated-section py-20 text-center text-white relative fade-in">
         <div id="particles-js-hero" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4">Donate</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Support our mission to empower communities through education, health, and rural development.</p>
+            <h2 class="text-5xl font-bold mb-4">Support Our Cause</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Your contribution fuels our missions and empowers communities. Donate today and be a part of the change.</p>
         </div>
     </section>
 
@@ -72,68 +114,100 @@
         <div id="particles-js-form" class="absolute inset-0"></div>
         <div class="container mx-auto px-4 relative z-10">
             <div class="fade-in">
-                <h3 class="text-3xl font-bold mb-6 text-white text-center">Make a Difference Today</h3>
-                <p class="text-lg mb-6 max-w-3xl mx-auto text-center text-white">Your donation helps us continue our work in underserved communities.</p>
-                <div id="donationFormSection" class="max-w-md mx-auto form-container p-6 rounded-xl">
-                    <div class="mb-4">
-                        <label for="name" class="block text-lg font-semibold mb-2 text-white">Full Name</label>
-                        <input type="text" id="name" placeholder="Enter your full name" class="w-full p-3 rounded-lg" required>
+                <div id="donationFormSection" class="max-w-lg mx-auto form-container">
+                    <h3 class="text-3xl font-bold mb-8 text-white text-center">Your Generosity Matters</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div>
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="Enter your 10-digit phone number" required pattern="[0-9]{10}">
+                        </div>
+                        <div>
+                            <label for="amount">Donation Amount (INR)</label>
+                            <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" min="1" required>
+                        </div>
+                        <div>
+                            <label for="purpose">Purpose of Donation (Optional)</label>
+                            <select id="purpose">
+                                <option value="">Select a purpose (optional)</option>
+                                <option value="Mission Medha (Education)">Mission Medha (Education)</option>
+                                <option value="Nyaya Sadan (Legal Aid)">Nyaya Sadan (Legal Aid)</option>
+                                <option value="Mission Annapurna (Hunger)">Mission Annapurna (Hunger)</option>
+                                <option value="Mission Chetana (Mental Health)">Mission Chetana (Mental Health)</option>
+                                <option value="General Support">General Support</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="payment-method">Payment Method</label>
+                            <select id="payment-method" required>
+                                <option value="" disabled selected>Choose how you'll pay</option>
+                                <option value="upi">UPI (Scan QR Code)</option>
+                                <option value="bank">Bank Transfer</option>
+                            </select>
+                        </div>
+                        <button id="proceedButton" class="btn-primary w-full text-white px-6 py-3 rounded-full text-lg transition">Proceed to Payment Details</button>
                     </div>
-                    <div class="mb-4">
-                        <label for="email" class="block text-lg font-semibold mb-2 text-white">Email</label>
-                        <input type="email" id="email" placeholder="Enter your email" class="w-full p-3 rounded-lg" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="phone" class="block text-lg font-semibold mb-2 text-white">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="Enter your phone number" class="w-full p-3 rounded-lg" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="amount" class="block text-lg font-semibold mb-2 text-white">Donation Amount (INR)</label>
-                        <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" class="w-full p-3 rounded-lg" min="1" required>
-                    </div>
-                    <div class="mb-4">
-                        <label for="purpose" class="block text-lg font-semibold mb-2 text-white">Purpose of Donation (Optional)</label>
-                        <select id="purpose" class="w-full p-3 rounded-lg">
-                            <option value="">Select a purpose (optional)</option>
-                            <option value="education">Education</option>
-                            <option value="health">Health</option>
-                            <option value="rural-development">Rural Development</option>
-                            <option value="agriculture">Agriculture</option>
-                            <option value="political-legal-literacy">Political/Legal Literacy</option>
-                            <option value="general">General Support</option>
-                        </select>
-                    </div>
-                    <div class="mb-4">
-                        <label for="payment-method" class="block text-lg font-semibold mb-2 text-white">Payment Method</label>
-                        <select id="payment-method" class="w-full p-3 rounded-lg" required>
-                            <option value="" disabled selected>Select a payment method</option>
-                            <option value="upi">UPI (Scan QR Code)</option>
-                            <option value="bank">Bank Transfer</option>
-                        </select>
-                    </div>
-                    <button id="proceedButton" class="btn-primary w-full text-white px-6 py-3 rounded-full transition">Proceed to Pay</button>
                 </div>
-                <div id="payment-details" class="max-w-md mx-auto mt-6 form-container p-6 rounded-xl hidden">
-                    <h4 id="payment-title" class="text-xl font-semibold mb-4 text-white"></h4>
-                    <div id="donor-info" class="mb-4 text-white">
+
+                <div id="payment-details" class="max-w-lg mx-auto mt-6 payment-container hidden">
+                    <h4 id="payment-title" class="text-2xl font-semibold mb-6 text-white border-b border-gray-400 pb-2"></h4>
+                    <div id="donor-info" class="mb-6 text-white space-y-1 text-sm">
                         <p><strong>Name:</strong> <span id="donor-name"></span></p>
                         <p><strong>Email:</strong> <span id="donor-email"></span></p>
                         <p><strong>Phone:</strong> <span id="donor-phone"></span></p>
                         <p><strong>Amount:</strong> ₹<span id="donor-amount"></span></p>
                         <p><strong>Purpose:</strong> <span id="donor-purpose"></span></p>
                     </div>
-                    <div id="payment-content" class="text-white"></div>
-                    <p class="text-sm mt-4 text-gray-200">After making the payment, please email the transaction details to <a href="mailto:viswavignanavaaradhi@gmail.com" class="text-amber-300 hover:underline">viswavignanavaaradhi@gmail.com</a> for confirmation.</p>
-                    <button id="submitButton" class="btn-primary w-full text-white px-6 py-3 rounded-full transition mt-4">Submit</button>
+                    <div id="payment-content" class="text-white mb-6"></div>
+                    <p class="text-sm mt-4 text-gray-200">After making the payment, please click Submit below and email the transaction details/screenshot to <a href="mailto:viswavignanavaaradhi@gmail.com" class="text-amber-300 font-semibold hover:underline">viswavignanavaaradhi@gmail.com</a> for confirmation.</p>
+                    <button id="submitButton" class="btn-primary w-full text-white px-6 py-3 rounded-full text-lg transition mt-6">Submit Donation Record</button>
                 </div>
-                <div id="thankYouMessage" class="max-w-md mx-auto mt-6 hidden form-container p-6 rounded-xl">
+
+                <div id="thankYouMessage" class="max-w-lg mx-auto mt-6 hidden thankyou-container text-center">
+                     <h4 class="text-2xl font-semibold text-white">Donation Record Submitted!</h4>
+                     <p class="text-gray-200 mt-4">Thank you <span id="thankyou-name" class="font-semibold"></span> for your generous support of ₹<span id="thankyou-amount" class="font-semibold"></span>. Your contribution makes a real difference!</p>
+                     <p class="text-gray-300 text-sm mt-4">Please remember to email your transaction details for final confirmation.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer class="bg-[#0D9488] text-white p-10">
-        </footer>
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
+                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
+                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
+                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
+                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
+                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
+                    <p>Email: viswavignanavaaradhi@gmail.com</p>
+                    <p>Phone: +91-9010937358</p>
+                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
@@ -147,13 +221,17 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.2 });
+            }, { threshold: 0.1 });
             sections.forEach(section => observer.observe(section));
         }
 
         function initParticles() {
-            particlesJS('particles-js-hero', { particles: { number: { value: 80 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.4, width: 1 }, move: { enable: true, speed: 2 } } });
-            particlesJS('particles-js-form', { particles: { number: { value: 80 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.4, width: 1 }, move: { enable: true, speed: 2 } } });
+            if (document.getElementById('particles-js-hero')) {
+                particlesJS('particles-js-hero', { particles: { number: { value: 60 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2 } } });
+            }
+            if (document.getElementById('particles-js-form')) {
+                particlesJS('particles-js-form', { particles: { number: { value: 80 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 1.5 } } });
+            }
         }
 
         function initScrollToTop() {
@@ -169,11 +247,26 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         }
+        
+        // Spotlight Effect for Containers
+        function initSpotlightEffect() {
+            const containers = document.querySelectorAll('.form-container, .payment-container, .thankyou-container');
+            containers.forEach(container => {
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    container.style.setProperty('--mouse-x', `${x}px`);
+                    container.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             animateSections();
             initParticles();
             initScrollToTop();
+            initSpotlightEffect();
 
             const proceedButton = document.getElementById('proceedButton');
             const paymentDetails = document.getElementById('payment-details');
@@ -187,101 +280,127 @@
             const submitButton = document.getElementById('submitButton');
             const donationFormSection = document.getElementById('donationFormSection');
             const thankYouMessage = document.getElementById('thankYouMessage');
+            const thankyouName = document.getElementById('thankyou-name');
+            const thankyouAmount = document.getElementById('thankyou-amount');
+
 
             proceedButton.addEventListener('click', () => {
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const amount = document.getElementById('amount').value;
-                const purpose = document.getElementById('purpose').value;
-                const paymentMethod = document.getElementById('payment-method').value;
+                const nameInput = document.getElementById('name');
+                const emailInput = document.getElementById('email');
+                const phoneInput = document.getElementById('phone');
+                const amountInput = document.getElementById('amount');
+                const purposeInput = document.getElementById('purpose');
+                const paymentMethodInput = document.getElementById('payment-method');
 
-                if (!name || !email || !phone || !amount || amount <= 0 || !paymentMethod) {
+                // Basic Validation
+                if (!nameInput.value || !emailInput.value || !phoneInput.value || !amountInput.value || amountInput.value <= 0 || !paymentMethodInput.value) {
                     alert('Please fill all required fields correctly.');
                     return;
                 }
+                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+                    alert('Please enter a valid email address.');
+                    return;
+                }
+                if (!/^\d{10}$/.test(phoneInput.value)) {
+                    alert('Please enter a valid 10-digit phone number.');
+                    return;
+                }
 
-                donorName.textContent = name;
-                donorEmail.textContent = email;
-                donorPhone.textContent = phone;
-                donorAmount.textContent = amount;
-                donorPurpose.textContent = purpose || 'Not specified';
 
-                paymentContent.innerHTML = '';
+                donorName.textContent = nameInput.value;
+                donorEmail.textContent = emailInput.value;
+                donorPhone.textContent = phoneInput.value;
+                donorAmount.textContent = amountInput.value;
+                donorPurpose.textContent = purposeInput.value || 'General Support';
 
-                if (paymentMethod === 'upi') {
+                paymentContent.innerHTML = ''; // Clear previous content
+
+                if (paymentMethodInput.value === 'upi') {
                     paymentTitle.textContent = 'Pay via UPI';
                     paymentContent.innerHTML = `
-                        <p class="mb-4">Please scan the QR code below to donate ₹${amount}:</p>
-                        <img src="/images/upi-qr-code.png" alt="UPI QR Code" class="w-48 h-48 mx-auto mb-4">
-                        <p>UPI ID: viswavignana@upi</p>
+                        <p class="mb-4">1. Scan the QR code below using your UPI app.</p>
+                        <img src="/images/upi-qr-code.png" alt="UPI QR Code" class="w-48 h-48 mx-auto mb-4 border border-white p-1 rounded-lg">
+                        <p class="mb-2">2. Enter the amount: ₹${amountInput.value}</p>
+                        <p>3. Complete the payment.</p>
+                        <p class="mt-4 text-sm">(UPI ID: <span class="font-mono bg-black bg-opacity-20 px-1 rounded">viswavignana@upi</span>)</p>
                     `;
-                } else if (paymentMethod === 'bank') {
+                } else if (paymentMethodInput.value === 'bank') {
                     paymentTitle.textContent = 'Pay via Bank Transfer';
                     paymentContent.innerHTML = `
-                        <p class="mb-4">Please transfer ₹${amount} to the following bank account:</p>
-                        <p><strong>Account Name:</strong> Viswa Vignana Vaaradhi Welfare Society</p>
-                        <p><strong>Account Number:</strong> 42087404874</p>
-                        <p><strong>IFSC Code:</strong> SBIN0000772</p>
-                        <p><strong>Bank Name:</strong> State Bank of India AU Campus-VSP</p>
-                        <p><strong>Branch Code:</strong> 772</p>
+                        <p class="mb-4">Please transfer ₹${amountInput.value} to:</p>
+                        <ul class="space-y-1 text-sm list-disc list-inside">
+                            <li><strong>Account Name:</strong> Viswa Vignana Vaaradhi Welfare Society</li>
+                            <li><strong>Account Number:</strong> 42087404874</li>
+                            <li><strong>IFSC Code:</strong> SBIN0000772</li>
+                            <li><strong>Bank:</strong> State Bank of India</li>
+                             <li><strong>Branch:</strong> AU Campus-VSP</li>
+                        </ul>
                     `;
                 }
 
                 donationFormSection.classList.add('hidden');
                 paymentDetails.classList.remove('hidden');
-                paymentDetails.scrollIntoView({ behavior: 'smooth' });
+                paymentDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
 
             submitButton.addEventListener('click', async () => {
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const phone = document.getElementById('phone').value;
-                const amount = document.getElementById('amount').value;
-                const purpose = document.getElementById('purpose').value;
-                const paymentMethod = document.getElementById('payment-method').value;
+                submitButton.disabled = true; // Prevent double clicks
+                submitButton.textContent = 'Submitting...';
+
+                const name = donorName.textContent;
+                const email = donorEmail.textContent;
+                const phone = donorPhone.textContent;
+                const amount = donorAmount.textContent;
+                const purpose = donorPurpose.textContent;
+                const paymentMethod = document.getElementById('payment-method').value; // Get original value
 
                 const data = {
                     name,
                     email,
                     phone,
                     amount: parseFloat(amount),
-                    purpose: purpose || 'Not specified',
+                    purpose,
                     paymentMethod,
-                    date: new Date().toISOString()
+                    date: new Date().toISOString() // Record submission time
                 };
 
                 try {
+                    // Use relative path for API call
                     const response = await fetch('/api/donation', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
+                        headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
                     });
 
                     if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(errorData.error || 'Network response was not ok');
+                         // Try to get error message from backend response
+                        let errorMsg = 'Failed to submit donation record.';
+                        try {
+                            const errorData = await response.json();
+                            errorMsg = errorData.error || errorMsg;
+                        } catch(jsonError) {
+                            // If response is not JSON, use status text
+                            errorMsg = `Server error: ${response.statusText}`;
+                        }
+                        throw new Error(errorMsg);
                     }
 
+                    // Success
                     paymentDetails.classList.add('hidden');
                     thankYouMessage.classList.remove('hidden');
-                    thankYouMessage.innerHTML = `
-                        <h4 class="text-xl font-semibold text-white">Thank You, ${data.name}, for Your Donation!</h4>
-                        <p class="text-gray-200 mt-2">We sincerely appreciate your support of ₹${data.amount}. Your contribution will help us empower communities through our missions.</p>
-                    `;
-                    thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+                    thankyouName.textContent = data.name; // Update thank you message
+                    thankyouAmount.textContent = data.amount;
+                    thankYouMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                    document.getElementById('name').value = '';
-                    document.getElementById('email').value = '';
-                    document.getElementById('phone').value = '';
-                    document.getElementById('amount').value = '';
-                    document.getElementById('purpose').value = '';
-                    document.getElementById('payment-method').value = '';
+                    // Optionally reset form fields if needed (might be better to leave them)
+                    // document.getElementById('name').value = ''; ... etc.
+
+
                 } catch (error) {
-                    console.error('Error submitting donation:', error.message);
-                    alert(`Error submitting your donation: ${error.message}. Please try again.`);
+                    console.error('Error submitting donation:', error);
+                    alert(`Error submitting donation record: ${error.message}. Please try again or contact us.`);
+                    submitButton.disabled = false; // Re-enable button on error
+                    submitButton.textContent = 'Submit Donation Record';
                 }
             });
         });
