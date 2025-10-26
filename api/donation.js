@@ -2,10 +2,10 @@
 const mongoose = require('mongoose');
 
 const donationSchema = new mongoose.Schema({
-  // CORRECT FIELD NAME: 'name' (lowercase)
-  name: { // Changed from donorName to name
+  // CORRECT FIELD NAME: 'name'
+  name: {
     type: String,
-    required: [true, 'Name is required'], // User-facing message
+    required: [true, 'Name is required'],
     trim: true
   },
   email: {
@@ -39,15 +39,14 @@ const donationSchema = new mongoose.Schema({
         message: 'Invalid payment method selected'
     }
   },
-  date: { // Date provided by the user from the frontend
+  date: {
     type: Date,
     required: [true, 'Donation date is required']
   },
-  createdAt: { // Date the record was created on the server
+  createdAt: {
     type: Date,
     default: Date.now
   },
 });
 
-// Avoid recompiling the model if it already exists
 module.exports = mongoose.models.Donation || mongoose.model('Donation', donationSchema);
