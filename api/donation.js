@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 
 const donationSchema = new mongoose.Schema({
   // CORRECT FIELD NAME: 'name' (lowercase)
-  name: {
+  name: { // Changed from donorName to name
     type: String,
-    required: [true, 'Name is required'], // Use 'Name' in the user-facing message
+    required: [true, 'Name is required'], // User-facing message
     trim: true
   },
   email: {
@@ -49,4 +49,5 @@ const donationSchema = new mongoose.Schema({
   },
 });
 
+// Avoid recompiling the model if it already exists
 module.exports = mongoose.models.Donation || mongoose.model('Donation', donationSchema);
