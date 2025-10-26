@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        /* Styles remain the same - Teal/Amber/Cream theme */
         .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         .nav-link { transition: all 0.3s ease; }
@@ -16,15 +15,61 @@
         .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; border: none; cursor: pointer; white-space: nowrap; }
         .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
         .form-container, .payment-container, .thankyou-container {
-            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 1rem; padding: 2.5rem; transition: box-shadow 0.3s ease; position: relative; overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 1rem;
+            padding: 2.5rem; /* Increased padding */
+            transition: box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .form-container:hover, .payment-container:hover, .thankyou-container:hover { box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); }
-        .form-container::before, .payment-container::before, .thankyou-container::before { content: ''; position: absolute; top: var(--mouse-y, 50%); left: var(--mouse-x, 50%); width: 300px; height: 300px; background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%); transform: translate(-50%, -50%); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; }
+        .form-container:hover, .payment-container:hover, .thankyou-container:hover {
+             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        /* Spotlight effect for containers */
+        .form-container::before, .payment-container::before, .thankyou-container::before {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 50%);
+            left: var(--mouse-x, 50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
+        }
         .form-container:hover::before, .payment-container:hover::before, .thankyou-container:hover::before { opacity: 1; }
-        input, select { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); color: #ffffff; border-radius: 0.5rem; padding: 0.85rem 1rem; transition: all 0.3s ease; width: 100%; }
-        input:focus, select:focus { box-shadow: 0 0 15px rgba(45, 212, 191, 0.6); border-color: #2DD4BF; outline: none; background: rgba(255, 255, 255, 0.2); }
+
+        input, select {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            border-radius: 0.5rem; /* Slightly less rounded */
+            padding: 0.85rem 1rem; /* Adjusted padding */
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        input:focus, select:focus {
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.6);
+            border-color: #2DD4BF;
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+        }
         input::placeholder { color: rgba(220, 220, 220, 0.7); }
-        label { display: block; font-size: 1rem; /* Adjusted from text-lg */ font-weight: 600; /* Adjusted from font-semibold */ margin-bottom: 0.5rem; /* Adjusted from mb-2 */ color: white; }
+        /* Corrected label style selector */
+        label {
+             display: block;
+             /* Use Tailwind classes for consistency if preferred, otherwise keep CSS */
+             /* text-lg font-semibold mb-2 text-white */
+             font-size: 1rem; /* Adjusted from text-lg */
+             font-weight: 600; /* Adjusted from font-semibold */
+             margin-bottom: 0.5rem; /* Adjusted from mb-2 */
+             color: white;
+         }
+
         .footer-link { transition: all 0.3s ease; }
         .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
         .dropdown { position: relative; }
@@ -177,10 +222,51 @@
 
     <script>
         // --- Standard Functions ---
-        function animateSections() { /* ... unchanged ... */ }
-        function initParticles() { /* ... unchanged ... */ }
-        function initScrollToTop() { /* ... unchanged ... */ }
-        function initSpotlightEffect() { /* ... unchanged ... */ }
+        function animateSections() {
+            const sections = document.querySelectorAll('.fade-in');
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+        }
+        function initParticles() {
+             if (document.getElementById('particles-js-hero')) {
+                 particlesJS('particles-js-hero', { particles: { number: { value: 60 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } } });
+             }
+             if (document.getElementById('particles-js-form')) {
+                 particlesJS('particles-js-form', { particles: { number: { value: 80 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 1.5, direction: 'none', random: true, straight: false, out_mode: 'out' } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } } });
+             }
+        }
+        function initScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                    scrollToTopBtn.style.display = 'block';
+                } else {
+                    scrollToTopBtn.style.display = 'none';
+                }
+            };
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        function initSpotlightEffect() {
+            const containers = document.querySelectorAll('.form-container, .payment-container, .thankyou-container');
+            containers.forEach(container => {
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    container.style.setProperty('--mouse-x', `${x}px`);
+                    container.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
+        }
 
         // --- Core Donation Logic ---
         document.addEventListener('DOMContentLoaded', () => {
@@ -194,18 +280,18 @@
             const paymentDetails = document.getElementById('payment-details');
             const paymentTitle = document.getElementById('payment-title');
             const paymentContent = document.getElementById('payment-content');
-            const donorNameSpan = document.getElementById('donor-name'); // Changed variable name
-            const donorEmailSpan = document.getElementById('donor-email'); // Changed variable name
-            const donorPhoneSpan = document.getElementById('donor-phone'); // Changed variable name
-            const donorAmountSpan = document.getElementById('donor-amount'); // Changed variable name
-            const donorPurposeSpan = document.getElementById('donor-purpose'); // Changed variable name
+            const donorNameSpan = document.getElementById('donor-name');
+            const donorEmailSpan = document.getElementById('donor-email');
+            const donorPhoneSpan = document.getElementById('donor-phone');
+            const donorAmountSpan = document.getElementById('donor-amount');
+            const donorPurposeSpan = document.getElementById('donor-purpose');
             const submitButton = document.getElementById('submitButton');
             const donationFormSection = document.getElementById('donationFormSection');
             const thankYouMessage = document.getElementById('thankYouMessage');
             const thankyouName = document.getElementById('thankyou-name');
             const thankyouAmount = document.getElementById('thankyou-amount');
 
-            // Input field references (needed for both listeners)
+            // Input field references
             const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
             const phoneInput = document.getElementById('phone');
@@ -215,13 +301,12 @@
 
             // --- Proceed Button Logic ---
             proceedButton.addEventListener('click', () => {
-                // Read values directly from inputs
                 const name = nameInput.value.trim();
                 const email = emailInput.value.trim();
                 const phone = phoneInput.value.trim();
                 const amount = amountInput.value.trim();
-                const purpose = purposeInput.value; // No trim needed for select
-                const paymentMethod = paymentMethodInput.value; // No trim needed for select
+                const purpose = purposeInput.value;
+                const paymentMethod = paymentMethodInput.value;
 
                 // Validation
                 if (!name || !email || !phone || !amount || parseFloat(amount) <= 0 || !paymentMethod) {
@@ -275,12 +360,12 @@
                 paymentDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
 
-            // --- Submit Button Logic ---
+            // --- Submit Button Logic (Corrected) ---
             submitButton.addEventListener('click', async () => {
                 submitButton.disabled = true;
                 submitButton.textContent = 'Submitting...';
 
-                // **CORRECTION:** Read data *directly* from input fields again
+                // **CORRECTED:** Read data *directly* from input fields again
                 const name = nameInput.value.trim();
                 const email = emailInput.value.trim();
                 const phone = phoneInput.value.trim();
@@ -288,9 +373,9 @@
                 const purpose = purposeInput.value;
                 const paymentMethod = paymentMethodInput.value;
 
-                // **Double-check essential data** before sending
+                 // **Double-check essential data** before sending
                 if (!name || !email || !phone || !amount || !paymentMethod) {
-                    alert('Error: Required data is missing. Please refresh and try again.');
+                    alert('Error: Required data is missing from form. Please refresh and try again.');
                      submitButton.disabled = false;
                      submitButton.textContent = 'Submit Donation Record';
                      return;
@@ -308,7 +393,7 @@
                 };
 
                 try {
-                    const response = await fetch('/api/donation', {
+                    const response = await fetch('/api/donation', { // Relative URL
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
@@ -318,15 +403,16 @@
                         let errorMsg = 'Failed to submit donation record.';
                         try {
                             const errorData = await response.json();
+                             // Use the specific error from the backend if available
                             errorMsg = errorData.error || `Server responded with status ${response.status}`;
                         } catch(jsonError) {
                             errorMsg = `Server error: ${response.status} - ${response.statusText}`;
                         }
-                        throw new Error(errorMsg);
+                        throw new Error(errorMsg); // Throw the detailed error
                     }
 
                     // Success
-                    const result = await response.json(); // Get success message/ID if needed
+                    const result = await response.json();
                     console.log('Submission successful:', result);
 
                     paymentDetails.classList.add('hidden');
@@ -347,16 +433,18 @@
                      setTimeout(() => {
                          thankYouMessage.classList.add('hidden');
                          donationFormSection.classList.remove('hidden');
-                         submitButton.disabled = false;
-                         submitButton.textContent = 'Submit Donation Record';
                      }, 10000); // Show form again after 10 seconds
 
 
                 } catch (error) {
                     console.error('Error submitting donation:', error);
+                    // Display the specific error message received from the backend or fetch
                     alert(`Error submitting donation record: ${error.message}. Please check console or contact support.`);
-                    submitButton.disabled = false; // Re-enable button on error
-                    submitButton.textContent = 'Submit Donation Record';
+
+                } finally {
+                     // Always re-enable button and reset text
+                     submitButton.disabled = false;
+                     submitButton.textContent = 'Submit Donation Record';
                 }
             });
         });
