@@ -21,6 +21,7 @@ const corsOptions = {
     "http://localhost:3000",
     "https://www.viswavignanavaaradhi.org",
     // Add Vercel URLs like: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+    "https://viswavignana-vaaradhi-47mm2qent-ashishs-projects-1fd92a2e.vercel.app"
   ].filter(Boolean),
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
