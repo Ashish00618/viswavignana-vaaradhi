@@ -1,4 +1,4 @@
-const Contact = require('../models/Contact');
+const Contact = require('../models/contact');
 const logger = require('../utils/logger');
 
 exports.submitContact = async (req, res) => {
