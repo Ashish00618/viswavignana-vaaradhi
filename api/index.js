@@ -24,6 +24,7 @@ const corsOptions = {
     "https://www.viswavignanavaaradhi.org", // Your production domain
     // Add your Vercel preview/production URLs like:
     // process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+    "https://viswavignana-vaaradhi-c6yf6qabf-ashishs-projects-1fd92a2e.vercel.app"
   ].filter(Boolean), // Filter out undefined in case VERCEL_URL isn't set
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
