@@ -9,7 +9,7 @@ const contactRoutes = require("./routes/contact");
 const grievanceRoutes = require('./routes/grievance');
 const errorHandler = require("./middleware/errorHandler");
 const logger = require("./utils/logger");
-const Donation = require('./models/donation'); 
+const Donation = require('./models/donation'); // Import the CORRECT Donation model
 
 const app = express();
 
@@ -19,8 +19,8 @@ const corsOptions = {
     "http://127.0.0.1:5500",
     "http://localhost:5500",
     "http://localhost:3000",
-    "https://www.viswavignanavaaradhi.org", 
-    "https://viswavignana-vaaradhi-8balp15fi-ashishs-projects-1fd92a2e.vercel.app"
+    "https://www.viswavignanavaaradhi.org",
+    // Add Vercel URLs like: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
   ].filter(Boolean),
   methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type"],
@@ -30,10 +30,8 @@ app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); // Handle preflight requests
 app.use(express.json());
 
-// Logging Middleware
 app.use((req, res, next) => {
-  // Corrected template literal for logging
-  logger.info(`${req.method} ${req.originalUrl}`);
+  logger.info(`${req.method} ${req.originalUrl}`); // Corrected template literal
   next();
 });
 
@@ -41,21 +39,16 @@ app.use((req, res, next) => {
 let isConnected;
 
 async function connectToDatabase() {
-    // Check mongoose's readyState: 0=disconnected, 1=connected, 2=connecting, 3=disconnecting
-    if (isConnected === 1) {
+    if (isConnected === 1) { // 1 means connected in Mongoose readyState
         logger.info('=> using existing database connection');
         return;
     }
-
     const dbUri = process.env.MONGODB_URI;
-    // Check if URI is defined AND starts correctly
     if (!dbUri || !(dbUri.startsWith('mongodb://') || dbUri.startsWith('mongodb+srv://'))) {
         const errorMsg = "FATAL: MONGODB_URI environment variable is not set or has an invalid scheme.";
         logger.error(errorMsg);
-        // Throw an error that clearly indicates the problem
         throw new Error("Invalid scheme, expected connection string to start with 'mongodb://' or 'mongodb+srv://'");
     }
-
     logger.info('=> using new database connection');
     try {
         // REMOVED deprecated options: useNewUrlParser, useUnifiedTopology
@@ -63,16 +56,15 @@ async function connectToDatabase() {
             bufferCommands: false, // Don't buffer if not connected
             serverSelectionTimeoutMS: 5000 // Timeout faster
         });
-        isConnected = mongoose.connections[0].readyState; // Update connection state (should be 1)
+        isConnected = mongoose.connections[0].readyState;
         if (isConnected !== 1) {
-             // Log the actual state if connection didn't reach 'connected'
              throw new Error(`Mongoose connection readyState is ${isConnected} after connect call`);
         }
         logger.info("MongoDB connected successfully via Mongoose");
     } catch (error) {
         logger.error("MongoDB connection error:", error);
-        isConnected = 0; // Set state to disconnected
-        throw error; // Rethrow to signal critical failure
+        isConnected = 0;
+        throw error;
     }
 }
 
@@ -112,35 +104,31 @@ app.post('/api/donation', async (req, res) => {
     });
 
   } catch (error) {
-    // Handle Mongoose validation errors (like the 'name'/'donorName' mismatch)
+    // Handle Mongoose validation errors (this is where your 'donorName' error came from)
     if (error.name === 'ValidationError') {
       const errors = Object.values(error.errors).map(el => el.message);
       logger.error('Donation validation failed:', { errors: errors, body: req.body });
       // Send validation errors back to the frontend
-      // The frontend error "Path `donorName` is required" came from this block previously
       return res.status(400).json({ error: `Please correct the following: ${errors.join(', ')}` });
     }
-    // Handle other errors (DB connection, unexpected issues)
-    if (error.message.includes("Invalid scheme")) { // Catch connection string format error
+    // Handle other potential errors
+    if (error.message.includes("Invalid scheme")) {
         logger.error("Database connection string format error.");
         return res.status(500).json({ error: 'Server configuration error: Invalid database connection string format.' });
     }
     logger.error('Error processing donation:', { error: error.message, stack: error.stack, body: req.body });
-    return res.status(500).json({ error: 'Server error: Failed to save donation record. Please try again later.' });
+    return res.status(500).json({ error: 'Server error: Failed to save donation record.' });
   }
 });
 
 // --- Other API Routes ---
-// Ensure these route files also use `await connectToDatabase()` if they need the DB
 app.use("/api/user", userRoutes);
 app.use("/api/volunteer", volunteerRoutes);
 app.use("/api/contact", contactRoutes);
 app.use('/api/grievance', grievanceRoutes);
 
 // --- Error Handling Middleware ---
-// This MUST be the LAST app.use() call
 app.use(errorHandler);
 
 // --- Vercel Export ---
-// Export the configured Express app for Vercel's serverless environment
 module.exports = app;
