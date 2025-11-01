@@ -47,10 +47,11 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Malnutrition and Hunger Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
+                        <a href="health.html">Health</a>
                     </div>
                 </div>
                 <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
@@ -317,7 +318,6 @@
             animateSections();
             initParticles();
             initScrollToTop();
-
             const volunteerForm = document.getElementById('volunteerForm');
             const formMessage = document.getElementById('formMessage');
             const stateSelect = document.getElementById('state');
@@ -352,7 +352,7 @@
                 "tamil-nadu": [ "Ariyalur", "Chengalpattu", "Chennai", "Coimbatore", "Cuddalore", "Dharmapuri", "Dindigul", "Erode", "Kallakurichi", "Kancheepuram", "Kanyakumari", "Karur", "Krishnagiri", "Madurai", "Mayiladuthurai", "Nagapattinam", "Namakkal", "Nilgiris", "Perambalur", "Pudukkottai", "Ramanathapuram", "Ranipet", "Salem", "Sivaganga", "Tenkasi", "Thanjavur", "Theni", "Thoothukudi", "Tiruchirappalli", "Tirunelveli", "Tirupathur", "Tiruppur", "Tiruvallur", "Tiruvannamalai", "Tiruvarur", "Vellore", "Viluppuram", "Virudhunagar" ],
                 "telangana": [ "Adilabad", "Bhadradri Kothagudem", "Hyderabad", "Jagtial", "Jangaon", "Jayashankar Bhupalpally", "Jogulamba Gadwal", "Kamareddy", "Karimnagar", "Khammam", "Komaram Bheem Asifabad", "Mahabubabad", "Mahbubnagar", "Mancherial", "Medak", "Medchal-Malkajgiri", "Mulugu", "Nagarkurnool", "Nalgonda", "Narayanpet", "Nirmal", "Nizamabad", "Peddapalli", "Rajanna Sircilla", "Rangareddy", "Sangareddy", "Siddipet", "Suryapet", "Vikarabad", "Wanaparthy", "Warangal Rural", "Warangal Urban", "Yadadri Bhuvanagiri" ],
                 "tripura": [ "Dhalai", "Gomati", "Khowai", "North Tripura", "Sepahijala", "South Tripura", "Unakoti", "West Tripura" ],
-                "uttar-pradesh": [ "Agra", "Aligarh", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Ayodhya", "Azamgarh", "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor", "Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur", "Hardoi", "Hathras", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar", "Kasganj", "Kaushambi", "Kheri", "Kushinagar", "Lalitpur", "Lucknow", "Maharajganj", "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Prayagraj", "Raebareli", "Rampur", "Saharanpur", "Sambhal", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shravasti", "Siddharthnagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi" ],
+                "uttar-pradesh": [ "Agra", "Aligarh", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Ayodhya", "Azamgarh", "Baghpat", "Bahraich", "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor","Budaun", "Bulandshahr", "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Ghaziabad", "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur", "Hardoi", "Hathras", "Jalaun", "Jaunpur", "Jhansi", "Kannauj", "Kanpur Dehat", "Kanpur Nagar", "Kasganj", "Kaushambi", "Kheri", "Kushinagar", "Lalitpur", "Lucknow", "Maharajganj", "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh", "Prayagraj", "Raebareli", "Rampur", "Saharanpur", "Sambhal", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shravasti", "Siddharthnagar", "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi" ],
                 "uttarakhand": [ "Almora", "Bageshwar", "Chamoli", "Champawat", "Dehradun", "Haridwar", "Nainital", "Pauri Garhwal", "Pithoragarh", "Rudraprayag", "Tehri Garhwal", "Udham Singh Nagar", "Uttarkashi" ],
                 "west-bengal": [ "Alipurduar", "Bankura", "Birbhum", "Cooch Behar", "Dakshin Dinajpur", "Darjeeling", "Hooghly", "Howrah", "Jalpaiguri", "Jhargram", "Kalimpong", "Kolkata", "Malda", "Murshidabad", "Nadia", "North 24 Parganas", "Paschim Bardhaman", "Paschim Medinipur", "Purba Bardhaman", "Purba Medinipur", "Purulia", "South 24 Parganas", "Uttar Dinajpur" ],
                 "andaman-nicobar": [ "Nicobar", "North and Middle Andaman", "South Andaman" ],
@@ -386,7 +386,6 @@
                 const selectedState = stateSelect.value;
                 districtSelect.innerHTML = '<option value="" disabled selected>Select a district</option>';
                 assemblyConstituencySelect.innerHTML = '<option value="" disabled selected>Select an assembly constituency</option>';
-
                 if (selectedState && districts[selectedState]) {
                     districts[selectedState].forEach(district => {
                         const option = document.createElement('option');
@@ -405,7 +404,6 @@
             districtSelect.addEventListener('change', () => {
                 const selectedDistrict = districtSelect.value;
                 assemblyConstituencySelect.innerHTML = '<option value="" disabled selected>Select an assembly constituency</option>';
-
                 if (selectedDistrict && assemblyConstituencies[selectedDistrict]) {
                     assemblyConstituencies[selectedDistrict].forEach(constituency => {
                         const option = document.createElement('option');
@@ -422,7 +420,6 @@
             volunteerForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
                 formMessage.classList.add('hidden');
-
                 const formData = new FormData(volunteerForm);
                 const preferredWings = formData.getAll('preferredWing').filter(wing => wing !== '');
                 const data = {
@@ -444,22 +441,20 @@
                     financialContribution: formData.get('financialContribution') || 'no',
                     declaration: formData.get('declaration') === 'on'
                 };
-
                 if (!validateForm(data)) {
                     formMessage.classList.remove('hidden', 'text-green-500');
                     formMessage.classList.add('text-red-500');
                     formMessage.textContent = 'Please fill all required fields correctly. Age must be 18+, Pin Code must be 6 digits, and Mobile Number must be 10 digits.';
                     return;
                 }
-
                 try {
-                    const response = await fetch('/api/volunteer', {
+                    // **** CORRECTED URL ****
+                    const response = await fetch('/api/volunteer', { // Changed from localhost
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
                     });
                     const result = await response.json();
-
                     if (response.ok) {
                         formMessage.classList.remove('hidden', 'text-red-500');
                         formMessage.classList.add('text-green-500');
