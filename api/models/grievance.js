@@ -11,7 +11,7 @@ const grievanceSchema = new mongoose.Schema({
     category: { type: String, required: true },
     subcategory: { type: String, required: true },
     description: { type: String, required: true, trim: true },
-    declaration: { type: Boolean, required: true, enum: [true] },
+    declaration: { type: Boolean, required: true, enum: [true] }, // Ensures checkbox is checked
     createdAt: { type: Date, default: Date.now }
 });
 

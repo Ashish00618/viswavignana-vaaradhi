@@ -18,7 +18,7 @@ const volunteerSchema = new mongoose.Schema({
     skills: { type: String, trim: true },
     preferredWing: { type: [String], required: true },
     financialContribution: { type: String, required: true, enum: ['yes', 'no'] },
-    declaration: { type: Boolean, required: true, enum: [true] },
+    declaration: { type: Boolean, required: true, enum: [true] }, // Ensures checkbox is checked
     createdAt: { type: Date, default: Date.now }
 });
 
