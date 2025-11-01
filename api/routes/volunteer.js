@@ -4,7 +4,8 @@ const router = express.Router();
 const Volunteer = require('../models/volunteer'); // Ensure this path is correct
 const logger = require('../utils/logger'); // Assuming your logger is here
 
-router.post('/', async (req, res) => {
+// Handle POST request to /api/volunteer
+router.post('/', async (req, res, next) => {
     try {
         const volunteerData = req.body;
         logger.info('Received new volunteer registration attempt:', { name: volunteerData.fullName });
@@ -23,12 +24,12 @@ router.post('/', async (req, res) => {
         if (error.name === 'ValidationError') {
             const errors = Object.values(error.errors).map(el => el.message);
             logger.error('Volunteer validation failed:', { errors, body: req.body });
-            return res.status(400).json({ message: `Validation failed: ${errors.join(', ')}` });
+            return res.status(400).json({ error: `Please correct the following: ${errors.join(', ')}` });
         }
-
-        // Handle other errors
-        logger.error('Error saving volunteer registration:', { error: error.message, stack: error.stack });
-        res.status(500).json({ message: 'Server error. Please try again later.' });
+        
+        // Pass other errors to the global error handler
+        logger.error('Error saving volunteer registration:', { error: error.message });
+        next(error); // This will send a generic 500 error
     }
 });
 
