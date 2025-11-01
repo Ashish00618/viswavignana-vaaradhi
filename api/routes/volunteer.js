@@ -1,38 +1,35 @@
+// api/routes/volunteer.js
 const express = require('express');
 const router = express.Router();
-const Volunteer = require('../models/volunteer'); // ✅ Fixed relative path
-const logger = require('../utils/logger');
+const Volunteer = require('../models/volunteer'); // Ensure this path is correct
+const logger = require('../utils/logger'); // Assuming your logger is here
 
-// Validation function
-const validateVolunteerData = (data) => {
-  if (!data || !data.fullName || data.age < 18 ||
-      !/^\d{6}$/.test(data.pinCode) || !/^\d{10}$/.test(data.mobileNumber)) {
-    return false;
-  }
-  return true;
-};
-
-// POST /api/volunteer - Save volunteer data
 router.post('/', async (req, res) => {
-  try {
-    const volunteerData = req.body;
+    try {
+        const volunteerData = req.body;
+        logger.info('Received new volunteer registration attempt:', { name: volunteerData.fullName });
 
-    // Validate data
-    if (!validateVolunteerData(volunteerData)) {
-      logger.warn('Invalid volunteer data received:', volunteerData);
-      return res.status(400).json({ message: 'Invalid data. Age must be 18+, Pin Code must be 6 digits, and Mobile Number must be 10 digits.' });
+        // Create new volunteer instance
+        const newVolunteer = new Volunteer(volunteerData);
+        
+        // Save to database (this will also run the validations from the model)
+        await newVolunteer.save();
+
+        logger.info('Successfully registered new volunteer:', { email: newVolunteer.email });
+        res.status(201).json({ message: 'Volunteer registration submitted successfully! Thank you.' });
+
+    } catch (error) {
+        // Handle validation errors from Mongoose
+        if (error.name === 'ValidationError') {
+            const errors = Object.values(error.errors).map(el => el.message);
+            logger.error('Volunteer validation failed:', { errors, body: req.body });
+            return res.status(400).json({ message: `Validation failed: ${errors.join(', ')}` });
+        }
+
+        // Handle other errors
+        logger.error('Error saving volunteer registration:', { error: error.message, stack: error.stack });
+        res.status(500).json({ message: 'Server error. Please try again later.' });
     }
-
-    // Create new volunteer instance
-    const newVolunteer = new Volunteer(volunteerData);
-    await newVolunteer.save();
-
-    logger.info(`Volunteer registered: ${volunteerData.fullName}`);
-    res.status(201).json({ message: 'Volunteer registration submitted successfully!' });
-  } catch (error) {
-    logger.error('Error saving volunteer:', error);
-    res.status(500).json({ message: 'Error submitting volunteer registration. Please try again or contact support.' });
-  }
 });
 
 module.exports = router;
