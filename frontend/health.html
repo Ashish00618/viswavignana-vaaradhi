@@ -3,127 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Health - Viswa Vignana Vaaradhi</title>
+    <title>Mission Jeeva Dhara - Agriculture & Rural Livelihoods - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Add Vanilla Tilt for 3D tilt effect -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <!-- Add Particles.js for background particle animation -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        /* Global Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Header Styles */
-        .nav-link {
-            transition: all 0.3s ease;
-        }
-        .nav-link:hover {
-            transform: scale(1.1);
-            color: #F0F5FF;
-        }
-        /* Button Styles */
-        .btn-primary {
-            background: linear-gradient(to right, #1E3A8A, #3B82F6);
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 255, 0.3);
-        }
-        /* Card Styles */
-        .card {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
+        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; border: none; cursor: pointer; white-space: nowrap; }
+        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
+        
+        /* Glass Card Style */
+        .glass-card {
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        .card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 0, 255, 0.3);
-            border: 1px solid #3B82F6;
-        }
-        /* Footer Links */
-        .footer-link {
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            transform-style: preserve-3d;
         }
-        .footer-link:hover {
-            color: #F0F5FF;
-            text-decoration: underline;
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid #F59E0B;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+            transform: translateY(-5px);
         }
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
+
+        .mission-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: -webkit-linear-gradient(#F59E0B, #fde68a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.3));
         }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #1E3A8A;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-            top: 100%;
-            left: 0;
-            opacity: 0;
-            transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-        .dropdown-content a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            transition: background-color 0.3s ease;
-        }
-        .dropdown-content a:hover {
-            background-color: #3B82F6;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* Gradient Background Animation for Health Section */
-        .health-section {
-            background: linear-gradient(45deg, #1E3A8A, #3B82F6, #8B5CF6, #EC4899);
-            background-size: 400%;
-            animation: gradientAnimation 15s ease infinite;
-        }
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        /* Scroll to Top Button */
-        #scrollToTopBtn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(to right, #3B82F6, #8B5CF6);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-            transition: all 0.3s ease;
-            display: none;
-            z-index: 1000;
-        }
-        #scrollToTopBtn:hover {
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
-            transform: scale(1.1);
-        }
+
+        .footer-link { transition: all 0.3s ease; }
+        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
+        .dropdown-content a:hover { background-color: #2DD4BF; }
+        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
+        
+        .hero-bg { background: linear-gradient(45deg, #0D9488, #115e59, #0f766e, #134e4a); background-size: 400%; animation: gradientAnimation 20s ease infinite; }
+        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        
+        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
+        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
     </style>
 </head>
-<body class="font-sans bg-[#F0F5FF] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
+<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
     <!-- Header -->
-    <header class="bg-[#1E3A8A] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+    <header class="bg-[#0D9488] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
@@ -136,11 +72,11 @@
                 <div class="dropdown">
                     <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Malnutrition and Hunger-Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
-                        <a href="health.html">Health</a>
+                        <a href="education.html">Education</a>
+                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
+                        <a href="rural-development.html">Rural Development</a>
+                        <a href="agriculture.html">Agriculture</a>
+                        <a href="health.html">Health</a> <!-- Still linked as health.html but displays Mission Jeeva Dhara -->
                     </div>
                 </div>
                 <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
@@ -150,158 +86,104 @@
         </div>
     </header>
 
-    <!-- Health Section with Gradient Animation and Particle Background -->
-    <section class="health-section py-20 relative">
-        <div id="particles-js-health" class="absolute inset-0"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">Health – Ensuring Wellness, Dignity, and Care for Every Life</h2>
-            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-8 fade-in">
-                At VISWA VIGNANA VAARADHI, we believe health is not a privilege—it is a right. We are committed to making quality healthcare, mental well-being, and health awareness accessible to all, especially in rural and underserved communities. Our mission is to build a society where every individual—regardless of income or location—can live a healthy, informed, and dignified life.
+    <!-- Hero Section -->
+    <section class="hero-bg py-24 relative">
+        <div id="particles-js-agri" class="absolute inset-0"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h1 class="text-5xl font-bold mb-6 text-white fade-in drop-shadow-md">Mission Jeeva Dhara</h1>
+            <p class="text-xl text-gray-100 max-w-3xl mx-auto mb-10 fade-in drop-shadow-sm">
+                Revitalizing agriculture and rural livelihoods through sustainable practices, farmer empowerment, and innovation. The lifeline of our nation.
             </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Tile 1 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">1️⃣ Access to Basic Healthcare for All</h3>
-                    <p class="text-gray-200 mb-4">
-                        We bring healthcare to where it’s needed the most.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Organizing free health camps, mobile medical vans, and vaccination drives in remote areas</li>
-                        <li>Supporting primary health centers, maternal care units, and child wellness programs</li>
-                        <li>Providing telemedicine services to connect rural patients with specialists</li>
-                        <li>Creating awareness on Ayushman Bharat, Aarogyasri, Janani Suraksha Yojana, and other govt. schemes</li>
-                    </ul>
-                </div>
-                <!-- Tile 2 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">2️⃣ Preventive Healthcare & Disease Awareness</h3>
-                    <p class="text-gray-200 mb-4">
-                        We empower people to prevent illness before it starts.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Running health awareness campaigns on TB, malaria, HIV/AIDS, diabetes, and heart disease</li>
-                        <li>Teaching hygiene, sanitation, and nutrition to prevent everyday illnesses</li>
-                        <li>Organizing regular health check-ups and screening camps for early detection</li>
-                        <li>Educating families on maternal health, reproductive wellness, and family planning</li>
-                    </ul>
-                </div>
-                <!-- Tile 3 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">3️⃣ Mental Health Matters</h3>
-                    <p class="text-gray-200 mb-4">
-                        Mental health is health—and we treat it with care.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Spreading awareness about depression, anxiety, stress, and trauma in schools and communities</li>
-                        <li>Offering free counseling services, helplines, and mental health support groups</li>
-                        <li>Training teachers, community workers, and health staff to identify mental health issues</li>
-                        <li>Creating safe spaces for emotional well-being and healing</li>
-                    </ul>
-                </div>
-                <!-- Tile 4 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">4️⃣ Fighting Substance Abuse & Addiction</h3>
-                    <p class="text-gray-200 mb-4">
-                        We take a firm stand against addiction and its impact.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Launching awareness drives on alcohol, tobacco, and drug abuse</li>
-                        <li>Offering rehabilitation support and de-addiction counseling</li>
-                        <li>Partnering with experts and authorities for therapy programs</li>
-                        <li>Educating youth about peer pressure and teaching healthy coping methods</li>
-                    </ul>
-                </div>
-                <!-- Tile 5 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">5️⃣ Women’s and Adolescent Health</h3>
-                    <p class="text-gray-200 mb-4">
-                        Empowering women begins with protecting their health.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Teaching menstrual hygiene, reproductive rights, and maternal care</li>
-                        <li>Distributing free sanitary napkins in schools and villages</li>
-                        <li>Running prenatal and postnatal workshops for mothers</li>
-                        <li>Addressing adolescent health—nutrition, puberty education, and mental care</li>
-                    </ul>
-                </div>
-                <!-- Tile 6 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">6️⃣ Nutrition and Wellness for Every Family</h3>
-                    <p class="text-gray-200 mb-4">
-                        We fight malnutrition and promote wellness.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Teaching balanced diets, food hygiene, and healthy cooking</li>
-                        <li>Running nutrition drives for children, pregnant women, and mothers</li>
-                        <li>Supporting kitchen gardens and organic food practices</li>
-                        <li>Partnering with mid-day meal programs and food security initiatives</li>
-                    </ul>
-                </div>
-                <!-- Tile 7 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">7️⃣ Fitness, Yoga, and Healthy Lifestyles</h3>
-                    <p class="text-gray-200 mb-4">
-                        Good health is a lifelong habit. We encourage:
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Regular exercise, yoga, and meditation as part of daily routine</li>
-                        <li>Hosting sports events, community fitness challenges, and health walks</li>
-                        <li>Educating people on the dangers of obesity, sedentary life, and heart risks</li>
-                        <li>Promoting Ayurveda, naturopathy, and holistic wellness systems</li>
-                    </ul>
-                </div>
-                <!-- Tile 8 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">8️⃣ Care for the Elderly and Persons with Disabilities</h3>
-                    <p class="text-gray-200 mb-4">
-                        We serve those who need extra care with dignity and respect.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Providing geriatric care, assistive tools, and medical access for senior citizens</li>
-                        <li>Organizing physiotherapy and mobility aid camps for the disabled</li>
-                        <li>Educating families on disability pensions and government support</li>
-                        <li>Promoting youth-elder support programs to foster mutual care and respect</li>
-                    </ul>
-                </div>
-                <!-- Tile 9 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">9️⃣ Emergency Health Response & Disaster Preparedness</h3>
-                    <p class="text-gray-200 mb-4">
-                        Health doesn’t wait in an emergency—we act fast.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Training communities in first aid, CPR, and emergency preparedness</li>
-                        <li>Establishing rapid response teams for pandemics, floods, and health disasters</li>
-                        <li>Offering mental health counseling during post-disaster recovery</li>
-                        <li>Coordinating with hospitals and government for relief programs</li>
-                    </ul>
-                </div>
-                <!-- Tile 10 -->
-                <div class="card p-6 rounded-xl tilt-card">
-                    <h3 class="text-xl font-semibold mb-2 text-white">🔟 Health Policy Advocacy & Environmental Wellness</h3>
-                    <p class="text-gray-200 mb-4">
-                        We work to create a better system for everyone.
-                    </p>
-                    <ul class="list-disc list-inside text-gray-200">
-                        <li>Encouraging community voices in health policy discussions</li>
-                        <li>Promoting clean air, safe water, and waste management education</li>
-                        <li>Partnering with doctors, hospitals, and NGOs for health awareness drives</li>
-                        <li>Conducting research and policy recommendations based on ground-level health needs</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Closing Goal Statement -->
-            <div class="mt-8 text-center fade-in">
-                <h3 class="text-2xl font-semibold text-white mb-4">🌿 Our Goal:</h3>
-                <p class="text-lg text-white max-w-3xl mx-auto">
-                    To build a health-conscious, physically fit, and emotionally strong India, where no one is left behind due to illness, stigma, or lack of access.
-                </p>
-            </div>
         </div>
     </section>
 
+    <!-- Core Initiatives Section -->
+    <section class="py-20 bg-[#FFFBEB] relative">
+         <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-4xl font-bold text-[#0D9488] mb-4">Cultivating Growth</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Our comprehensive approach to supporting the agrarian economy and rural prosperity.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Sustainable Farming Card -->
+                <div class="glass-card p-8 rounded-2xl text-center tilt-card flex flex-col items-center bg-white">
+                    <div class="mission-icon"><i class="fas fa-leaf"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#0D9488]">Sustainable Farming</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Promoting organic farming techniques, soil health management, and eco-friendly practices for long-term sustainability.</p>
+                </div>
+
+                <!-- Farmer Empowerment Card -->
+                <div class="glass-card p-8 rounded-2xl text-center tilt-card flex flex-col items-center bg-white">
+                    <div class="mission-icon"><i class="fas fa-tractor"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#0D9488]">Farmer Empowerment</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Providing access to modern tools, financial literacy, and government schemes to uplift the farming community.</p>
+                </div>
+
+                 <!-- Market Access Card -->
+                <div class="glass-card p-8 rounded-2xl text-center tilt-card flex flex-col items-center bg-white">
+                    <div class="mission-icon"><i class="fas fa-store"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#0D9488]">Market Access</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Eliminating middlemen and connecting farmers directly to markets to ensure fair pricing for their produce.</p>
+                </div>
+                
+                 <!-- Water Management Card -->
+                <div class="glass-card p-8 rounded-2xl text-center tilt-card flex flex-col items-center bg-white">
+                    <div class="mission-icon"><i class="fas fa-water"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#0D9488]">Water Management</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Implementing efficient irrigation systems, rainwater harvesting, and water conservation strategies.</p>
+                </div>
+
+                 <!-- Rural Innovation Card -->
+                <div class="glass-card p-8 rounded-2xl text-center tilt-card flex flex-col items-center bg-white">
+                    <div class="mission-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#0D9488]">Rural Innovation</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Supporting grassroots innovations and technology adoption to solve local agricultural challenges.</p>
+                </div>
+
+                 <!-- Livelihood Support Card -->
+                <div class="glass-card p-8 rounded-2xl text-center tilt-card flex flex-col items-center bg-white">
+                    <div class="mission-icon"><i class="fas fa-hands-holding-heart"></i></div>
+                    <h3 class="text-2xl font-bold mb-3 text-[#0D9488]">Livelihood Support</h3>
+                    <p class="text-gray-600 mb-6 flex-grow">Diversifying rural incomes through skill development in allied sectors like dairy, poultry, and handicrafts.</p>
+                </div>
+            </div>
+         </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-10 text-[#0D9488] text-center fade-in">Field Stories</h2>
+             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Placeholder images - ensure these files exist or replace paths -->
+                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                    <img src="/images/agriculture-slide.jpg" alt="Farmer in field" class="w-full h-64 object-cover transform hover:scale-110 transition duration-500">
+                </div>
+                 <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                    <img src="/images/rural-development-slide.jpg" alt="Community meeting" class="w-full h-64 object-cover transform hover:scale-110 transition duration-500">
+                </div>
+                 <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300">
+                    <img src="/images/hm1.jpg" alt="Harvest" class="w-full h-64 object-cover transform hover:scale-110 transition duration-500">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Call to Action -->
+    <section class="py-20 bg-[#FFFBEB] text-center relative">
+         <div class="container mx-auto px-4 fade-in">
+            <h3 class="text-3xl font-bold mb-4 text-[#0D9488]">Sow the Seeds of Change</h3>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+                Your support can help a farmer adopt sustainable practices or provide a rural family with a new livelihood.
+            </p>
+            <a href="donate.html" class="btn-primary text-white px-8 py-3 rounded-full text-lg transition shadow-lg hover:shadow-xl">Support Mission Jeeva Dhara</a>
+        </div>
+    </section>
+
+
     <!-- Footer -->
-    <footer class="bg-[#1E3A8A] text-white p-10">
+    <footer class="bg-[#0D9488] text-white p-10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
@@ -322,7 +204,7 @@
                     <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
                     <p>Email: viswavignanavaaradhi@gmail.com</p>
                     <p>Phone: +91-9010937358</p>
-                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
+                    <p>Address: Visakhapatnam, Andhra Pradesh</p>
                 </div>
             </div>
             <div class="mt-8 text-center">
@@ -331,12 +213,9 @@
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
     <button id="scrollToTopBtn" title="Go to top">↑</button>
 
-    <!-- JavaScript for Enhanced Features -->
     <script>
-        // Fade-In Animation for Sections
         function animateSections() {
             const sections = document.querySelectorAll('.fade-in');
             const observer = new IntersectionObserver((entries, observer) => {
@@ -351,38 +230,23 @@
             sections.forEach(section => observer.observe(section));
         }
 
-        // Initialize 3D Tilt Effect
         function initTiltEffect() {
             VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
                 max: 15,
                 speed: 400,
                 glare: true,
-                "max-glare": 0.5,
+                "max-glare": 0.4,
             });
         }
 
-        // Initialize Particles.js for Health Section
         function initParticles() {
-            particlesJS('particles-js-health', {
-                particles: {
-                    number: { value: 80, density: { enable: true, value_area: 800 } },
-                    color: { value: '#3B82F6' },
-                    shape: { type: 'circle' },
-                    opacity: { value: 0.5, random: true },
-                    size: { value: 3, random: true },
-                    line_linked: { enable: true, distance: 150, color: '#3B82F6', opacity: 0.4, width: 1 },
-                    move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-                },
-                interactivity: {
-                    detect_on: 'canvas',
-                    events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-                    modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
-                },
+            particlesJS('particles-js-agri', {
+                particles: { number: { value: 80 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 1.5, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false } },
+                interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true }, modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } } },
                 retina_detect: true
             });
         }
 
-        // Scroll to Top Button
         function initScrollToTop() {
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             window.onscroll = function () {
@@ -397,17 +261,11 @@
             });
         }
 
-        // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
-            try {
-                animateSections();
-                initTiltEffect();
-                initParticles();
-                initScrollToTop();
-            } catch (error) {
-                console.error('Error rendering page:', error);
-                document.body.innerHTML += '<h1 class="text-center text-red-500 p-4">Error loading page. Please check the console for details.</h1>';
-            }
+            animateSections();
+            initTiltEffect();
+            initParticles();
+            initScrollToTop();
         });
     </script>
 </body>
