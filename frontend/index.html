@@ -3,383 +3,487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viswa Vignana Vaaradhi</title>
+    <title>Viswa Vignana Vaaradhi - Transforming Rural India</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .nav-link { transition: all 0.3s ease; }
-        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
-        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
-        .btn-secondary { border: 1px solid #0D9488; transition: all 0.3s ease; }
-        .btn-secondary:hover { transform: scale(1.05); background: linear-gradient(to right, #F59E0B, #fde68a); color: white; border-color: #F59E0B; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3); }
-        .card { transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .card:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; }
-        .footer-link { transition: all 0.3s ease; }
-        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #FFFBEB; }
+        
+        /* Navigation */
+        .nav-link { transition: all 0.3s ease; position: relative; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: #F59E0B; transition: width 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link:hover { color: #FEFCE8; }
+
+        /* Hero Section */
+        .hero-section { 
+            background: linear-gradient(135deg, #0f766e, #0D9488, #0f172a);
+            position: relative; 
+            overflow: hidden; 
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); /* Angled bottom */
+        }
+        
+        /* Typing Animation */
+        .typing-text::after { content: '|'; animation: blink 1s infinite; color: #F59E0B; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Buttons */
+        .btn-glow {
+            background: linear-gradient(90deg, #F59E0B, #d97706);
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glow:hover { transform: translateY(-3px); box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
+
+        .btn-outline {
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover { background: white; color: #0D9488; border-color: white; }
+
+        /* Glass Panels */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-radius: 1.5rem;
+        }
+
+        /* Tech Cards */
+        .tech-card {
+            background: white;
+            border-radius: 1rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border-bottom: 4px solid transparent;
+        }
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
+            border-bottom-color: #0D9488;
+        }
+        .tech-card-icon {
+            width: 70px; height: 70px;
+            background: #E0F2F1;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; color: #0D9488;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+        }
+        .tech-card:hover .tech-card-icon { background: #0D9488; color: white; transform: rotateY(360deg); }
+
+        /* Impact Strip */
+        .impact-strip {
+            background: #0f172a;
+            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-size: 20px 20px;
+            position: relative;
+        }
+        .impact-item { text-align: center; padding: 2rem; border-right: 1px solid rgba(255,255,255,0.1); }
+        .impact-item:last-child { border-right: none; }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid #F59E0B;
+        }
+
+        /* Animations */
+        .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Dropdown */
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
-        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
-        .dropdown-content a:hover { background-color: #2DD4BF; }
-        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-        .hero-section { background-attachment: fixed; background-size: cover; background-position: center; position: relative; overflow: hidden; }
-        .typing-text { border-right: 2px solid #2DD4BF; white-space: nowrap; overflow: hidden; animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite; }
-        @keyframes typing { from { width: 0; } to { width: 100%; } }
-        @keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #2DD4BF; } }
-        .what-we-do-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
-        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .impact-stat { transition: all 0.3s ease; }
-        .impact-stat:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.5); transform: scale(1.05); }
-        @keyframes pulse { 0% { box-shadow: 0 0 5px rgba(45, 212, 191, 0.5); } 50% { box-shadow: 0 0 15px rgba(45, 212, 191, 0.8); } 100% { box-shadow: 0 0 5px rgba(45, 212, 191, 0.5); } }
-        .impact-stat.pulse { animation: pulse 2s infinite; }
-        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
-        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
-        .carousel { position: relative; width: 100%; max-width: 1200px; margin: 0 auto; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); }
-        .carousel-slides { display: flex; transition: transform 0.5s ease-in-out; }
-        .carousel-slide { min-width: 100%; height: 500px; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .carousel-slide::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1; }
-        .carousel-content { position: relative; z-index: 2; color: white; padding: 20px; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; }
-        .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(45, 212, 191, 0.8); color: white; padding: 10px; border: none; cursor: pointer; z-index: 3; transition: background 0.3s ease; }
-        .carousel-btn:hover { background: rgba(245, 158, 11, 0.8); }
-        .prev-btn { left: 10px; }
-        .next-btn { right: 10px; }
-        .carousel-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 3; }
-        .dot { width: 12px; height: 12px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; cursor: pointer; transition: background 0.3s ease; }
-        .dot.active { background: #2DD4BF; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 240px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 50; top: 100%; left: 0; border-radius: 0.5rem; padding: 0.5rem 0; }
+        .dropdown-content a { color: white; padding: 12px 20px; text-decoration: none; display: block; transition: background 0.2s; font-size: 0.95rem; }
+        .dropdown-content a:hover { background-color: #0f766e; padding-left: 25px; }
+        .dropdown:hover .dropdown-content { display: block; }
 
-        /* NEW Style for "What We Do" Card Icons */
-        .mission-icon {
-            font-size: 2.5rem; /* Slightly smaller icon */
-            margin-bottom: 1rem;
-            color: #F59E0B; /* Amber color for icons */
-        }
-        .card .learn-more-link {
-           color: #fde68a; /* Lighter amber for link */
-           font-weight: 600;
-           transition: color 0.3s ease;
-        }
-        .card:hover .learn-more-link {
-            color: #ffffff;
-            text-decoration: underline;
-        }
-
+        #scrollToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 15px rgba(45, 212, 191, 0.6); z-index: 1000; transition: all 0.3s; }
+        #scrollToTopBtn:hover { transform: scale(1.1); }
     </style>
 </head>
-<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#0D9488] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+<body class="text-gray-800">
+
+    <header class="bg-[#0D9488] bg-opacity-95 backdrop-blur-md text-white p-4 sticky top-0 z-50 shadow-lg transition-all duration-300" id="navbar">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
-                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
+                <img src="/images/logo.png" alt="Logo" class="h-12 w-12 rounded-full shadow-lg border-2 border-white/30 bg-white">
+                <div>
+                    <h2 class="text-2xl font-bold tracking-wide leading-none">Viswa Vignana</h2>
+                    <span class="text-sm text-gray-200 tracking-widest uppercase text-[0.65rem]">Vaaradhi Welfare Society</span>
+                </div>
             </div>
-            <nav class="flex items-center space-x-4">
-                <a href="index.html" class="nav-link hover:underline">Home</a>
-                <a href="about.html" class="nav-link hover:underline">About</a>
-                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+            <nav class="hidden lg:flex items-center space-x-8 font-medium">
+                <a href="index.html" class="nav-link text-[#F59E0B]">Home</a>
+                <a href="about.html" class="nav-link">About Us</a>
                 <div class="dropdown">
-                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <a href="our-work.html" class="nav-link cursor-pointer flex items-center">Our Missions <i class="fas fa-chevron-down text-xs ml-2 opacity-70"></i></a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Mission Trupthi</a>
-                        <a href="agriculture.html">Mission Mano Swastya</a>
-                        <a href="health.html">Mission Jeeva Dhara</a>
+                        <a href="education.html"><i class="fas fa-graduation-cap w-6"></i> Mission Medha</a>
+                        <a href="political-legal-literacy.html"><i class="fas fa-scale-balanced w-6"></i> Nyaya Sadan</a>
+                        <a href="rural-development.html"><i class="fas fa-bowl-food w-6"></i> Mission Trupthi</a>
+                        <a href="agriculture.html"><i class="fas fa-brain w-6"></i> Mission Mano Swastya</a>
+                        <a href="health.html"><i class="fas fa-seedling w-6"></i> Mission Jeeva Dhara</a>
                     </div>
                 </div>
-                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
-                <a href="contact.html" class="nav-link hover:underline">Contact</a>
-                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="get-involved.html" class="nav-link">Get Involved</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="donate.html" class="bg-white text-[#0D9488] px-6 py-2 rounded-full font-bold hover:bg-[#F59E0B] hover:text-white transition shadow-lg transform hover:-translate-y-0.5">Donate</a>
             </nav>
+            <button class="lg:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <section class="hero-section h-screen flex items-center justify-center text-center text-white bg-[url('/images/hero-bg.jpg')] relative">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <div class="relative z-10">
-            <h1 class="text-5xl md:text-6xl font-bold mb-4">Empowering Lives, Transforming Futures</h1>
-            <p class="text-xl md:text-2xl mb-6 typing-text">Join us in building a better tomorrow for rural India</p>
-            <div class="space-x-4">
-                <a href="get-involved.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Get Involved</a>
-                <a href="donate.html" class="btn-secondary text-[#0D9488] px-6 py-3 rounded-full transition">Donate Now</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-10 bg-[#FFFBEB]">
-        <div class="carousel">
-            <div class="carousel-slides">
-                <div class="carousel-slide" style="background-image: url('/images/education-slide.jpg');">
-                    <div class="carousel-content">
-                        <h3 class="text-3xl font-bold mb-4">Education for All</h3>
-                        <p class="text-lg mb-6">Providing quality education to underprivileged children and adults in rural areas.</p>
-                        <a href="education.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
-                    </div>
-                </div>
-                <div class="carousel-slide" style="background-image: url('/images/rural-development-slide.jpg');">
-                    <div class="carousel-content">
-                        <h3 class="text-3xl font-bold mb-4">Empowering Rural India</h3>
-                        <p class="text-lg mb-6">Transforming villages through infrastructure, education, and economic opportunities.</p>
-                        <a href="rural-development.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
-                    </div>
-                </div>
-                <div class="carousel-slide" style="background-image: url('/images/agriculture-slide.jpg');">
-                    <div class="carousel-content">
-                        <h3 class="text-3xl font-bold mb-4">Sustainable Farming</h3>
-                        <p class="text-lg mb-6">Supporting farmers with modern, eco-friendly agricultural practices.</p>
-                        <a href="agriculture.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
-                    </div>
-                </div>
-                <div class="carousel-slide" style="background-image: url('/images/health-slide.jpg');">
-                    <div class="carousel-content">
-                        <h3 class="text-3xl font-bold mb-4">Health and Wellness</h3>
-                        <p class="text-lg mb-6">Ensuring access to healthcare and promoting wellness in rural communities.</p>
-                        <a href="health.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
-                    </div>
-                </div>
-                <div class="carousel-slide" style="background-image: url('/images/political-literacy-slide.jpg');">
-                    <div class="carousel-content">
-                        <h3 class="text-3xl font-bold mb-4">Political & Legal Awareness</h3>
-                        <p class="text-lg mb-6">Empowering citizens with knowledge of their rights and responsibilities.</p>
-                        <a href="political-legal-literacy.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-btn prev-btn">❮</button>
-            <button class="carousel-btn next-btn">❯</button>
-            <div class="carousel-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
-    </section>
-
-    <section class="what-we-do-section py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">What We Do</h2>
-            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-12 fade-in">
-                We are dedicated to uplifting rural communities through education, political awareness, agriculture, and more.
+    <section class="hero-section min-h-screen flex items-center justify-center relative pt-20 pb-32">
+        <div id="particles-js" class="absolute inset-0 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <span class="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-[#F59E0B] text-sm font-semibold tracking-wider mb-6 animate-pulse">
+                NON-GOVERNMENTAL ORGANIZATION
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 text-white leading-tight drop-shadow-lg">
+                Bridging Gaps,<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2DD4BF] to-[#F59E0B]">Empowering Futures</span>
+            </h1>
+            <p class="text-xl md:text-2xl mb-10 text-gray-100 max-w-3xl mx-auto font-light">
+                We are dedicated to <span class="typing-text font-semibold text-[#F59E0B]"></span>
             </p>
-            
-                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
-                    <div class="mission-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Mission Medha</h3>
-                    <p class="text-gray-200 text-sm mb-4 flex-grow">Providing quality education to underprivileged children and adults.</p>
-                    <a href="education.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
-                </div>
-                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
-                    <div class="mission-icon"><i class="fas fa-balance-scale"></i></div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Nyaya Sadan</h3>
-                    <p class="text-gray-200 text-sm mb-4 flex-grow">Empowering citizens with knowledge of their rights and responsibilities.</p>
-                    <a href="political-legal-literacy.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
-                </div>
-                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
-                    <div class="mission-icon"><i class="fas fa-users"></i></div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Mission Trupthi</h3>
-                    <p class="text-gray-200 text-sm mb-4 flex-grow">Hunger free and nourished communities .</p>
-                    <a href="rural-development.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
-                </div>
-                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
-                    <div class="mission-icon"><i class="fas fa-seedling"></i></div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Mission Mano Swastya</h3>
-                    <p class="text-gray-200 text-sm mb-4 flex-grow">Mental Health Awareness and Support.</p>
-                    <a href="agriculture.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
-                </div>
-                <div class="card p-6 rounded-xl tilt-card flex flex-col items-center text-center">
-                    <div class="mission-icon"><i class="fas fa-seedling"></i></div>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Mission Jeeva Dhara</h3>
-                    <p class="text-gray-200 text-sm mb-4 flex-grow">Promoting sustainable farming practices and supporting rural farmers.</p>
-                    <a href="health.html" class="learn-more-link mt-auto">Learn More &rarr;</a>
-                </div>
+            <div class="flex flex-col sm:flex-row justify-center gap-5">
+                <a href="our-work.html" class="btn-glow px-8 py-4 rounded-full text-lg font-bold shadow-2xl flex items-center justify-center">
+                    Explore Our Missions <i class="fas fa-arrow-right ml-3"></i>
+                </a>
+                <a href="get-involved.html" class="btn-outline px-8 py-4 rounded-full text-lg font-bold flex items-center justify-center">
+                    Join the Movement
+                </a>
             </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+            <i class="fas fa-chevron-down text-3xl opacity-70"></i>
         </div>
     </section>
 
-    <section class="py-20 bg-[#FFFBEB]">
+    <section class="py-24 bg-[#FFFBEB] relative">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-6 text-[#0D9488] text-center fade-in">Our Impact</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
-                    <h3 class="text-4xl font-bold text-[#0D9488] counter" data-target="500">0</h3>
-                    <p class="text-gray-600">Students Educated</p>
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 fade-in-up">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-20 h-20 bg-[#F59E0B] rounded-full opacity-20 blur-xl"></div>
+                        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-[#0D9488] rounded-full opacity-20 blur-xl"></div>
+                        <img src="/images/gallery-1.jpg" alt="Our Vision" class="rounded-2xl shadow-2xl relative z-10 border-4 border-white transform rotate-2 hover:rotate-0 transition duration-500">
+                    </div>
                 </div>
-                <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
-                    <h3 class="text-4xl font-bold text-[#0D9488] counter" data-target="1000">0</h3>
-                    <p class="text-gray-600">Farmers Supported</p>
-                </div>
-                <div class="impact-stat bg-white p-6 rounded-xl shadow-md text-center pulse">
-                    <h3 class="text-4xl font-bold text-[#0D9488] counter" data-target="50">0</h3>
-                    <p class="text-gray-600">Villages Reached</p>
+                <div class="lg:w-1/2 fade-in-up" style="transition-delay: 0.2s;">
+                    <h4 class="text-[#0D9488] font-bold uppercase tracking-widest mb-2">Who We Are</h4>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-6 leading-tight">A Catalyst for Sustainable <br><span class="text-[#F59E0B]">Rural Transformation</span></h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Viswa Vignana Vaaradhi is more than an organization; it's a movement. We believe that true progress happens when we uplift the grassroots. Through targeted interventions in education, health, legal aid, and agriculture, we bridge the gap between resources and those who need them most.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-[#0D9488] text-xl mr-3"></i>
+                            <span class="font-medium text-gray-700">Community Driven</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-[#0D9488] text-xl mr-3"></i>
+                            <span class="font-medium text-gray-700">Transparency First</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-[#0D9488] text-xl mr-3"></i>
+                            <span class="font-medium text-gray-700">Holistic Approach</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-[#0D9488] text-xl mr-3"></i>
+                            <span class="font-medium text-gray-700">Sustainable Impact</span>
+                        </div>
+                    </div>
+                    <a href="about.html" class="text-[#0D9488] font-bold hover:text-[#F59E0B] transition flex items-center">
+                        Read Our Full Story <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 relative bg-[#FFFBEB]">
-        <div id="particles-js" class="absolute inset-0"></div>
+    <section class="impact-strip text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="impact-item fade-in-up">
+                    <i class="fas fa-child text-4xl text-[#2DD4BF] mb-4"></i>
+                    <div class="text-5xl font-bold mb-2 counter" data-target="500">0</div>
+                    <p class="text-gray-400 uppercase text-xs tracking-widest">Students Mentored</p>
+                </div>
+                <div class="impact-item fade-in-up" style="transition-delay: 0.1s;">
+                    <i class="fas fa-scale-balanced text-4xl text-[#F59E0B] mb-4"></i>
+                    <div class="text-5xl font-bold mb-2 counter" data-target="150">0</div>
+                    <p class="text-gray-400 uppercase text-xs tracking-widest">Legal Cases Aided</p>
+                </div>
+                <div class="impact-item fade-in-up" style="transition-delay: 0.2s;">
+                    <i class="fas fa-bowl-rice text-4xl text-[#2DD4BF] mb-4"></i>
+                    <div class="text-5xl font-bold mb-2 counter" data-target="5000">0</div>
+                    <p class="text-gray-400 uppercase text-xs tracking-widest">Meals Served</p>
+                </div>
+                <div class="impact-item fade-in-up" style="transition-delay: 0.3s;">
+                    <i class="fas fa-tractor text-4xl text-[#F59E0B] mb-4"></i>
+                    <div class="text-5xl font-bold mb-2 counter" data-target="50">0</div>
+                    <p class="text-gray-400 uppercase text-xs tracking-widest">Villages Adopted</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white relative">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in-up">
+                <h4 class="text-[#F59E0B] font-bold uppercase tracking-widest mb-2">What We Do</h4>
+                <h2 class="text-4xl font-bold text-[#0D9488]">Our 5 Pillars of Change</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                
+                <div class="tech-card p-6 text-center group">
+                    <div class="tech-card-icon mx-auto"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Mission Medha</h3>
+                    <p class="text-sm text-gray-500 mb-4">Quality education for every child.</p>
+                    <a href="education.html" class="text-[#0D9488] text-sm font-bold group-hover:underline">Explore</a>
+                </div>
+
+                <div class="tech-card p-6 text-center group">
+                    <div class="tech-card-icon mx-auto"><i class="fas fa-gavel"></i></div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Nyaya Sadan</h3>
+                    <p class="text-sm text-gray-500 mb-4">Justice and legal awareness for all.</p>
+                    <a href="political-legal-literacy.html" class="text-[#0D9488] text-sm font-bold group-hover:underline">Explore</a>
+                </div>
+
+                <div class="tech-card p-6 text-center group">
+                    <div class="tech-card-icon mx-auto"><i class="fas fa-utensils"></i></div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Mission Trupthi</h3>
+                    <p class="text-sm text-gray-500 mb-4">Eradicating hunger, ensuring nutrition.</p>
+                    <a href="rural-development.html" class="text-[#0D9488] text-sm font-bold group-hover:underline">Explore</a>
+                </div>
+
+                <div class="tech-card p-6 text-center group">
+                    <div class="tech-card-icon mx-auto"><i class="fas fa-head-side-virus"></i></div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Mission Mano Swastya</h3>
+                    <p class="text-sm text-gray-500 mb-4">Mental wellness & de-addiction.</p>
+                    <a href="agriculture.html" class="text-[#0D9488] text-sm font-bold group-hover:underline">Explore</a>
+                </div>
+
+                <div class="tech-card p-6 text-center group">
+                    <div class="tech-card-icon mx-auto"><i class="fas fa-seedling"></i></div>
+                    <h3 class="font-bold text-lg text-gray-800 mb-2">Mission Jeeva Dhara</h3>
+                    <p class="text-sm text-gray-500 mb-4">Sustainable farming livelihoods.</p>
+                    <a href="health.html" class="text-[#0D9488] text-sm font-bold group-hover:underline">Explore</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#FFFBEB] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-[#2DD4BF] rounded-full opacity-10 blur-3xl translate-x-1/2 -translate-y-1/2"></div>
+        
         <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-4xl font-bold mb-6 text-[#0D9488] text-center fade-in">Get Involved</h2>
-            <p class="text-lg max-w-3xl mx-auto text-center mb-12 fade-in">
-                Join us in making a difference. Whether through volunteering, donating, or spreading the word—your support matters.
-            </p>
-            <div class="flex justify-center space-x-4">
-                <a href="volunteer-registration.html" class="btn-secondary text-[#0D9488] px-6 py-3 rounded-full transition">Volunteer</a>
-                <a href="donate.html" class="btn-primary text-white px-6 py-3 rounded-full transition">Donate</a>
+            <h2 class="text-4xl font-bold text-center text-[#0D9488] mb-16 fade-in-up">Voices of Change</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="testimonial-card fade-in-up">
+                    <p class="text-gray-600 italic mb-6">"The scholarship from Mission Medha changed my life. I am the first in my family to go to college."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div> <div>
+                            <h5 class="font-bold text-gray-800">Ramesh K.</h5>
+                            <p class="text-xs text-[#F59E0B]">Student Beneficiary</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in-up" style="transition-delay: 0.2s;">
+                    <p class="text-gray-600 italic mb-6">"Nyaya Sadan helped me resolve a land dispute that was stuck for years. I finally have peace of mind."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <h5 class="font-bold text-gray-800">Lakshmi Devi</h5>
+                            <p class="text-xs text-[#F59E0B]">Community Member</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in-up" style="transition-delay: 0.4s;">
+                    <p class="text-gray-600 italic mb-6">"Volunteering with Mission Trupthi taught me the real joy of giving. It's an incredible organization."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <h5 class="font-bold text-gray-800">Anil Kumar</h5>
+                            <p class="text-xs text-[#F59E0B]">Volunteer</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#0D9488] text-white p-10">
+    <section class="py-24 bg-[#0D9488] text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: url('https://www.transparenttextures.com/patterns/diamond-upholstery.png');"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 fade-in-up">Ready to Make an Impact?</h2>
+            <p class="text-xl text-teal-100 mb-10 max-w-2xl mx-auto fade-in-up">
+                Your journey as a changemaker starts here. Join hands with us to build a stronger, self-reliant India.
+            </p>
+            <div class="fade-in-up">
+                <a href="donate.html" class="bg-white text-[#0D9488] px-10 py-4 rounded-full font-bold text-lg shadow-2xl hover:bg-[#FEFCE8] hover:scale-105 transition inline-block mr-4">
+                    Donate Now
+                </a>
+                <a href="contact.html" class="border-2 border-white text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-[#0D9488] transition inline-block mt-4 sm:mt-0">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0f172a] text-white p-10 border-t-4 border-[#F59E0B]">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
-                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                    <div class="flex items-center space-x-2 mb-4">
+                         <img src="/images/logo.png" alt="Logo" class="h-8 w-8 rounded-full">
+                         <h3 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">A non-profit organization dedicated to holistic rural development through education, health, and sustainable livelihoods.</p>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
-                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
-                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
-                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
+                    <h3 class="text-lg font-bold mb-4 text-[#2DD4BF]">Explore</h3>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="index.html" class="hover:text-[#F59E0B] transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#F59E0B] transition">About Us</a></li>
+                        <li><a href="our-work.html" class="hover:text-[#F59E0B] transition">Our Missions</a></li>
+                        <li><a href="donate.html" class="hover:text-[#F59E0B] transition">Donate</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: viswavignanavaaradhi@gmail.com</p>
-                    <p>Phone: +91-9010937358</p>
-                    <p>Address: Visakhapatnam, Andhra Pradesh</p>
+                    <h3 class="text-lg font-bold mb-4 text-[#2DD4BF]">Get in Touch</h3>
+                    <p class="text-sm text-gray-400 mb-2"><i class="fas fa-envelope mr-2"></i> viswavignanavaaradhi@gmail.com</p>
+                    <p class="text-sm text-gray-400 mb-2"><i class="fas fa-phone mr-2"></i> +91-9010937358</p>
+                    <p class="text-sm text-gray-400"><i class="fas fa-map-marker-alt mr-2"></i> Visakhapatnam, Andhra Pradesh</p>
                 </div>
             </div>
-            <div class="mt-8 text-center">
+            <div class="mt-12 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
                 <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button id="scrollToTopBtn" title="Go to top">↑</button>
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        // Fade-In Animation
+        // Typing Animation
+        const phrases = ["Rural Development", "Educational Reform", "Social Justice", "Sustainable Agriculture", "Community Health"];
+        const typingElement = document.querySelector('.typing-text');
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                setTimeout(() => isDeleting = true, 2000);
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            const speed = isDeleting ? 50 : 100;
+            setTimeout(typeEffect, speed);
+        }
+
+        // Intersection Observer for Fade In
         function animateSections() {
-            const sections = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries, observer) => {
+            const sections = document.querySelectorAll('.fade-in-up, .fade-in');
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
             sections.forEach(section => observer.observe(section));
         }
 
-        // Number Counter
+        // Counter Animation
         function animateCounters() {
              const counters = document.querySelectorAll('.counter');
-             const speed = 200; // Lower number = faster count
-
+             const speed = 200;
              counters.forEach(counter => {
                  const updateCount = () => {
                      const target = +counter.getAttribute('data-target');
-                     const count = +counter.innerText.replace('+',''); // Handle existing '+' if any
+                     const count = +counter.innerText.replace('+','');
                      const increment = target / speed;
-
                      if (count < target) {
                          counter.innerText = Math.ceil(count + increment);
-                         setTimeout(updateCount, 15); // Adjust timing for smoothness
+                         setTimeout(updateCount, 20);
                      } else {
-                         counter.innerText = target + '+'; // Ensure '+' is added at the end
+                         counter.innerText = target + '+';
                      }
                  };
-
-                 // Observer to trigger count when element is visible
                  const observer = new IntersectionObserver((entries) => {
                      if(entries[0].isIntersecting){
                          updateCount();
-                         observer.disconnect(); // Count only once
+                         observer.disconnect();
                      }
-                 }, { threshold: 0.5 }); // Trigger when 50% visible
-
+                 }, { threshold: 0.5 });
                  observer.observe(counter);
              });
          }
 
-        // Vanilla Tilt
-        function initTiltEffect() {
-            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-                max: 15, // Reduced tilt intensity
-                speed: 400,
-                glare: true,
-                "max-glare": 0.3, // Reduced glare
-            });
-        }
-
-        // Particles JS
-        function initParticles() {
-            if (document.getElementById('particles-js')) {
-                particlesJS('particles-js', { particles: { number: { value: 60 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.4, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.3, width: 1 }, move: { enable: true, speed: 1.5 } }, interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } } });
+        document.addEventListener('DOMContentLoaded', () => {
+            typeEffect();
+            animateSections();
+            animateCounters();
+            
+            // Init Particles
+            if(typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: { number: { value: 60 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.2, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.1, width: 1 }, move: { enable: true, speed: 1 } },
+                    interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } }
+                });
             }
-        }
+            
+            // Init Tilt
+            if(typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelectorAll(".tilt-card"), { max: 10, speed: 400, glare: true, "max-glare": 0.1 });
+            }
 
-        // Scroll Top Button
-        function initScrollToTop() {
+            // Scroll to Top
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             window.onscroll = function () {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    scrollToTopBtn.style.display = 'block';
-                } else {
-                    scrollToTopBtn.style.display = 'none';
-                }
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) { scrollToTopBtn.style.display = 'block'; } else { scrollToTopBtn.style.display = 'none'; }
             };
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-
-        // Carousel Functionality
-        function initCarousel() {
-            const slides = document.querySelector('.carousel-slides');
-            const slideCount = document.querySelectorAll('.carousel-slide').length;
-            const dots = document.querySelectorAll('.dot');
-            let currentIndex = 0;
-
-            function goToSlide(index) {
-                if (index < 0) index = slideCount - 1;
-                if (index >= slideCount) index = 0;
-                currentIndex = index;
-                slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-                dots.forEach(dot => dot.classList.remove('active'));
-                dots[currentIndex].classList.add('active');
-            }
-
-            document.querySelector('.prev-btn').addEventListener('click', () => { goToSlide(currentIndex - 1); });
-            document.querySelector('.next-btn').addEventListener('click', () => { goToSlide(currentIndex + 1); });
-            dots.forEach((dot, index) => { dot.addEventListener('click', () => { goToSlide(index); }); });
-            setInterval(() => { goToSlide(currentIndex + 1); }, 5000); // Auto-slide
-        }
-
-        // Initialize all features on DOMContentLoaded
-        document.addEventListener('DOMContentLoaded', () => {
-            try {
-                animateSections();
-                animateCounters();
-                initTiltEffect();
-                initParticles();
-                initScrollToTop();
-                initCarousel();
-            } catch (error) {
-                console.error('Error rendering page:', error);
-            }
+            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
         });
     </script>
 </body>
