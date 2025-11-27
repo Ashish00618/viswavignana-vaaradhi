@@ -3,316 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Our Missions - Viswa Vignana Vaaradhi</title>
+    <title>About Us - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .nav-link { transition: all 0.3s ease; }
-        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
-        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
-        .footer-link { transition: all 0.3s ease; }
-        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
-        .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
-        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
-        .dropdown-content a:hover { background-color: #2DD4BF; }
-        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-        .animated-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
-        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
-        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; background-color: #FFFBEB; }
         
-        .hero-section { background-attachment: fixed; background-size: cover; background-position: center; }
-        
-        .mission-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1rem;
-            height: 380px;
+        /* --- Animations --- */
+        .fade-in-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* --- Backgrounds --- */
+        .animated-bg {
+            background: linear-gradient(135deg, #0f766e, #0D9488, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
             position: relative;
-            overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            perspective: 1000px;
         }
-        .mission-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* --- Glassmorphism --- */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+            border-radius: 1.5rem;
+            transition: all 0.4s ease;
         }
-        .card-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            text-align: center;
-            transform: translate(-50%, -50%);
+        .glass-panel:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
+            border-color: #F59E0B;
+        }
+
+        /* Dark Glass for Hero items */
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+
+        /* --- Interactive Elements --- */
+        .glow-text { text-shadow: 0 0 20px rgba(45, 212, 191, 0.6); }
+        
+        .feature-icon {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, #0D9488, #2DD4BF);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: white;
+            box-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
             transition: transform 0.5s ease;
         }
-        .mission-card:hover .card-content {
-            transform: translate(-50%, -110%);
-        }
-        .card-details {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
-            text-align: center;
-        }
-        .mission-card:hover .card-details {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .glass-panel:hover .feature-icon { transform: rotateY(180deg) scale(1.1); }
 
-        .mission-card::before {
-            content: '';
-            position: absolute;
-            top: var(--mouse-y, 50%);
-            left: var(--mouse-x, 50%);
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-        }
-        .mission-card:hover::before {
-            opacity: 1;
-        }
+        /* --- Navigation --- */
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; text-shadow: 0 0 10px rgba(253, 230, 138, 0.6); }
+        .dropdown { position: relative; }
+        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 220px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 50; top: 100%; left: 0; border-radius: 0.5rem; }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
+        .dropdown-content a:hover { background-color: #2DD4BF; }
+        .dropdown:hover .dropdown-content { display: block; }
 
-        .mission-icon { font-size: 3.5rem; margin-bottom: 1.5rem; background: -webkit-linear-gradient(#F59E0B, #fde68a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .impact-stat { border-top: 1px solid rgba(255, 255, 255, 0.3); padding-top: 0.75rem; margin-top: 0.75rem; }
-
-        .value-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.4s ease;
-        }
-        .value-card:hover { transform: translateY(-10px); }
-        .value-icon { font-size: 2.5rem; margin-bottom: 1rem; color: #F59E0B; }
+        #scrollToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 15px rgba(45, 212, 191, 0.6); z-index: 1000; transition: all 0.3s; }
+        #scrollToTopBtn:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
+        
+        .typing-text::after { content: '|'; animation: blink 1s infinite; color: #F59E0B; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
     </style>
 </head>
-<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#0D9488] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
-        <div class="container mx-auto flex justify-between items-center h-full">
+<body class="text-gray-800">
+
+    <header class="bg-[#0D9488] bg-opacity-90 backdrop-blur-md text-white p-4 sticky top-0 z-50 shadow-lg border-b border-white/10">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
-                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
+                <img src="/images/logo.png" alt="Logo" class="h-10 w-10 rounded-full shadow-lg border-2 border-white/30">
+                <h2 class="text-2xl font-bold tracking-wide">Viswa Vignana Vaaradhi</h2>
             </div>
-            <nav class="flex items-center space-x-4">
-                <a href="index.html" class="nav-link hover:underline">Home</a>
-                <a href="about.html" class="nav-link hover:underline">About</a>
-                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+            <nav class="hidden md:flex items-center space-x-6 font-medium">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="get-involved.html" class="nav-link">Get Involved</a>
                 <div class="dropdown">
-                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <a href="our-work.html" class="nav-link cursor-pointer">Our Work <i class="fas fa-chevron-down text-xs ml-1"></i></a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Mission Trupthi</a>
-                        <a href="agriculture.html">Mission Mano Swastya</a>
-                        <a href="health.html">Mission Jeeva Dhara</a>
+                        <a href="education.html">Mission Medha (Education)</a>
+                        <a href="political-legal-literacy.html">Nyaya Sadan (Legal)</a>
+                        <a href="rural-development.html">Mission Trupthi (Hunger)</a>
+                        <a href="agriculture.html">Mission Mano Swastya (Mental Health)</a>
+                        <a href="health.html">Mission Jeeva Dhara (Agriculture)</a>
                     </div>
                 </div>
-                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
-                <a href="contact.html" class="nav-link hover:underline">Contact</a>
-                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="donate.html" class="bg-white text-[#0D9488] px-5 py-2 rounded-full font-bold hover:bg-[#FEFCE8] transition shadow-lg">Donate Now</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero-section h-screen flex items-center justify-center text-center text-white bg-[url('/images/logo1.jpg')] relative fade-in">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <h1 class="text-5xl font-bold mb-4">About Viswa Vignana Vaaradhi</h1>
-            <p class="text-xl max-w-3xl mx-auto">
-                We are a bridge of universal knowledge, forging a future of empowerment by connecting communities with the resources they need to thrive.
+    <section class="animated-bg min-h-[80vh] flex items-center justify-center relative overflow-hidden">
+        <div id="particles-js" class="absolute inset-0 z-0"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h4 class="text-[#F59E0B] font-bold uppercase tracking-[0.3em] mb-4 fade-in-up">Who We Are</h4>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-8 fade-in-up glow-text leading-tight">
+                A Bridge of <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2DD4BF] to-white">Universal Knowledge</span>
+            </h1>
+            <p class="text-xl text-gray-200 max-w-3xl mx-auto font-light leading-relaxed fade-in-up">
+                "Viswa Vignana Vaaradhi" is more than a name—it's a promise. We are forging a future of empowerment by connecting communities with the knowledge and resources they need to thrive.
             </p>
         </div>
+        <div class="absolute bottom-0 w-full h-24 bg-gradient-to-t from-[#FFFBEB] to-transparent z-10"></div>
     </section>
 
-    <section class="animated-section py-20 relative">
-        <div id="particles-js-content" class="absolute inset-0"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center text-white mb-16 fade-in">
-                <h2 class="text-4xl font-bold">Our Core Missions</h2>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 fade-in">
-                <div class="mission-card">
-                    <div class="card-content">
-                        <div class="mission-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <h3 class="text-2xl font-bold text-white">Mission Medha</h3>
-                    </div>
-                    <div class="card-details">
-                        <p class="text-gray-200 text-sm">Igniting minds through quality education and mentorship for underprivileged students.</p>
-                        <div class="impact-stat w-full">
-                            <p class="text-white text-lg font-semibold">500+ Students Mentored</p>
-                        </div>
-                        <a href="education.html" class="font-semibold text-white mt-4 inline-block hover:text-gray-300">Learn More &rarr;</a>
-                    </div>
+    <section class="py-24 relative">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <div class="glass-panel p-10 tilt-card relative overflow-hidden group fade-in-up">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition"><i class="fas fa-eye text-9xl text-[#0D9488]"></i></div>
+                    <div class="feature-icon mb-6"><i class="fas fa-eye"></i></div>
+                    <h3 class="text-3xl font-bold text-[#0D9488] mb-4">Our Vision</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        To create a self-reliant, knowledgeable, and equitable society where every individual, regardless of their background, has the tools and opportunity to reach their full potential.
+                    </p>
                 </div>
-                <div class="mission-card">
-                    <div class="card-content">
-                        <div class="mission-icon"><i class="fas fa-balance-scale-right"></i></div>
-                        <h3 class="text-2xl font-bold text-white">Nyaya Sadan</h3>
-                    </div>
-                    <div class="card-details">
-                        <p class="text-gray-200 text-sm">Delivering justice for all by offering free legal aid and representation to the vulnerable.</p>
-                         <div class="impact-stat w-full">
-                            <p class="text-white text-lg font-semibold">100+ Cases Handled Pro Bono</p>
-                        </div>
-                        <a href="political-legal-literacy.html" class="font-semibold text-white mt-4 inline-block hover:text-gray-300">Learn More &rarr;</a>
-                    </div>
-                </div>
-                <div class="mission-card">
-                    <div class="card-content">
-                        <div class="mission-icon"><i class="fas fa-utensils"></i></div>
-                        <h3 class="text-2xl font-bold text-white">Mission Annapurna</h3>
-                    </div>
-                    <div class="card-details">
-                        <p class="text-gray-200 text-sm">Nourishing communities and fighting malnutrition by providing meals to the hungry and needy.</p>
-                         <div class="impact-stat w-full">
-                            <p class="text-white text-lg font-semibold">50,000+ Meals Served</p>
-                        </div>
-                        <a href="rural-development.html" class="font-semibold text-white mt-4 inline-block hover:text-gray-300">Learn More &rarr;</a>
-                    </div>
-                </div>
-                <div class="mission-card">
-                    <div class="card-content">
-                        <div class="mission-icon"><i class="fas fa-brain"></i></div>
-                        <h3 class="text-2xl font-bold text-white">Mission Chetana</h3>
-                    </div>
-                     <div class="card-details">
-                        <p class="text-gray-200 text-sm">Healing minds through compassionate mental health support and drug de-addiction programs.</p>
-                         <div class="impact-stat w-full">
-                            <p class="text-white text-lg font-semibold">200+ Individuals Counseled</p>
-                        </div>
-                        <a href="agriculture.html" class="font-semibold text-white mt-4 inline-block hover:text-gray-300">Learn More &rarr;</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-24 fade-in">
-                <h2 class="text-4xl font-bold text-white text-center mb-12">Our Core Values</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                    <div class="value-card">
-                        <div class="value-icon"><i class="fas fa-people-carry-box"></i></div>
-                        <h4 class="text-xl font-semibold text-white">Empowerment</h4>
-                    </div>
-                     <div class="value-card">
-                        <div class="value-icon"><i class="fas fa-shield-heart"></i></div>
-                        <h4 class="text-xl font-semibold text-white">Integrity</h4>
-                    </div>
-                     <div class="value-card">
-                        <div class="value-icon"><i class="fas fa-heart"></i></div>
-                        <h4 class="text-xl font-semibold text-white">Compassion</h4>
-                    </div>
-                     <div class="value-card">
-                        <div class="value-icon"><i class="fas fa-globe"></i></div>
-                        <h4 class="text-xl font-semibold text-white">Inclusivity</h4>
-                    </div>
-                </div>
-            </div>
 
+                <div class="glass-panel p-10 tilt-card relative overflow-hidden group fade-in-up" style="transition-delay: 0.2s;">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition"><i class="fas fa-rocket text-9xl text-[#F59E0B]"></i></div>
+                    <div class="feature-icon mb-6" style="background: linear-gradient(135deg, #F59E0B, #fbbf24);"><i class="fas fa-rocket"></i></div>
+                    <h3 class="text-3xl font-bold text-[#F59E0B] mb-4">Our Mission</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        To bridge the gap between resources and needs through targeted initiatives in education, legal awareness, healthcare, and sustainable agriculture, fostering holistic rural development.
+                    </p>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <footer class="bg-[#0D9488] text-white p-10">
+    <section class="py-20 bg-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(#0D9488 1px, transparent 1px), linear-gradient(90deg, #0D9488 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold text-[#0D9488]">Our Core Values</h2>
+                <div class="w-24 h-1 bg-[#F59E0B] mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="glass-panel p-8 text-center tilt-card fade-in-up" style="transition-delay: 0.1s;">
+                    <i class="fas fa-hand-holding-heart text-5xl text-[#0D9488] mb-6"></i>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Empowerment</h4>
+                    <p class="text-sm text-gray-500">Enabling individuals to take charge of their own lives.</p>
+                </div>
+                <div class="glass-panel p-8 text-center tilt-card fade-in-up" style="transition-delay: 0.2s;">
+                    <i class="fas fa-shield-halved text-5xl text-[#F59E0B] mb-6"></i>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Integrity</h4>
+                    <p class="text-sm text-gray-500">Upholding transparency and honesty in all our actions.</p>
+                </div>
+                <div class="glass-panel p-8 text-center tilt-card fade-in-up" style="transition-delay: 0.3s;">
+                    <i class="fas fa-users text-5xl text-[#0D9488] mb-6"></i>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Inclusivity</h4>
+                    <p class="text-sm text-gray-500">Serving everyone, regardless of caste, creed, or gender.</p>
+                </div>
+                <div class="glass-panel p-8 text-center tilt-card fade-in-up" style="transition-delay: 0.4s;">
+                    <i class="fas fa-lightbulb text-5xl text-[#F59E0B] mb-6"></i>
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Innovation</h4>
+                    <p class="text-sm text-gray-500">Finding new, effective solutions for age-old problems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 relative">
+        <div class="container mx-auto px-4">
+            <div class="bg-[#0f172a] rounded-3xl p-8 md:p-16 relative overflow-hidden shadow-2xl fade-in-up">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 w-64 h-64 bg-[#0D9488] rounded-full opacity-20 blur-3xl"></div>
+                <div class="absolute bottom-0 left-0 -mb-10 -ml-10 w-64 h-64 bg-[#F59E0B] rounded-full opacity-20 blur-3xl"></div>
+                
+                <div class="relative z-10 text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Our Journey</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                        Founded with a burning desire to serve, <span class="text-[#2DD4BF] font-semibold">Viswa Vignana Vaaradhi</span> started as a small initiative to help local students. Today, it has blossomed into a multi-faceted organization touching thousands of lives across Andhra Pradesh. Our journey is defined not by the accolades we receive, but by the smiles we create and the futures we secure.
+                    </p>
+                    <div class="mt-10">
+                        <a href="get-involved.html" class="inline-block bg-white text-[#0f172a] px-8 py-3 rounded-full font-bold hover:bg-[#F59E0B] hover:text-white transition duration-300 shadow-lg">
+                            Be Part of Our Story
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0D9488] text-white p-10 border-t border-white/10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
-                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                    <p class="text-gray-100 text-sm leading-relaxed">We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
-                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
-                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
-                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm text-gray-100">
+                        <li><a href="index.html" class="hover:text-[#F59E0B] transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#F59E0B] transition">About</a></li>
+                        <li><a href="our-work.html" class="hover:text-[#F59E0B] transition">Our Work</a></li>
+                        <li><a href="contact.html" class="hover:text-[#F59E0B] transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: viswavignanavaaradhi@gmail.com</p>
-                    <p>Phone: +91-9010937358</p>
-                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-sm text-gray-100 mb-2"><i class="fas fa-envelope mr-2"></i> viswavignanavaaradhi@gmail.com</p>
+                    <p class="text-sm text-gray-100 mb-2"><i class="fas fa-phone mr-2"></i> +91-9010937358</p>
+                    <p class="text-sm text-gray-100"><i class="fas fa-map-marker-alt mr-2"></i> Visakhapatnam, Andhra Pradesh</p>
                 </div>
             </div>
-            <div class="mt-8 text-center">
+            <div class="mt-10 pt-6 border-t border-white/20 text-center text-sm text-gray-200">
                 <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button id="scrollToTopBtn" title="Go to top">↑</button>
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        function animateSections() {
-            const sections = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries, observer) => {
+        document.addEventListener('DOMContentLoaded', () => {
+            // Init Particles
+            if(typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: { number: { value: 60 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#ffffff', opacity: 0.1, width: 1 }, move: { enable: true, speed: 1 } },
+                    interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } }
+                });
+            }
+            
+            // Init Tilt
+            if(typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelectorAll(".tilt-card"), { max: 15, speed: 400, glare: true, "max-glare": 0.3 });
+            }
+
+            // Scroll to Top
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            window.onscroll = function () {
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) { scrollToTopBtn.style.display = 'block'; } else { scrollToTopBtn.style.display = 'none'; }
+            };
+            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            
+            // Animations
+            const sections = document.querySelectorAll('.fade-in-up');
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
             sections.forEach(section => observer.observe(section));
-        }
-
-        function initParticles() {
-            if (document.getElementById('particles-js-content')) {
-                particlesJS('particles-js-content', { particles: { number: { value: 80 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } } });
-            }
-        }
-
-        function initScrollToTop() {
-            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-            window.onscroll = function() {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    scrollToTopBtn.style.display = 'block';
-                } else {
-                    scrollToTopBtn.style.display = 'none';
-                }
-            };
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-        
-        function initInteractiveCards() {
-            const cards = document.querySelectorAll('.mission-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            animateSections();
-            initParticles();
-            initScrollToTop();
-            initInteractiveCards();
         });
     </script>
 </body>
