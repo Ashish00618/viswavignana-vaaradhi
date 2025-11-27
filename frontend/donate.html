@@ -5,293 +5,331 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donate - Support Our Mission - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .nav-link { transition: all 0.3s ease; }
-        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
-        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; border: none; cursor: pointer; white-space: nowrap; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
-        .form-container, .payment-container, .thankyou-container {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1rem;
-            padding: 2.5rem; /* Increased padding */
-            transition: box-shadow 0.3s ease;
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+        
+        /* Background Animation */
+        .animated-bg {
+            background: linear-gradient(135deg, #0f766e, #0D9488, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             position: relative;
-            overflow: hidden;
         }
-        .form-container:hover, .payment-container:hover, .thankyou-container:hover {
-             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        /* Spotlight effect for containers */
-        .form-container::before, .payment-container::before, .thankyou-container::before {
-            content: '';
-            position: absolute;
-            top: var(--mouse-y, 50%);
-            left: var(--mouse-x, 50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            pointer-events: none;
-        }
-        .form-container:hover::before, .payment-container:hover::before, .thankyou-container:hover::before { opacity: 1; }
 
-        input, select {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #ffffff;
-            border-radius: 0.5rem; /* Slightly less rounded */
-            padding: 0.85rem 1rem; /* Adjusted padding */
+        /* Glassmorphism Container */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
             transition: all 0.3s ease;
-            width: 100%;
         }
-        input:focus, select:focus {
-            box-shadow: 0 0 15px rgba(45, 212, 191, 0.6);
-            border-color: #2DD4BF;
-            outline: none;
-            background: rgba(255, 255, 255, 0.2);
-        }
-        input::placeholder { color: rgba(220, 220, 220, 0.7); }
-        /* Corrected label style selector */
-        label {
-             display: block;
-             /* Use Tailwind classes for consistency if preferred, otherwise keep CSS */
-             /* text-lg font-semibold mb-2 text-white */
-             font-size: 1rem; /* Adjusted from text-lg */
-             font-weight: 600; /* Adjusted from font-semibold */
-             margin-bottom: 0.5rem; /* Adjusted from mb-2 */
-             color: white;
-         }
 
-        .footer-link { transition: all 0.3s ease; }
-        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
+        /* Modern Input Fields */
+        .modern-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .modern-input:focus {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #2DD4BF; /* Bright Teal */
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.4);
+            outline: none;
+        }
+        .modern-input::placeholder { color: rgba(255, 255, 255, 0.5); }
+        
+        /* Custom Scrollbar */
+        select option { background-color: #1f2937; color: white; }
+
+        /* Animations */
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* Navigation & Footer overrides */
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; text-shadow: 0 0 10px rgba(253, 230, 138, 0.6); }
+        
+        .btn-glow {
+            background: linear-gradient(90deg, #0D9488, #2DD4BF);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(45, 212, 191, 0.6);
+        }
+        
+        /* Dropdown */
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
-        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
-        .dropdown-content a:hover { background-color: #2DD4BF; }
-        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-        .animated-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
-        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
-        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
+        .dropdown-content { display: none; position: absolute; background-color: rgba(13, 148, 136, 0.95); backdrop-filter: blur(10px); min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); z-index: 50; top: 100%; left: 0; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.1); }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background 0.3s; }
+        .dropdown-content a:hover { background-color: rgba(255,255,255,0.1); padding-left: 20px; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* Scroll to Top */
+        #scrollToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 15px rgba(45, 212, 191, 0.6); z-index: 1000; transition: all 0.3s; }
+        #scrollToTopBtn:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
     </style>
 </head>
-<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#0D9488] bg-opacity-90 text-white h-16 sticky top-0 z-20 shadow-lg py-0 px-4">
-        <div class="container mx-auto flex justify-between items-center h-full">
+<body class="bg-gray-900 text-gray-100">
+
+    <header class="bg-[#0D9488] bg-opacity-90 backdrop-blur-md text-white p-4 sticky top-0 z-50 shadow-lg border-b border-white/10">
+        <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-16 w-16 rounded-none shadow-md">
-                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
+                <img src="/images/logo.png" alt="Logo" class="h-10 w-10 rounded-full shadow-lg border-2 border-white/30">
+                <h2 class="text-2xl font-bold tracking-wide">Viswa Vignana Vaaradhi</h2>
             </div>
-            <nav class="flex items-center space-x-4">
-                <a href="index.html" class="nav-link hover:underline">Home</a>
-                <a href="about.html" class="nav-link hover:underline">About</a>
-                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+            <nav class="hidden md:flex items-center space-x-6 font-medium">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="get-involved.html" class="nav-link">Get Involved</a>
                 <div class="dropdown">
-                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <a href="our-work.html" class="nav-link cursor-pointer">Our Work <i class="fas fa-chevron-down text-xs ml-1"></i></a>
                     <div class="dropdown-content">
-                        <a href="education.html">Education</a>
-                        <a href="political-legal-literacy.html">Political/Legal Literacy</a>
-                        <a href="rural-development.html">Rural Development</a>
-                        <a href="agriculture.html">Agriculture</a>
-                        <a href="health.html">Health</a>
+                        <a href="education.html">Mission Medha (Education)</a>
+                        <a href="political-legal-literacy.html">Nyaya Sadan (Legal)</a>
+                        <a href="rural-development.html">Mission Trupthi (Hunger)</a>
+                        <a href="agriculture.html">Mission Mano Swastya (Mental Health)</a>
+                        <a href="health.html">Mission Jeeva Dhara (Agriculture)</a>
                     </div>
                 </div>
-                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
-                <a href="contact.html" class="nav-link hover:underline">Contact</a>
-                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="donate.html" class="bg-white text-[#0D9488] px-5 py-2 rounded-full font-bold hover:bg-[#FEFCE8] transition shadow-lg">Donate Now</a>
             </nav>
         </div>
     </header>
 
-    <section class="animated-section py-20 text-center text-white relative fade-in">
-        <div id="particles-js-hero" class="absolute inset-0"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-5xl font-bold mb-4">Support Our Cause</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Your contribution fuels our missions and empowers communities. Donate today and be a part of the change.</p>
-        </div>
-    </section>
+    <section class="animated-bg min-h-screen flex items-center justify-center py-20 px-4 relative">
+        <div id="particles-js" class="absolute inset-0 z-0"></div>
+        
+        <div class="container mx-auto relative z-10 flex flex-col items-center">
+            
+            <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#2DD4BF] to-[#F59E0B] drop-shadow-sm mb-4">
+                    Power the Change
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 max-w-2xl mx-auto">
+                    Your contribution fuels our 5 missions. Every rupee creates a ripple of hope in rural India.
+                </p>
+            </div>
 
-    <section class="animated-section py-20 relative">
-        <div id="particles-js-form" class="absolute inset-0"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="fade-in">
-                <div id="donationFormSection" class="max-w-lg mx-auto form-container">
-                    <h3 class="text-3xl font-bold mb-8 text-white text-center">Your Generosity Matters</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" placeholder="Enter your full name" required>
+            <div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-5 gap-0 glass-panel fade-in-up tilt-element" style="animation-delay: 0.3s;">
+                
+                <div class="md:col-span-2 bg-[#0D9488]/40 p-8 flex flex-col justify-between border-r border-white/10 relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black/30 pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <h3 class="text-2xl font-bold text-white mb-6">Why Donate?</h3>
+                        <ul class="space-y-4 text-gray-100 text-sm">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-[#F59E0B] mt-1 mr-3"></i> <span><strong>Tax Benefits:</strong> Get 80G tax exemption certificate.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-[#F59E0B] mt-1 mr-3"></i> <span><strong>Transparency:</strong> Regular updates on how your funds are used.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-[#F59E0B] mt-1 mr-3"></i> <span><strong>Direct Impact:</strong> Funds go directly to field projects.</span></li>
+                        </ul>
+                    </div>
+                    <div class="relative z-10 mt-8">
+                        <div class="text-center p-4 bg-white/10 rounded-xl backdrop-blur-sm border border-white/10">
+                            <i class="fas fa-heart text-3xl text-red-400 mb-2"></i>
+                            <p class="text-sm font-light">"We make a living by what we get, but we make a life by what we give."</p>
                         </div>
-                        <div>
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="Enter your email" required>
-                        </div>
-                        <div>
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" placeholder="Enter your 10-digit phone number" required pattern="[0-9]{10}">
-                        </div>
-                        <div>
-                            <label for="amount">Donation Amount (INR)</label>
-                            <input type="number" id="amount" placeholder="Enter amount (e.g., 500)" min="1" required>
-                        </div>
-                        <div>
-                            <label for="purpose">Purpose of Donation (Optional)</label>
-                            <select id="purpose">
-                                <option value="">Select a purpose (optional)</option>
-                                <option value="Mission Medha (Education)">Mission Medha (Education)</option>
-                                <option value="Nyaya Sadan (Legal Aid)">Nyaya Sadan (Legal Aid)</option>
-                                <option value="Mission Annapurna (Hunger)">Mission Annapurna (Hunger)</option>
-                                <option value="Mission Chetana (Mental Health)">Mission Chetana (Mental Health)</option>
-                                <option value="General Support">General Support</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="payment-method">Payment Method</label>
-                            <select id="payment-method" required>
-                                <option value="" disabled selected>Choose how you'll pay</option>
-                                <option value="upi">UPI (Scan QR Code)</option>
-                                <option value="bank">Bank Transfer</option>
-                            </select>
-                        </div>
-                        <button id="proceedButton" class="btn-primary w-full text-white px-6 py-3 rounded-full text-lg transition">Proceed to Payment Details</button>
                     </div>
                 </div>
 
-                <div id="payment-details" class="max-w-lg mx-auto mt-6 payment-container hidden">
-                    <h4 id="payment-title" class="text-2xl font-semibold mb-6 text-white border-b border-gray-400 pb-2"></h4>
-                    <div id="donor-info" class="mb-6 text-white space-y-1 text-sm">
-                        <p><strong>Name:</strong> <span id="donor-name"></span></p>
-                        <p><strong>Email:</strong> <span id="donor-email"></span></p>
-                        <p><strong>Phone:</strong> <span id="donor-phone"></span></p>
-                        <p><strong>Amount:</strong> ₹<span id="donor-amount"></span></p>
-                        <p><strong>Purpose:</strong> <span id="donor-purpose"></span></p>
-                    </div>
-                    <div id="payment-content" class="text-white mb-6"></div>
-                    <p class="text-sm mt-4 text-gray-200">After making the payment, please click Submit below and email the transaction details/screenshot to <a href="mailto:viswavignanavaaradhi@gmail.com" class="text-amber-300 font-semibold hover:underline">viswavignanavaaradhi@gmail.com</a> for confirmation.</p>
-                    <button id="submitButton" class="btn-primary w-full text-white px-6 py-3 rounded-full text-lg transition mt-6">Submit Donation Record</button>
-                </div>
+                <div class="md:col-span-3 p-8 relative">
+                    <div id="donationFormSection">
+                        <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <span class="bg-[#F59E0B] w-2 h-8 mr-3 rounded-full"></span> Make a Donation
+                        </h3>
+                        
+                        <div class="space-y-5">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="name" class="text-sm text-gray-300 ml-1">Full Name</label>
+                                    <input type="text" id="name" class="modern-input w-full rounded-lg" placeholder="John Doe" required>
+                                </div>
+                                <div>
+                                    <label for="phone" class="text-sm text-gray-300 ml-1">Phone</label>
+                                    <input type="tel" id="phone" class="modern-input w-full rounded-lg" placeholder="9876543210" required pattern="[0-9]{10}">
+                                </div>
+                            </div>
 
-                <div id="thankYouMessage" class="max-w-lg mx-auto mt-6 hidden thankyou-container text-center">
-                     <h4 class="text-2xl font-semibold text-white">Donation Record Submitted!</h4>
-                     <p class="text-gray-200 mt-4">Thank you <span id="thankyou-name" class="font-semibold"></span> for your generous support of ₹<span id="thankyou-amount" class="font-semibold"></span>. Your contribution makes a real difference!</p>
-                     <p class="text-gray-300 text-sm mt-4">Please remember to email your transaction details for final confirmation.</p>
+                            <div>
+                                <label for="email" class="text-sm text-gray-300 ml-1">Email Address</label>
+                                <input type="email" id="email" class="modern-input w-full rounded-lg" placeholder="john@example.com" required>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label for="amount" class="text-sm text-gray-300 ml-1">Amount (₹)</label>
+                                    <input type="number" id="amount" class="modern-input w-full rounded-lg" placeholder="₹ 500" min="1" required>
+                                </div>
+                                <div>
+                                    <label for="purpose" class="text-sm text-gray-300 ml-1">Purpose</label>
+                                    <select id="purpose" class="modern-input w-full rounded-lg cursor-pointer">
+                                        <option value="General Support">General Support</option>
+                                        <option value="Mission Medha (Education)">Mission Medha (Education)</option>
+                                        <option value="Nyaya Sadan (Legal Aid)">Nyaya Sadan (Legal Aid)</option>
+                                        <option value="Mission Trupthi (Hunger)">Mission Trupthi (Hunger)</option>
+                                        <option value="Mission Mano Swastya">Mission Mano Swastya</option>
+                                        <option value="Mission Jeeva Dhara">Mission Jeeva Dhara</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="payment-method" class="text-sm text-gray-300 ml-1">Payment Method</label>
+                                <div class="relative">
+                                    <select id="payment-method" class="modern-input w-full rounded-lg cursor-pointer appearance-none" required>
+                                        <option value="" disabled selected>Select Method</option>
+                                        <option value="upi">UPI (GPay, PhonePe, Paytm)</option>
+                                        <option value="bank">Direct Bank Transfer</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-300">
+                                        <i class="fas fa-chevron-down text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button id="proceedButton" class="btn-glow w-full py-3 rounded-xl text-white font-bold text-lg shadow-lg mt-4 tracking-wide">
+                                Proceed to Pay <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="payment-details" class="hidden h-full flex flex-col">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 id="payment-title" class="text-2xl font-bold text-white">Payment Details</h3>
+                            <button id="backButton" class="text-sm text-gray-400 hover:text-white"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+                        </div>
+                        
+                        <div class="bg-white/5 p-4 rounded-lg mb-6 border border-white/10 text-sm">
+                            <div class="grid grid-cols-2 gap-2">
+                                <span class="text-gray-400">Donor:</span> <span id="donor-name" class="text-white font-medium text-right"></span>
+                                <span class="text-gray-400">Amount:</span> <span class="text-[#F59E0B] font-bold text-right">₹<span id="donor-amount"></span></span>
+                                <span class="text-gray-400">Purpose:</span> <span id="donor-purpose" class="text-white text-right"></span>
+                            </div>
+                            <span id="donor-email" class="hidden"></span>
+                            <span id="donor-phone" class="hidden"></span>
+                        </div>
+
+                        <div id="payment-content" class="text-center text-white flex-grow flex flex-col justify-center items-center">
+                            </div>
+
+                        <p class="text-xs text-gray-400 text-center mt-4">
+                            <i class="fas fa-info-circle mr-1"></i> Important: After payment, click "Submit Record" to generate your receipt.
+                        </p>
+
+                        <button id="submitButton" class="btn-glow w-full py-3 rounded-xl text-white font-bold text-lg shadow-lg mt-4 tracking-wide">
+                            Confirm & Submit Record
+                        </button>
+                    </div>
+
+                    <div id="thankYouMessage" class="hidden h-full flex flex-col justify-center items-center text-center p-4">
+                        <div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-check text-4xl text-green-400"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-white mb-2">Thank You!</h3>
+                        <p class="text-gray-300 mb-6">
+                            <span id="thankyou-name" class="font-bold text-white"></span>, your generous donation of <span class="text-[#F59E0B] font-bold">₹<span id="thankyou-amount"></span></span> has been recorded.
+                        </p>
+                        <div class="bg-blue-500/10 border border-blue-500/30 p-4 rounded-lg text-sm text-blue-100">
+                            Please email your payment screenshot to <br>
+                            <a href="mailto:viswavignanavaaradhi@gmail.com" class="underline font-bold">viswavignanavaaradhi@gmail.com</a>
+                        </div>
+                        <button onclick="location.reload()" class="mt-8 text-gray-400 hover:text-white text-sm underline">Make another donation</button>
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#0D9488] text-white p-10">
+    <footer class="bg-[#0D9488] text-white p-10 border-t border-white/10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
-                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                    <p class="text-gray-100 text-sm leading-relaxed">We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
-                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
-                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
-                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm text-gray-100">
+                        <li><a href="index.html" class="hover:text-[#F59E0B] transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#F59E0B] transition">About</a></li>
+                        <li><a href="our-work.html" class="hover:text-[#F59E0B] transition">Our Work</a></li>
+                        <li><a href="contact.html" class="hover:text-[#F59E0B] transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: viswavignanavaaradhi@gmail.com</p>
-                    <p>Phone: +91-9010937358</p>
-                    <p>Address: Visakhapatnam, Andhra Pradesh, India</p>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-sm text-gray-100 mb-2"><i class="fas fa-envelope mr-2"></i> viswavignanavaaradhi@gmail.com</p>
+                    <p class="text-sm text-gray-100 mb-2"><i class="fas fa-phone mr-2"></i> +91-9010937358</p>
+                    <p class="text-sm text-gray-100"><i class="fas fa-map-marker-alt mr-2"></i> Visakhapatnam, Andhra Pradesh</p>
                 </div>
             </div>
-            <div class="mt-8 text-center">
+            <div class="mt-10 pt-6 border-t border-white/20 text-center text-sm text-gray-200">
                 <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button id="scrollToTopBtn" title="Go to top">↑</button>
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        // --- Standard Functions ---
-        function animateSections() {
-            const sections = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
+        // Particles and Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Init Particles
+            if(typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: { number: { value: 80 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.2, width: 1 }, move: { enable: true, speed: 1 } },
+                    interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } }
                 });
-            }, { threshold: 0.1 });
-            sections.forEach(section => observer.observe(section));
-        }
-        function initParticles() {
-             if (document.getElementById('particles-js-hero')) {
-                 particlesJS('particles-js-hero', { particles: { number: { value: 60 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 2, direction: 'none', random: true, straight: false, out_mode: 'out' } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } } });
-             }
-             if (document.getElementById('particles-js-form')) {
-                 particlesJS('particles-js-form', { particles: { number: { value: 80 }, color: { value: '#ffffff' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: false }, move: { enable: true, speed: 1.5, direction: 'none', random: true, straight: false, out_mode: 'out' } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } } });
-             }
-        }
-        function initScrollToTop() {
+            }
+            
+            // Init Tilt
+            if(typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelector(".tilt-element"), { max: 5, speed: 400, glare: true, "max-glare": 0.2 });
+            }
+
+            // Scroll to Top
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             window.onscroll = function () {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    scrollToTopBtn.style.display = 'block';
-                } else {
-                    scrollToTopBtn.style.display = 'none';
-                }
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) { scrollToTopBtn.style.display = 'block'; } else { scrollToTopBtn.style.display = 'none'; }
             };
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
-        function initSpotlightEffect() {
-            const containers = document.querySelectorAll('.form-container, .payment-container, .thankyou-container');
-            containers.forEach(container => {
-                container.addEventListener('mousemove', (e) => {
-                    const rect = container.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    container.style.setProperty('--mouse-x', `${x}px`);
-                    container.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
-        }
+            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-        // --- Core Donation Logic ---
-        document.addEventListener('DOMContentLoaded', () => {
-            animateSections();
-            initParticles();
-            initScrollToTop();
-            initSpotlightEffect();
-
-            // Get references to elements
+            // --- Form Logic (CORRECTED & ROBUST) ---
             const proceedButton = document.getElementById('proceedButton');
+            const backButton = document.getElementById('backButton');
             const paymentDetails = document.getElementById('payment-details');
             const paymentTitle = document.getElementById('payment-title');
             const paymentContent = document.getElementById('payment-content');
+            const donationFormSection = document.getElementById('donationFormSection');
+            const submitButton = document.getElementById('submitButton');
+            const thankYouMessage = document.getElementById('thankYouMessage');
+            
+            // Summary Spans
             const donorNameSpan = document.getElementById('donor-name');
-            const donorEmailSpan = document.getElementById('donor-email');
-            const donorPhoneSpan = document.getElementById('donor-phone');
             const donorAmountSpan = document.getElementById('donor-amount');
             const donorPurposeSpan = document.getElementById('donor-purpose');
-            const submitButton = document.getElementById('submitButton');
-            const donationFormSection = document.getElementById('donationFormSection');
-            const thankYouMessage = document.getElementById('thankYouMessage');
-            const thankyouName = document.getElementById('thankyou-name');
-            const thankyouAmount = document.getElementById('thankyou-amount');
+            const donorEmailSpan = document.getElementById('donor-email');
+            const donorPhoneSpan = document.getElementById('donor-phone');
 
-            // Input field references
+            // Input Fields
             const nameInput = document.getElementById('name');
             const emailInput = document.getElementById('email');
             const phoneInput = document.getElementById('phone');
@@ -299,152 +337,103 @@
             const purposeInput = document.getElementById('purpose');
             const paymentMethodInput = document.getElementById('payment-method');
 
-            // --- Proceed Button Logic ---
+            // --- PROCEED CLICK ---
             proceedButton.addEventListener('click', () => {
-                const name = nameInput.value.trim();
-                const email = emailInput.value.trim();
-                const phone = phoneInput.value.trim();
-                const amount = amountInput.value.trim();
-                const purpose = purposeInput.value;
-                const paymentMethod = paymentMethodInput.value;
-
                 // Validation
-                if (!name || !email || !phone || !amount || parseFloat(amount) <= 0 || !paymentMethod) {
-                    alert('Please fill all required fields correctly (Amount must be greater than 0).');
+                if (!nameInput.value || !emailInput.value || !phoneInput.value || !amountInput.value || !paymentMethodInput.value) {
+                    alert('Please fill in all required fields.');
                     return;
                 }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-                    alert('Please enter a valid email address.');
-                    return;
-                }
-                if (!/^\d{10}$/.test(phone)) {
+                if (!/^\d{10}$/.test(phoneInput.value)) {
                     alert('Please enter a valid 10-digit phone number.');
                     return;
                 }
 
-                // Populate summary spans
-                donorNameSpan.textContent = name;
-                donorEmailSpan.textContent = email;
-                donorPhoneSpan.textContent = phone;
-                donorAmountSpan.textContent = amount;
-                donorPurposeSpan.textContent = purpose || 'General Support';
+                // Populate Summary
+                donorNameSpan.textContent = nameInput.value;
+                donorEmailSpan.textContent = emailInput.value;
+                donorPhoneSpan.textContent = phoneInput.value;
+                donorAmountSpan.textContent = amountInput.value;
+                donorPurposeSpan.textContent = purposeInput.value || 'General Support';
 
-                // Display payment instructions
-                paymentContent.innerHTML = '';
-                if (paymentMethod === 'upi') {
+                // Render Payment Info
+                if (paymentMethodInput.value === 'upi') {
                     paymentTitle.textContent = 'Pay via UPI';
                     paymentContent.innerHTML = `
-                        <p class="mb-4">1. Scan the QR code below using your UPI app.</p>
-                        <img src="/images/upi-qr-code.png" alt="UPI QR Code" class="w-48 h-48 mx-auto mb-4 border border-white p-1 rounded-lg">
-                        <p class="mb-2">2. Enter the amount: ₹${amount}</p>
-                        <p>3. Complete the payment.</p>
-                        <p class="mt-4 text-sm">(UPI ID: <span class="font-mono bg-black bg-opacity-20 px-1 rounded">viswavignana@upi</span>)</p>
+                        <div class="bg-white p-3 rounded-xl inline-block mb-4">
+                            <img src="/images/upi-qr-code.png" alt="UPI QR Code" class="w-40 h-40 object-contain">
+                        </div>
+                        <p class="text-lg">Scan to pay <strong class="text-[#F59E0B]">₹${amountInput.value}</strong></p>
+                        <p class="text-gray-300 font-mono bg-black/30 p-2 rounded mt-2 inline-block">viswavignanavaaradhi@upi</p>
                     `;
-                } else if (paymentMethod === 'bank') {
-                    paymentTitle.textContent = 'Pay via Bank Transfer';
+                } else {
+                    paymentTitle.textContent = 'Bank Transfer';
                     paymentContent.innerHTML = `
-                        <p class="mb-4">Please transfer ₹${amount} to:</p>
-                        <ul class="space-y-1 text-sm list-disc list-inside">
-                            <li><strong>Account Name:</strong> Viswa Vignana Vaaradhi Welfare Society</li>
-                            <li><strong>Account Number:</strong> 42087404874</li>
-                            <li><strong>IFSC Code:</strong> SBIN0000772</li>
-                            <li><strong>Bank:</strong> State Bank of India</li>
-                            <li><strong>Branch:</strong> AU Campus-VSP</li>
-                        </ul>
+                        <div class="bg-black/30 p-6 rounded-xl text-left inline-block w-full border border-white/10">
+                            <p class="mb-2 text-gray-300 text-xs uppercase tracking-widest">Account Details</p>
+                            <p class="mb-1"><span class="text-gray-400">Name:</span> <strong class="text-white ml-2">Viswa Vignana Vaaradhi Welfare Society</strong></p>
+                            <p class="mb-1"><span class="text-gray-400">Account:</span> <strong class="text-white ml-2 font-mono">42087404874</strong></p>
+                            <p class="mb-1"><span class="text-gray-400">IFSC:</span> <strong class="text-white ml-2 font-mono">SBIN0000772</strong></p>
+                            <p class="mb-0"><span class="text-gray-400">Bank:</span> <strong class="text-white ml-2">SBI, AU Campus-VSP</strong></p>
+                        </div>
                     `;
                 }
 
-                // Show/hide sections
+                // Transition
                 donationFormSection.classList.add('hidden');
                 paymentDetails.classList.remove('hidden');
-                paymentDetails.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                paymentDetails.classList.add('fade-in-up');
             });
 
-            // --- Submit Button Logic (Corrected) ---
+            // --- BACK CLICK ---
+            backButton.addEventListener('click', () => {
+                paymentDetails.classList.add('hidden');
+                donationFormSection.classList.remove('hidden');
+                donationFormSection.classList.add('fade-in-up');
+            });
+
+            // --- SUBMIT CLICK (THE FIX) ---
             submitButton.addEventListener('click', async () => {
                 submitButton.disabled = true;
-                submitButton.textContent = 'Submitting...';
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
 
-                // **CORRECTED:** Read data *directly* from input fields again
-                const name = nameInput.value.trim();
-                const email = emailInput.value.trim();
-                const phone = phoneInput.value.trim();
-                const amount = amountInput.value.trim();
-                const purpose = purposeInput.value;
-                const paymentMethod = paymentMethodInput.value;
-
-                 // **Double-check essential data** before sending
-                if (!name || !email || !phone || !amount || !paymentMethod) {
-                    alert('Error: Required data is missing from form. Please refresh and try again.');
-                     submitButton.disabled = false;
-                     submitButton.textContent = 'Submit Donation Record';
-                     return;
-                 }
-
-
+                // Data Object - Reading DIRECTLY from inputs to ensure 'name' is sent correctly
                 const data = {
-                    name, // Use the value from the input field
-                    email,
-                    phone,
-                    amount: parseFloat(amount),
-                    purpose: purpose || 'General Support',
-                    paymentMethod,
-                    date: new Date().toISOString() // Use current time for submission record
+                    name: nameInput.value.trim(), // This key matches the backend model
+                    email: emailInput.value.trim(),
+                    phone: phoneInput.value.trim(),
+                    amount: parseFloat(amountInput.value),
+                    purpose: purposeInput.value || 'General Support',
+                    paymentMethod: paymentMethodInput.value,
+                    date: new Date().toISOString()
                 };
 
                 try {
-                    const response = await fetch('/api/donation', { // Relative URL
+                    const response = await fetch('/api/donation', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
                     });
 
+                    const result = await response.json();
+
                     if (!response.ok) {
-                        let errorMsg = 'Failed to submit donation record.';
-                        try {
-                            const errorData = await response.json();
-                             // Use the specific error from the backend if available
-                            errorMsg = errorData.error || `Server responded with status ${response.status}`;
-                        } catch(jsonError) {
-                            errorMsg = `Server error: ${response.status} - ${response.statusText}`;
-                        }
-                        throw new Error(errorMsg); // Throw the detailed error
+                        throw new Error(result.error || 'Submission failed');
                     }
 
                     // Success
-                    const result = await response.json();
-                    console.log('Submission successful:', result);
+                    document.getElementById('thankyou-name').textContent = data.name;
+                    document.getElementById('thankyou-amount').textContent = data.amount;
 
                     paymentDetails.classList.add('hidden');
                     thankYouMessage.classList.remove('hidden');
-                    thankyouName.textContent = data.name;
-                    thankyouAmount.textContent = data.amount;
-                    thankYouMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                    // Clear the form fields after successful submission
-                    nameInput.value = '';
-                    emailInput.value = '';
-                    phoneInput.value = '';
-                    amountInput.value = '';
-                    purposeInput.value = '';
-                    paymentMethodInput.value = '';
-
-                     // Show the form again after a delay (optional)
-                     setTimeout(() => {
-                         thankYouMessage.classList.add('hidden');
-                         donationFormSection.classList.remove('hidden');
-                     }, 10000); // Show form again after 10 seconds
-
+                    thankYouMessage.classList.add('fade-in-up');
 
                 } catch (error) {
-                    console.error('Error submitting donation:', error);
-                    // Display the specific error message received from the backend or fetch
-                    alert(`Error submitting donation record: ${error.message}. Please check console or contact support.`);
-
-                } finally {
-                     // Always re-enable button and reset text
-                     submitButton.disabled = false;
-                     submitButton.textContent = 'Submit Donation Record';
+                    console.error('Error:', error);
+                    alert(`Error: ${error.message}`);
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = 'Confirm & Submit Record';
                 }
             });
         });
