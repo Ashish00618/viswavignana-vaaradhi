@@ -5,191 +5,299 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Viswa Vignana Vaaradhi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
+
+        /* Background Animation */
+        .animated-bg {
+            background: linear-gradient(135deg, #0f766e, #0D9488, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+        }
+
+        /* Modern Inputs */
+        .modern-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .modern-input:focus {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #2DD4BF;
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.4);
+            outline: none;
+        }
+        
+        /* Buttons */
+        .btn-glow {
+            background: linear-gradient(90deg, #0D9488, #2DD4BF);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(45, 212, 191, 0.6);
+        }
+
+        /* Nav & Text */
         .nav-link { transition: all 0.3s ease; }
-        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; }
-        .btn-primary { background: linear-gradient(to right, #0D9488, #2DD4BF); transition: all 0.3s ease; }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4); }
-        .card { transition: all 0.3s ease; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .card:hover { transform: scale(1.03); box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; }
-        .form-container { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .form-container:hover { box-shadow: 0 6px 20px rgba(13, 148, 136, 0.3); border: 1px solid #2DD4BF; }
-        .form-input { background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease; }
-        .form-input:focus { border: 1px solid #2DD4BF; box-shadow: 0 0 5px rgba(45, 212, 191, 0.5); }
-        .footer-link { transition: all 0.3s ease; }
-        .footer-link:hover { color: #FEFCE8; text-decoration: underline; }
+        .nav-link:hover { transform: scale(1.1); color: #FEFCE8; text-shadow: 0 0 10px rgba(253, 230, 138, 0.6); }
+        
+        /* Info Card Hover */
+        .info-card { transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.1); }
+        .info-card:hover { background: rgba(255,255,255,0.1); border-color: #F59E0B; transform: translateY(-5px); }
+
+        /* Animations */
+        .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; transform: translateY(20px); }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+        /* Dropdown */
         .dropdown { position: relative; }
-        .dropdown-content { display: none; position: absolute; background-color: #0D9488; min-width: 200px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); z-index: 10; top: 100%; left: 0; opacity: 0; transform: translateY(10px); transition: opacity 0.3s ease, transform 0.3s ease; }
-        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background-color 0.3s ease; }
-        .dropdown-content a:hover { background-color: #2DD4BF; }
-        .dropdown:hover .dropdown-content { display: block; opacity: 1; transform: translateY(0); }
-        .contact-us-section { background: linear-gradient(45deg, #0D9488, #2DD4BF, #F59E0B); background-size: 400%; animation: gradientAnimation 15s ease infinite; }
-        @keyframes gradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        #scrollToTopBtn { position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 10px rgba(45, 212, 191, 0.5); transition: all 0.3s ease; display: none; z-index: 1000; }
-        #scrollToTopBtn:hover { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8); transform: scale(1.1); }
+        .dropdown-content { display: none; position: absolute; background-color: rgba(13, 148, 136, 0.95); backdrop-filter: blur(10px); min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.3); z-index: 50; top: 100%; left: 0; border-radius: 0.5rem; border: 1px solid rgba(255,255,255,0.1); }
+        .dropdown-content a { color: white; padding: 12px 16px; text-decoration: none; display: block; transition: background 0.3s; }
+        .dropdown-content a:hover { background-color: rgba(255,255,255,0.1); padding-left: 20px; }
+        .dropdown:hover .dropdown-content { display: block; }
+
+        #scrollToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; background: linear-gradient(to right, #2DD4BF, #F59E0B); color: white; padding: 12px 16px; border-radius: 50%; box-shadow: 0 0 15px rgba(45, 212, 191, 0.6); z-index: 1000; transition: all 0.3s; }
+        #scrollToTopBtn:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(245, 158, 11, 0.8); }
     </style>
 </head>
-<body class="font-sans bg-[#FFFBEB] text-[#1F2937]" style="font-family: 'Poppins', sans-serif;">
-    <header class="bg-[#0D9488] bg-opacity-90 text-white p-4 sticky top-0 z-20 shadow-lg">
+<body class="bg-gray-900 text-gray-100">
+
+    <header class="bg-[#0D9488] bg-opacity-90 backdrop-blur-md text-white p-4 sticky top-0 z-50 shadow-lg border-b border-white/10">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="/images/logo.png" alt="Viswa Vignana Vaaradhi Logo" class="h-10 rounded-full shadow-md">
-                <h2 class="text-2xl font-bold">Viswa Vignana Vaaradhi</h2>
+                <img src="/images/logo.png" alt="Logo" class="h-10 w-10 rounded-full shadow-lg border-2 border-white/30">
+                <h2 class="text-2xl font-bold tracking-wide">Viswa Vignana Vaaradhi</h2>
             </div>
-            <nav class="flex items-center space-x-4">
-                <a href="index.html" class="nav-link hover:underline">Home</a>
-                <a href="about.html" class="nav-link hover:underline">About</a>
-                <a href="get-involved.html" class="nav-link hover:underline">Get Involved</a>
+            <nav class="hidden md:flex items-center space-x-6 font-medium">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="get-involved.html" class="nav-link">Get Involved</a>
                 <div class="dropdown">
-                    <a href="our-work.html" class="nav-link hover:underline">Our Work</a>
+                    <a href="our-work.html" class="nav-link cursor-pointer">Our Work <i class="fas fa-chevron-down text-xs ml-1"></i></a>
                     <div class="dropdown-content">
-                        <a href="education.html">Mission Medha</a>
-                        <a href="political-legal-literacy.html">Nyaya Sadan</a>
-                        <a href="rural-development.html">Malnutrition and Hunger Free</a>
-                        <a href="agriculture.html">Mental Health & Drug De-addiction</a>
-                        
+                        <a href="education.html">Mission Medha </a>
+                        <a href="political-legal-literacy.html">Nyaya Sadan </a>
+                        <a href="rural-development.html">Mission Trupthi </a>
+                        <a href="agriculture.html">Mission Mano Swastya </a>
+                        <a href="health.html">Mission Jeeva Dhara</a>
                     </div>
                 </div>
-                <a href="gallery.html" class="nav-link hover:underline">Gallery</a>
-                <a href="contact.html" class="nav-link hover:underline">Contact</a>
-                <a href="donate.html" class="btn-primary text-white px-4 py-2 rounded-full transition">Donate Now</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="donate.html" class="bg-white text-[#0D9488] px-5 py-2 rounded-full font-bold hover:bg-[#FEFCE8] transition shadow-lg">Donate Now</a>
             </nav>
         </div>
     </header>
 
-    <section class="contact-us-section py-20 relative">
-        <div id="particles-js-contact" class="absolute inset-0"></div>
-        <div class="container mx-auto px-4 relative z-10">
-            <h2 class="text-4xl font-bold mb-6 text-white text-center fade-in">Contact Us</h2>
-            <p class="text-lg text-white max-w-3xl mx-auto text-center mb-8 fade-in">
-                We’d love to hear from you! Whether you have questions, want to collaborate, or need support, our team at Viswa Vignana Vaaradhi is here to assist. Reach out to us through the contact details below or use the form to send us a message.
-            </p>
-            <div class="text-center fade-in">
-                <h3 class="text-2xl font-semibold mb-4 text-white">How to Reach Us</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                    <div class="card p-6 rounded-xl tilt-card">
-                        <h4 class="text-xl font-semibold mb-2 text-white">Email</h4>
-                        <p class="text-gray-200">viswavignanavaaradhi@gmail.com</p>
-                    </div>
-                    <div class="card p-6 rounded-xl tilt-card">
-                        <h4 class="text-xl font-semibold mb-2 text-white">Phone</h4>
-                        <p class="text-gray-200">+91-9010937358</p>
-                    </div>
-                    <div class="card p-6 rounded-xl tilt-card">
-                        <h4 class="text-xl font-semibold mb-2 text-white">Address</h4>
-                        <p class="text-gray-200">Visakhapatnam, Andhra Pradesh,India</p>
-                    </div>
-                </div>
+    <section class="animated-bg min-h-screen flex items-center justify-center py-20 px-4 relative">
+        <div id="particles-js" class="absolute inset-0 z-0"></div>
+        
+        <div class="container mx-auto relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#2DD4BF] to-[#F59E0B] drop-shadow-sm mb-4">
+                    Get in Touch
+                </h1>
+                <p class="text-lg text-gray-200 max-w-2xl mx-auto">
+                    Have questions, ideas, or want to collaborate? We'd love to hear from you.
+                </p>
             </div>
-            <div class="max-w-2xl mx-auto fade-in">
-                <div class="form-container p-8 rounded-xl">
-                    <h3 class="text-2xl font-semibold mb-6 text-white text-center">Send Us a Message</h3>
-                    <form>
-                        <div class="mb-4">
-                            <label for="name" class="block text-white mb-2">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" class="form-input w-full p-3 rounded-lg text-white placeholder-gray-300" required>
+
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <div class="space-y-6 fade-in-up" style="animation-delay: 0.2s;">
+                    <div class="glass-panel p-6 flex items-start space-x-4 info-card tilt-element">
+                        <div class="p-3 bg-[#0D9488]/20 rounded-full text-[#2DD4BF]">
+                            <i class="fas fa-map-marker-alt text-2xl"></i>
                         </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-white mb-2">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email" class="form-input w-full p-3 rounded-lg text-white placeholder-gray-300" required>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-1">Visit Us</h4>
+                            <p class="text-gray-300 text-sm">Visakhapatnam, Andhra Pradesh, India</p>
+                            <p class="text-gray-400 text-xs mt-2">Open Mon-Sat, 9am - 6pm</p>
                         </div>
-                        <div class="mb-4">
-                            <label for="message" class="block text-white mb-2">Message</label>
-                            <textarea id="message" name="message" placeholder="Your Message" rows="5" class="form-input w-full p-3 rounded-lg text-white placeholder-gray-300" required></textarea>
+                    </div>
+
+                    <div class="glass-panel p-6 flex items-start space-x-4 info-card tilt-element">
+                        <div class="p-3 bg-[#0D9488]/20 rounded-full text-[#2DD4BF]">
+                            <i class="fas fa-phone-alt text-2xl"></i>
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn-primary text-white px-6 py-3 rounded-full transition">Submit</button>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-1">Call Us</h4>
+                            <p class="text-gray-300 text-sm">+91-9010937358</p>
+                            <p class="text-gray-400 text-xs mt-2">Support available 24/7</p>
                         </div>
-                    </form>
-                    <p class="text-gray-200 text-center mt-4">What to Expect: We’ll respond to your message within 48 hours.</p>
+                    </div>
+
+                    <div class="glass-panel p-6 flex items-start space-x-4 info-card tilt-element">
+                        <div class="p-3 bg-[#0D9488]/20 rounded-full text-[#2DD4BF]">
+                            <i class="fas fa-envelope text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-1">Email Us</h4>
+                            <p class="text-gray-300 text-sm">viswavignanavaaradhi@gmail.com</p>
+                            <p class="text-gray-400 text-xs mt-2">We reply within 24 hours</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel h-64 relative overflow-hidden rounded-2xl border border-white/10 group">
+                        <div class="absolute inset-0 bg-[#0f172a] opacity-80 flex items-center justify-center z-10 group-hover:opacity-90 transition">
+                            <div class="text-center">
+                                <i class="fas fa-map-marked-alt text-4xl text-[#F59E0B] mb-2"></i>
+                                <p class="text-gray-300 text-sm">View on Google Maps</p>
+                            </div>
+                        </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.3160407063!2d83.13907703466162!3d17.73860298586291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39431388e5af29%3A0x5d31c27d2e790121!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1648000000000!5m2!1sen!2sin" 
+                                width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg);" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
+
+                <div class="glass-panel p-8 fade-in-up" style="animation-delay: 0.4s;">
+                    <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                        <span class="bg-[#F59E0B] w-2 h-8 mr-3 rounded-full"></span> Send a Message
+                    </h3>
+                    
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <label for="name" class="text-sm text-gray-300 ml-1 mb-1 block">Your Name</label>
+                            <input type="text" id="name" name="name" class="modern-input w-full rounded-lg" placeholder="John Doe" required>
+                        </div>
+                        <div>
+                            <label for="email" class="text-sm text-gray-300 ml-1 mb-1 block">Your Email</label>
+                            <input type="email" id="email" name="email" class="modern-input w-full rounded-lg" placeholder="john@example.com" required>
+                        </div>
+                        <div>
+                            <label for="message" class="text-sm text-gray-300 ml-1 mb-1 block">Message</label>
+                            <textarea id="message" name="message" rows="5" class="modern-input w-full rounded-lg" placeholder="How can we help you?" required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn-glow w-full py-3 rounded-xl text-white font-bold text-lg shadow-lg tracking-wide">
+                            Send Message <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                    <p id="formMessage" class="mt-4 text-center text-sm hidden"></p>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#0D9488] text-white p-10">
+    <footer class="bg-[#0D9488] text-white p-10 border-t border-white/10">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-2xl font-bold mb-4">Viswa Vignana Vaaradhi</h3>
-                    <p>We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
+                    <p class="text-gray-100 text-sm leading-relaxed">We are a not-for-profit organization committed to improving lives through education, political awareness, and agricultural upliftment.</p>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="index.html" class="footer-link hover:underline">Home</a></li>
-                        <li><a href="about.html" class="footer-link hover:underline">About</a></li>
-                        <li><a href="get-involved.html" class="footer-link hover:underline">Get Involved</a></li>
-                        <li><a href="our-work.html" class="footer-link hover:underline">Our Work</a></li>
-                        <li><a href="contact.html" class="footer-link hover:underline">Contact</a></li>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm text-gray-100">
+                        <li><a href="index.html" class="hover:text-[#F59E0B] transition">Home</a></li>
+                        <li><a href="about.html" class="hover:text-[#F59E0B] transition">About</a></li>
+                        <li><a href="our-work.html" class="hover:text-[#F59E0B] transition">Our Work</a></li>
+                        <li><a href="donate.html" class="hover:text-[#F59E0B] transition">Donate</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">Contact Us</h3>
-                    <p>Email: viswavignanavaaradhi@gmail.com</p>
-                    <p>Phone: +91-9010937358</p>
-                    <p>Address: New Address, Hyderabad, Telangana, India</p>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <p class="text-sm text-gray-100 mb-2"><i class="fas fa-envelope mr-2"></i> viswavignanavaaradhi@gmail.com</p>
+                    <p class="text-sm text-gray-100 mb-2"><i class="fas fa-phone mr-2"></i> +91-9010937358</p>
+                    <p class="text-sm text-gray-100"><i class="fas fa-map-marker-alt mr-2"></i> Visakhapatnam, Andhra Pradesh</p>
                 </div>
             </div>
-            <div class="mt-8 text-center">
+            <div class="mt-10 pt-6 border-t border-white/20 text-center text-sm text-gray-200">
                 <p>© 2025 Viswa Vignana Vaaradhi. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <button id="scrollToTopBtn" title="Go to top">↑</button>
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        function animateSections() {
-            const sections = document.querySelectorAll('.fade-in');
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
+        // Particles and Interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            if(typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    particles: { number: { value: 60 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.3, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.1, width: 1 }, move: { enable: true, speed: 1 } },
+                    interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' } } }
                 });
-            }, { threshold: 0.2 });
-            sections.forEach(section => observer.observe(section));
-        }
-        function initTiltEffect() {
-            VanillaTilt.init(document.querySelectorAll(".tilt-card"), {
-                max: 15,
-                speed: 400,
-                glare: true,
-                "max-glare": 0.5,
-            });
-        }
-        function initParticles() {
-            particlesJS('particles-js-contact', { particles: { number: { value: 80 }, color: { value: '#2DD4BF' }, shape: { type: 'circle' }, opacity: { value: 0.5, random: true }, size: { value: 3, random: true }, line_linked: { enable: true, distance: 150, color: '#2DD4BF', opacity: 0.4, width: 1 }, move: { enable: true, speed: 2, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false } }, interactivity: { detect_on: 'canvas', events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true }, modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } } }, retina_detect: true });
-        }
-        function initScrollToTop() {
+            }
+            
+            if(typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelectorAll(".tilt-element"), { max: 10, speed: 400, glare: true, "max-glare": 0.1 });
+            }
+
+            // Scroll to Top
             const scrollToTopBtn = document.getElementById('scrollToTopBtn');
             window.onscroll = function () {
-                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-                    scrollToTopBtn.style.display = 'block';
-                } else {
-                    scrollToTopBtn.style.display = 'none';
-                }
+                if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) { scrollToTopBtn.style.display = 'block'; } else { scrollToTopBtn.style.display = 'none'; }
             };
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+            scrollToTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+            // Form Logic
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = document.getElementById('submitBtn');
+
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                formMessage.classList.add('hidden');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    message: document.getElementById('message').value
+                };
+
+                try {
+                    const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        formMessage.classList.remove('hidden', 'text-red-400');
+                        formMessage.classList.add('text-green-400');
+                        formMessage.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Message sent successfully!';
+                        contactForm.reset();
+                    } else {
+                        throw new Error(result.message || 'Failed to send message');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    formMessage.classList.remove('hidden', 'text-green-400');
+                    formMessage.classList.add('text-red-400');
+                    formMessage.innerHTML = '<i class="fas fa-exclamation-circle mr-2"></i> Error sending message. Please try again.';
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
+                }
             });
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            try {
-                animateSections();
-                initTiltEffect();
-                initParticles();
-                initScrollToTop();
-            } catch (error) {
-                console.error('Error rendering page:', error);
-            }
         });
     </script>
 </body>
